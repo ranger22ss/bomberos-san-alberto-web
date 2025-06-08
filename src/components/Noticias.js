@@ -1,3 +1,4 @@
+// src/components/Noticias.js
 import React, { useState, useEffect, useRef } from 'react';
 import './Noticias.css'; // Estilo externo
 import Emergencia1 from '../pictures/Emergencia1.jpg';
@@ -48,19 +49,20 @@ function Noticias() {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + noticiasData.length) % noticiasData.length);
   };
 
-  // Noticia principal
-  const mainNews = noticiasData[currentIndex];
+  // Noticia principal - NO NECESITAMOS DECLARAR mainNews si solo la usamos una vez en el JSX
+  // const mainNews = noticiasData[currentIndex]; // Esta línea es la que se eliminó
 
   // Noticias para el mini-mosaico
   const getMosaicNews = () => {
-    const mosaicNews = [];
+    const mosaicNewsItems = []; // Renombramos para claridad
     for (let i = 1; i <= NOTICIAS_MOSAICO_COUNT; i++) {
-      mosaicNews.push(noticiasData[(currentIndex + i) % noticiasData.length]);
+      mosaicNewsItems.push(noticiasData[(currentIndex + i) % noticiasData.length]);
     }
-    return mosaicNews;
+    return mosaicNewsItems;
   };
 
-  const mosaicNews = getMosaicNews();
+  // NO NECESITAMOS DECLARAR mosaicNews aquí si solo la usamos directamente en el mapeo
+  // const mosaicNews = getMosaicNews(); // Esta línea es la que se eliminó
 
   return (
     <div className="noticias-container">

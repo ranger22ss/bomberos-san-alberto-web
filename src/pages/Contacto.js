@@ -7,13 +7,9 @@ import './Contacto.css'; // Asegúrate de que la ruta sea correcta
 // import Header from '../components/Header';
 // import Footer from '../components/Footer';
 
-// Para usar Font Awesome, puedes importar el CSS globalmente en _app.js
-// o en el componente Layout si usas uno. Si no, la forma más sencilla es usar la CDN:
-// <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-// Para Next.js, la forma recomendada es en pages/_document.js o importar el paquete npm
-// npm install @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
-// Y luego usar <FontAwesomeIcon icon={faPhoneAlt} />
-// Por simplicidad, mantendremos la CDN en el HTML por ahora, pero lo ideal es usar el paquete.
+// Para usar Font Awesome, se asume que has incluido la CDN en tu index.html
+// o lo has instalado y configurado globalmente.
+// Si no lo tienes, los íconos no se verán, pero el código no dará error de compilación.
 
 const Contacto = () => {
     // Estado para manejar los datos del formulario
@@ -45,6 +41,7 @@ const Contacto = () => {
         setFormStatusClass(''); // Limpia clases anteriores
 
         // URL de Formspree (¡REEMPLAZA YOUR_FORMSPREE_FORM_ID CON TU ID REAL!)
+        // La URL que tienes es: "https://formspree.io/f/xeokewdj"
         const formspreeUrl = "https://formspree.io/f/xeokewdj";
 
         // Prepara los datos para Formspree
@@ -91,7 +88,6 @@ const Contacto = () => {
     };
 
     return (
-        // <Header /> {/* Si tienes un componente Header global, úsalo aquí */}
         <div>
             {/* Encabezado específico de la página de contacto */}
             <header className="contact-header">
@@ -113,7 +109,7 @@ const Contacto = () => {
                         <div className="info-item">
                             <i className="fas fa-headset"></i>
                             <h3>Atención al Cliente</h3>
-                            <p>+57 300-175-1212 <a href="https://wa.me/573001751212" target="_blank" className="whatsapp-link"><i className="fab fa-whatsapp"></i> WhatsApp</a></p>
+                            <p>+57 300-175-1212 <a href="https://wa.me/573001751212" target="_blank" rel="noreferrer" className="whatsapp-link"><i className="fab fa-whatsapp"></i> WhatsApp</a></p> {/* <-- AÑADIDO rel="noreferrer" */}
                         </div>
                         <div className="info-item">
                             <i className="fas fa-envelope"></i>
@@ -124,7 +120,7 @@ const Contacto = () => {
                         <div className="info-item">
                             <i className="fab fa-facebook-f"></i>
                             <h3>Síguenos en Facebook</h3>
-                            <p><a href="https://www.facebook.com/profile.php?id=61563465837882" target="_blank">Cuerpo de Bomberos Voluntarios San Alberto</a></p>
+                            <p><a href="https://www.facebook.com/profile.php?id=61563465837882" target="_blank" rel="noreferrer">Cuerpo de Bomberos Voluntarios San Alberto</a></p> {/* <-- AÑADIDO rel="noreferrer" */}
                         </div>
                     </div>
                 </section>
@@ -183,15 +179,6 @@ const Contacto = () => {
                     </form>
                 </section>
             </main>
-
-            {/* Pie de página específico de la página de contacto, si no usas un Footer global */}
-            {/* <footer className="contact-footer">
-                <div className="contact-page-container">
-                    <p>&copy; 2025 Cuerpo de Bomberos San Alberto. Todos los derechos reservados.</p>
-                </div>
-            </footer> */}
-            {/* Si tienes un componente Footer global, úsalo aquí */}
-            {/* <Footer /> */}
         </div>
     );
 };
