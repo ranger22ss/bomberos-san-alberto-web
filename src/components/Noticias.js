@@ -1,20 +1,20 @@
 // src/components/Noticias.js
 import React, { useState, useEffect, useRef } from 'react';
 import './Noticias.css'; // Estilo externo
+import Acompañamiento1 from '../pictures/Acompañamiento1.jpg';
 import Emergencia1 from '../pictures/Emergencia1.jpg';
-import Emergencia2 from '../pictures/Emergencia2.jpg';
-import ImagenExtra1 from '../pictures/Emergencia1.jpg'; 
-import ImagenExtra2 from '../pictures/Emergencia2.jpg'; 
-import ImagenExtra3 from '../pictures/Emergencia1.jpg';
-
+import Incendio1 from '../pictures/Incendio1.jpg'; 
+import Incendio2 from '../pictures/Incendio2.jpg'; 
+import Incendio3 from '../pictures/Incendio3.jpg';
+import Acompañamiento2 from '../pictures/Acompañamiento2.jpg';
 
 const noticiasData = [
-  { id: 1, imagen: Emergencia1, titulo: 'Incendio en Edificio Central', link: 'https://www.facebook.com/profile.php?id=61563465837882', descripcion: 'Un incendio de grandes proporciones fue controlado por los bomberos en el corazón de la ciudad.' },
-  { id: 2, imagen: Emergencia2, titulo: 'Rescate Acuático en Río', link: 'https://www.facebook.com/profile.php?id=61563465837882', descripcion: 'Equipo de rescate logra salvar a dos personas atrapadas por la corriente en el río Caucana.' },
-  { id: 3, imagen: ImagenExtra1, titulo: 'Nueva Estación de Bomberos', link: 'https://www.facebook.com/profile.php?id=61563465837882', descripcion: 'Inaugurada la estación "Phoenix", reforzando la capacidad de respuesta en la zona norte.' },
-  { id: 4, imagen: ImagenExtra2, titulo: 'Simulacro Masivo de Terremoto', link: 'https://www.facebook.com/profile.php?id=61563465837882', descripcion: 'Con éxito se realizó el simulacro anual, evaluando la preparación de la comunidad ante sismos.' },
-  { id: 5, imagen: ImagenExtra3, titulo: 'Campaña de Prevención Incendios', link: 'https://www.facebook.com/profile.php?id=61563465837882', descripcion: 'Iniciada campaña de concientización sobre la importancia de las alarmas de humo en hogares.' },
-  { id: 6, imagen: Emergencia1, titulo: 'Accidente de Tránsito Grave', link: 'https://www.facebook.com/profile.php?id=61563465837882', descripcion: 'Rescate de víctimas tras colisión múltiple en la autopista central.' },
+  { id: 1, imagen: Emergencia1, titulo: 'Materiales peligrosos', link: 'https://www.facebook.com/share/p/1LHHv6j9Jc/', descripcion: 'Un derrame de un material combustible fue atendido por bomberos' },
+  { id: 2, imagen: Acompañamiento1, titulo: 'Gran recibimiento de los campeones de la XXV Olimpiada Especial FIDES.o', link: 'https://www.facebook.com/share/p/1Q9tqcZA8i/', descripcion: 'Felicitamos de todo corazón a los campeones..' },
+  { id: 3, imagen: Incendio1, titulo: 'Incendio Electrico', link: 'https://www.facebook.com/share/p/12GJJwM6kt7/', descripcion: 'El cuerpo de bomberos de San Alberto atendió una emergencia el día 06 de junio.' },
+  { id: 4, imagen: Incendio2, titulo: 'Incendio Vehicular', link: 'https://www.facebook.com/share/p/18sViYYDbQ/', descripcion: 'En la madrugada del 3 de junio de 2025, siendo las 3:00 a.m. aproximadamente el Cuerpo de Bomberos sale de manera inmediata con (3) unidades y (1) carro tanque a atender un incendio vehicular en la vía San Alberto – La Esperanza, Norte de Santander. ' },
+  { id: 5, imagen: Incendio3, titulo: 'Incendio Estructural', link: 'https://www.facebook.com/share/p/16LYL9EZDy/', descripcion: 'El día 30 de mayo de 2025, siendo las 18:05 horas, el Cuerpo de Bomberos de San Alberto, César, atendió un incendio estructural.' },
+  { id: 6, imagen: Acompañamiento2, titulo: 'Acompañamiento', link: 'https://www.facebook.com/share/p/1KnWqvgWKQ/', descripcion: 'Acompañamiento cumpleaños de San Alberto - Cesar.' },
   // Agrega más noticias para que el carrusel tenga más elementos
 ];
 
