@@ -1,0 +1,275 @@
+/* src/pages/Consulta.css - Diseño Moderno */
+
+/* Variables (asegúrate de que estas estén en tu index.css global si no las tienes) */
+/* Si ya tienes un :root en index.css, puedes eliminar este bloque para evitar duplicidad */
+:root {
+    --primary-dark-blue: #0b1f3a; /* Azul oscuro, similar al del header */
+    --primary-color: #2c3e50;    /* Gris azulado oscuro */
+    --secondary-color: #3498db;  /* Azul brillante (para botones, acentos) */
+    --accent-color: #ffd700;    /* Dorado (para títulos, resaltados) */
+    --success-color: #28a745;    /* Verde para Vigente */
+    --danger-color: #dc3545;    /* Rojo para Vencido */
+    --info-color: #17a2b8;      /* Azul claro para mensajes */
+    --white: #ffffff;
+    --light-grey-bg: #f8f9fa;   /* Fondo claro para cajas */
+    --border-color-light: #e0e0e0; /* Borde más suave */
+    --text-color-dark: #34495e; /* Texto oscuro principal */
+    --text-color-medium: #6c757d; /* Texto secundario */
+
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 40px;
+    --spacing-xxl: 60px;
+}
+
+.consulta-container {
+    max-width: 900px; /* Un poco más ancho para un look moderno */
+    margin: var(--spacing-xxl) auto; /* Margen superior/inferior generoso */
+    padding: var(--spacing-xxl) var(--spacing-lg); /* Padding generoso */
+    background-color: var(--white);
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada pero suave */
+    text-align: center;
+    overflow: hidden; /* Para contener las sombras internas si las hubiera */
+}
+
+.consulta-title {
+    color: var(--primary-dark-blue);
+    margin-bottom: var(--spacing-md);
+    font-size: 2.8em; /* Título más grande */
+    font-weight: 800; /* Más audaz */
+    text-transform: uppercase; /* En mayúsculas para impacto */
+    letter-spacing: 1.5px; /* Espaciado entre letras */
+    border-bottom: 3px solid var(--accent-color); /* Línea dorada debajo del título */
+    display: inline-block; /* Para que la línea se ajuste al ancho del texto */
+    padding-bottom: var(--spacing-sm);
+}
+
+.consulta-description {
+    color: var(--text-color-medium);
+    font-size: 1.15em; /* Texto un poco más grande */
+    margin-bottom: var(--spacing-xl); /* Más espacio */
+    line-height: 1.7;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md); /* Espacio entre input y botón */
+    margin-bottom: var(--spacing-xxl); /* Más espacio debajo de la caja de búsqueda */
+    flex-wrap: wrap; /* Para que se envuelvan en pantallas pequeñas */
+}
+
+.nit-input {
+    flex-grow: 1;
+    max-width: 450px; /* Ancho máximo para el input */
+    padding: 15px 20px; /* Mayor padding */
+    border: 2px solid var(--border-color-light); /* Borde más visible */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 1.2em; /* Texto más grande */
+    color: var(--text-color-dark);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--light-grey-bg); /* Fondo ligeramente gris */
+}
+
+.nit-input::placeholder {
+    color: var(--text-color-medium);
+    opacity: 0.7;
+}
+
+.nit-input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.25); /* Sombra de enfoque más prominente */
+    background-color: var(--white);
+}
+
+.search-button {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 15px 30px; /* Mayor padding */
+    border: none;
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 1.2em;
+    font-weight: 700; /* Más audaz */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2); /* Sombra suave */
+}
+
+.search-button:hover {
+    background-color: var(--primary-dark-blue);
+    transform: translateY(-3px); /* Efecto de "levantar" */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra más fuerte al pasar el ratón */
+}
+
+.search-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+    color: var(--danger-color);
+    background-color: rgba(220, 53, 69, 0.1); /* Fondo muy suave para errores */
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 5px;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 600;
+    border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+.results-box {
+    background-color: var(--light-grey-bg);
+    border: 1px solid var(--border-color-light);
+    border-radius: 10px; /* Bordes más redondeados */
+    padding: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Sombra para la caja de resultados */
+    animation: fadeIn 0.5s ease-out; /* Animación de aparición */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.not-found-message {
+    color: var(--text-color-dark);
+    font-size: 1.1em;
+    font-weight: 500;
+    padding: var(--spacing-md);
+    background-color: rgba(255, 193, 7, 0.1); /* Fondo suave amarillo para no encontrado */
+    border-radius: 5px;
+    border: 1px solid rgba(255, 193, 7, 0.2);
+}
+
+.certificate-details h3 {
+    color: var(--primary-dark-blue);
+    margin-top: 0;
+    margin-bottom: var(--spacing-lg);
+    font-size: 2em; /* Título de detalles más grande */
+    font-weight: 700;
+    border-bottom: 2px solid var(--secondary-color); /* Línea azul debajo del título de detalles */
+    padding-bottom: var(--spacing-sm);
+}
+
+.certificate-details p {
+    margin-bottom: var(--spacing-sm); /* Espacio entre cada línea de detalle */
+    font-size: 1.05em;
+    color: var(--text-color-dark);
+    line-height: 1.5;
+}
+
+.certificate-details p strong {
+    color: var(--primary-color);
+    min-width: 120px; /* Para alinear los dos puntos si el texto es muy corto */
+    display: inline-block; /* Permite el min-width */
+}
+
+.status-label {
+    font-size: 1.3em; /* Estado más grande */
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    margin-top: var(--spacing-xl); /* Más espacio encima del estado */
+    justify-content: center; /* Centrar el estado */
+}
+
+.status-text {
+    padding: 8px 20px; /* Mayor padding para la etiqueta de estado */
+    border-radius: 25px; /* Bordes más redondeados (píldora) */
+    margin-left: var(--spacing-md);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.status-text.vigente {
+    background-color: var(--success-color);
+    color: var(--white);
+}
+
+.status-text.vencido {
+    background-color: var(--danger-color);
+    color: var(--white);
+}
+
+.action-required-message {
+    background-color: rgba(220, 53, 69, 0.15); /* Fondo rojo más notorio */
+    color: var(--danger-color);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    margin-top: var(--spacing-xl); /* Más espacio arriba */
+    font-weight: 600;
+    border: 1px solid var(--danger-color);
+    line-height: 1.6;
+    font-size: 1.05em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .consulta-container {
+        padding: var(--spacing-xl) var(--spacing-md);
+        margin: var(--spacing-xl) auto;
+    }
+    .consulta-title {
+        font-size: 2.2em;
+    }
+    .consulta-description {
+        font-size: 1em;
+    }
+    .search-box {
+        flex-direction: column; /* Apila el input y el botón en móviles */
+        gap: var(--spacing-sm);
+    }
+    .nit-input, .search-button {
+        max-width: 100%;
+        width: 100%;
+    }
+    .results-box {
+        padding: var(--spacing-lg);
+    }
+    .certificate-details h3 {
+        font-size: 1.6em;
+    }
+    .status-label {
+        flex-direction: column; /* Apila el "Estado:" y la etiqueta de estado */
+        align-items: center;
+    }
+    .status-text {
+        margin-left: 0;
+        margin-top: var(--spacing-sm); /* Espacio entre el texto "Estado:" y la píldora */
+    }
+}
+
+@media (max-width: 480px) {
+    .consulta-container {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    .consulta-title {
+        font-size: 1.8em;
+    }
+    .nit-input, .search-button {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+    .certificate-details h3 {
+        font-size: 1.3em;
+    }
+    .status-text {
+        padding: 6px 15px;
+        font-size: 1.1em;
+    }
+    .action-required-message {
+        font-size: 0.95em;
+        padding: var(--spacing-sm);
+    }
+}

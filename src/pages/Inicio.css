@@ -1,0 +1,363 @@
+/* Importar fuentes de Google Fonts (Montserrat para títulos, Open Sans para texto) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* Variables CSS para colores (consistente en toda la plataforma) */
+/*
+   *******************************************************************************
+   * ¡¡¡NOTA IMPORTANTE SOBRE VARIABLES CSS!!!                                  *
+   * Es ALTAMENTE RECOMENDABLE CENTRALIZAR TODAS las variables CSS (:root)      *
+   * en un ÚNICO archivo global (como src/index.css o src/App.css).            *
+   * *
+   * Si ya tienes o vas a crear un archivo global con tus variables, puedes     *
+   * ELIMINAR COMPLETAMENTE esta sección ':root' de este archivo.              *
+   * *
+   * Asegúrate de que los NOMBRES de las variables sean CONSISTENTES           *
+   * en todo tu proyecto si usas diferentes archivos CSS.                       *
+   * *
+   * Actualmente, hay varias variables con nombres similares o que cumplen      *
+   * funciones similares en tus diferentes archivos CSS (Nosotros, Contacto, Cotizar, Inicio).
+   * Unificar esto es clave para la consistencia global.                        *
+   *******************************************************************************
+*/
+:root {
+    --primary-dark-blue: #0b1f3a; /* Azul oscuro principal para fondos */
+    --primary-color: #2c3e50; /* Azul oscuro casi negro para títulos y texto fuerte */
+    --secondary-color: #3498db; /* Azul vibrante para acentos, iconos y botones */
+    --accent-color: #e67e22; /* Naranja/ámbar para destacar elementos clave */
+    --text-color-light: #ecf0f1; /* Gris claro para texto sobre fondos oscuros */
+    --text-color-dark: #34495e; /* Azul grisáceo oscuro para texto principal */
+    --link-color: #ffcc00; /* Amarillo para enlaces (si se usa explícitamente) */
+    --white: #ffffff;
+    --light-grey: #f4f7f9; /* Fondo muy claro para la página principal */
+    --medium-grey: #bdc3c7; /* Gris para bordes o texto secundario */
+    --section-bg-light: #ffffff; /* Fondo de sección principal */
+    --section-bg-dark: #f0f4f7; /* Fondo de sección alternativo (gris claro) */
+}
+
+/* Estilos Generales del Contenedor de Inicio */
+.inicio-container {
+    background-color: var(--light-grey); /* Fondo general más claro */
+    color: var(--text-color-dark); /* Color de texto principal */
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.7;
+    padding-bottom: 50px; /* Espacio inferior */
+}
+
+/* Contenedor centralizado para el contenido */
+.inicio-content-wrapper {
+    width: 90%;
+    max-width: 1200px; /* Ancho máximo para contenido centrado */
+    margin: 0 auto; /* Centrar en la página */
+    padding: 20px 0;
+}
+
+/* Header Principal (Encabezado de la página de inicio) */
+.inicio-header {
+    background: linear-gradient(135deg, var(--primary-dark-blue), var(--primary-color)); /* Gradiente azul oscuro */
+    color: var(--text-color-light);
+    padding: 80px 20px; /* Más padding para que se vea imponente */
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    margin-bottom: 50px; /* Espacio antes de la primera sección */
+}
+
+.inicio-header-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4.5em; /* Título más grande */
+    margin-bottom: 15px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Sombra de texto más pronunciada */
+    line-height: 1.1;
+}
+
+.inicio-header-slogan {
+    font-size: 1.8em; /* Slogan más grande */
+    opacity: 0.9;
+    max-width: 900px;
+    margin: 0 auto;
+    font-weight: 600;
+}
+
+/* Estilos para cada sección del contenido principal */
+.inicio-section {
+    background-color: var(--section-bg-light); /* Fondo blanco para las secciones */
+    padding: 40px;
+    margin-bottom: 40px;
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra más notable */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para hover */
+}
+
+.inicio-section:hover {
+    transform: translateY(-5px); /* Pequeño levantamiento al pasar el ratón */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra más fuerte al pasar el ratón */
+}
+
+/* Alternar colores de fondo para las secciones para mayor contraste */
+.inicio-section:nth-of-type(even) {
+    background-color: var(--section-bg-dark); /* Fondo gris claro para secciones pares */
+}
+
+
+.inicio-section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.8em; /* Títulos de sección más grandes */
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* Línea decorativa debajo de los títulos de sección */
+.inicio-section-title::after {
+    content: '';
+    display: block;
+    width: 80px; /* Más ancha */
+    height: 5px; /* Más gruesa */
+    background-color: var(--secondary-color); /* Línea de acento azul */
+    margin: 20px auto 0; /* Centrado y más espacio */
+    border-radius: 3px;
+}
+
+.inicio-section p {
+    font-size: 1.15em; /* Texto un poco más grande */
+    margin-bottom: 20px;
+    text-align: justify; /* Justificado para mejor lectura */
+}
+
+/* Estilos para listas generales (Valores, Servicios) */
+.inicio-list {
+    list-style: none; /* Eliminar viñetas por defecto */
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas responsivas */
+    gap: 15px; /* Espacio entre ítems */
+    margin-top: 20px;
+}
+
+.inicio-list li {
+    background-color: var(--white); /* Fondo blanco para los ítems de lista */
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre icono y texto */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.inicio-list li:hover {
+    background-color: #eaf3fa; /* Fondo azul claro al pasar el ratón */
+    transform: translateY(-3px); /* Ligeramente levantado */
+}
+
+/* Estilos para los iconos dentro de las listas */
+.inicio-list li i {
+    font-size: 1.5em; /* Tamaño del icono */
+    color: var(--secondary-color); /* Color del icono */
+    flex-shrink: 0; /* Evita que el icono se encoja */
+}
+
+/* Estilos específicos para la sección de "Años de Servicio" */
+.anios-servicio {
+    text-align: center;
+    padding: 30px;
+    background-color: var(--secondary-color); /* Fondo azul vibrante */
+    color: var(--text-color-light); /* Texto claro */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.anios-servicio .inicio-section-title {
+    color: var(--white); /* Título en blanco */
+}
+
+.anios-servicio .inicio-section-title::after {
+    background-color: var(--accent-color); /* Línea de acento naranja */
+}
+
+.anios-servicio p {
+    font-size: 1.25em; /* Texto más grande */
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.anios-servicio strong {
+    font-size: 1.8em; /* Años de servicio más destacados */
+    font-family: 'Montserrat', sans-serif;
+    display: block; /* Para que ocupe su propia línea */
+    margin-top: 10px;
+    color: var(--link-color); /* Color amarillo para resaltarlo */
+}
+
+/* Estilos para la lista de "Otras Páginas" */
+.otras-paginas-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    justify-content: center; /* Centra los elementos */
+    gap: 20px; /* Espacio entre los enlaces */
+}
+
+.otras-paginas-list li {
+    background-color: var(--section-bg-dark); /* Fondo gris claro para los ítems */
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    flex: 1 1 auto; /* Permite que los ítems crezcan y se encojan */
+    max-width: 280px; /* Ancho máximo para cada tarjeta de enlace */
+    text-align: center;
+}
+
+.otras-paginas-list li:hover {
+    background-color: #dbe9f5; /* Azul muy suave al pasar el ratón */
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.otras-paginas-list li a {
+    color: var(--secondary-color); /* Color azul para los enlaces */
+    text-decoration: none;
+    font-weight: 700; /* Negrita para el texto del enlace */
+    display: block; /* Para que el enlace ocupe todo el espacio del li */
+    margin-bottom: 5px; /* Espacio entre el link y la descripción */
+}
+
+.otras-paginas-list li a:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+
+.otras-paginas-list li p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Estilos para el botón "Conócenos" */
+.inicio-button-wrapper {
+    text-align: center; /* Centrar el botón */
+    margin-top: 50px;
+}
+
+.inicio-button {
+    display: inline-block; /* Permite aplicar padding y centrar */
+    background-color: var(--accent-color); /* Naranja vibrante para el botón */
+    color: var(--white);
+    padding: 18px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3em;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.inicio-button:hover {
+    background-color: #cf681c; /* Naranja más oscuro al pasar el ratón */
+    transform: translateY(-3px) scale(1.02); /* Efecto de levantamiento y ligero aumento */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .inicio-header-title {
+        font-size: 3.5em;
+    }
+    .inicio-header-slogan {
+        font-size: 1.5em;
+    }
+    .inicio-section-title {
+        font-size: 2.2em;
+    }
+    .inicio-section p {
+        font-size: 1.05em;
+    }
+    .inicio-list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .anios-servicio strong {
+        font-size: 1.5em;
+    }
+    .otras-paginas-list li {
+        max-width: none; /* Que ocupe todo el ancho disponible */
+        flex-basis: 100%; /* Una columna en móviles */
+    }
+}
+
+@media (max-width: 768px) {
+    .inicio-header {
+        padding: 60px 15px;
+    }
+    .inicio-header-title {
+        font-size: 2.8em;
+    }
+    .inicio-header-slogan {
+        font-size: 1.2em;
+    }
+    .inicio-section {
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+    .inicio-section-title {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+    .inicio-section-title::after {
+        width: 60px;
+        height: 4px;
+        margin: 15px auto 0;
+    }
+    .inicio-list {
+        gap: 10px;
+    }
+    .inicio-list li {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+    .inicio-list li i {
+        font-size: 1.3em;
+    }
+    .anios-servicio p {
+        font-size: 1.1em;
+    }
+    .anios-servicio strong {
+        font-size: 1.3em;
+    }
+    .inicio-button {
+        font-size: 1.1em;
+        padding: 15px 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .inicio-header-title {
+        font-size: 2.2em;
+    }
+    .inicio-header-slogan {
+        font-size: 1em;
+    }
+    .inicio-section-title {
+        font-size: 1.6em;
+    }
+    .inicio-section-title::after {
+        width: 50px;
+        height: 3px;
+        margin: 10px auto 0;
+    }
+    .inicio-list {
+        grid-template-columns: 1fr; /* Una sola columna en los móviles más pequeños */
+    }
+    .inicio-list li {
+        padding: 10px 15px;
+        font-size: 0.95em;
+    }
+}

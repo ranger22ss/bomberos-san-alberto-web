@@ -1,0 +1,174 @@
+/* Estilos generales del contenedor principal del carrusel */
+.noticias-container {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px; /* Ajusta el ancho total del componente */
+  background-color: rgba(255, 255, 255, 0.95); /* Fondo casi opaco para elegancia */
+  border-radius: 12px; /* Más redondeado */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  padding: 20px; /* Más padding */
+  z-index: 1000;
+  text-align: center;
+  font-family: 'Arial', sans-serif; /* Fuente más moderna */
+}
+
+/* Título general del carrusel */
+.noticias-container h2 {
+  font-size: 1.5em;
+  color: #2c3e50; /* Color oscuro para el texto */
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e0e0e0; /* Línea más marcada */
+  padding-bottom: 10px;
+  font-weight: 600; /* Un poco más de peso */
+}
+
+/* Contenedor del carrusel para el efecto de deslizamiento */
+.carousel-wrapper {
+  overflow: hidden; /* Oculta las slides que no están a la vista */
+  width: 100%; /* Ocupa el ancho total del contenedor padre */
+  position: relative; /* Para posicionar los botones si los pones dentro */
+}
+
+.carousel-inner {
+  display: flex; /* Permite que las slides se pongan una al lado de la otra */
+  transition: transform 0.6s ease-in-out; /* La animación suave de deslizamiento */
+}
+
+/* Cada "página" del carrusel (contiene la noticia principal y el mini-mosaico) */
+.carousel-slide {
+  flex-shrink: 0; /* Evita que las slides se encojan */
+  width: 100%; /* Cada slide ocupa el 100% del ancho del carousel-wrapper */
+  display: flex;
+  flex-direction: column; /* Organiza la noticia principal y el mosaico verticalmente */
+  align-items: center;
+}
+
+/* Estilos para la noticia principal (imagen grande) */
+.main-news-item {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* Espacio entre la noticia principal y el mosaico */
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.main-news-item:hover {
+  transform: translateY(-5px); /* Efecto de levantar al pasar el ratón */
+}
+
+.main-news-item img {
+  width: 100%;
+  height: 180px; /* Altura fija para la imagen principal */
+  object-fit: cover;
+  display: block;
+}
+
+.main-news-info {
+  padding: 15px;
+  background-color: #f0f4f7; /* Fondo suave para la info */
+  text-align: left; /* Alineación del texto de la noticia principal */
+}
+
+.main-news-info h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.1em;
+  color: #333;
+  line-height: 1.4;
+  white-space: nowrap; /* Evita que el título se rompa */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main-news-info p {
+  margin: 0;
+  font-size: 0.85em;
+  color: #666;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limita la descripción a 3 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Estilos para el mini-mosaico (noticias secundarias) */
+.mini-mosaico {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Mosaico de 2 o 3 columnas pequeñas */
+  gap: 10px; /* Espacio entre las imágenes del mosaico */
+  width: 100%;
+}
+
+.mini-mosaico-item {
+  background-color: #e9eff4; /* Fondo ligero para los items del mosaico */
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrar contenido del item */
+  padding-bottom: 5px; /* Espacio debajo del título */
+}
+
+.mini-mosaico-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mini-mosaico-item img {
+  width: 100%;
+  height: 60px; /* Altura fija para las imágenes del mini-mosaico */
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid #dae2e8;
+}
+
+.mini-mosaico-item p {
+  font-size: 0.75em; /* Tamaño de fuente muy pequeño para los títulos */
+  color: #444;
+  margin: 5px 0 0; /* Margen para el texto */
+  padding: 0 5px; /* Padding horizontal */
+  line-height: 1.2;
+  height: 2.4em; /* Altura fija para el texto (2 líneas de 1.2em) */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limita a 2 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Estilos de los controles del carrusel */
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Más espacio entre los botones */
+  margin-top: 25px; /* Más espacio arriba */
+}
+
+.carousel-controls button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px; /* Botones más grandes */
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.5em; /* Iconos más grandes */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-controls button:hover {
+  background-color: #0056b3;
+  transform: scale(1.1); /* Efecto de zoom más notorio */
+}

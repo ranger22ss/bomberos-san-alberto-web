@@ -1,0 +1,80 @@
+/* src/index.css (o tu archivo CSS global) */
+
+/* Importar fuentes de Google Fonts (si no las tienes ya) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* ********************************************************************************************
+   * VARIABLES CSS GLOBALES                                                                   *
+   * Centraliza AQUÍ todas tus variables de color, tipografía, espaciado, etc.               *
+   * ELIMINA LOS BLOQUES :root DE TODOS LOS DEMÁS ARCHIVOS CSS (Header.css, Footer.css, etc.) *
+   ******************************************************************************************** */
+:root {
+    --primary-dark-blue: #0b1f3a;
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e67e22;
+    --text-color-light: #f0f0f0;
+    --text-color-dark: #34495e;
+    --gold-accent: #ffd700;
+    --white: #ffffff;
+    --light-grey: #bdc3c7;
+    --border-color: #dee2e6;
+    --page-background-color: #f4f7f9; /* Fondo general de las páginas */
+
+    /* Variables específicas para el Header (usadas en Header.css y para el padding-top) */
+    --header-height-desktop: 125.234px; /* ALTURA MEDIDA DEL ENCABEZADO */
+    --header-height-mobile: 90px;      /* Altura estimada del header en móviles (ajustar si es necesario) */
+
+    /* Variables para el Footer */
+    --footer-bg-color: #1e3a8a;
+    --link-color-footer: #d4edda;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--page-background-color);
+    color: var(--text-color-dark);
+}
+
+/* ****************************************************************** */
+/* ¡¡¡ ESTA ES LA SOLUCIÓN CLAVE para el solapamiento !!!           */
+/* ****************************************************************** */
+.main-content-area {
+    /* El padding-top debe coincidir con la altura total del Header en desktop */
+    padding-top: var(--header-height-desktop); /* Usa la variable de altura exacta */
+    
+    /* Asegura que el área de contenido ocupe al menos el resto del viewport */
+    min-height: calc(100vh - var(--header-height-desktop)); 
+    background-color: var(--page-background-color); /* Fondo de la página principal */
+    /* Añadir un padding horizontal para el contenido general si lo necesitas */
+    padding-left: 10px; 
+    padding-right: 10px;
+}
+
+/* Media Queries para ajustar el padding-top en dispositivos móviles */
+@media (max-width: 992px) {
+    .main-content-area {
+        /* Ajusta el padding-top para la altura del header en tablet/móvil */
+        padding-top: var(--header-height-mobile); /* Usa la variable de altura móvil */
+        min-height: calc(100vh - var(--header-height-mobile));
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content-area {
+        /* En móviles pequeños, la altura del header podría ser la misma que la de tablet */
+        padding-top: var(--header-height-mobile); /* Usa la variable de altura móvil */
+        min-height: calc(100vh - var(--header-height-mobile));
+    }
+}
+
+/* Otros estilos globales para títulos, etc. */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    margin-top: 0; /* Elimina márgenes superiores por defecto que podrían causar problemas */
+    padding-top: 20px; /* Un poco de padding para que los títulos no queden pegados al borde superior del main-content-area */
+}
