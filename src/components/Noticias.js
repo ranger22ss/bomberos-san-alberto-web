@@ -23,6 +23,8 @@ const NOTICIAS_MOSAICO_COUNT = 3; // Cuántas noticias en el mini-mosaico
 function Noticias() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselInnerRef = useRef(null); // Referencia para la animación de deslizamiento
+  // NUEVO ESTADO: Para controlar si las noticias están ocultas
+  const [isNoticiasHidden, setIsNoticiasHidden] = useState(false); // Por defecto, visibles
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -34,12 +36,10 @@ function Noticias() {
   useEffect(() => {
     // Cuando el currentIndex cambia, aplicamos la transformación
     if (carouselInnerRef.current) {
-      // Calculamos el desplazamiento necesario
-      const offset = -currentIndex * 100; // Desplaza 100% por cada índice
+      const offset = -currentIndex * 100;
       carouselInnerRef.current.style.transform = `translateX(${offset}%)`;
     }
   }, [currentIndex]);
-
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % noticiasData.length);
@@ -49,55 +49,65 @@ function Noticias() {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + noticiasData.length) % noticiasData.length);
   };
 
-  // Noticia principal - NO NECESITAMOS DECLARAR mainNews si solo la usamos una vez en el JSX
-  // const mainNews = noticiasData[currentIndex]; // Esta línea es la que se eliminó
+  // NUEVA FUNCIÓN: Para alternar la visibilidad de las noticias
+  const toggleNoticiasVisibility = () => {
+    setIsNoticiasHidden(!isNoticiasHidden);
+  };
 
-  // Noticias para el mini-mosaico
   const getMosaicNews = () => {
-    const mosaicNewsItems = []; // Renombramos para claridad
+    const mosaicNewsItems = [];
     for (let i = 1; i <= NOTICIAS_MOSAICO_COUNT; i++) {
       mosaicNewsItems.push(noticiasData[(currentIndex + i) % noticiasData.length]);
     }
     return mosaicNewsItems;
   };
 
-  // NO NECESITAMOS DECLARAR mosaicNews aquí si solo la usamos directamente en el mapeo
-  // const mosaicNews = getMosaicNews(); // Esta línea es la que se eliminó
-
   return (
     <div className="noticias-container">
-      <h2>Noticias Destacadas</h2>
+      <h2 className="noticias-header-toggle">
+        Noticias Destacadas
+        {/* NUEVO BOTÓN: Para ocultar/mostrar */}
+        <button 
+          className="toggle-button" 
+          onClick={toggleNoticiasVisibility}
+          aria-expanded={!isNoticiasHidden} // Para accesibilidad
+        >
+          {isNoticiasHidden ? 'Mostrar Noticias' : 'Ocultar Noticias'}
+        </button>
+      </h2>
 
-      <div className="carousel-wrapper">
-        <div className="carousel-inner" ref={carouselInnerRef}>
-          {noticiasData.map((noticiaItem, index) => (
-            <div key={noticiaItem.id} className="carousel-slide" style={{ minWidth: '100%' }}>
-              <div className="main-news-item">
-                <img src={noticiaItem.imagen} alt={noticiaItem.titulo} onClick={() => window.open(noticiaItem.link, '_blank')} />
-                <div className="main-news-info">
-                  <h3>{noticiaItem.titulo}</h3>
-                  <p>{noticiaItem.descripcion}</p>
+      {/* NUEVO: Contenedor condicional para ocultar/mostrar */}
+      {/* Añadimos una clase 'hidden' si isNoticiasHidden es true */}
+      <div className={`noticias-content-wrapper ${isNoticiasHidden ? 'hidden' : ''}`}>
+        <div className="carousel-wrapper">
+          <div className="carousel-inner" ref={carouselInnerRef}>
+            {noticiasData.map((noticiaItem, index) => (
+              <div key={noticiaItem.id} className="carousel-slide" style={{ minWidth: '100%' }}>
+                <div className="main-news-item">
+                  <img src={noticiaItem.imagen} alt={noticiaItem.titulo} onClick={() => window.open(noticiaItem.link, '_blank')} />
+                  <div className="main-news-info">
+                    <h3>{noticiaItem.titulo}</h3>
+                    <p>{noticiaItem.descripcion}</p>
+                  </div>
+                </div>
+
+                <div className="mini-mosaico">
+                  {getMosaicNews().map((mosaicItem, mosaicIndex) => (
+                      <div key={`${mosaicItem.id}-${mosaicIndex}`} className="mini-mosaico-item" onClick={() => window.open(mosaicItem.link, '_blank')}>
+                        <img src={mosaicItem.imagen} alt={mosaicItem.titulo} />
+                        <p>{mosaicItem.titulo}</p>
+                      </div>
+                  ))}
                 </div>
               </div>
-
-              <div className="mini-mosaico">
-                {getMosaicNews().map((mosaicItem, mosaicIndex) => (
-                    // Asegúrate de que los IDs sean únicos si estás mapeando el mismo array varias veces
-                    // Para evitar duplicados en 'key', puedes usar una combinación de id y el index en el mosaico
-                    <div key={`${mosaicItem.id}-${mosaicIndex}`} className="mini-mosaico-item" onClick={() => window.open(mosaicItem.link, '_blank')}>
-                      <img src={mosaicItem.imagen} alt={mosaicItem.titulo} />
-                      <p>{mosaicItem.titulo}</p>
-                    </div>
-                ))}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="carousel-controls">
-        <button onClick={prevSlide}>&#10094;</button>
-        <button onClick={nextSlide}>&#10095;</button>
+        <div className="carousel-controls">
+          <button onClick={prevSlide}>&#10094;</button>
+          <button onClick={nextSlide}>&#10095;</button>
+        </div>
       </div>
     </div>
   );
