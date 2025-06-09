@@ -65,9 +65,8 @@
     transform: translateY(-2px);
 }
 
-/* NUEVOS ESTILOS PARA OCULTAR/MOSTRAR EL CONTENIDO */
+/* ESTILOS PARA OCULTAR/MOSTRAR EL CONTENIDO */
 .noticias-content-wrapper {
-    /* Estado visible por defecto: max-height suficientemente grande */
     max-height: 1000px; /* Un valor grande que asegure que el contenido se ve */
     opacity: 1;
     overflow: hidden; /* Oculta el contenido desbordado durante la transición */
@@ -75,17 +74,16 @@
 }
 
 .noticias-content-wrapper.hidden {
-    max-height: 0; /* Oculta el contenido colapsando su altura */
-    opacity: 0; /* Lo hace transparente */
+    max-height: 0;
+    opacity: 0;
     padding-top: 0;
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    /* transition: max-height 0.7s ease-in, opacity 0.5s ease-in;  Puedes ajustar las transiciones */
 }
 
 
-/* Resto de estilos del carrusel y mosaico (mantener o ajustar si es necesario) */
+/* Resto de estilos del carrusel y mosaico */
 .carousel-wrapper {
     overflow: hidden;
     width: 100%;
@@ -100,10 +98,10 @@
 }
 
 .carousel-slide {
-    flex-shrink: 0; /* Evita que las diapositivas se encojan */
+    flex-shrink: 0;
     width: 100%;
     display: flex;
-    flex-direction: column; /* Apilar en móviles */
+    flex-direction: column;
     background-color: var(--white);
     border-radius: 8px;
 }
@@ -118,15 +116,19 @@
     margin-bottom: var(--spacing-md);
 }
 
-.main-news-item img {
+/* *** ESTILOS UNIFICADOS para IMAGEN y VIDEO PRINCIPAL *** */
+.main-news-item img,
+.main-news-item video {
     width: 50%;
-    height: auto;
-    max-height: 250px;
-    object-fit: cover;
+    height: auto; /* Mantiene la proporción */
+    max-height: 250px; /* Misma altura máxima para ambos */
+    object-fit: cover; /* Recorta el contenido para cubrir el espacio */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    display: block; /* Asegura que el elemento se comporta como un bloque */
 }
+
 
 .main-news-info {
     width: 50%;
@@ -149,7 +151,7 @@
 
 .mini-mosaico {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 3 columnas flexibles */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: var(--spacing-md);
     padding: var(--spacing-lg);
 }
@@ -170,12 +172,15 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.mini-mosaico-item img {
+/* *** ESTILOS UNIFICADOS para IMAGEN y VIDEO en MINI-MOSAICO *** */
+.mini-mosaico-item img,
+.mini-mosaico-item video {
     width: 100%;
-    height: 100px; /* Altura fija para mini-imágenes */
-    object-fit: cover;
+    height: 100px; /* Altura fija para mini-elementos */
+    object-fit: cover; /* Recorta el contenido para cubrir el espacio */
     border-radius: 5px;
     margin-bottom: var(--spacing-sm);
+    display: block; /* Asegura que el elemento se comporta como un bloque */
 }
 
 .mini-mosaico-item p {
@@ -193,7 +198,7 @@
     justify-content: space-between;
     transform: translateY(-50%);
     padding: 0 var(--spacing-md);
-    pointer-events: none; /* Permite hacer clic en el contenido debajo */
+    pointer-events: none;
 }
 
 .carousel-controls button {
@@ -204,7 +209,7 @@
     padding: 10px 15px;
     font-size: 1.5em;
     cursor: pointer;
-    pointer-events: all; /* Hace que los botones sean clickeables */
+    pointer-events: all;
     transition: background-color 0.3s ease;
 }
 
@@ -221,21 +226,23 @@
     }
     .noticias-header-toggle {
         font-size: 1.5em;
-        flex-direction: column; /* Apila el título y el botón en móvil */
+        flex-direction: column;
         gap: var(--spacing-sm);
         text-align: center;
-        border-bottom: none; /* Eliminar línea de abajo */
+        border-bottom: none;
     }
     .toggle-button {
         font-size: 0.8em;
         padding: 6px 12px;
     }
     .main-news-item {
-        flex-direction: column; /* Apila imagen y texto en móviles */
+        flex-direction: column;
         text-align: center;
     }
-    .main-news-item img {
-        width: 80%; /* Imagen un poco más grande en el centro */
+    /* *** ESTILOS UNIFICADOS para IMAGEN y VIDEO PRINCIPAL en MÓVIL *** */
+    .main-news-item img,
+    .main-news-item video {
+        width: 80%;
         max-height: 200px;
         margin-bottom: var(--spacing-md);
     }
@@ -249,11 +256,13 @@
         font-size: 0.9em;
     }
     .mini-mosaico {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ajustar columnas en móvil */
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: var(--spacing-sm);
     }
-    .mini-mosaico-item img {
-        height: 80px; /* Reducir altura de mini-imágenes */
+    /* *** ESTILOS UNIFICADOS para IMAGEN y VIDEO en MINI-MOSAICO en MÓVIL *** */
+    .mini-mosaico-item img,
+    .mini-mosaico-item video {
+        height: 80px;
     }
     .carousel-controls button {
         padding: 8px 12px;
@@ -268,7 +277,9 @@
     .noticias-header-toggle {
         font-size: 1.2em;
     }
-    .main-news-item img {
+    /* *** ESTILOS UNIFICADOS para IMAGEN y VIDEO PRINCIPAL en MÓVIL MUY PEQUEÑO *** */
+    .main-news-item img,
+    .main-news-item video {
         width: 90%;
     }
     .main-news-info h3 {
@@ -278,10 +289,12 @@
         font-size: 0.85em;
     }
     .mini-mosaico {
-        grid-template-columns: 1fr; /* Una sola columna en móviles muy pequeños */
+        grid-template-columns: 1fr;
         gap: var(--spacing-sm);
     }
-    .mini-mosaico-item img {
-        height: 120px; /* Aumentar para que se vean mejor */
+    /* *** ESTILOS UNIFICADOS para IMAGEN y VIDEO en MINI-MOSAICO en MÓVIL MUY PEQUEÑO *** */
+    .mini-mosaico-item img,
+    .mini-mosaico-item video {
+        height: 120px;
     }
 }
