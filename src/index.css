@@ -99,7 +99,7 @@ a:hover {
 /* Estilos para títulos */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
-    color: var(--primary-dark-blue); /* Ajuste el color a uno más oscuro si el fondo es claro */
+    color: var(--white); /* Ajuste el color a uno más oscuro si el fondo es claro */
     margin-top: 0;
     margin-bottom: var(--spacing-md);
     line-height: 1.2;
