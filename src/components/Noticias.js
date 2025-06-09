@@ -19,7 +19,8 @@ import Videosimulacro1 from '../videos/Capacitacion1.mp4';
 const noticiasData = [
   {
     id: 1,
-    video: Videoincendio1, // DEBE SER 'videoUrl'
+    // ¡CORREGIDO! Cambiado 'video' a 'videoUrl' para que coincida con la lógica de renderizado
+    videoUrl: Videoincendio1, // <--- ¡ESTE ES EL CAMBIO CLAVE QUE SOLUCIONA EL PROBLEMA!
     titulo: 'Quema Prohibida',
     link: 'https://www.facebook.com/share/v/16SyPiG7sR/',
     descripcion: 'el Cuerpo de Bomberos de San Alberto, Cesar, atendió una emergencia relacionada con una quema prohibida que se estaba desarrollando en la zona ubicada en el barrio brisas cll2 bs#14-71'
@@ -54,7 +55,8 @@ const noticiasData = [
   },
   {
     id: 6,
-    video: Videosimulacro1, // DEBE SER 'videoUrl'
+    // ¡CORREGIDO! Cambiado 'video' a 'videoUrl' para que coincida con la lógica de renderizado
+    videoUrl: Videosimulacro1, // <--- ¡ESTE ES EL CAMBIO CLAVE QUE SOLUCIONA EL PROBLEMA!
     titulo: 'Capacitacion',
     link: 'https://www.facebook.com/share/v/19PHAD3QyN/',
     descripcion: 'El Cuerpo de Bomberos llevó a cabo una jornada de capacitación en colaboración con la empresa Vanti.'
@@ -143,15 +145,14 @@ function Noticias() {
         <div className="carousel-wrapper">
           <div className="carousel-inner" ref={carouselInnerRef}>
             {noticiasData.map((noticiaItem, index) => {
-              // *** CONSOLE.LOG PARA DEPURACIÓN ***
-              // Esto nos mostrará qué noticias están siendo procesadas
-              console.log(`Renderizando noticia ID: ${noticiaItem.id}, Título: "${noticiaItem.titulo}", Tipo: ${noticiaItem.videoUrl ? 'Video' : 'Imagen'}`);
+              // CONSOLE.LOG PARA DEPURACIÓN (Ayuda a ver qué noticia se está renderizando)
+              console.log(`Renderizando noticia ID: ${noticiaItem.id}, Título: "${noticiaItem.titulo}", Tipo: ${noticiaItem.videoUrl ? 'Video' : 'Imagen'}, Contenido: ${noticiaItem.videoUrl || noticiaItem.imagen}`);
 
               return (
                 <div key={noticiaItem.id} className="carousel-slide" style={{ minWidth: '100%' }}>
                   <div className="main-news-item">
-                    {/* *** LÓGICA CONDICIONAL: VIDEO O IMAGEN PARA LA NOTICIA PRINCIPAL *** */}
-                    {noticiaItem.videoUrl ? (
+                    {/* LÓGICA CONDICIONAL: VIDEO O IMAGEN PARA LA NOTICIA PRINCIPAL */}
+                    {noticiaItem.videoUrl ? ( // ¡Esta condición ahora encontrará 'videoUrl'!
                       <video
                         controls
                         autoPlay={index === currentIndex}
@@ -180,7 +181,7 @@ function Noticias() {
                   <div className="mini-mosaico">
                     {getMosaicNews().map((mosaicItem, mosaicIndex) => (
                         <div key={`${mosaicItem.id}-${mosaicIndex}`} className="mini-mosaico-item" onClick={() => window.open(mosaicItem.link, '_blank')}>
-                          {/* *** LÓGICA CONDICIONAL PARA EL MINI-MOSAICO (IMAGEN O VIDEO) *** */}
+                          {/* LÓGICA CONDICIONAL PARA EL MINI-MOSAICO (IMAGEN O VIDEO) */}
                           {mosaicItem.videoUrl ? (
                             <video muted src={mosaicItem.videoUrl} alt={mosaicItem.titulo}></video>
                           ) : (
