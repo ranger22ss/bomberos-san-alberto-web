@@ -4,11 +4,9 @@ import './Noticias.css'; // Estilo externo
 
 // *** IMPORTS DE IMÁGENES EXISTENTES ***
 import Acompañamiento1 from '../pictures/Acompañamiento1.jpg';
-import Emergencia1 from '../pictures/Emergencia1.jpg';
 import Incendio1 from '../pictures/Incendio1.jpg';
 import Incendio2 from '../pictures/Incendio2.jpg';
 import Incendio4 from '../pictures/Incendio4.jpg';
-import Acompañamiento2 from '../pictures/Acompañamiento2.jpg';
 
 // *** IMPORTS DE VIDEOS ***
 // Asegúrate de que los nombres de los archivos y las extensiones sean EXACTOS y los archivos existan en src/videos
