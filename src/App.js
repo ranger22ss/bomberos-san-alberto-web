@@ -1,48 +1,23 @@
-// src/App.js
+// src/App.js (Ejemplo de estructura recomendada)
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css'; // Tus estilos específicos de App
+import './index.css'; // Tus estilos globales (con los cambios que hicimos)
 
-// Importa tus componentes (asegúrate que las rutas sean correctas)
-import Header from './components/Header'; // Ruta actualizada al componente Header
-import Noticias from './components/Noticias';    // Ruta a tu componente Noticias
-import Footer from './components/Footer'; // Importa el nuevo componente Footer
-
-// Importa tus páginas
-import Inicio from './pages/Inicio';
-import Consulta from './pages/Consulta';
-import Portafolio from './pages/Portafolio';
-import Contacto from './pages/Contacto';
-import Nosotros from './pages/Nosotros';
-import Cotizar from './pages/Cotizar';
-
-// Importa tu archivo CSS global donde está .main-content-area y tus variables
-import './index.css';
+import Header from './components/Header'; // Asegúrate de que tu Header esté importado
+import Footer from './components/Footer'; // Asegúrate de que tu Footer esté importado
+import Inicio from './pages/Inicio'; // Por ejemplo, una de tus páginas
 
 function App() {
   return (
-    <Router>
-      <Header /> {/* El Header fijo */}
-
-      {/* ESTE ES EL CONTENEDOR PRINCIPAL QUE SOLUCIONA EL SOLAPAMIENTO */}
-      {/* Todo el contenido que NO sea el Header o Footer debe ir aquí dentro */}
-      <main className="main-content-area">
-        {/* Aquí insertamos Noticias, ahora estará debajo del padding-top */}
-        <Noticias /> 
-
-        {/* Las Rutas para el contenido de tus páginas */}
-        <Routes>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/consulta" element={<Consulta />} />
-          <Route path="/portafolio" element={<Portafolio />} />
-          <Route path="/contacto" element={<Contacto />} />
-          <Route path="/nosotros" element={<Nosotros />} />
-          <Route path="/cotizar" element={<Cotizar />} />
-        </Routes>
+    <div className="App">
+      <Header /> {/* El Header va aquí, fuera del main-content-area */}
+      <main className="main-content-area"> {/* Este contendrá todas tus páginas */}
+        {/* Aquí irán tus componentes de página o tu sistema de ruteo */}
+        <Inicio />
+        {/* <Noticias /> si lo renderizas directamente aquí, o dentro de tus páginas */}
       </main>
-
-      <Footer /> {/* El Footer al final del body */}
-    </Router>
+      <Footer /> {/* El Footer también va aquí, fuera del main-content-area */}
+    </div>
   );
 }
-
 export default App;
