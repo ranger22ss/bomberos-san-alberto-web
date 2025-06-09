@@ -14,6 +14,7 @@ import martinezImage from '../assets/martinez.png';
 import SierraImage from '../assets/sierra.png';
 import CudrisImage from '../assets/cudris.png';
 import carlosImage from '../assets/monroy5.png';
+import AdrianaImage from '../assets/adriana.jpg';
 
 const equipoCategorizado = {
   // ... (Tu objeto equipoCategorizado va aquí, sin cambios) ...
@@ -149,14 +150,14 @@ const equipoCategorizado = {
       rangoIcono: "✍️"
     },
     {
-      nombre: "Diana ",
+      nombre: "Diana Martinez",
       cargo: "Fiscal",
       foto: "sin imagen",
       biografia: "Vigila y evalúa los procesos contables, financieros y administrativos del cuerpo. Asegura que los recursos sean bien gestionados y que las operaciones se mantengan bajo los principios de legalidad, eficiencia y honestidad.",
       rangoIcono: "✍️"
     },
    {
-      nombre: "Cabrera ",
+      nombre: "Jesus Cabrera ",
       cargo: "Profesional de SST",
       foto: "sin imagen",
       biografia: "Responsable de implementar y mantener las condiciones seguras en las actividades operativas y administrativas. Su labor garantiza que cada miembro del cuerpo trabaje bajo estándares que protejan su integridad física y mental.",
@@ -165,7 +166,7 @@ const equipoCategorizado = {
      {
       nombre: "Adriana Cuadros",
       cargo: "Secretaria",
-      foto: "sin imagen",
+      foto: AdrianaImage,
       biografia: "Es el eje organizativo del cuerpo. Maneja documentación, coordina comunicaciones internas y externas, y mantiene al día los procesos administrativos. Su eficiencia, orden y compromiso hacen posible que cada área funcione con fluidez y precisión.",
       rangoIcono: "✍️"
     },
