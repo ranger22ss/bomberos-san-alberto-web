@@ -162,6 +162,13 @@ const equipoCategorizado = {
       biografia: "Responsable de implementar y mantener las condiciones seguras en las actividades operativas y administrativas. Su labor garantiza que cada miembro del cuerpo trabaje bajo estándares que protejan su integridad física y mental.",
       rangoIcono: "✍️"
     },
+     {
+      nombre: "Adriana Cuadros",
+      cargo: "Secretaria",
+      foto: "sin imagen",
+      biografia: "Es el eje organizativo del cuerpo. Maneja documentación, coordina comunicaciones internas y externas, y mantiene al día los procesos administrativos. Su eficiencia, orden y compromiso hacen posible que cada área funcione con fluidez y precisión.",
+      rangoIcono: "✍️"
+    },
   ],
 };
 
