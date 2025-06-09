@@ -1,3 +1,4 @@
+// src/components/Header.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css'; // Importa el archivo CSS
@@ -25,12 +26,12 @@ function Header() {
   return (
     <header className="header-container" style={{ backgroundImage: `url(${fondo})` }}>
       <div className="header-overlay"></div>
-      
+
       <div className="header-content-wrapper">
         <Link to="/" className="header-logo-link" onClick={() => setMenuOpen(false)}>
           <img src={logoBomberos} alt="Logo Cuerpo de Bomberos" className="header-logo" />
         </Link>
-        
+
         <button
           className={`nav-toggle ${menuOpen ? 'open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}

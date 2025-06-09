@@ -1,57 +1,39 @@
-/* Importar fuentes de Google Fonts */
+/* src/components/Header.css */
+
+/* Importar fuentes de Google Fonts (MANTENER SOLO SI NO SE IMPORTAN GLOBALMENTE EN INDEX.CSS) */
+/* Si ya están en index.css, puedes comentar o borrar la línea de @import url() aquí. */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
 /* *******************************************************************************
-   * ¡¡¡NOTA IMPORTANTE SOBRE VARIABLES CSS!!!                                  *
-   * Te recomiendo encarecidamente mover estas variables a un archivo CSS global *
-   * (e.g., src/index.css o src/App.css) para que todo tu proyecto las use.     *
-   * Si ya tienes un archivo global con tus variables, ELIMINA este bloque :root *
-   * de aquí y asegúrate de que los nombres de las variables coincidan.         *
-   *******************************************************************************
-*/
-:root {
-    /* Colores base que se usan en todo el proyecto */
-    --primary-dark-blue: #0b1f3a;
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --accent-color: #e67e22;
-    --text-color-light: #f0f0f0;
-    --text-color-dark: #34495e;
-    --gold-accent: #ffd700;
-    --white: #ffffff;
-    --light-grey: #bdc3c7;
-    --border-color: #dee2e6;
-    --page-background-color: #f4f7f9;
-
-    /* Alturas de encabezado para calcular el padding-top */
-    --header-min-height-desktop: 80px; /* Altura mínima del header en desktop */
-    --header-padding-vertical: 15px;   /* Padding vertical del header */
-    --header-total-height-desktop: calc(var(--header-min-height-desktop) + (var(--header-padding-vertical) * 2)); /* 80 + 15*2 = 110px */
-
-    --header-min-height-mobile: 60px;  /* Altura mínima del header en mobile */
-    --header-total-height-mobile: calc(var(--header-min-height-mobile) + (var(--header-padding-vertical) * 2)); /* 60 + 15*2 = 90px */
-}
+ * ¡¡¡NOTA IMPORTANTE SOBRE VARIABLES CSS!!!                                    *
+ * ESTE BLOQUE :root HA SIDO ELIMINADO PARA EVITAR CONFLICTOS.                  *
+ * TODAS LAS VARIABLES SE DEFINEN EN UN ARCHIVO CSS GLOBAL (src/index.css).    *
+ * Asegúrate de que los nombres de las variables aquí coincidan con index.css. *
+ ******************************************************************************* */
 
 /* Estilos para el contenedor principal del encabezado */
 .header-container {
-    position: fixed;
+    position: fixed; /* Mantiene el encabezado fijo en la parte superior */
     top: 0;
     left: 0;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--header-padding-vertical) 40px; /* Usa la variable de padding */
-    color: var(--text-color-light);
+    /* Usar las variables de espaciado globales definidas en index.css */
+    padding: var(--header-padding-vertical, 15px) var(--spacing-xl, 40px); /* Usa las variables globales, con fallback */
+    color: var(--text-color-light); /* Color de texto claro para el encabezado */
     font-weight: 600;
     font-size: 1.1rem;
-    z-index: 1000;
+    z-index: 1000; /* Asegura que el header esté por encima de otros contenidos */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: padding 0.3s ease;
-    min-height: var(--header-min-height-desktop); /* Usa la variable de altura mínima */
+    min-height: var(--header-min-height-desktop, 80px); /* Usa la variable de altura mínima */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    /* Color de fondo de respaldo si la imagen o el gradiente fallan */
+    background-color: var(--primary-dark-blue);
 }
 
 /* Overlay con gradiente para la imagen de fondo */
@@ -61,24 +43,25 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to right, 
-                                var(--primary-dark-blue)EE, 
-                                var(--primary-dark-blue)88, 
-                                transparent, 
-                                var(--primary-dark-blue)88, 
-                                var(--primary-dark-blue)EE);
-    z-index: 1;
+    /* ¡CORREGIDO! Sintaxis correcta para el gradiente con transparencia */
+    background: linear-gradient(to right,
+                                rgba(11, 31, 58, 0.93) /* --primary-dark-blue con 93% de opacidad (EE ≈ 93%) */,
+                                rgba(11, 31, 58, 0.53) /* --primary-dark-blue con 53% de opacidad (88 ≈ 53%) */,
+                                transparent,
+                                rgba(11, 31, 58, 0.53),
+                                rgba(11, 31, 58, 0.93));
+    z-index: 1; /* Asegura que el overlay esté entre la imagen de fondo y el contenido del header */
 }
 
 /* Contenedor del contenido (logo y navegación) para limitar el ancho */
 .header-content-wrapper {
-    position: relative;
+    position: relative; /* Para que el z-index de los hijos funcione correctamente */
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 1200px;
-    z-index: 2;
+    max-width: 1200px; /* Limita el ancho del contenido del header */
+    z-index: 2; /* Asegura que el contenido del header esté por encima del overlay */
 }
 
 /* Estilos para el enlace del logo */
@@ -89,22 +72,22 @@
 
 /* Estilos para la imagen del logo */
 .header-logo {
-    width: 100px;
+    width: 100px; /* Ancho del logo en desktop */
     height: auto;
-    flex-shrink: 0;
+    flex-shrink: 0; /* Evita que el logo se encoja */
     display: block;
 }
 
 /* Contenedor de la navegación (ul) */
 .header-nav {
-    margin-left: auto;
+    margin-left: auto; /* Empuja la navegación a la derecha */
 }
 
 /* Lista de enlaces de navegación */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 30px; /* Espacio entre los enlaces */
     padding: 0;
     margin: 0;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
@@ -112,7 +95,7 @@
 
 /* Estilos para cada enlace individual */
 .nav-link {
-    color: var(--text-color-light);
+    color: var(--text-color-light); /* Color del texto del enlace */
     text-decoration: none;
     transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
     padding: 10px 15px;
@@ -130,19 +113,18 @@
     transform: translateY(-2px);
 }
 
-/* Estilos del botón de hamburguesa para móviles */
+/* Estilos del botón de hamburguesa para móviles (oculto por defecto en desktop) */
 .nav-toggle {
-    display: none;
+    display: none; /* Oculto en desktop */
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 3;
-    position: relative;
+    z-index: 3; /* Por encima de todo en el header */
+    position: relative; /* Para animar las barras internas */
     width: 40px;
     height: 40px;
-    display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Las barras se apilan verticalmente */
     justify-content: space-around;
     align-items: center;
 }
@@ -151,7 +133,7 @@
     display: block;
     width: 30px;
     height: 3px;
-    background-color: var(--text-color-light);
+    background-color: var(--text-color-light); /* Color de las barras */
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
 }
@@ -170,62 +152,62 @@
 }
 
 /* -------------------------------------------------------- */
-/* MEDIA QUERIES (RESPONSIVE DESIGN)                      */
+/* MEDIA QUERIES (RESPONSIVE DESIGN)                         */
 /* -------------------------------------------------------- */
 
-@media (max-width: 992px) {
+@media (max-width: 992px) { /* Tablets y pantallas medianas */
     .header-container {
-        padding: var(--header-padding-vertical) 20px;
-        min-height: var(--header-min-height-mobile); /* Usa altura de móvil para tablet */
+        padding: var(--header-padding-vertical, 15px) 20px; /* Ajustar padding */
+        min-height: var(--header-min-height-mobile, 60px); /* Usa altura de móvil para tablet */
     }
     .nav-links {
-        gap: 15px;
+        gap: 15px; /* Reducir espacio entre enlaces */
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Móviles grandes y medianos */
     .header-container {
-        justify-content: space-between;
-        padding: var(--header-padding-vertical) 20px;
-        min-height: var(--header-min-height-mobile);
+        justify-content: space-between; /* Espacio entre logo y hamburguesa */
+        padding: var(--header-padding-vertical, 15px) 20px;
+        min-height: var(--header-min-height-mobile, 60px);
     }
 
     .nav-toggle {
-        display: flex;
+        display: flex; /* Muestra el botón de hamburguesa */
     }
 
     .header-nav {
-        position: absolute;
-        top: var(--header-total-height-mobile); /* Asegura que el menú empiece justo debajo del header móvil */
+        position: absolute; /* El menú se posiciona absolutamente */
+        top: var(--header-total-height-mobile, 90px); /* Empieza justo debajo del header móvil */
         left: 0;
         width: 100%;
-        background: var(--primary-dark-blue);
+        background: var(--primary-dark-blue); /* Fondo del menú móvil */
         padding: 20px 0;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        z-index: 999;
+        z-index: 999; /* Por debajo del toggle, pero por encima del contenido */
         text-align: center;
-        overflow-y: auto;
-        max-height: calc(100vh - var(--header-total-height-mobile)); /* Ajusta la altura máxima */
+        overflow-y: auto; /* Permite scroll si el menú es muy largo */
+        max-height: calc(100vh - var(--header-total-height-mobile, 90px)); /* Ajusta la altura máxima */
 
-        transform: translateY(-150%);
+        transform: translateY(-150%); /* Oculta el menú por defecto */
         opacity: 0;
-        pointer-events: none;
+        pointer-events: none; /* No interactuable cuando está oculto */
         transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     }
 
     .header-nav.nav-open {
-        transform: translateY(0);
+        transform: translateY(0); /* Muestra el menú */
         opacity: 1;
-        pointer-events: auto;
+        pointer-events: auto; /* Interactuable cuando está abierto */
     }
 
     .nav-links {
-        flex-direction: column;
-        gap: 0;
+        flex-direction: column; /* Los enlaces se apilan verticalmente */
+        gap: 0; /* Elimina el espacio entre enlaces apilados */
     }
 
     .nav-links li {
-        margin-bottom: 10px;
+        margin-bottom: 10px; /* Espacio entre elementos de la lista */
     }
 
     .nav-link {
@@ -241,49 +223,18 @@
     }
 
     .header-logo {
-        width: 90px;
+        width: 90px; /* Tamaño del logo en móvil/tablet */
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 480px) { /* Móviles pequeños */
     .header-container {
-        padding: var(--header-padding-vertical) 15px;
+        padding: var(--header-padding-vertical, 15px) 15px; /* Reducir padding horizontal */
     }
     .header-logo {
-        width: 80px;
+        width: 80px; /* Tamaño del logo más pequeño */
     }
     .nav-link {
-        font-size: 1rem;
-    }
-}
-
-/* -------------------------------------------------------- */
-/* SOLUCIÓN PARA EL CONTENIDO DEBAJO DEL HEADER           */
-/* AÑADE ESTA REGLA EN TU ARCHIVO CSS GLOBAL (e.g., index.css o App.css) */
-/* -------------------------------------------------------- */
-
-/* Es FUNDAMENTAL que el contenedor de tus páginas tenga la clase "main-content-area" */
-/* Por ejemplo, en tu App.js: <main className="main-content-area">{<Routes>...}</main> */
-
-.main-content-area {
-    /* Usa la variable de altura total del header en desktop para el padding-top */
-    padding-top: var(--header-total-height-desktop); /* Esto será 110px */
-    background-color: var(--page-background-color); /* Un color de fondo para que se vea bien el padding */
-    min-height: calc(100vh - var(--header-total-height-desktop)); /* Asegura que ocupe al menos el alto de la pantalla */
-}
-
-@media (max-width: 992px) {
-    .main-content-area {
-        /* Ajusta el padding-top para pantallas medianas si el header cambia de altura */
-        padding-top: var(--header-total-height-mobile); /* Esto será 90px */
-        min-height: calc(100vh - var(--header-total-height-mobile));
-    }
-}
-
-@media (max-width: 768px) {
-    .main-content-area {
-        /* En móviles, ajusta el padding-top a la altura total del header móvil */
-        padding-top: var(--header-total-height-mobile); /* Esto será 90px */
-        min-height: calc(100vh - var(--header-total-height-mobile));
+        font-size: 1rem; /* Fuentes más pequeñas */
     }
 }
