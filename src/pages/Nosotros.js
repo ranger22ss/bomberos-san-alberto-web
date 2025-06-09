@@ -60,7 +60,7 @@ const equipoCategorizado = {
       cargo: "Bombero Operativo",
       foto: joseImage, // <-- Foto agregada (asumiendo que 'jose.jpg' es para José Barrionuevo)
       biografia: "Miembro comprometido, con alto sentido del deber y respeto por la jerarquía. Su actitud colaborativa lo convierte en un apoyo constante durante las intervenciones.",
-      rangoIcono: "🧑‍🚒"
+      rangoIcono: "👩‍🚒"
     },
     {
       nombre: "Maribel Chanaga",
@@ -81,7 +81,7 @@ const equipoCategorizado = {
       cargo: "Bombero Operativo",
       foto: "/fotos/cristian.jpg", // Sin cambio
       biografia: "Bombero capacitado y conductor habilitado para manejar máquina extintora. Cuenta con sólida experiencia en emergencias, destacándose por su responsabilidad y precisión al momento de conducir bajo presión.",
-      rangoIcono: "👨‍🚒"
+      rangoIcono: "🧑‍🚒"
     },
     {
       nombre: "Sebastián Morales",
@@ -102,7 +102,7 @@ const equipoCategorizado = {
       cargo: "Bombera Operativa",
       foto: "/fotos/shayra.jpg", // Sin cambio
       biografia: "Miembro activo del equipo. Participa con disposición en las actividades operativas y está en constante proceso de formación.",
-      rangoIcono: "✍️"
+      rangoIcono: "👩‍🚒"
     },
     {
       nombre: "Gerardo Monroy",
@@ -125,13 +125,41 @@ const equipoCategorizado = {
       cargo: "Cabo",
       foto: javierImage, // Sin cambio (asumo que 'javier.jpg' para Javier es su foto real si la tienes)
       biografia: "El más experimentado del grupo en conducción de vehículos de emergencia. Actualmente lidera el equipo de conductores, asegurando que cada movilización sea oportuna y segura.",
-      rangoIcono: "✍️"
+      rangoIcono: "🧑‍🚒"
     },
     {
       nombre: "Mauricio Monroy",
       cargo: "Bombero Operativo",
       foto: mauricioImage,
       biografia: "Apoya tanto en la línea operativa como en la gestión interna del cuerpo. Con amplia experiencia y sentido estratégico, es enlace clave entre lo administrativo y lo operativo. Siempre dispuesto, resolutivo y con una visión clara de crecimiento institucional.",
+      rangoIcono: "✍️"
+    },
+     {
+      nombre: "German Gonzales",
+      cargo: "Psicologo",
+      foto: "sin imagen",
+      biografia: "Brinda apoyo emocional y psicosocial al personal operativo y administrativo. Su trabajo fortalece la salud mental, la convivencia y la preparación emocional ante situaciones de alto estrés, propias del servicio bomberil.",
+      rangoIcono: "✍️"
+    },
+     {
+      nombre: "Jorge Nuñez",
+      cargo: "Juridico",
+      foto: "sin imagen",
+      biografia: "Encargado de brindar soporte legal al cuerpo de bomberos. Garantiza que cada acción institucional esté dentro del marco normativo vigente. Su orientación jurídica fortalece la transparencia, el cumplimiento y la toma de decisiones responsables.",
+      rangoIcono: "✍️"
+    },
+    {
+      nombre: "Diana ",
+      cargo: "Fiscal",
+      foto: "sin imagen",
+      biografia: "Vigila y evalúa los procesos contables, financieros y administrativos del cuerpo. Asegura que los recursos sean bien gestionados y que las operaciones se mantengan bajo los principios de legalidad, eficiencia y honestidad.",
+      rangoIcono: "✍️"
+    },
+   {
+      nombre: "Cabrera ",
+      cargo: "Profesional de SST",
+      foto: "sin imagen",
+      biografia: "Responsable de implementar y mantener las condiciones seguras en las actividades operativas y administrativas. Su labor garantiza que cada miembro del cuerpo trabaje bajo estándares que protejan su integridad física y mental.",
       rangoIcono: "✍️"
     },
   ],
