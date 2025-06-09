@@ -1,4 +1,4 @@
-/* src/index.css (o tu archivo CSS global) */
+/* src/index.css (Tu archivo CSS global) */
 
 /* Importar fuentes de Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
@@ -36,6 +36,8 @@
     /* Variables para el Footer */
     --footer-bg-color: #1e3a8a;
     --link-color-footer: #d4edda;
+    --footer-height-desktop: 0px; /* Asume 0px si no tienes un footer de altura fija */
+    --footer-height-mobile: 0px;
 
     /* Spacing variables (consistencia en padding/margin) */
     --spacing-xs: 4px;
@@ -51,20 +53,29 @@
 
 /* ****************************************************************** */
 /* BASE STYLES & GLOBAL RESPONSIVE RULES                              */
+/* ¡CORREGIDO! Asegura que HTML, BODY y el contenedor #root de React tomen el 100% de la altura visible */
 /* ****************************************************************** */
+html, body, #root, .App {
+    height: 100%;       /* Asegura que el elemento tome el 100% de la altura de su padre */
+    min-height: 100vh;  /* Asegura que el elemento tenga al menos el 100% de la altura de la ventana visible */
+    margin: 0;
+    padding: 0;
+    /* overflow-x: hidden; se mueve a body para aplicarse al contenido general */
+}
+
 html {
     font-size: 100%; /* Base para rem units */
     scroll-behavior: smooth; /* Desplazamiento suave */
 }
 
 body {
-    margin: 0;
-    padding: 0;
     font-family: 'Open Sans', sans-serif;
     background-color: var(--page-background-color);
-    color: var(--text-color-dark);
+    color: var(--text-color-dark); /* Color de texto por defecto, oscuro sobre fondo claro */
     line-height: 1.6; /* Mejora la legibilidad del texto */
-    overflow-x: hidden; /* Previene scroll horizontal en móviles */
+    overflow-x: hidden; /* Previene scroll horizontal en móviles. ¡Asegura que no se aplique a html directamente si hay otros problemas! */
+    -webkit-font-smoothing: antialiased; /* Suavizado de fuentes para WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Suavizado de fuentes para Firefox */
 }
 
 /* Global responsive images and videos */
@@ -103,24 +114,25 @@ h6 { font-size: 1rem; }    /* 16px */
 
 /* ****************************************************************** */
 /* MAIN CONTENT AREA - Solución al solapamiento con el Header Fijo    */
+/* Este contenedor debe envolver todo el contenido *después* del Header y *antes* del Footer. */
 /* ****************************************************************** */
 .main-content-area {
-    /* El padding-top debe coincidir con la altura total del Header en desktop */
-    padding-top: var(--header-height-desktop); /* Usa la variable de altura exacta */
-    min-height: calc(100vh - var(--header-height-desktop) - var(--footer-height-desktop, 0px)); /* Ajustar si hay footer */
-    background-color: var(--page-background-color); /* Fondo de la página principal */
-    padding-left: var(--spacing-md); /* Padding horizontal general */
+    /* El padding-top debe coincidir con la altura total del Header si este es fixed/sticky */
+    padding-top: var(--header-height-desktop);
+    background-color: var(--page-background-color);
+    padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
-    padding-bottom: var(--spacing-xl); /* Espacio al final del contenido */
-    max-width: 1200px; /* Limitar el ancho máximo del contenido */
-    margin: 0 auto; /* Centrar el contenido */
+    padding-bottom: var(--spacing-xl); /* Espacio al final del contenido antes del footer */
+    max-width: 1200px; /* Limitar el ancho máximo del contenido para legibilidad */
+    margin: 0 auto; /* Centrar el contenido en pantallas grandes */
+    /* ¡CORREGIDO! Eliminado min-height calculado para evitar conflictos de altura */
+    /* La altura general del body/html/root/App debería manejar que la página no colapse */
 }
 
-/* Media Queries para ajustar el padding-top en dispositivos móviles */
+/* Media Queries para ajustar el padding-top del contenido principal en dispositivos móviles */
 @media (max-width: 992px) { /* Tablets y pantallas medianas */
     .main-content-area {
         padding-top: var(--header-height-mobile); /* Ajusta padding-top para altura de header en tablet/móvil */
-        min-height: calc(100vh - var(--header-height-mobile) - var(--footer-height-mobile, 0px));
     }
     /* Ajustes de tipografía para pantallas más pequeñas */
     h1 { font-size: 2.2rem; }
