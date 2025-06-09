@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react"; // <-- Importa useEffect
 import './Nosotros.css'; // Asegúrate de que esta ruta sea correcta
 
 // Importa tus imágenes aquí (esto está bien)
-import maritzaImage from '../assets/maritza.jpg';
-import joseImage from '../assets/jose.jpg';
-import mauricioImage from '../assets/mauricio.jpg';
-import gerardoImage from '../assets/gerardo.jpg';
-import angelImage from '../assets/angel.jpg';
-import nathaliaImage from '../assets/nathalia.jpg';
-
+import maritzaImage from '../assets/barrionuevo.png';
+import joseImage from '../assets/barrionuevo2.png';
+import mauricioImage from '../assets/monroy2.png';
+import gerardoImage from '../assets/monroy4.png';
+import angelImage from '../assets/fuentes.png';
+import nathaliaImage from '../assets/monroy3.jpg';
+import javierImage from '../assets/monroy.jpg';
+import ChanagaImage from '../assets/chanaga.png';
+import martinezImage from '../assets/martinez.png';
+import SierraImage from '../assets/sierra.png';
+import CudrisImage from '../assets/cudris.png';
+import carlosImage from '../assets/monroy5.png';
 
 const equipoCategorizado = {
   // ... (Tu objeto equipoCategorizado va aquí, sin cambios) ...
@@ -32,7 +37,7 @@ const equipoCategorizado = {
     {
       nombre: "Mayerly Sierra",
       cargo: "Bombera Operativa",
-      foto: "/fotos/mayerly.jpg", // Sin cambio, ya que no hay importación para esta foto
+      foto: SierraImage, // Sin cambio, ya que no hay importación para esta foto
       biografia: "Incorporación reciente al cuerpo. Actualmente en proceso de capacitación y fortalecimiento de habilidades operativas. Con disposición y compromiso con la labor bomberil.",
       rangoIcono: "👩‍🚒"
     },
@@ -46,7 +51,7 @@ const equipoCategorizado = {
     {
       nombre: "Andrés Cudris",
       cargo: "Bombero Operativo",
-      foto: "/fotos/andres.jpg", // Sin cambio
+      foto: CudrisImage, // Sin cambio
       biografia: "Recientemente incorporado. Participa activamente en turnos operativos mientras avanza en su proceso formativo institucional.",
       rangoIcono: "👨‍🚒"
     },
@@ -60,14 +65,14 @@ const equipoCategorizado = {
     {
       nombre: "Maribel Chanaga",
       cargo: "Cabo",
-      foto: "/fotos/maribel.jpg", // Sin cambio
+      foto: ChanagaImage, // Sin cambio
       biografia: "Especialista en incendios forestales y atención prehospitalaria (APH). Como cabo, combina conocimiento técnico y liderazgo operativo. Referente dentro del equipo.",
       rangoIcono: "👩‍🚒"
     },
     {
       nombre: "Erika Martínez",
       cargo: "Cabo",
-      foto: "/fotos/erika.jpg", // Sin cambio
+      foto: martinezImage, // Sin cambio
       biografia: "Capacitada en control de incendios forestales y APH. Su profesionalismo, experiencia y temple en emergencias la convierten en una figura clave del cuerpo operativo.",
       rangoIcono: "👩‍🚒"
     },
@@ -109,7 +114,7 @@ const equipoCategorizado = {
     {
       nombre: "Carlos Monroy",
       cargo: "Bombero Operativo",
-      foto: "/fotos/carlos.jpg", // Sin cambio (asumo que 'jose.jpg' para Carlos era un error, y que su foto real es 'carlos.jpg' si la tienes, si no, se queda el placeholder)
+      foto: carlosImage, // Sin cambio (asumo que 'jose.jpg' para Carlos era un error, y que su foto real es 'carlos.jpg' si la tienes, si no, se queda el placeholder)
       biografia: "Conductor responsable y constante. Apoya eficazmente las operaciones logísticas mediante la conducción de carro tanque, cumpliendo con los protocolos establecidos.",
       rangoIcono: "🧑‍🚒"
     },
@@ -118,7 +123,7 @@ const equipoCategorizado = {
     {
       nombre: "Javier Monroy",
       cargo: "Cabo",
-      foto: "/fotos/javier.jpg", // Sin cambio (asumo que 'javier.jpg' para Javier es su foto real si la tienes)
+      foto: javierImage, // Sin cambio (asumo que 'javier.jpg' para Javier es su foto real si la tienes)
       biografia: "El más experimentado del grupo en conducción de vehículos de emergencia. Actualmente lidera el equipo de conductores, asegurando que cada movilización sea oportuna y segura.",
       rangoIcono: "✍️"
     },
