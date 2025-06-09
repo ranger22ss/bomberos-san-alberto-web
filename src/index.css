@@ -1,21 +1,29 @@
 /* src/index.css (o tu archivo CSS global) */
 
-/* Importar fuentes de Google Fonts (si no las tienes ya) */
+/* Importar fuentes de Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
-/* ********************************************************************************************
-   * VARIABLES CSS GLOBALES                                                                   *
-   * Centraliza AQUÍ todas tus variables de color, tipografía, espaciado, etc.               *
-   * ELIMINA LOS BLOQUES :root DE TODOS LOS DEMÁS ARCHIVOS CSS (Header.css, Footer.css, etc.) *
-   ******************************************************************************************** */
+/* ****************************************************************** */
+/* GLOBAL RESET & BOX-SIZING                                          */
+/* Asegura que el padding y el borde se incluyan en el ancho/alto total de un elemento */
+/* ****************************************************************** */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* ****************************************************************** */
+/* VARIABLES CSS GLOBALES                                             */
+/* Centraliza AQUÍ todas tus variables de color, tipografía, espaciado, etc. */
+/* ELIMINA LOS BLOQUES :root DE TODOS LOS DEMÁS ARCHIVOS CSS (Header.css, Footer.css, etc.) */
+/* ****************************************************************** */
 :root {
     --primary-dark-blue: #0b1f3a;
     --primary-color: #2c3e50;
     --secondary-color: #3498db;
-    --accent-color: #e67e22;
+    --accent-color: #e67e22; /* Usado en el borde del header de noticias */
     --text-color-light: #f0f0f0;
     --text-color-dark: #34495e;
-    --gold-accent: #ffd700;
+    --gold-accent: #ffd700; /* Puedes usarlo como acento en otros lugares */
     --white: #ffffff;
     --light-grey: #bdc3c7;
     --border-color: #dee2e6;
@@ -23,58 +31,120 @@
 
     /* Variables específicas para el Header (usadas en Header.css y para el padding-top) */
     --header-height-desktop: 125.234px; /* ALTURA MEDIDA DEL ENCABEZADO */
-    --header-height-mobile: 90px;      /* Altura estimada del header en móviles (ajustar si es necesario) */
+    --header-height-mobile: 90px;        /* Altura estimada del header en móviles (ajustar si es necesario) */
 
     /* Variables para el Footer */
     --footer-bg-color: #1e3a8a;
     --link-color-footer: #d4edda;
+
+    /* Spacing variables (consistencia en padding/margin) */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 40px;
+    --spacing-xxl: 60px;
+
+    /* Typography variables */
+    --font-size-base: 16px; /* Define un tamaño base para usar con rem */
+}
+
+/* ****************************************************************** */
+/* BASE STYLES & GLOBAL RESPONSIVE RULES                              */
+/* ****************************************************************** */
+html {
+    font-size: 100%; /* Base para rem units */
+    scroll-behavior: smooth; /* Desplazamiento suave */
 }
 
 body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Asegura que el padding se incluya en el tamaño total */
     font-family: 'Open Sans', sans-serif;
     background-color: var(--page-background-color);
     color: var(--text-color-dark);
+    line-height: 1.6; /* Mejora la legibilidad del texto */
+    overflow-x: hidden; /* Previene scroll horizontal en móviles */
 }
 
+/* Global responsive images and videos */
+img, video {
+    max-width: 100%; /* Asegura que no se salgan de sus contenedores */
+    height: auto;    /* Mantiene la proporción */
+    display: block;  /* Elimina espacio extra debajo de imágenes */
+}
+
+/* Estilos para enlaces */
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-dark-blue);
+}
+
+/* Estilos para títulos */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-dark-blue); /* Ajuste el color a uno más oscuro si el fondo es claro */
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; } /* 40px */
+h2 { font-size: 2rem; }   /* 32px */
+h3 { font-size: 1.75rem; } /* 28px */
+h4 { font-size: 1.5rem; } /* 24px */
+h5 { font-size: 1.25rem; } /* 20px */
+h6 { font-size: 1rem; }    /* 16px */
+
 /* ****************************************************************** */
-/* ¡¡¡ ESTA ES LA SOLUCIÓN CLAVE para el solapamiento !!!           */
+/* MAIN CONTENT AREA - Solución al solapamiento con el Header Fijo    */
 /* ****************************************************************** */
 .main-content-area {
     /* El padding-top debe coincidir con la altura total del Header en desktop */
     padding-top: var(--header-height-desktop); /* Usa la variable de altura exacta */
-    
-    /* Asegura que el área de contenido ocupe al menos el resto del viewport */
-    min-height: calc(100vh - var(--header-height-desktop)); 
+    min-height: calc(100vh - var(--header-height-desktop) - var(--footer-height-desktop, 0px)); /* Ajustar si hay footer */
     background-color: var(--page-background-color); /* Fondo de la página principal */
-    /* Añadir un padding horizontal para el contenido general si lo necesitas */
-    padding-left: 10px; 
-    padding-right: 10px;
+    padding-left: var(--spacing-md); /* Padding horizontal general */
+    padding-right: var(--spacing-md);
+    padding-bottom: var(--spacing-xl); /* Espacio al final del contenido */
+    max-width: 1200px; /* Limitar el ancho máximo del contenido */
+    margin: 0 auto; /* Centrar el contenido */
 }
 
 /* Media Queries para ajustar el padding-top en dispositivos móviles */
-@media (max-width: 992px) {
+@media (max-width: 992px) { /* Tablets y pantallas medianas */
     .main-content-area {
-        /* Ajusta el padding-top para la altura del header en tablet/móvil */
-        padding-top: var(--header-height-mobile); /* Usa la variable de altura móvil */
-        min-height: calc(100vh - var(--header-height-mobile));
+        padding-top: var(--header-height-mobile); /* Ajusta padding-top para altura de header en tablet/móvil */
+        min-height: calc(100vh - var(--header-height-mobile) - var(--footer-height-mobile, 0px));
     }
+    /* Ajustes de tipografía para pantallas más pequeñas */
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* Móviles grandes y medianos */
     .main-content-area {
-        /* En móviles pequeños, la altura del header podría ser la misma que la de tablet */
-        padding-top: var(--header-height-mobile); /* Usa la variable de altura móvil */
-        min-height: calc(100vh - var(--header-height-mobile));
+        padding-left: var(--spacing-sm); /* Reducir padding horizontal */
+        padding-right: var(--spacing-sm);
     }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.6rem; }
+    h3 { font-size: 1.4rem; }
+    p { font-size: 0.95rem; }
 }
 
-/* Otros estilos globales para títulos, etc. */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
-    color: white;
-    margin-top: 0; /* Elimina márgenes superiores por defecto que podrían causar problemas */
-    padding-top: 20px; /* Un poco de padding para que los títulos no queden pegados al borde superior del main-content-area */
+@media (max-width: 480px) { /* Móviles pequeños */
+    .main-content-area {
+        padding-left: var(--spacing-xs); /* Reducir aún más padding */
+        padding-right: var(--spacing-xs);
+    }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+    h3 { font-size: 1.2rem; }
+    p { font-size: 0.9rem; }
 }
