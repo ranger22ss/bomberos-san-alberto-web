@@ -21,7 +21,7 @@ import Videosimulacro1 from '../videos/Capacitacion1.mp4';
 const noticiasData = [
   {
     id: 1,
-    videoUrl: Videoincendio1, // DEBE SER 'videoUrl'
+    video: Videoincendio1, // DEBE SER 'videoUrl'
     titulo: 'Quema Prohibida',
     link: 'https://www.facebook.com/share/v/16SyPiG7sR/',
     descripcion: 'el Cuerpo de Bomberos de San Alberto, Cesar, atendió una emergencia relacionada con una quema prohibida que se estaba desarrollando en la zona ubicada en el barrio brisas cll2 bs#14-71'
@@ -56,7 +56,7 @@ const noticiasData = [
   },
   {
     id: 6,
-    videoUrl: Videosimulacro1, // DEBE SER 'videoUrl'
+    video: Videosimulacro1, // DEBE SER 'videoUrl'
     titulo: 'Capacitacion',
     link: 'https://www.facebook.com/share/v/19PHAD3QyN/',
     descripcion: 'El Cuerpo de Bomberos llevó a cabo una jornada de capacitación en colaboración con la empresa Vanti.'
