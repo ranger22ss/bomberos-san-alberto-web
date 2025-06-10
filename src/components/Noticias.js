@@ -95,7 +95,8 @@ function Noticias() {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % noticiasData.length);
     }, 5000); // Cambia cada 5 segundos
     return () => clearInterval(interval);
-  }, [noticiasData.length]); // Dependencia en noticiasData.length para re-ejecutar si el número de noticias cambia
+  }, []); // ¡CORRECCIÓN AQUÍ! Eliminado 'noticiasData.length' de las dependencias.
+
 
   useEffect(() => {
     if (carouselInnerRef.current) {
