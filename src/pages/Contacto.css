@@ -1,269 +1,188 @@
-/* Importar fuentes de Google Fonts (MANTENER SOLO SI NO ESTÁN EN INDEX.CSS) */
-/* Si ya están en index.css, puedes comentar o borrar la línea de @import url() aquí. */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+import React, { useState } from 'react';
+// Importa el archivo CSS que acabas de crear
+import './Contacto.css'; // Asegúrate de que la ruta sea correcta
 
-/* ******************************************************************
- * ¡¡¡IMPORTANTE!!! ESTE ARCHIVO NO DEBE TENER SU PROPIO BLOQUE :root.
- * Todas las variables globales (colores, espaciado, etc.) deben estar
- * CENTRALIZADAS en src/index.css. Este archivo las usará directamente.
- * ******************************************************************/
+// Importa los componentes globales si los tienes (Header, Footer)
+// Por ejemplo, si tienes Header.js y Footer.js en src/components:
+// import Header from '../components/Header';
+// import Footer from '../components/Footer';
 
-/* Reset básico (puedes tener esto en App.css o index.css si es global) */
-/* Si ya tienes un reset global, puedes omitir esta parte */
-body {
-    font-family: 'Open Sans', sans-serif; /* ¡CORRECCIÓN CLAVE! Asegúrate de que termina con punto y coma. */
-    line-height: 1.6;
-    color: var(--text-color); /* Usar la variable de index.css */
-    background-color: var(--background-color); /* Usar la variable de index.css */
-    margin: 0; /* Asegurar que no haya margen por defecto del body */
-    padding: 0;
-}
+// Para usar Font Awesome, se asume que has incluido la CDN en tu index.html
+// o lo has instalado y configurado globalmente.
+// Si no lo tienes, los íconos no se verán, pero el código no dará error de compilación.
 
-.contact-page-container {
-    /* ¡CAMBIO CLAVE AQUÍ! Controla el ancho del CONTENEDOR principal de la página */
-    max-width: 1400px; /* ¡AUMENTADO A 1400px para que quede como Portafolio! */
-    margin: 0 auto; /* Centrar el contenedor en la página */
-    padding: 20px; /* Padding interno para que el contenido no se pegue a los bordes */
-    box-sizing: border-box;
-    background-color: var(--background-color);
-    width: 100%; /* Asegura que ocupe todo el espacio disponible hasta el max-width */
-}
+const Contacto = () => {
+    // Estado para manejar los datos del formulario
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
 
-/* Estilos del Encabezado (Header específico de la página de contacto) */
-.contact-header {
-    background-color: var(--primary-color); /* Usar la variable de index.css */
-    color: var(--white); /* Usar la variable de index.css */
-    padding: 40px 0;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-    /* El contenido del header (h1, p) ahora se centrará directamente dentro de este header amplio */
-}
+    // Estado para manejar el estado del envío del formulario (éxito, error, cargando)
+    const [formStatus, setFormStatus] = useState('');
+    const [formStatusClass, setFormStatusClass] = useState('');
 
-.contact-header h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3em;
-    margin-bottom: 10px;
-}
+    // Maneja los cambios en los inputs del formulario
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
 
-.contact-header p {
-    font-size: 1.2em;
-    opacity: 0.9;
-}
+    // Maneja el envío del formulario
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
-/* Estilos para cada sección (información de contacto y formulario) */
-.contact-section {
-    background-color: var(--white); /* Usar la variable de index.css */
-    padding: 30px;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    /* ¡CAMBIO! Eliminamos el max-width de contact-section para que tome el ancho completo de contact-page-container */
-    /* Si el contenido de .contact-section necesita ser más estrecho que .contact-page-container,
-       podrías poner un max-width en un div *dentro* de .contact-section.
-       Pero para que sea "grande", lo dejamos sin max-width aquí.
-    */
-    /* Los margin-left y margin-right: auto ya no son tan críticos aquí,
-       pero los mantenemos por si una sección específica necesita centrarse más. */
-    margin-left: auto;
-    margin-right: auto;
-}
+        setFormStatus('Enviando mensaje...');
+        setFormStatusClass(''); // Limpia clases anteriores
 
-.contact-section h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2em;
-    color: var(--dark-blue-text); /* Usar la variable de index.css */
-    margin-bottom: 25px;
-    text-align: center;
-    position: relative;
-}
+        // URL de Formspree (¡REEMPLAZA YOUR_FORMSPREE_FORM_ID CON TU ID REAL!)
+        // La URL que tienes es: "https://formspree.io/f/xeokewdj"
+        const formspreeUrl = "https://formspree.io/f/xeokewdj";
 
-.contact-section h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background-color: var(--secondary-color); /* Usar la variable de index.css */
-    margin: 10px auto 0;
-    border-radius: 2px;
-}
+        // Prepara los datos para Formspree
+        const dataToSend = {
+            name: formData.name,
+            _replyto: formData.email, // Formspree usa _replyto para el email de respuesta
+            subject: formData.subject,
+            message: formData.message,
+        };
 
-/* Cuadrícula de Información de Contacto */
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-}
+        try {
+            const response = await fetch(formspreeUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(dataToSend)
+            });
 
-.info-item {
-    text-align: center;
-    padding: 25px;
-    border: 1px solid var(--light-grey); /* Usar la variable de index.css */
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+            if (response.ok) {
+                setFormStatus('¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.');
+                setFormStatusClass('success');
+                setFormData({ // Resetea el formulario
+                    name: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+            } else {
+                const errorData = await response.json();
+                if (errorData.errors) {
+                    setFormStatus(`Error: ${errorData.errors.map(error => error.message).join(', ')}`);
+                } else {
+                    setFormStatus('Hubo un error al enviar tu mensaje. Por favor, inténtalo de nuevo.');
+                }
+                setFormStatusClass('error');
+            }
+        } catch (error) {
+            console.error('Error de red o conexión:', error);
+            setFormStatus('Hubo un problema de conexión. Por favor, revisa tu internet y vuelve a intentarlo.');
+            setFormStatusClass('error');
+        }
+    };
 
-.info-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
+    return (
+        <div>
+            {/* Encabezado específico de la página de contacto - Ahora se expande por completo */}
+            <header className="contact-header">
+                {/* Nuevo div para contener y centrar el texto del encabezado, similar al de Portafolio */}
+                <div className="header-text-wrapper">
+                    <h1>Contacto</h1>
+                    <p>Estamos aquí para ayudarte. Ponte en contacto con nosotros.</p>
+                </div>
+            </header>
 
-.info-item i {
-    font-size: 3em;
-    color: var(--secondary-color); /* Usar la variable de index.css */
-    margin-bottom: 15px;
-}
+            {/* El main es el contenedor principal del contenido de la página. Su ancho se controlará con .contact-page-container en CSS. */}
+            <main className="contact-page-container">
+                <section className="contact-section contact-info">
+                    <h2>Nuestros Datos de Contacto</h2>
+                    <div className="info-grid">
+                        <div className="info-item">
+                            <i className="fas fa-phone-alt"></i>
+                            <h3>Emergencias</h3>
+                            <p>315-353-8706 (Sin WhatsApp)</p>
+                        </div>
+                        <div className="info-item">
+                            <i className="fas fa-headset"></i>
+                            <h3>Atención al Cliente</h3>
+                            <p>+57 300-175-1212 <a href="https://wa.me/573001751212" target="_blank" rel="noreferrer" className="whatsapp-link"><i className="fab fa-whatsapp"></i> WhatsApp</a></p>
+                        </div>
+                        <div className="info-item">
+                            <i className="fas fa-envelope"></i>
+                            <h3>Correos Electrónicos</h3>
+                            <p>cuerpobomberossanalberto@gmail.com</p>
+                            <p>cuerpobomberosvoluntariossanalberto@hotmail.com</p>
+                        </div>
+                        <div className="info-item">
+                            <i className="fab fa-facebook-f"></i>
+                            <h3>Síguenos en Facebook</h3>
+                            <p><a href="https://www.facebook.com/profile.php?id=61563465837882" target="_blank" rel="noreferrer">Cuerpo de Bomberos Voluntarios San Alberto</a></p>
+                        </div>
+                    </div>
+                </section>
 
-.info-item h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5em;
-    color: var(--dark-blue-text); /* Usar la variable de index.css */
-    margin-bottom: 10px;
-}
+                <section className="contact-section contact-form-wrapper">
+                    <h2>Envíanos un Mensaje</h2>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="name">Nombre Completo</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="email">Correo Electrónico</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email" // Usamos 'email' para el estado interno, pero enviamos como '_replyto'
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="subject">Asunto</label>
+                            <input
+                                type="text"
+                                id="subject"
+                                name="subject"
+                                value={formData.subject}
+                                onChange={handleChange}
+                                required
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="message">Tu Mensaje</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="6"
+                                value={formData.message}
+                                onChange={handleChange}
+                                required
+                            ></textarea>
+                        </div>
+                        <button type="submit">Enviar Mensaje</button>
+                        {formStatus && (
+                            <p className={`form-status ${formStatusClass}`}>{formStatus}</p>
+                        )}
+                    </form>
+                </section>
+            </main>
+        </div>
+    );
+};
 
-.info-item p {
-    font-size: 1.1em;
-    color: var(--text-color); /* Usar la variable de index.css */
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-}
-
-.info-item a {
-    color: var(--secondary-color); /* Usar la variable de index.css */
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-.info-item a:hover {
-    color: var(--accent-color); /* Usar la variable de index.css */
-}
-
-.whatsapp-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    color: var(--secondary-color) !important; /* Usar la variable de index.css */
-}
-
-.whatsapp-link i {
-    font-size: 1.2em;
-    color: var(--secondary-color) !important; /* Usar la variable de index.css */
-    margin-bottom: 0;
-}
-
-/* Formulario de Contacto */
-.contact-form-wrapper form {
-    display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: var(--background-color); /* Usar la variable de index.css */
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--dark-blue-text); /* Usar la variable de index.css */
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid var(--light-grey); /* Usar la variable de index.css */
-    border-radius: 5px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1em;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--secondary-color); /* Usar la variable de index.css */
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-    outline: none;
-}
-
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-button[type="submit"] {
-    background-color: var(--secondary-color); /* Usar la variable de index.css */
-    color: var(--white); /* Usar la variable de index.css */
-    padding: 14px 25px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    align-self: flex-start;
-}
-
-button[type="submit"]:hover {
-    background-color: #2980b9; /* Ajuste manual o usar otra variable */
-    transform: translateY(-2px);
-}
-
-.form-status {
-    margin-top: 15px;
-    text-align: center;
-    font-weight: 600;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.form-status.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.form-status.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-/* Footer (si no usas un Footer.js global) */
-.contact-footer {
-    background-color: var(--primary-color); /* Usar la variable de index.css */
-    color: var(--white); /* Usar la variable de index.css */
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 30px;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Diseño Responsivo */
-@media (max-width: 768px) {
-    .contact-header h1 {
-        font-size: 2.5em;
-    }
-
-    .contact-header p {
-        font-size: 1em;
-    }
-
-    /* .contact-section ya tiene max-width y margin auto */
-    .contact-form-wrapper form {
-        padding: 15px;
-    }
-
-    button[type="submit"] {
-        width: 100%;
-        align-self: center;
-    }
-}
+export default Contacto;
