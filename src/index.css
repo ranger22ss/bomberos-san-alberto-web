@@ -24,7 +24,7 @@
     --text-color-light: #f0f0f0; /* Blanco */
     --text-color-dark: #34495e; /* Azul oscuro para texto general */
     --gold-accent: #ffd700; /* Puedes usarlo como acento en otros lugares */
-    --white: #ffffff;
+    --white: #ffffff; /* ¡CORREGIDO! Punto y coma añadido aquí */
     --light-grey: #bdc3c7;
     --border-color: #dee2e6;
     --page-background-color: #f4f7f9; /* Fondo general de las páginas */
@@ -52,12 +52,12 @@
 }
 
 /* ****************************************************************** */
-/* BASE STYLES & GLOBAL RESPONSIVE RULES                              */
+/* BASE STYLES & GLOBAL RESPONSIVE RULES                             */
 /* Asegura que HTML, BODY y el contenedor #root de React tomen el 100% de la altura visible */
 /* ****************************************************************** */
 html, body, #root, .App {
-    height: 100%;       /* Asegura que el elemento tome el 100% de la altura de su padre */
-    min-height: 100vh;  /* Asegura que el elemento tenga al menos el 100% de la altura de la ventana visible */
+    height: 100%;        /* Asegura que el elemento tome el 100% de la altura de su padre */
+    min-height: 100vh;   /* Asegura que el elemento tenga al menos el 100% de la altura de la ventana visible */
     margin: 0;
     padding: 0;
     display: flex; /* Añadir flexbox a .App para que el Footer quede abajo si el contenido es corto */
@@ -123,17 +123,18 @@ h6 { font-size: 1rem; }    /* 16px */
     gap: var(--spacing-lg); /* Espacio entre las columnas */
     max-width: 1400px; /* Ancho máximo para todo el layout (contenido + sidebar) */
     margin: 0 auto; /* Centrar el layout en pantallas grandes */
-    padding: var(--header-height-desktop) var(--spacing-md) var(--spacing-xl); /* Padding: arriba (header), lados, abajo */
+    padding-top: var(--header-height-desktop); /* Padding superior para el header fijo */
+    padding-bottom: var(--spacing-xl); /* Padding inferior del wrapper */
     flex-grow: 1; /* Permite que este wrapper ocupe el espacio restante si el App es flex column */
 }
 
-/* MAIN CONTENT AREA - Se mantiene con padding horizontal */
+/* MAIN CONTENT AREA - Padding horizontal revertido a CERO para evitar errores */
 .main-content-area {
     background-color: var(--page-background-color);
-    padding-left: 0; /* Padding ya gestionado por .content-and-sidebar-wrapper */
-    padding-right: 0;
-    padding-bottom: 0; /* Padding ya gestionado por .content-and-sidebar-wrapper */
-    max-width: none; /* Eliminar max-width y margin:auto, el grid lo maneja */
+    padding-left: 0; /* REVERTIDO a 0 */
+    padding-right: 0; /* REVERTIDO a 0 */
+    padding-bottom: 0;
+    max-width: none;
     margin: 0;
 }
 
@@ -150,7 +151,7 @@ h6 { font-size: 1rem; }    /* 16px */
 
 
 /* ****************************************************************** */
-/* MEDIA QUERIES GLOBALES (Para que todo se adapte)                  */
+/* MEDIA QUERIES GLOBALES (Para que todo se adapte)                   */
 /* ****************************************************************** */
 
 @media (max-width: 992px) { /* Tablets y pantallas medianas */

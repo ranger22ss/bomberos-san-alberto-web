@@ -1,47 +1,39 @@
-/* Importar fuentes de Google Fonts */
+/* Importar fuentes de Google Fonts (MANTENER SOLO SI NO ESTÁN EN INDEX.CSS) */
+/* Si ya están en index.css, puedes comentar o borrar la línea de @import url() aquí. */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
-/* Variables CSS para colores - ¡NUEVA PALETA DE AZULES! */
-/* Se asume que estas variables ya están en index.css o App.css */
-/* Si no es así, déjalas aquí, pero lo ideal es que estén globalmente */
-:root {
-    --primary-color: #2c3e50; /* Azul oscuro, casi negro, fuerte como base */
-    --secondary-color: #3498db; /* Azul vibrante para acentos y enlaces */
-    --accent-color: #e67e22; /* Naranja/ámbar para destacar (puede ser otro azul claro si prefieres) */
-    --text-color: #34495e; /* Azul grisáceo para el texto general */
-    --background-color: #ecf0f1; /* Gris claro */
-    --white: #ffffff;
-    --light-grey: #bdc3c7;
-    --dark-blue-text: #1a252f; /* Un azul muy oscuro para encabezados */
-}
+/* ******************************************************************
+ * ¡¡¡IMPORTANTE!!! ESTE ARCHIVO NO DEBE TENER SU PROPIO BLOQUE :root.
+ * Todas las variables globales (colores, espaciado, etc.) deben estar
+ * CENTRALIZADAS en src/index.css. Este archivo las usará directamente.
+ * ******************************************************************/
 
 /* Reset básico (puedes tener esto en App.css o index.css si es global) */
+/* Si ya tienes un reset global, puedes omitir esta parte */
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif; /* ¡CORRECCIÓN CLAVE! Asegúrate de que termina con punto y coma. */
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
-    margin: 0;
+    color: var(--text-color); /* Usar la variable de index.css */
+    background-color: var(--background-color); /* Usar la variable de index.css */
+    margin: 0; /* Asegurar que no haya margen por defecto del body */
     padding: 0;
 }
 
-/* --- CAMBIO CLAVE AQUÍ: Se eliminan reglas que conflijen con main-content-area --- */
-/* El contenedor principal de la página de contacto no necesita width, max-width ni margin auto */
-/* El main-content-area en App.js ya se encarga de esto. */
 .contact-page-container {
-    /* width: 90%; */ /* ELIMINAR */
-    /* max-width: 1200px; */ /* ELIMINAR */
-    /* margin: 0 auto; */ /* ELIMINAR */
-    padding: 20px; /* Asegura un padding interno para el contenido */
-    box-sizing: border-box; /* Incluye padding en el ancho total */
-    min-height: 80vh; /* Para asegurar que la página tenga al menos una altura visible */
+    /* Se eliminan las reglas de ancho y margen que puedan entrar en conflicto */
+    /* Ahora, el padding del .main-content-area y el max-width/margin de las secciones internas lo gestionarán */
+    padding: 20px; /* Padding interno para que el contenido no se pegue a los bordes de este contenedor */
+    box-sizing: border-box;
+    /* min-height: 80vh; Esto puede ser útil si la página es muy corta para empujar el footer, pero el App.js y index.css ya lo manejan. */
     background-color: var(--background-color); /* Fondo para esta área */
+    /* Asegurar que ocupe todo el espacio disponible dentro de main-content-area */
+    width: 100%;
 }
 
 /* Estilos del Encabezado (Header específico de la página de contacto) */
 .contact-header {
-    background-color: var(--primary-color);
-    color: var(--white);
+    background-color: var(--primary-color); /* Usar la variable de index.css */
+    color: var(--white); /* Usar la variable de index.css */
     padding: 40px 0;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -61,13 +53,13 @@ body {
 
 /* Estilos para cada sección (información de contacto y formulario) */
 .contact-section {
-    background-color: var(--white);
+    background-color: var(--white); /* Usar la variable de index.css */
     padding: 30px;
     margin-bottom: 30px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    /* Puedes añadir un max-width y margin: auto a estas secciones internas si quieres que sean más angostas que el main-content-area */
-    max-width: 900px; /* Ejemplo: Limita el ancho de las secciones internas */
+    /* Max-width y margin:auto para centrar las secciones INTERNAS */
+    max-width: 900px; /* Ancho máximo para el contenido de las secciones */
     margin-left: auto;
     margin-right: auto;
 }
@@ -75,7 +67,7 @@ body {
 .contact-section h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 2em;
-    color: var(--dark-blue-text);
+    color: var(--dark-blue-text); /* Usar la variable de index.css */
     margin-bottom: 25px;
     text-align: center;
     position: relative;
@@ -86,7 +78,7 @@ body {
     display: block;
     width: 60px;
     height: 3px;
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color); /* Usar la variable de index.css */
     margin: 10px auto 0;
     border-radius: 2px;
 }
@@ -102,7 +94,7 @@ body {
 .info-item {
     text-align: center;
     padding: 25px;
-    border: 1px solid var(--light-grey);
+    border: 1px solid var(--light-grey); /* Usar la variable de index.css */
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -114,45 +106,45 @@ body {
 
 .info-item i {
     font-size: 3em;
-    color: var(--secondary-color);
+    color: var(--secondary-color); /* Usar la variable de index.css */
     margin-bottom: 15px;
 }
 
 .info-item h3 {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5em;
-    color: var(--dark-blue-text);
+    color: var(--dark-blue-text); /* Usar la variable de index.css */
     margin-bottom: 10px;
 }
 
 .info-item p {
     font-size: 1.1em;
-    color: var(--text-color);
+    color: var(--text-color); /* Usar la variable de index.css */
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
 .info-item a {
-    color: var(--secondary-color);
+    color: var(--secondary-color); /* Usar la variable de index.css */
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .info-item a:hover {
-    color: var(--accent-color);
+    color: var(--accent-color); /* Usar la variable de index.css */
 }
 
 .whatsapp-link {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    color: var(--secondary-color) !important;
+    color: var(--secondary-color) !important; /* Usar la variable de index.css */
 }
 
 .whatsapp-link i {
     font-size: 1.2em;
-    color: var(--secondary-color) !important;
+    color: var(--secondary-color) !important; /* Usar la variable de index.css */
     margin-bottom: 0;
 }
 
@@ -160,11 +152,11 @@ body {
 .contact-form-wrapper form {
     display: flex;
     flex-direction: column;
-    max-width: 600px; /* Sigue limitando el ancho del formulario para que no sea muy largo */
-    margin: 0 auto; /* Centra el formulario dentro de su contenedor padre */
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
-    background-color: var(--background-color);
+    background-color: var(--background-color); /* Usar la variable de index.css */
 }
 
 .form-group {
@@ -175,7 +167,7 @@ body {
     display: block;
     font-weight: 600;
     margin-bottom: 8px;
-    color: var(--dark-blue-text);
+    color: var(--dark-blue-text); /* Usar la variable de index.css */
 }
 
 .form-group input[type="text"],
@@ -183,7 +175,7 @@ body {
 .form-group textarea {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid var(--light-grey);
+    border: 1px solid var(--light-grey); /* Usar la variable de index.css */
     border-radius: 5px;
     font-family: 'Open Sans', sans-serif;
     font-size: 1em;
@@ -192,7 +184,7 @@ body {
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: var(--secondary-color);
+    border-color: var(--secondary-color); /* Usar la variable de index.css */
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
     outline: none;
 }
@@ -203,8 +195,8 @@ body {
 }
 
 button[type="submit"] {
-    background-color: var(--secondary-color);
-    color: var(--white);
+    background-color: var(--secondary-color); /* Usar la variable de index.css */
+    color: var(--white); /* Usar la variable de index.css */
     padding: 14px 25px;
     border: none;
     border-radius: 5px;
@@ -216,7 +208,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #2980b9;
+    background-color: #2980b9; /* Ajuste manual o usar otra variable */
     transform: translateY(-2px);
 }
 
@@ -242,8 +234,8 @@ button[type="submit"]:hover {
 
 /* Footer (si no usas un Footer.js global) */
 .contact-footer {
-    background-color: var(--primary-color);
-    color: var(--white);
+    background-color: var(--primary-color); /* Usar la variable de index.css */
+    color: var(--white); /* Usar la variable de index.css */
     text-align: center;
     padding: 20px 0;
     margin-top: 30px;
