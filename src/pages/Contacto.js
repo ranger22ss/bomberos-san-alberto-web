@@ -21,8 +21,10 @@ const Contacto = () => {
     });
 
     // Estado para manejar el estado del envío del formulario (éxito, error, cargando)
+    // ¡CORREGIDO! Asegúrate de que 'useState' sea una llamada a función: useState('')
     const [formStatus, setFormStatus] = useState('');
     const [formStatusClass, setFormStatusClass] = useState('');
+
 
     // Maneja los cambios en los inputs del formulario
     const handleChange = (e) => {
@@ -89,14 +91,16 @@ const Contacto = () => {
 
     return (
         <div>
-            {/* Encabezado específico de la página de contacto */}
+            {/* Encabezado específico de la página de contacto - Ahora se expande por completo */}
             <header className="contact-header">
-                <div className="contact-page-container">
+                {/* Nuevo div para contener y centrar el texto del encabezado, similar al de Portafolio */}
+                <div className="header-text-wrapper">
                     <h1>Contacto</h1>
                     <p>Estamos aquí para ayudarte. Ponte en contacto con nosotros.</p>
                 </div>
             </header>
 
+            {/* El main es el contenedor principal del contenido de la página. Su ancho se controlará con .contact-page-container en CSS. */}
             <main className="contact-page-container">
                 <section className="contact-section contact-info">
                     <h2>Nuestros Datos de Contacto</h2>
@@ -109,7 +113,7 @@ const Contacto = () => {
                         <div className="info-item">
                             <i className="fas fa-headset"></i>
                             <h3>Atención al Cliente</h3>
-                            <p>+57 300-175-1212 <a href="https://wa.me/573001751212" target="_blank" rel="noreferrer" className="whatsapp-link"><i className="fab fa-whatsapp"></i> WhatsApp</a></p> {/* <-- AÑADIDO rel="noreferrer" */}
+                            <p>+57 300-175-1212 <a href="https://wa.me/573001751212" target="_blank" rel="noreferrer" className="whatsapp-link"><i className="fab fa-whatsapp"></i> WhatsApp</a></p>
                         </div>
                         <div className="info-item">
                             <i className="fas fa-envelope"></i>
@@ -120,7 +124,7 @@ const Contacto = () => {
                         <div className="info-item">
                             <i className="fab fa-facebook-f"></i>
                             <h3>Síguenos en Facebook</h3>
-                            <p><a href="https://www.facebook.com/profile.php?id=61563465837882" target="_blank" rel="noreferrer">Cuerpo de Bomberos Voluntarios San Alberto</a></p> {/* <-- AÑADIDO rel="noreferrer" */}
+                            <p><a href="https://www.facebook.com/profile.php?id=61563465837882" target="_blank" rel="noreferrer">Cuerpo de Bomberos Voluntarios San Alberto</a></p>
                         </div>
                     </div>
                 </section>
