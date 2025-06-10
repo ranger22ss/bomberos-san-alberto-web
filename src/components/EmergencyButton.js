@@ -41,7 +41,7 @@ function EmergencyButton() {
             </p>
             <ul className="emergency-contact-list">
               <li>
-                <strong>Línea de Bomberos:</strong>{' '}
+                <strong>Línea de Bomberos Colombia:</strong>{' '}
                 <button
                   className="emergency-call-button"
                   onClick={() => callNumber('119')} // Número de emergencia (ej. 119, 911, 123)
@@ -59,12 +59,12 @@ function EmergencyButton() {
                 </button>
               </li>
               <li>
-                <strong>Atención Médica / Ambulancia:</strong>{' '}
+                <strong>Linea de Atencio Bomberos San Alberto:</strong>{' '}
                 <button
                   className="emergency-call-button"
-                  onClick={() => callNumber('125')} // Número de ambulancia/emergencias médicas
+                  onClick={() => callNumber('3153538706')} // Número de ambulancia/emergencias médicas
                 >
-                  📞 125
+                  📞 315 - 353 - 8706
                 </button>
               </li>
             </ul>
