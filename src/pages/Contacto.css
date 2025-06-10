@@ -20,14 +20,13 @@ body {
 }
 
 .contact-page-container {
-    /* Se eliminan las reglas de ancho y margen que puedan entrar en conflicto */
-    /* Ahora, el padding del .main-content-area y el max-width/margin de las secciones internas lo gestionarán */
-    padding: 20px; /* Padding interno para que el contenido no se pegue a los bordes de este contenedor */
+    /* ¡CAMBIO CLAVE AQUÍ! Controla el ancho del CONTENEDOR principal de la página */
+    max-width: 1100px; /* Nuevo ancho máximo para la página de Contacto, ¡más grande! */
+    margin: 0 auto; /* Centrar el contenedor en la página */
+    padding: 20px; /* Padding interno para que el contenido no se pegue a los bordes */
     box-sizing: border-box;
-    /* min-height: 80vh; Esto puede ser útil si la página es muy corta para empujar el footer, pero el App.js y index.css ya lo manejan. */
-    background-color: var(--background-color); /* Fondo para esta área */
-    /* Asegurar que ocupe todo el espacio disponible dentro de main-content-area */
-    width: 100%;
+    background-color: var(--background-color);
+    width: 100%; /* Asegura que ocupe todo el espacio disponible hasta el max-width */
 }
 
 /* Estilos del Encabezado (Header específico de la página de contacto) */
@@ -38,6 +37,7 @@ body {
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
+    /* El contenido del header (h1, p) ahora se centrará directamente dentro de este header amplio */
 }
 
 .contact-header h1 {
@@ -58,8 +58,13 @@ body {
     margin-bottom: 30px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    /* Max-width y margin:auto para centrar las secciones INTERNAS */
-    max-width: 900px; /* Ancho máximo para el contenido de las secciones */
+    /* ¡CAMBIO! Eliminamos el max-width de contact-section para que tome el ancho completo de contact-page-container */
+    /* Si el contenido de .contact-section necesita ser más estrecho que .contact-page-container,
+       podrías poner un max-width en un div *dentro* de .contact-section.
+       Pero para que sea "grande", lo dejamos sin max-width aquí.
+    */
+    /* Los margin-left y margin-right: auto ya no son tan críticos aquí,
+       pero los mantenemos por si una sección específica necesita centrarse más. */
     margin-left: auto;
     margin-right: auto;
 }
