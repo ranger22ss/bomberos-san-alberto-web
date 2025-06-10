@@ -2,12 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
 /* Variables CSS para colores - ¡NUEVA PALETA DE AZULES! */
-/*
-   NOTA IMPORTANTE: Si tienes un archivo CSS global (como index.css),
-   es ALTAMENTE RECOMENDABLE CENTRALIZAR TODAS las variables CSS (:root) allí.
-   Así, evitas duplicación y aseguras que todos los componentes usen la misma paleta.
-   Si ya las tienes en index.css, puedes ELIMINAR esta sección ':root' de este archivo.
-*/
+/* Se asume que estas variables ya están en index.css o App.css */
+/* Si no es así, déjalas aquí, pero lo ideal es que estén globalmente */
 :root {
     --primary-color: #2c3e50; /* Azul oscuro, casi negro, fuerte como base */
     --secondary-color: #3498db; /* Azul vibrante para acentos y enlaces */
@@ -19,22 +15,27 @@
     --dark-blue-text: #1a252f; /* Un azul muy oscuro para encabezados */
 }
 
-/* Reset básico (puedes tener esto en App.css si es global) */
-/* Si ya tienes un reset global, puedes omitir esta parte */
+/* Reset básico (puedes tener esto en App.css o index.css si es global) */
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
-    margin: 0; /* Asegurar que no haya margen por defecto del body */
+    margin: 0;
     padding: 0;
 }
 
+/* --- CAMBIO CLAVE AQUÍ: Se eliminan reglas que conflijen con main-content-area --- */
+/* El contenedor principal de la página de contacto no necesita width, max-width ni margin auto */
+/* El main-content-area en App.js ya se encarga de esto. */
 .contact-page-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 0;
+    /* width: 90%; */ /* ELIMINAR */
+    /* max-width: 1200px; */ /* ELIMINAR */
+    /* margin: 0 auto; */ /* ELIMINAR */
+    padding: 20px; /* Asegura un padding interno para el contenido */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
+    min-height: 80vh; /* Para asegurar que la página tenga al menos una altura visible */
+    background-color: var(--background-color); /* Fondo para esta área */
 }
 
 /* Estilos del Encabezado (Header específico de la página de contacto) */
@@ -65,12 +66,16 @@ body {
     margin-bottom: 30px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    /* Puedes añadir un max-width y margin: auto a estas secciones internas si quieres que sean más angostas que el main-content-area */
+    max-width: 900px; /* Ejemplo: Limita el ancho de las secciones internas */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contact-section h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 2em;
-    color: var(--dark-blue-text); /* Usar el azul oscuro para títulos */
+    color: var(--dark-blue-text);
     margin-bottom: 25px;
     text-align: center;
     position: relative;
@@ -81,7 +86,7 @@ body {
     display: block;
     width: 60px;
     height: 3px;
-    background-color: var(--secondary-color); /* Línea de color de acento */
+    background-color: var(--secondary-color);
     margin: 10px auto 0;
     border-radius: 2px;
 }
@@ -109,7 +114,7 @@ body {
 
 .info-item i {
     font-size: 3em;
-    color: var(--secondary-color); /* Iconos en azul vibrante */
+    color: var(--secondary-color);
     margin-bottom: 15px;
 }
 
@@ -123,33 +128,31 @@ body {
 .info-item p {
     font-size: 1.1em;
     color: var(--text-color);
-    /* ¡Ajuste para que el correo no se salga! */
-    word-wrap: break-word; /* Rompe palabras largas si no caben */
-    overflow-wrap: break-word; /* Alternativa a word-wrap para navegadores modernos */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .info-item a {
-    color: var(--secondary-color); /* Enlaces en azul vibrante */
+    color: var(--secondary-color);
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .info-item a:hover {
-    color: var(--accent-color); /* Color de acento al pasar el ratón */
+    color: var(--accent-color);
 }
 
-/* Estilo específico para el enlace de WhatsApp - ¡Ahora en azul! */
 .whatsapp-link {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    color: var(--secondary-color) !important; /* Mantenemos el azul del tema */
+    color: var(--secondary-color) !important;
 }
 
 .whatsapp-link i {
     font-size: 1.2em;
-    color: var(--secondary-color) !important; /* Icono de WhatsApp en azul */
+    color: var(--secondary-color) !important;
     margin-bottom: 0;
 }
 
@@ -157,8 +160,8 @@ body {
 .contact-form-wrapper form {
     display: flex;
     flex-direction: column;
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 600px; /* Sigue limitando el ancho del formulario para que no sea muy largo */
+    margin: 0 auto; /* Centra el formulario dentro de su contenedor padre */
     padding: 20px;
     border-radius: 8px;
     background-color: var(--background-color);
@@ -189,8 +192,8 @@ body {
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: var(--secondary-color); /* Borde azul al enfocar */
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); /* Sombra azul al enfocar */
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
     outline: none;
 }
 
@@ -200,7 +203,7 @@ body {
 }
 
 button[type="submit"] {
-    background-color: var(--secondary-color); /* Botón en azul vibrante */
+    background-color: var(--secondary-color);
     color: var(--white);
     padding: 14px 25px;
     border: none;
@@ -213,7 +216,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #2980b9; /* Azul más oscuro al pasar el ratón */
+    background-color: #2980b9;
     transform: translateY(-2px);
 }
 
@@ -226,20 +229,20 @@ button[type="submit"]:hover {
 }
 
 .form-status.success {
-    background-color: #d4edda; /* Verde claro para éxito (contrasta bien con azules) */
+    background-color: #d4edda;
     color: #155724;
     border: 1px solid #c3e6cb;
 }
 
 .form-status.error {
-    background-color: #f8d7da; /* Rojo claro para error */
+    background-color: #f8d7da;
     color: #721c24;
     border: 1px solid #f5c6cb;
 }
 
 /* Footer (si no usas un Footer.js global) */
 .contact-footer {
-    background-color: var(--primary-color); /* Fondo del footer en azul oscuro */
+    background-color: var(--primary-color);
     color: var(--white);
     text-align: center;
     padding: 20px 0;
@@ -257,10 +260,7 @@ button[type="submit"]:hover {
         font-size: 1em;
     }
 
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-
+    /* .contact-section ya tiene max-width y margin auto */
     .contact-form-wrapper form {
         padding: 15px;
     }

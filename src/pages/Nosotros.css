@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 
 /* Variables CSS (Deberían estar en index.css idealmente, pero las pongo aquí para que las tengas a mano) */
+/* Si ya tienes estas variables en index.css, ELIMINA esta sección :root de aquí para evitar duplicados. */
 :root {
     /* Colores primarios y de acento */
     --color-primary: #007bff; /* Azul vibrante */
@@ -43,24 +44,27 @@
     --font-size-hero: 3.5rem; /* Títulos de héroe */
 }
 
-/* Estilos globales para el body cuando el modal está abierto */
+/* Estilos globales para el body cuando el modal está abierto (no relacionados con el layout de página) */
 body.no-scroll {
     overflow: hidden;
 }
 
 /* Contenedor principal de la página Nosotros */
+/* --- CAMBIO CLAVE AQUÍ: Ajustar para que no impida el sidebar --- */
 .nosotros-main-container {
-    min-height: 100vh;
-    background-color: var(--color-background-body);
+    /* min-height: 100vh; */ /* ELIMINAR O AJUSTAR: El layout principal de App.js ya maneja la altura */
+    background-color: var(--color-background-body); /* Fondo de la página */
     color: var(--color-text-primary);
     font-family: 'Inter', sans-serif;
     display: flex;
-    flex-direction: column; /* Para apilar secciones verticalmente */
+    flex-direction: column;
+    padding: var(--spacing-md); /* Añadir un padding general para evitar que el contenido toque los bordes del main-content-area */
+    box-sizing: border-box; /* Incluye padding en el ancho total */
 }
 
 /* Sección Hero (cabecera) */
 .nosotros-hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1920x400/007bff/ffffff?text=Bomberos+San+Alberto+Hero') no-repeat center center/cover; /* Reemplaza con tu imagen de fondo real */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1920x400/007bff/ffffff?text=Bomberos+San+Alberto+Hero') no-repeat center center/cover;
     padding: var(--spacing-xxl) var(--spacing-md);
     text-align: center;
     color: var(--color-text-light);
@@ -68,13 +72,18 @@ body.no-scroll {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative; /* Para el mt-[-80px] de la historia */
-    height: 300px; /* Altura fija para el hero */
+    position: relative;
+    height: 300px;
+    /* max-width: 100%; No es necesario ya que el padre lo controla */
+    /* margin: 0 auto; No es necesario aquí, la flexbox del padre lo manejará */
+    border-radius: var(--spacing-md); /* Puedes añadir border-radius para que se vea más moderno */
+    overflow: hidden; /* Asegura que la imagen de fondo respete el border-radius */
+    margin-bottom: var(--spacing-xl); /* Espacio antes de la siguiente sección */
 }
 
 .nosotros-h1 {
     font-size: var(--font-size-hero);
-    font-weight: 800; /* Extra bold */
+    font-weight: 800;
     margin-bottom: var(--spacing-md);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
@@ -82,7 +91,7 @@ body.no-scroll {
 .nosotros-hero-subtitle {
     font-size: var(--font-size-lg);
     line-height: 1.5;
-    max-width: 900px; /* Para controlar el ancho del subtítulo */
+    max-width: 900px;
     padding: 0 var(--spacing-md);
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
@@ -90,21 +99,23 @@ body.no-scroll {
 /* Sección Historia */
 .nosotros-historia {
     padding: var(--spacing-xl) var(--spacing-md);
-    margin: calc(-1 * var(--spacing-xl)) auto 0; /* Esto levanta la sección */
-    width: calc(100% - (2 * var(--spacing-md))); /* Ajusta el ancho para el margin */
-    max-width: 1200px; /* Similar a max-w-6xl */
+    /* --- CAMBIO CLAVE AQUÍ: Ajustar márgenes y ancho --- */
+    /* El margin negativo con auto puede causar problemas. Lo reemplazamos con un margin-top normal y un ancho máximo dentro del main-content-area */
+    margin: var(--spacing-lg) auto; /* Ajuste para separar del hero y centrar internamente */
+    /* width: calc(100% - (2 * var(--spacing-md))); */ /* Ya no es necesario si main-content-area tiene padding */
+    max-width: 1000px; /* Limita el ancho de la sección de historia dentro del main-content-area */
     background-color: var(--color-background-card);
     border-radius: var(--spacing-md);
     box-shadow: var(--shadow-medium);
     text-align: center;
-    position: relative; /* Para el z-index */
-    z-index: 10; /* Para que quede por encima del hero */
+    position: relative;
+    z-index: 10;
 }
 
 .nosotros-historia-content {
-    max-width: 900px; /* Para controlar el ancho del texto dentro */
+    max-width: 800px; /* Más angosto para mejor legibilidad */
     margin: 0 auto;
-    text-align: left; /* Alinea el texto a la izquierda dentro del content */
+    text-align: left;
 }
 
 .nosotros-historia-title {
@@ -130,10 +141,10 @@ body.no-scroll {
 
 .nosotros-mvv-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 3 columnas responsivas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--spacing-xl);
-    max-width: 1400px; /* Para que las tarjetas se expandan */
-    margin: 0 auto;
+    max-width: 1200px; /* Controla el ancho máximo de la cuadrícula de tarjetas */
+    margin: 0 auto; /* Centra la cuadrícula */
     text-align: center;
 }
 
@@ -142,7 +153,7 @@ body.no-scroll {
     padding: var(--spacing-lg);
     border-radius: var(--spacing-md);
     box-shadow: var(--shadow-light);
-    border-top: 4px solid; /* El color se define por la clase específica */
+    border-top: 4px solid;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -151,9 +162,9 @@ body.no-scroll {
     box-shadow: var(--shadow-medium);
 }
 
-.nosotros-mvv-mission { border-top-color: #007bff; } /* Azul */
-.nosotros-mvv-vision { border-top-color: #dc3545; }   /* Rojo */
-.nosotros-mvv-values { border-top-color: #28a745; }   /* Verde */
+.nosotros-mvv-mission { border-top-color: #007bff; }
+.nosotros-mvv-vision { border-top-color: #dc3545; }
+.nosotros-mvv-values { border-top-color: #28a745; }
 
 .nosotros-mvv-title {
     font-size: var(--font-size-xl);
@@ -169,9 +180,9 @@ body.no-scroll {
 }
 
 .nosotros-mvv-list {
-    list-style: none; /* Quita los puntos de lista predeterminados */
+    list-style: none;
     padding-left: 0;
-    text-align: left; /* Alinea los ítems de lista a la izquierda */
+    text-align: left;
     font-size: var(--font-size-base);
     color: var(--color-text-secondary);
 }
@@ -179,14 +190,14 @@ body.no-scroll {
 .nosotros-mvv-list li {
     margin-bottom: var(--spacing-xs);
     position: relative;
-    padding-left: var(--spacing-lg); /* Espacio para el guion */
+    padding-left: var(--spacing-lg);
 }
 
 .nosotros-mvv-list li::before {
-    content: '—'; /* Guion como viñeta */
+    content: '—';
     position: absolute;
     left: 0;
-    color: var(--color-primary); /* Color del guion */
+    color: var(--color-primary);
     font-weight: bold;
 }
 
@@ -199,13 +210,13 @@ body.no-scroll {
 /* Sección Nuestro Equipo (El mosaico) */
 .nuestro-equipo-section {
     padding: var(--spacing-xl) var(--spacing-md);
-    background-color: var(--color-blue-50); /* Un azul claro para el fondo de esta sección */
+    background-color: var(--color-blue-50);
     text-align: center;
     border-radius: var(--spacing-md);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra interna sutil */
-    margin: var(--spacing-xl) auto; /* Margen para separarla */
-    max-width: 1500px; /* Para que el mosaico sea amplio */
-    width: calc(100% - (2 * var(--spacing-md))); /* Ajusta el ancho para el margin */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin: var(--spacing-xl) auto; /* Centra la sección dentro del main-content-area */
+    max-width: 1400px; /* Ajusta el ancho máximo de esta sección para que se vea bien */
+    /* width: calc(100% - (2 * var(--spacing-md))); */ /* Ya no necesario si main-content-area tiene padding */
 }
 
 .nuestro-equipo-title {
@@ -220,7 +231,7 @@ body.no-scroll {
 }
 
 .equipo-categoria-container {
-    margin-bottom: var(--spacing-xxl); /* Espacio entre categorías */
+    margin-bottom: var(--spacing-xxl);
 }
 
 .equipo-categoria-title {
@@ -229,7 +240,7 @@ body.no-scroll {
     color: var(--color-primary);
     margin-bottom: var(--spacing-lg);
     position: relative;
-    display: inline-block; /* Para aplicar el borde inferior */
+    display: inline-block;
     padding-bottom: var(--spacing-sm);
 }
 
@@ -239,7 +250,7 @@ body.no-scroll {
     left: 50%;
     transform: translateX(-50%);
     bottom: 0;
-    width: 60px; /* Ancho de la línea */
+    width: 60px;
     height: 3px;
     background-color: var(--color-primary);
     border-radius: 2px;
@@ -248,12 +259,11 @@ body.no-scroll {
 
 .equipo-grid {
     display: grid;
-    /* Columnas responsivas para el mosaico */
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Imágenes más pequeñas, se ajustan */
-    gap: var(--spacing-lg); /* Espacio entre las tarjetas */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--spacing-lg);
     justify-content: center;
-    align-items: stretch; /* Asegura que todas las tarjetas tengan la misma altura si el contenido es variable */
-    max-width: 1600px; /* Puede ser más ancho para el mosaico */
+    align-items: stretch;
+    max-width: 100%; /* Permite que el grid ocupe todo el ancho disponible del .nuestro-equipo-section */
     margin: 0 auto;
 }
 
@@ -268,23 +278,23 @@ body.no-scroll {
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    min-height: 280px; /* Altura mínima para las tarjetas, ajusta según contenido */
-    justify-content: flex-start; /* Alinea el contenido hacia arriba */
+    min-height: 280px;
+    justify-content: flex-start;
 }
 
 .miembro-equipo-card:hover {
-    transform: translateY(-8px); /* Elevación al pasar el ratón */
+    transform: translateY(-8px);
     box-shadow: var(--shadow-medium);
 }
 
 .miembro-foto-container {
     position: relative;
-    width: 120px; /* Tamaño de la foto */
-    height: 120px; /* Tamaño de la foto */
+    width: 120px;
+    height: 120px;
     margin-bottom: var(--spacing-md);
     border-radius: 50%;
-    overflow: hidden; /* Asegura que la foto redonda se recorte bien */
-    border: 4px solid var(--color-primary); /* Borde de la foto */
+    overflow: hidden;
+    border: 4px solid var(--color-primary);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     transition: border-color 0.3s ease;
 }
@@ -296,8 +306,8 @@ body.no-scroll {
 .miembro-foto {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Recorta la imagen para que encaje */
-    display: block; /* Elimina espacio extra */
+    object-fit: cover;
+    display: block;
 }
 
 .miembro-rango-icon {
@@ -308,11 +318,11 @@ body.no-scroll {
     color: var(--color-text-light);
     border-radius: 50%;
     font-size: var(--font-size-md);
-    padding: 6px; /* Espacio alrededor del icono */
-    line-height: 1; /* Ajusta la altura de línea */
-    transform: translate(25%, 25%); /* Desplaza el icono un poco fuera del círculo */
+    padding: 6px;
+    line-height: 1;
+    transform: translate(25%, 25%);
     box-shadow: var(--shadow-light);
-    border: 2px solid var(--color-background-card); /* Borde para separarlo del fondo */
+    border: 2px solid var(--color-background-card);
 }
 
 
@@ -321,7 +331,7 @@ body.no-scroll {
     font-weight: 700;
     color: var(--color-text-primary);
     margin-bottom: var(--spacing-xs);
-    line-height: 1.3; /* Ajuste para nombres largos */
+    line-height: 1.3;
 }
 
 .miembro-cargo {
@@ -331,13 +341,11 @@ body.no-scroll {
     margin-bottom: var(--spacing-sm);
 }
 
-/* Biografía no se muestra en la tarjeta, solo en el modal */
-
-/* Sección Contacto */
+/* Sección Contacto (al final de Nosotros) */
 .nosotros-contacto-section {
     padding: var(--spacing-xl) var(--spacing-md);
-    max-width: 1400px;
-    margin: var(--spacing-xl) auto;
+    max-width: 1000px; /* Ajusta el ancho máximo de esta sección final */
+    margin: var(--spacing-xl) auto; /* Centra la sección */
     text-align: center;
 }
 
@@ -353,8 +361,8 @@ body.no-scroll {
     padding: var(--spacing-xl);
     border-radius: var(--spacing-md);
     box-shadow: var(--shadow-medium);
-    border-left: 4px solid #dc3545; /* Color rojo */
-    max-width: 800px; /* Ancho máximo para la tarjeta de contacto */
+    border-left: 4px solid #dc3545;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -371,11 +379,11 @@ body.no-scroll {
     color: var(--color-text-light);
     font-weight: 700;
     padding: var(--spacing-md) var(--spacing-xl);
-    border-radius: 9999px; /* Para un botón ovalado */
+    border-radius: 9999px;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: var(--shadow-light);
     font-size: var(--font-size-lg);
-    text-decoration: none; /* Asegura que no tenga subrayado */
+    text-decoration: none;
 }
 
 .nosotros-contacto-button:hover {
@@ -390,7 +398,8 @@ body.no-scroll {
     margin-top: var(--spacing-md);
 }
 
-/* Estilos del Modal */
+/* Estilos del Modal (Asumo que son para el modal de miembros del equipo, no para el layout general) */
+/* Mantener estos estilos si tu componente Miembros del Equipo usa un modal */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -401,9 +410,9 @@ body.no-scroll {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Asegura que esté por encima de todo */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque */
-    animation: fadeIn 0.3s ease-out; /* Animación de aparición */
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-out;
 }
 
 .modal-content {
@@ -411,10 +420,10 @@ body.no-scroll {
     border-radius: var(--spacing-md);
     box-shadow: var(--shadow-large);
     padding: var(--spacing-xl);
-    max-width: 450px; /* Ancho moderado para el modal */
-    width: 90%; /* Ancho responsivo */
+    max-width: 450px;
+    width: 90%;
     position: relative;
-    animation: scaleIn 0.3s ease-out; /* Animación de escala */
+    animation: scaleIn 0.3s ease-out;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -497,7 +506,7 @@ body.no-scroll {
     }
     .nosotros-historia {
         padding: var(--spacing-lg);
-        margin: var(--spacing-lg) auto 0;
+        margin: var(--spacing-lg) auto; /* Ajustado */
     }
     .nosotros-historia-title,
     .nosotros-mvv-title,
@@ -506,7 +515,7 @@ body.no-scroll {
         font-size: var(--font-size-xl);
     }
     .equipo-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Menos columnas en pantallas pequeñas */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: var(--spacing-md);
     }
     .miembro-foto-container {
@@ -543,7 +552,7 @@ body.no-scroll {
         font-size: var(--font-size-xl);
     }
     .equipo-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Incluso más pequeñas para móviles */
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: var(--spacing-sm);
     }
     .miembro-foto-container {
@@ -551,11 +560,11 @@ body.no-scroll {
         height: 90px;
     }
     .miembro-rango-icon {
-      font-size: var(--font-size-sm);
-      padding: 4px;
+        font-size: var(--font-size-sm);
+        padding: 4px;
     }
     .miembro-equipo-card {
-        min-height: 220px; /* Ajuste para el contenido */
+        min-height: 220px;
         padding: var(--spacing-sm);
     }
     .modal-foto {
