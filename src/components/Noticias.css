@@ -1,76 +1,58 @@
 /* src/components/Noticias.css */
 
 /*
-   ¡IMPORTANTE! Si ya tienes las variables CSS (:root) definidas en tu index.css o App.css,
-   ELIMINA TODO el bloque `:root { ... }` de este archivo para evitar duplicidad.
+   ¡IMPORTANTE! ELIMINA EL BLOQUE :root DE ESTE ARCHIVO.
+   Todas las variables deben estar centralizadas en src/index.css.
 */
-:root {
-    --primary-dark-blue: #0b1f3a;
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --accent-color: #ffd700;
-    --text-color-light: #f0f0f0;
-    --text-color-dark: #34495e;
-    --white: #ffffff;
-    --light-grey-bg: #f8f9fa;
-    --border-color-light: #e0e0e0;
-
-    --spacing-xs: 4px;
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 24px;
-    --spacing-xl: 40px;
-    --spacing-xxl: 60px;
-}
 
 .noticias-container {
-    max-width: 1200px;
-    margin: var(--spacing-xl) auto; /* Ajustado para un mejor espaciado con el header */
-    padding: var(--spacing-lg);
-    background-color: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    /* Removido max-width y margin:auto, el padre (noticias-sidebar) lo gestiona */
+    padding: var(--spacing-md); /* Padding interno más compacto para sidebar */
+    background-color: var(--white); /* El fondo ya lo gestiona .noticias-sidebar, esto es un fallback */
+    border-radius: 12px; /* Mantener bordes redondeados */
+    box-shadow: none; /* El shadow ya lo gestiona .noticias-sidebar */
     overflow: hidden;
-    position: relative; /* Para posicionar el botón de toggle si fuera necesario */
+    position: relative;
 }
 
 .noticias-header-toggle {
-    display: flex; /* Para alinear el título y el botón */
-    justify-content: space-between; /* Espacia el título y el botón */
+    display: flex;
+    flex-direction: column; /* Apilar título y botón siempre */
+    justify-content: center;
     align-items: center;
     color: var(--primary-dark-blue);
-    margin-bottom: var(--spacing-lg);
-    font-size: 2em;
+    margin-bottom: var(--spacing-md); /* Reducir margen inferior */
+    font-size: 1.3em; /* Título más pequeño para sidebar */
     font-weight: 700;
     padding-bottom: var(--spacing-sm);
     border-bottom: 2px solid var(--accent-color);
+    text-align: center;
 }
 
-/* Estilos para el botón de ocultar/mostrar */
 .toggle-button {
     background-color: var(--secondary-color);
     color: var(--white);
-    padding: 8px 15px;
+    padding: 6px 12px; /* Botón más pequeño */
     border: none;
-    border-radius: 20px; /* Bordes redondeados para un estilo de "píldora" */
-    font-size: 0.9em;
+    border-radius: 20px;
+    font-size: 0.8em;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: var(--spacing-sm); /* Espacio arriba del botón */
 }
 
 .toggle-button:hover {
     background-color: var(--primary-dark-blue);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
-/* ESTILOS PARA OCULTAR/MOSTRAR EL CONTENIDO */
 .noticias-content-wrapper {
-    max-height: 1000px; /* Un valor grande que asegure que el contenido se ve */
+    max-height: 1000px; /* Mantener la animación de toggle si se desea */
     opacity: 1;
-    overflow: hidden; /* Oculta el contenido desbordado durante la transición */
-    transition: max-height 0.7s ease-out, opacity 0.5s ease-out; /* Transición suave */
+    overflow: hidden;
+    transition: max-height 0.7s ease-out, opacity 0.5s ease-out;
 }
 
 .noticias-content-wrapper.hidden {
@@ -82,14 +64,12 @@
     margin-bottom: 0;
 }
 
-
-/* Resto de estilos del carrusel y mosaico */
 .carousel-wrapper {
     overflow: hidden;
     width: 100%;
     position: relative;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: none; /* Eliminar sombra, ya la maneja el padre */
 }
 
 .carousel-inner {
@@ -101,93 +81,96 @@
     flex-shrink: 0;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    background-color: var(--white);
+    flex-direction: column; /* Siempre apilado en sidebar */
+    background-color: var(--white); /* Fondo de cada slide */
     border-radius: 8px;
+    /* Reducir padding si es necesario, o eliminar el padding del main-news-item para el slide */
+    padding-bottom: var(--spacing-md);
 }
 
 .main-news-item {
     display: flex;
+    flex-direction: column; /* Siempre apilado en sidebar */
     align-items: center;
-    gap: var(--spacing-lg);
-    padding: var(--spacing-lg);
+    gap: var(--spacing-sm); /* Espacio más compacto */
+    padding: var(--spacing-sm); /* Padding interno de la noticia principal */
     background-color: var(--light-grey-bg);
     border-radius: 8px;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm); /* Reducir margen inferior */
+    text-align: center; /* Centrar contenido */
 }
 
-/* *** ESTILOS UNIFICADOS para IMAGEN y VIDEO PRINCIPAL *** */
+/* ESTILOS UNIFICADOS para IMAGEN y VIDEO PRINCIPAL en SIDEBAR */
 .main-news-item img,
 .main-news-item video {
-    width: 50%;
-    height: auto; /* Mantiene la proporción */
-    max-height: 250px; /* Misma altura máxima para ambos */
-    object-fit: cover; /* Recorta el contenido para cubrir el espacio */
+    width: 95%; /* Ajustar para que quepa bien en el sidebar */
+    height: auto;
+    max-height: 150px; /* Altura máxima más pequeña */
+    object-fit: cover;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    display: block; /* Asegura que el elemento se comporta como un bloque */
+    display: block;
 }
 
-
 .main-news-info {
-    width: 50%;
-    text-align: left;
+    width: 100%; /* Ocupar todo el ancho disponible */
+    text-align: center; /* Centrar texto */
 }
 
 .main-news-info h3 {
     color: var(--primary-dark-blue);
-    font-size: 1.5em;
+    font-size: 1.1em; /* Título más pequeño */
     margin-top: 0;
-    margin-bottom: var(--spacing-sm);
-    line-height: 1.3;
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.2;
 }
 
 .main-news-info p {
-    color: var(--text-color-medium);
-    font-size: 0.95em;
-    line-height: 1.6;
+    color: var(--text-color-dark);
+    font-size: 0.85em; /* Descripción más pequeña */
+    line-height: 1.4;
 }
 
 .mini-mosaico {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: var(--spacing-md);
-    padding: var(--spacing-lg);
+    grid-template-columns: 1fr; /* Una sola columna para los mini-mosaicos en sidebar */
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm); /* Padding más compacto */
 }
 
 .mini-mosaico-item {
     background-color: var(--white);
     border: 1px solid var(--border-color-light);
     border-radius: 8px;
-    padding: var(--spacing-sm);
+    padding: var(--spacing-xs); /* Padding interno más pequeño */
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .mini-mosaico-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* *** ESTILOS UNIFICADOS para IMAGEN y VIDEO en MINI-MOSAICO *** */
+/* ESTILOS UNIFICADOS para IMAGEN y VIDEO en MINI-MOSAICO */
 .mini-mosaico-item img,
 .mini-mosaico-item video {
     width: 100%;
-    height: 100px; /* Altura fija para mini-elementos */
-    object-fit: cover; /* Recorta el contenido para cubrir el espacio */
+    height: 60px; /* Altura más pequeña */
+    object-fit: cover;
     border-radius: 5px;
-    margin-bottom: var(--spacing-sm);
-    display: block; /* Asegura que el elemento se comporta como un bloque */
+    margin-bottom: var(--spacing-xs);
+    display: block;
 }
 
 .mini-mosaico-item p {
-    font-size: 0.9em;
+    font-size: 0.75em; /* Texto aún más pequeño */
     font-weight: 600;
     color: var(--primary-color);
-    line-height: 1.3;
+    line-height: 1.2;
 }
 
 .carousel-controls {
@@ -197,104 +180,85 @@
     display: flex;
     justify-content: space-between;
     transform: translateY(-50%);
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-xs); /* Padding muy reducido */
     pointer-events: none;
 }
 
 .carousel-controls button {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3); /* Menos opacidad */
     color: var(--white);
     border: none;
     border-radius: 50%;
-    padding: 10px 15px;
-    font-size: 1.5em;
+    padding: 6px 10px; /* Botones más pequeños */
+    font-size: 1em; /* Icono más pequeño */
     cursor: pointer;
     pointer-events: all;
     transition: background-color 0.3s ease;
+    z-index: 10;
 }
 
 .carousel-controls button:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
+/* --- Media Queries dentro de Noticias.css (para cuando se apila en móvil) --- */
+/* Cuando el sidebar se apila debajo del contenido principal, la sección de noticias */
+/* puede volver a tener un ancho más grande y un aspecto menos "compacto de sidebar". */
+@media (max-width: 992px) { /* Corresponde al breakpoint donde .content-and-sidebar-wrapper se apila */
     .noticias-container {
-        padding: var(--spacing-md);
-        margin: var(--spacing-lg) auto;
+        padding: var(--spacing-lg); /* Más padding cuando ocupa todo el ancho */
     }
     .noticias-header-toggle {
-        font-size: 1.5em;
-        flex-direction: column;
-        gap: var(--spacing-sm);
-        text-align: center;
-        border-bottom: none;
+        font-size: 1.8em; /* Título de noticias más grande cuando no es sidebar */
+        flex-direction: row; /* Volver a poner el título y botón en fila */
+        justify-content: space-between;
     }
     .toggle-button {
-        font-size: 0.8em;
-        padding: 6px 12px;
+        font-size: 0.9em;
+        padding: 8px 15px;
+        margin-top: 0;
     }
     .main-news-item {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row; /* La noticia principal vuelve a ser fila */
+        text-align: left;
+        gap: var(--spacing-lg);
     }
-    /* *** ESTILOS UNIFICADOS para IMAGEN y VIDEO PRINCIPAL en MÓVIL *** */
     .main-news-item img,
     .main-news-item video {
-        width: 80%;
-        max-height: 200px;
-        margin-bottom: var(--spacing-md);
+        width: 50%; /* Vuelve a ser 50% */
+        max-height: 250px;
     }
     .main-news-info {
-        width: 100%;
+        width: 50%; /* Vuelve a ser 50% */
+        text-align: left;
     }
     .main-news-info h3 {
-        font-size: 1.3em;
+        font-size: 1.5em;
     }
     .main-news-info p {
-        font-size: 0.9em;
+        font-size: 0.95em;
     }
     .mini-mosaico {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: var(--spacing-sm);
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Vuelve a tener múltiples columnas */
+        gap: var(--spacing-md);
     }
-    /* *** ESTILOS UNIFICADOS para IMAGEN y VIDEO en MINI-MOSAICO en MÓVIL *** */
     .mini-mosaico-item img,
     .mini-mosaico-item video {
-        height: 80px;
+        height: 100px;
+    }
+    .mini-mosaico-item p {
+        font-size: 0.9em;
     }
     .carousel-controls button {
-        padding: 8px 12px;
-        font-size: 1.2em;
+        padding: 10px 15px;
+        font-size: 1.5em;
+        background-color: rgba(0, 0, 0, 0.5); /* Opacidad normal */
     }
 }
 
-@media (max-width: 480px) {
-    .noticias-container {
-        padding: var(--spacing-sm);
-    }
-    .noticias-header-toggle {
-        font-size: 1.2em;
-    }
-    /* *** ESTILOS UNIFICADOS para IMAGEN y VIDEO PRINCIPAL en MÓVIL MUY PEQUEÑO *** */
-    .main-news-item img,
-    .main-news-item video {
-        width: 90%;
-    }
-    .main-news-info h3 {
-        font-size: 1.1em;
-    }
-    .main-news-info p {
-        font-size: 0.85em;
-    }
-    .mini-mosaico {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-sm);
-    }
-    /* *** ESTILOS UNIFICADOS para IMAGEN y VIDEO en MINI-MOSAICO en MÓVIL MUY PEQUEÑO *** */
-    .mini-mosaico-item img,
-    .mini-mosaico-item video {
-        height: 120px;
-    }
-}
+/* Las media queries para 768px y 480px dentro de Noticias.css */
+/* se pueden mantener para afinar detalles cuando el sidebar está apilado */
+/* o cuando la página completa se reduce aún más. */
+/* Asegúrate de que las reglas específicas de Noticias NO entren en conflicto */
+/* con las reglas de 992px de arriba. */

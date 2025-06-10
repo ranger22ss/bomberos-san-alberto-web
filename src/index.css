@@ -21,8 +21,8 @@
     --primary-color: #2c3e50;
     --secondary-color: #3498db;
     --accent-color: #e67e22; /* Usado en el borde del header de noticias */
-    --text-color-light: #f0f0f0;
-    --text-color-dark: #34495e;
+    --text-color-light: #f0f0f0; /* Blanco */
+    --text-color-dark: #34495e; /* Azul oscuro para texto general */
     --gold-accent: #ffd700; /* Puedes usarlo como acento en otros lugares */
     --white: #ffffff;
     --light-grey: #bdc3c7;
@@ -53,14 +53,15 @@
 
 /* ****************************************************************** */
 /* BASE STYLES & GLOBAL RESPONSIVE RULES                              */
-/* ¡CORREGIDO! Asegura que HTML, BODY y el contenedor #root de React tomen el 100% de la altura visible */
+/* Asegura que HTML, BODY y el contenedor #root de React tomen el 100% de la altura visible */
 /* ****************************************************************** */
 html, body, #root, .App {
     height: 100%;       /* Asegura que el elemento tome el 100% de la altura de su padre */
     min-height: 100vh;  /* Asegura que el elemento tenga al menos el 100% de la altura de la ventana visible */
     margin: 0;
     padding: 0;
-    /* overflow-x: hidden; se mueve a body para aplicarse al contenido general */
+    display: flex; /* Añadir flexbox a .App para que el Footer quede abajo si el contenido es corto */
+    flex-direction: column;
 }
 
 html {
@@ -99,7 +100,7 @@ a:hover {
 /* Estilos para títulos */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
-    color: var(--white); /* Ajuste el color a uno más oscuro si el fondo es claro */
+    color: var(--text-color-light); /* Ahora serán BLANCOS por defecto */
     margin-top: 0;
     margin-bottom: var(--spacing-md);
     line-height: 1.2;
@@ -113,34 +114,67 @@ h5 { font-size: 1.25rem; } /* 20px */
 h6 { font-size: 1rem; }    /* 16px */
 
 /* ****************************************************************** */
-/* MAIN CONTENT AREA - Solución al solapamiento con el Header Fijo    */
-/* Este contenedor debe envolver todo el contenido *después* del Header y *antes* del Footer. */
+/* NUEVO LAYOUT: CONTENIDO PRINCIPAL Y BARRA LATERAL DE NOTICIAS      */
 /* ****************************************************************** */
-.main-content-area {
-    /* El padding-top debe coincidir con la altura total del Header si este es fixed/sticky */
-    padding-top: var(--header-height-desktop);
-    background-color: var(--page-background-color);
-    padding-left: var(--spacing-md);
-    padding-right: var(--spacing-md);
-    padding-bottom: var(--spacing-xl); /* Espacio al final del contenido antes del footer */
-    max-width: 1200px; /* Limitar el ancho máximo del contenido para legibilidad */
-    margin: 0 auto; /* Centrar el contenido en pantallas grandes */
-    /* ¡CORREGIDO! Eliminado min-height calculado para evitar conflictos de altura */
-    /* La altura general del body/html/root/App debería manejar que la página no colapse */
+.content-and-sidebar-wrapper {
+    display: grid; /* Usar CSS Grid para las columnas */
+    /* Define 2 columnas: 1 flexible (contenido principal) y 1 fija (sidebar) */
+    grid-template-columns: 1fr 320px; /* 1fr toma el espacio restante, 320px es el ancho del sidebar */
+    gap: var(--spacing-lg); /* Espacio entre las columnas */
+    max-width: 1400px; /* Ancho máximo para todo el layout (contenido + sidebar) */
+    margin: 0 auto; /* Centrar el layout en pantallas grandes */
+    padding: var(--header-height-desktop) var(--spacing-md) var(--spacing-xl); /* Padding: arriba (header), lados, abajo */
+    flex-grow: 1; /* Permite que este wrapper ocupe el espacio restante si el App es flex column */
 }
 
-/* Media Queries para ajustar el padding-top del contenido principal en dispositivos móviles */
+/* MAIN CONTENT AREA - Se mantiene con padding horizontal */
+.main-content-area {
+    background-color: var(--page-background-color);
+    padding-left: 0; /* Padding ya gestionado por .content-and-sidebar-wrapper */
+    padding-right: 0;
+    padding-bottom: 0; /* Padding ya gestionado por .content-and-sidebar-wrapper */
+    max-width: none; /* Eliminar max-width y margin:auto, el grid lo maneja */
+    margin: 0;
+}
+
+/* SIDEBAR DE NOTICIAS */
+.noticias-sidebar {
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: var(--spacing-md);
+    /* Altura para que el sidebar sea sticky (opcional, requiere más CSS) */
+    align-self: start; /* Alinea el sidebar al inicio de su fila en el grid */
+    height: fit-content; /* Asegura que el sidebar solo ocupe la altura de su contenido */
+}
+
+
+/* ****************************************************************** */
+/* MEDIA QUERIES GLOBALES (Para que todo se adapte)                  */
+/* ****************************************************************** */
+
 @media (max-width: 992px) { /* Tablets y pantallas medianas */
-    .main-content-area {
-        padding-top: var(--header-height-mobile); /* Ajusta padding-top para altura de header en tablet/móvil */
+    .content-and-sidebar-wrapper {
+        grid-template-columns: 1fr; /* Una sola columna: sidebar se apila debajo */
+        padding-top: var(--header-height-mobile); /* Ajustar padding-top para header móvil */
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
     }
     /* Ajustes de tipografía para pantallas más pequeñas */
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
+    .main-content-area {
+        /* No se necesitan cambios drásticos aquí, ya que el grid lo maneja */
+    }
+    .noticias-sidebar {
+        /* En tablet, la barra lateral podría ocupar un ancho mayor para la sección de noticias */
+        padding: var(--spacing-lg); /* Aumentar padding para que Noticias respire */
+        margin-top: var(--spacing-lg); /* Espacio entre el contenido principal y el sidebar apilado */
+    }
 }
 
 @media (max-width: 768px) { /* Móviles grandes y medianos */
-    .main-content-area {
+    .content-and-sidebar-wrapper {
         padding-left: var(--spacing-sm); /* Reducir padding horizontal */
         padding-right: var(--spacing-sm);
     }
@@ -151,7 +185,7 @@ h6 { font-size: 1rem; }    /* 16px */
 }
 
 @media (max-width: 480px) { /* Móviles pequeños */
-    .main-content-area {
+    .content-and-sidebar-wrapper {
         padding-left: var(--spacing-xs); /* Reducir aún más padding */
         padding-right: var(--spacing-xs);
     }
