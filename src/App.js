@@ -7,7 +7,8 @@ import './index.css'; // Tus estilos globales
 // Importar componentes
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Noticias from './components/Noticias'; // Asegúrate de que Noticias esté importado
+import Noticias from './components/Noticias';
+import EmergencyButton from './components/EmergencyButton'; // ¡Importar el nuevo componente!
 
 // Importar páginas
 import Inicio from './pages/Inicio';
@@ -21,11 +22,9 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header /> {/* El Header se mantiene fijo en la parte superior */}
+        <Header />
 
-        {/* Nuevo contenedor para el contenido principal y la barra lateral de noticias */}
         <div className="content-and-sidebar-wrapper">
-          {/* El área principal donde se renderizan las páginas (Inicio, Consulta, etc.) */}
           <main className="main-content-area">
             <Routes>
               <Route path="/" element={<Inicio />} />
@@ -37,13 +36,15 @@ function App() {
             </Routes>
           </main>
 
-          {/* La barra lateral para Noticias */}
           <aside className="noticias-sidebar">
-            <Noticias /> {/* ¡El componente de Noticias se renderiza aquí! */}
+            <Noticias />
           </aside>
         </div>
 
-        <Footer /> {/* El Footer se mantiene en la parte inferior */}
+        <Footer />
+
+        {/* ¡Renderizar el botón de emergencia aquí! */}
+        <EmergencyButton />
       </div>
     </BrowserRouter>
   );

@@ -1,0 +1,202 @@
+/* src/components/EmergencyButton.css */
+
+/* Botón flotante de emergencia */
+.emergency-float-button {
+    position: fixed; /* Mantiene el botón fijo en la pantalla */
+    bottom: var(--spacing-lg); /* Espacio desde abajo */
+    right: var(--spacing-lg);  /* Espacio desde la derecha */
+    background-color: #e74c3c; /* Rojo brillante para la emergencia */
+    color: var(--white);
+    border: none;
+    border-radius: 50%; /* Forma circular */
+    width: 60px; /* Tamaño del botón */
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2em; /* Tamaño del icono */
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(231, 76, 60, 0.7); /* Sombra y efecto de pulsación */
+    animation: pulse-red 2s infinite; /* Animación de pulsación */
+    z-index: 10000; /* Asegura que esté por encima de casi todo */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.emergency-float-button:hover {
+    background-color: #c0392b; /* Rojo más oscuro al pasar el ratón */
+    transform: scale(1.05); /* Ligeramente más grande */
+}
+
+/* Animación de pulsación para el botón de emergencia */
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(231, 76, 60, 0.7);
+    }
+    70% {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 0 15px rgba(231, 76, 60, 0);
+    }
+    100% {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 0 0 rgba(231, 76, 60, 0);
+    }
+}
+
+/* Overlay oscuro para el modal */
+.emergency-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente oscuro */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001; /* Por encima del botón flotante */
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Contenido del modal */
+.emergency-modal-content {
+    background-color: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    position: relative;
+    max-width: 450px; /* Ancho máximo del modal */
+    width: 90%; /* Ancho responsivo */
+    text-align: center;
+    animation: slideInUp 0.3s ease-out;
+}
+
+/* Botón de cerrar del modal */
+.emergency-modal-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: var(--text-color-dark);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.emergency-modal-close:hover {
+    color: var(--secondary-color);
+}
+
+/* Título del modal */
+.emergency-modal-title {
+    color: #e74c3c; /* Rojo para el título */
+    font-size: 1.8em;
+    margin-bottom: var(--spacing-sm);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Descripción del modal */
+.emergency-modal-description {
+    color: var(--text-color-dark);
+    font-size: 1em;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.5;
+}
+
+/* Lista de contactos */
+.emergency-contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    margin-bottom: var(--spacing-lg);
+}
+
+.emergency-contact-list li {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-dark-blue);
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.emergency-contact-list li strong {
+    flex-grow: 1; /* Permite que el texto ocupe el espacio */
+}
+
+/* Botones de llamada dentro del modal */
+.emergency-call-button {
+    background-color: var(--secondary-color); /* Color del botón de llamada */
+    color: var(--white);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre el icono y el número */
+}
+
+.emergency-call-button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Texto del pie de página del modal */
+.emergency-modal-footer {
+    color: var(--text-color-dark);
+    font-size: 0.9em;
+    margin-top: var(--spacing-lg);
+    font-style: italic;
+}
+
+/* Animaciones de entrada/salida */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* --- Responsive Adjustments para el modal --- */
+@media (max-width: 480px) {
+    .emergency-float-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8em;
+        bottom: var(--spacing-md);
+        right: var(--spacing-md);
+    }
+
+    .emergency-modal-content {
+        padding: var(--spacing-lg);
+        max-width: 95%; /* Más ancho en móviles pequeños */
+    }
+
+    .emergency-modal-title {
+        font-size: 1.5em;
+    }
+
+    .emergency-modal-description,
+    .emergency-contact-list li,
+    .emergency-call-button {
+        font-size: 0.95em;
+    }
+
+    .emergency-contact-list li {
+        flex-direction: column; /* Apilar texto y botón de llamada */
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+}
