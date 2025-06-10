@@ -21,7 +21,7 @@ body {
 
 .contact-page-container {
     /* ¡CAMBIO CLAVE AQUÍ! Controla el ancho del CONTENEDOR principal de la página */
-    max-width: 1100px; /* Nuevo ancho máximo para la página de Contacto, ¡más grande! */
+    max-width: 1400px; /* ¡AUMENTADO A 1400px para que quede como Portafolio! */
     margin: 0 auto; /* Centrar el contenedor en la página */
     padding: 20px; /* Padding interno para que el contenido no se pegue a los bordes */
     box-sizing: border-box;
