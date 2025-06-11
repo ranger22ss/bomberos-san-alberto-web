@@ -96,12 +96,6 @@ const Portafolio = () => {
     ];
 
     const datosMantenimientoExtintores = [
-        { extintor: "ABC DE 5 LBS", precio: "$15.000" },
-        { extintor: "ABC DE 10 LBS", precio: "$24.000" },
-        { extintor: "ABC DE 20 LBS", precio: "$30.000" },
-        { extintor: "ABC DE 30 LBS", precio: "$35.000" },
-        { extintor: "ABC DE 150 LBS", precio: "$180.000" },
-        { extintor: "AGUA A PRESION DE 2.5 GL", precio: "$30.000" },
         { extintor: "ACETATO DE POTASIO 1.5 GALONES", precio: "$45.000" },
         { extintor: "ACETATO DE POTASIO 3.5 GALONES", precio: "$60.000" },
         { extintor: "CO2 de 5 LBS", precio: "$35.000" },
@@ -117,8 +111,6 @@ const Portafolio = () => {
         { extintor: "ABC DE 30 LBS", precio: "$35.000", observaciones: "" },
         { extintor: "ABC DE 150 LBS", precio: "$180.000", observaciones: "" },
         { extintor: "AGUA A PRESION DE 2.5 GL", precio: "$30.000", observaciones: "" },
-        { extintor: "ACETATO DE POTASIO 1.5 GALONES", precio: "N/A", observaciones: "Solo Mantenimiento" },
-        { extintor: "ACETATO DE POTASIO 3.5 GALONES", precio: "N/A", observaciones: "Solo Mantenimiento" },
         { extintor: "CO2 de 5 LBS", precio: "$60.000 (12.000 x 5 lbs)", observaciones: "Precio por libra" },
         { extintor: "CO2 de 10 LBS", precio: "$120.000 (12.000 x 10 lbs)", observaciones: "Precio por libra" },
         { extintor: "CO2 de 15 LBS", precio: "$180.000 (12.000 x 15 lbs)", observaciones: "Precio por libra" },
@@ -199,7 +191,7 @@ const Portafolio = () => {
         valor: "Cotizar",
         descripcion: "El transporte de agua potable que se realiza en la estación de bomberos puede ser dirigida a diferentes sectores del municipio, tanto como veredas, colegios, casas, empresas y hasta personas particulares.",
         capacidad: "El carro tanque tiene la capacidad de cargar un aproximado de 5000 litros (1200 galones) de agua potable.",
-        nota: "Especificar que no se da el servicio de medio viaje de agua, el servicio siempre va a ser completo. Si la persona y/o la empresa solicita más agua, se le asigna otro viaje completo, cada uno con 5000 litros al punto indicado."
+        nota: "Se especifica que no se da el servicio de medio viaje de agua, el servicio siempre va a ser completo. Si la persona y/o la empresa solicita más agua, se le asigna otro viaje completo, cada uno con 5000 litros al punto indicado."
     };
 
 
@@ -362,7 +354,7 @@ const Portafolio = () => {
                                     ))}
                                 </tbody>
                             </table>
-                            <p className="note">**Nota:** El contenido de los botiquines Tipo A y B es el que se mostró en las imágenes.</p>
+                            <p className="note">**Nota:** El contenido de los botiquines Tipo A y B solicita cotizacion para conocer su contenido.</p>
                         </div>
                     )}
 
