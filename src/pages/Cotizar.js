@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-// Importamos los íconos de Lucide React
-import { Building, Award, FireExtinguisher, Droplet, Shield, FlaskConical, Plus, BookOpen, Mail, Phone, MessageSquareText } from 'lucide-react';
+// Importamos solo los íconos de Lucide React que realmente se utilizan en este componente
+import { Mail, Phone, MessageSquareText } from 'lucide-react';
 // Ya no necesitamos importar './Cotizar.css' porque los estilos están aquí abajo.
 
 const Cotizar = () => {
