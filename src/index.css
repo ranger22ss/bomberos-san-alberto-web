@@ -8,7 +8,7 @@
 /* Asegura que el padding y el borde se incluyan en el ancho/alto total de un elemento */
 /* ****************************************************************** */
 *, *::before, *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* ****************************************************************** */
@@ -24,14 +24,14 @@
     --text-color-light: #f0f0f0; /* Blanco */
     --text-color-dark: #34495e; /* Azul oscuro para texto general */
     --gold-accent: #ffd700; /* Puedes usarlo como acento en otros lugares */
-    --white: #ffffff; /* ¡CORREGIDO! Punto y coma añadido aquí */
+    --white: #ffffff;
     --light-grey: #bdc3c7;
     --border-color: #dee2e6;
     --page-background-color: #f4f7f9; /* Fondo general de las páginas */
 
     /* Variables específicas para el Header (usadas en Header.css y para el padding-top) */
     --header-height-desktop: 125.234px; /* ALTURA MEDIDA DEL ENCABEZADO */
-    --header-height-mobile: 90px;        /* Altura estimada del header en móviles (ajustar si es necesario) */
+    --header-height-mobile: 90px;         /* Altura estimada del header en móviles (ajustar si es necesario) */
 
     /* Variables para el Footer */
     --footer-bg-color: #1e3a8a;
@@ -52,32 +52,42 @@
 }
 
 /* ****************************************************************** */
-/* BASE STYLES & GLOBAL RESPONSIVE RULES                             */
+/* BASE STYLES & GLOBAL RESPONSIVE RULES                              */
 /* Asegura que HTML, BODY y el contenedor #root de React tomen el 100% de la altura visible */
 /* ****************************************************************** */
-html, body, #root, .App {
-    height: 100%;        /* Asegura que el elemento tome el 100% de la altura de su padre */
-    min-height: 100vh;   /* Asegura que el elemento tenga al menos el 100% de la altura de la ventana visible */
-    margin: 0;
-    padding: 0;
-    display: flex; /* Añadir flexbox a .App para que el Footer quede abajo si el contenido es corto */
-    flex-direction: column;
-}
-
 html {
     font-size: 100%; /* Base para rem units */
     scroll-behavior: smooth; /* Desplazamiento suave */
+    /* Asegura que el HTML no tenga un ancho mínimo que impida el encogimiento */
+    min-width: 0; 
 }
 
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: var(--page-background-color);
     color: var(--text-color-dark); /* Color de texto por defecto, oscuro sobre fondo claro */
-    line-height: 1.6; /* Mejora la legibilidad del texto */
-    overflow-x: hidden; /* Previene scroll horizontal en móviles. ¡Asegura que no se aplique a html directamente si hay otros problemas! */
+    line-height: 1.6;
+    /* Asegura que el body no tenga un ancho mínimo que impida el encogimiento */
+    min-width: 0;
+    /* Evita el scroll horizontal forzado por contenido que se desborda */
+    overflow-x: hidden; 
     -webkit-font-smoothing: antialiased; /* Suavizado de fuentes para WebKit */
     -moz-osx-font-smoothing: grayscale; /* Suavizado de fuentes para Firefox */
 }
+
+/* Contenedores principales de la aplicación */
+#root, .App {
+    height: 100%;
+    min-height: 100vh; /* Asegura que el elemento tenga al menos el 100% de la altura de la ventana visible */
+    width: 100%; /* Asegura que siempre ocupe el 100% del ancho disponible */
+    margin: 0;
+    padding: 0;
+    display: flex; /* Añadir flexbox a .App para que el Footer quede abajo si el contenido es corto */
+    flex-direction: column;
+    /* Importante: Asegurarse de que no tengan min-width fijos */
+    min-width: 0; 
+}
+
 
 /* Global responsive images and videos */
 img, video {
@@ -104,6 +114,9 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: var(--spacing-md);
     line-height: 1.2;
+    /* Asegura que los títulos no fuercen anchos excesivos */
+    word-wrap: break-word; /* Permite que palabras largas se rompan si es necesario */
+    overflow-wrap: break-word;
 }
 
 h1 { font-size: 2.5rem; } /* 40px */
@@ -122,10 +135,13 @@ h6 { font-size: 1rem; }    /* 16px */
     grid-template-columns: 1fr 320px; /* 1fr toma el espacio restante, 320px es el ancho del sidebar */
     gap: var(--spacing-lg); /* Espacio entre las columnas */
     max-width: 1400px; /* Ancho máximo para todo el layout (contenido + sidebar) */
+    width: 100%; /* Asegura que tome el 100% del ancho disponible de su padre */
     margin: 0 auto; /* Centrar el layout en pantallas grandes */
     padding-top: var(--header-height-desktop); /* Padding superior para el header fijo */
     padding-bottom: var(--spacing-xl); /* Padding inferior del wrapper */
     flex-grow: 1; /* Permite que este wrapper ocupe el espacio restante si el App es flex column */
+    /* Asegura que no tenga un ancho mínimo que impida el encogimiento */
+    min-width: 0; 
 }
 
 /* MAIN CONTENT AREA - Padding horizontal revertido a CERO para evitar errores */
@@ -136,6 +152,8 @@ h6 { font-size: 1rem; }    /* 16px */
     padding-bottom: 0;
     max-width: none;
     margin: 0;
+    width: 100%; /* Asegura que tome el 100% del ancho disponible en su celda de grid */
+    min-width: 0; /* Asegura que no tenga un ancho mínimo que impida el encogimiento */
 }
 
 /* SIDEBAR DE NOTICIAS */
@@ -144,9 +162,10 @@ h6 { font-size: 1rem; }    /* 16px */
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     padding: var(--spacing-md);
-    /* Altura para que el sidebar sea sticky (opcional, requiere más CSS) */
     align-self: start; /* Alinea el sidebar al inicio de su fila en el grid */
     height: fit-content; /* Asegura que el sidebar solo ocupe la altura de su contenido */
+    /* Asegura que no tenga un ancho mínimo que impida el encogimiento, especialmente cuando se apila */
+    min-width: 0; 
 }
 
 
@@ -160,17 +179,23 @@ h6 { font-size: 1rem; }    /* 16px */
         padding-top: var(--header-height-mobile); /* Ajustar padding-top para header móvil */
         padding-left: var(--spacing-md);
         padding-right: var(--spacing-md);
+        /* Si se apila, el min-width de 0 asegura que puede encogerse sin forzar el layout */
+        min-width: 0;
     }
     /* Ajustes de tipografía para pantallas más pequeñas */
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
     .main-content-area {
-        /* No se necesitan cambios drásticos aquí, ya que el grid lo maneja */
+        /* Asegura que el área de contenido principal ocupe el 100% del ancho disponible cuando está apilada */
+        width: 100%;
+        min-width: 0;
     }
     .noticias-sidebar {
-        /* En tablet, la barra lateral podría ocupar un ancho mayor para la sección de noticias */
+        /* Asegura que la barra lateral ocupe el 100% del ancho disponible cuando está apilada */
+        width: 100%;
         padding: var(--spacing-lg); /* Aumentar padding para que Noticias respire */
         margin-top: var(--spacing-lg); /* Espacio entre el contenido principal y el sidebar apilado */
+        min-width: 0;
     }
 }
 
