@@ -2,14 +2,8 @@ import React, { useState } from 'react';
 // Importa el archivo CSS que acabas de crear
 import './Contacto.css'; // Asegúrate de que la ruta sea correcta
 
-// Importa los componentes globales si los tienes (Header, Footer)
-// Por ejemplo, si tienes Header.js y Footer.js en src/components:
-// import Header from '../components/Header';
-// import Footer from '../components/Footer';
-
-// Para usar Font Awesome, se asume que has incluido la CDN en tu index.html
-// o lo has instalado y configurado globalmente.
-// Si no lo tienes, los íconos no se verán, pero el código no dará error de compilación.
+// NOTA: Se asume que Font Awesome ha sido incluido en tu index.html
+// o configurado globalmente para que los íconos se muestren correctamente.
 
 const Contacto = () => {
     // Estado para manejar los datos del formulario
@@ -21,10 +15,8 @@ const Contacto = () => {
     });
 
     // Estado para manejar el estado del envío del formulario (éxito, error, cargando)
-    // ¡CORREGIDO! Asegúrate de que 'useState' sea una llamada a función: useState('')
     const [formStatus, setFormStatus] = useState('');
     const [formStatusClass, setFormStatusClass] = useState('');
-
 
     // Maneja los cambios en los inputs del formulario
     const handleChange = (e) => {
@@ -90,48 +82,53 @@ const Contacto = () => {
     };
 
     return (
-        <div>
-            {/* Encabezado específico de la página de contacto - Ahora se expande por completo */}
-            <header className="contact-header">
-                {/* Nuevo div para contener y centrar el texto del encabezado, similar al de Portafolio */}
-                <div className="header-text-wrapper">
-                    <h1>Contacto</h1>
+        <div className="contact-page">
+            {/* Sección de Encabezado/Hero */}
+            <header className="contact-hero">
+                <div className="hero-content">
+                    <h1>Contáctanos</h1>
                     <p>Estamos aquí para ayudarte. Ponte en contacto con nosotros.</p>
                 </div>
             </header>
 
-            {/* El main es el contenedor principal del contenido de la página. Su ancho se controlará con .contact-page-container en CSS. */}
-            <main className="contact-page-container">
-                <section className="contact-section contact-info">
+            <main className="contact-main-content">
+                {/* Sección de Información de Contacto */}
+                <section className="contact-info-section">
                     <h2>Nuestros Datos de Contacto</h2>
                     <div className="info-grid">
                         <div className="info-item">
-                            <i className="fas fa-phone-alt"></i>
+                            <div className="icon-circle"><i className="fas fa-phone-alt"></i></div>
                             <h3>Emergencias</h3>
                             <p>315-353-8706 (Sin WhatsApp)</p>
                         </div>
                         <div className="info-item">
-                            <i className="fas fa-headset"></i>
+                            <div className="icon-circle"><i className="fas fa-headset"></i></div>
                             <h3>Atención al Cliente</h3>
-                            <p>+57 300-175-1212 <a href="https://wa.me/573001751212" target="_blank" rel="noreferrer" className="whatsapp-link"><i className="fab fa-whatsapp"></i> WhatsApp</a></p>
+                            <p>+57 300-175-1212</p>
+                            <a href="https://wa.me/573001751212" target="_blank" rel="noreferrer" className="whatsapp-button">
+                                <i className="fab fa-whatsapp"></i> Enviar WhatsApp
+                            </a>
                         </div>
                         <div className="info-item">
-                            <i className="fas fa-envelope"></i>
+                            <div className="icon-circle"><i className="fas fa-envelope"></i></div>
                             <h3>Correos Electrónicos</h3>
                             <p>cuerpobomberossanalberto@gmail.com</p>
                             <p>cuerpobomberosvoluntariossanalberto@hotmail.com</p>
                         </div>
                         <div className="info-item">
-                            <i className="fab fa-facebook-f"></i>
+                            <div className="icon-circle"><i className="fab fa-facebook-f"></i></div>
                             <h3>Síguenos en Facebook</h3>
-                            <p><a href="https://www.facebook.com/profile.php?id=61563465837882" target="_blank" rel="noreferrer">Cuerpo de Bomberos Voluntarios San Alberto</a></p>
+                            <a href="https://www.facebook.com/profile.php?id=61563465837882" target="_blank" rel="noreferrer" className="facebook-button">
+                                <i className="fab fa-facebook-f"></i> Página de Facebook
+                            </a>
                         </div>
                     </div>
                 </section>
 
-                <section className="contact-section contact-form-wrapper">
+                {/* Sección del Formulario de Contacto */}
+                <section className="contact-form-section">
                     <h2>Envíanos un Mensaje</h2>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} className="contact-form">
                         <div className="form-group">
                             <label htmlFor="name">Nombre Completo</label>
                             <input
@@ -140,6 +137,7 @@ const Contacto = () => {
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
+                                placeholder="Tu nombre completo"
                                 required
                             />
                         </div>
@@ -148,9 +146,10 @@ const Contacto = () => {
                             <input
                                 type="email"
                                 id="email"
-                                name="email" // Usamos 'email' para el estado interno, pero enviamos como '_replyto'
+                                name="email"
                                 value={formData.email}
                                 onChange={handleChange}
+                                placeholder="tu.correo@ejemplo.com"
                                 required
                             />
                         </div>
@@ -162,6 +161,7 @@ const Contacto = () => {
                                 name="subject"
                                 value={formData.subject}
                                 onChange={handleChange}
+                                placeholder="Motivo de tu consulta"
                                 required
                             />
                         </div>
@@ -173,14 +173,34 @@ const Contacto = () => {
                                 rows="6"
                                 value={formData.message}
                                 onChange={handleChange}
+                                placeholder="Escribe tu mensaje aquí..."
                                 required
                             ></textarea>
                         </div>
-                        <button type="submit">Enviar Mensaje</button>
+                        <button type="submit" className="submit-button">
+                            Enviar Mensaje
+                            <i className="fas fa-paper-plane send-icon"></i>
+                        </button>
                         {formStatus && (
-                            <p className={`form-status ${formStatusClass}`}>{formStatus}</p>
+                            <p className={`form-message ${formStatusClass}`}>{formStatus}</p>
                         )}
                     </form>
+                </section>
+
+                {/* Sección de Ubicación/Mapa (Placeholder) */}
+                <section className="contact-map-section">
+                    <h2>Nuestra Ubicación</h2>
+                    <p>Visítanos en nuestra sede. Estamos aquí para servirte.</p>
+                    <div className="map-placeholder">
+                        {/* Puedes reemplazar esto con un mapa interactivo de Google Maps */}
+                        {/* Por ahora, es un placeholder visual */}
+                        <img
+                            src="https://placehold.co/800x450/4CAF50/ffffff?text=Mapa+de+Ubicación+Aquí"
+                            alt="Placeholder de Mapa"
+                            className="map-image"
+                        />
+                    </div>
+                    <p className="map-address">Cl. 5 #7-44, San Alberto, Cesar, Colombia</p>
                 </section>
             </main>
         </div>
