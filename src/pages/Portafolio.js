@@ -7,7 +7,7 @@ import { Building, Award, FireExtinguisher, Droplet, Shield, FlaskConical, Plus,
 
 const Portafolio = () => {
     // Estado para controlar la visibilidad de los detalles de cada servicio
-    const [visibleSection, setVisibleSection] = useState(null); // null, 'extintoresVenta', 'partesExtintor', etc.
+    const [visibleSection, setVisibleSection] = useState(null);
 
     // Referencias para cada sección de detalle, permitiendo el scroll suave
     const extintoresVentaRef = useRef(null);
@@ -20,9 +20,7 @@ const Portafolio = () => {
     const capacitacionRef = useRef(null);
     const viajesAguaRef = useRef(null);
 
-    // Función para mapear el nombre de la sección a su referencia
-    // Definimos este objeto dentro del componente, pero sus valores (las refs) son estables.
-    // Aunque ESLint pida incluirlo, su contenido no cambia en cada render.
+    // Mapeo de nombres de sección a sus referencias
     const sectionRefs = {
         extintoresVenta: extintoresVentaRef,
         partesExtintor: partesExtintorRef,
@@ -48,18 +46,15 @@ const Portafolio = () => {
                 currentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
-    }, [visibleSection, sectionRefs]); // ¡'sectionRefs' añadido aquí para resolver el warning!
+    }, [visibleSection, sectionRefs]); // 'sectionRefs' incluido para resolver el warning de dependencia
 
-    // Función para manejar el clic en el botón "Cotizar"
+    // Función para manejar el clic en el botón "Cotizar" (redirige directamente)
     const handleCotizarClick = () => {
-        // Simula la navegación a una página de cotización.
-        // Si estás usando react-router-dom, esto se cambiaría a:
-        // history.push('/cotizar');
-        window.location.href = '/cotizar'; // Esto asumirá que tienes una página en /cotizar
+        window.location.href = '/cotizar'; // Redirige a la página de cotización
         console.log('Navegando a la página de cotización...');
     };
 
-    // --- Datos detallados del portafolio (ahora directamente en el componente) ---
+    // --- Datos detallados del portafolio ---
     const datosVentaExtintores = [
         { producto: "ABC DE 10 LBS", contenido: "Extintor nuevo, Soporte, Señalización", precioCon: "$70.000", precioSin: "$60.000" },
         { producto: "ABC DE 20 LBS", contenido: "Extintor nuevo, Soporte, Señalización", precioCon: "$90.000", precioSin: "$80.000" },
@@ -195,7 +190,7 @@ const Portafolio = () => {
         valor: "Cotizar",
         descripcion: "El transporte de agua potable que se realiza en la estación de bomberos puede ser dirigida a diferentes sectores del municipio, tanto como veredas, colegios, casas, empresas y hasta personas particulares.",
         capacidad: "El carro tanque tiene la capacidad de cargar un aproximado de 5000 litros (1200 galones) de agua potable.",
-        nota: "Se especifica que no se da el servicio de medio viaje de agua, el servicio siempre va a ser completo. Si la persona y/o la empresa solicita más agua, se le asigna otro viaje completo, cada uno con 5000 litros al punto indicado.",
+        nota: "Se especifica que no se da el servicio de medio viaje de agua, el servicio siempre va a ser completo. Si la persona y/o la empresa solicita más agua, se le asigna otro viaje completo, cada uno con 5000 litros al punto indicado."
     };
 
 
@@ -358,7 +353,7 @@ const Portafolio = () => {
                                     ))}
                                 </tbody>
                             </table>
-                            <p className="note">**Nota:** El contenido de los botiquines Tipo A y B solicitalo en cotizar</p>
+                            <p className="note">**Nota:** El contenido de los botiquines Tipo A y B solicta por cotizacion sus productos</p>
                         </div>
                     )}
 
@@ -507,4 +502,71 @@ const Portafolio = () => {
     );
 };
 
-export default Portafolio;
+// Componente Cotizar (puedes expandirlo más adelante)
+const Cotizar = () => {
+    return (
+        <div className="cotizar-page-container">
+            <h1 className="cotizar-page-title">Página de Cotización</h1>
+            <p className="cotizar-page-description">
+                Por favor, contáctanos para una cotización personalizada de nuestros servicios.
+                Puedes enviar un correo a [tu correo] o llamarnos al [tu teléfono].
+            </p>
+            {/* Aquí puedes añadir un formulario de contacto, información de contacto, etc. */}
+        </div>
+    );
+};
+
+// Estilos CSS para el componente Cotizar (puedes añadir esto a tu Portafolio.css o a un nuevo Cotizar.css)
+// Si lo añades a Portafolio.css, asegúrate de que App.js lo importa.
+const CotizarCSS = `
+.cotizar-page-container {
+    font-family: 'Inter', sans-serif;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.cotizar-page-title {
+    font-size: 2.8em;
+    color: #0056b3;
+    margin-bottom: 20px;
+}
+
+.cotizar-page-description {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.8;
+}
+`;
+
+
+// Componente principal de la aplicación
+const App = () => {
+    // Un sistema de enrutamiento simple basado en window.location.pathname
+    let ComponentToRender;
+    const path = window.location.pathname;
+
+    switch (path) {
+        case '/cotizar':
+            ComponentToRender = Cotizar;
+            break;
+        case '/':
+        default:
+            ComponentToRender = Portafolio;
+            break;
+    }
+
+    return (
+        <>
+            <style>{CotizarCSS}</style> {/* Incluye los estilos de Cotizar aquí */}
+            <ComponentToRender />
+        </>
+    );
+};
+
+export default App; // Exporta el componente principal 'App'
+
