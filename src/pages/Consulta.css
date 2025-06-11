@@ -1,275 +1,255 @@
-/* src/pages/Consulta.css - Diseño Moderno */
+/* Importar fuentes de Google Fonts (consistente con index.css) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
-/* Variables (asegúrate de que estas estén en tu index.css global si no las tienes) */
-/* Si ya tienes un :root en index.css, puedes eliminar este bloque para evitar duplicidad */
+/* NOTA: Las variables :root deberían estar CENTRALIZADAS en src/index.css */
+/* Si ya están en index.css, puedes quitar este bloque de aquí. */
 :root {
-    --primary-dark-blue: #0b1f3a; /* Azul oscuro, similar al del header */
-    --primary-color: #2c3e50;    /* Gris azulado oscuro */
-    --secondary-color: #3498db;  /* Azul brillante (para botones, acentos) */
-    --accent-color: #ffd700;    /* Dorado (para títulos, resaltados) */
-    --success-color: #28a745;    /* Verde para Vigente */
-    --danger-color: #dc3545;    /* Rojo para Vencido */
-    --info-color: #17a2b8;      /* Azul claro para mensajes */
+    --primary-dark-blue: #0b1f3a;
+    --primary-color: #2c3e50; /* Azul oscuro */
+    --secondary-color: #3498db; /* Azul vibrante */
+    --accent-color: #e67e22; /* Naranja/ámbar */
+    --text-color-light: #f0f0f0; /* Blanco */
+    --text-color-dark: #34495e; /* Azul oscuro para texto general */
     --white: #ffffff;
-    --light-grey-bg: #f8f9fa;   /* Fondo claro para cajas */
-    --border-color-light: #e0e0e0; /* Borde más suave */
-    --text-color-dark: #34495e; /* Texto oscuro principal */
-    --text-color-medium: #6c757d; /* Texto secundario */
+    --light-grey: #bdc3c7; /* Gris claro */
+    --border-color: #dee2e6;
+    --page-background-color: #f4f7f9; /* Fondo claro general */
 
-    --spacing-xs: 4px;
+    /* Espaciado */
     --spacing-sm: 8px;
     --spacing-md: 16px;
     --spacing-lg: 24px;
     --spacing-xl: 40px;
-    --spacing-xxl: 60px;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 2rem;
+    --font-size-xxl: 2.5rem;
+    --font-size-hero: 3.5rem;
 }
 
+/* Contenedor principal de la página de Consulta */
 .consulta-container {
-    max-width: 900px; /* Un poco más ancho para un look moderno */
-    margin: var(--spacing-xxl) auto; /* Margen superior/inferior generoso */
-    padding: var(--spacing-xxl) var(--spacing-lg); /* Padding generoso */
-    background-color: var(--white);
-    border-radius: 12px; /* Bordes más redondeados */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada pero suave */
-    text-align: center;
-    overflow: hidden; /* Para contener las sombras internas si las hubiera */
+    background-color: var(--page-background-color);
+    color: var(--text-color-dark);
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    padding: var(--spacing-xl) var(--spacing-md); /* Padding general para toda la página */
+    max-width: 1200px; /* Ancho máximo para la página */
+    margin: 0 auto; /* Centrar la página */
+    box-sizing: border-box;
 }
 
 .consulta-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--font-size-xxl);
+    font-weight: 700;
+    text-align: center;
     color: var(--primary-dark-blue);
     margin-bottom: var(--spacing-md);
-    font-size: 2.8em; /* Título más grande */
-    font-weight: 800; /* Más audaz */
-    text-transform: uppercase; /* En mayúsculas para impacto */
-    letter-spacing: 1.5px; /* Espaciado entre letras */
-    border-bottom: 3px solid var(--accent-color); /* Línea dorada debajo del título */
-    display: inline-block; /* Para que la línea se ajuste al ancho del texto */
-    padding-bottom: var(--spacing-sm);
+    padding-top: var(--spacing-lg); /* Espacio superior */
 }
 
 .consulta-description {
-    color: var(--text-color-medium);
-    font-size: 1.15em; /* Texto un poco más grande */
-    margin-bottom: var(--spacing-xl); /* Más espacio */
-    line-height: 1.7;
-    max-width: 600px;
+    font-size: var(--font-size-lg);
+    text-align: center;
+    color: var(--text-color-dark);
+    margin-bottom: var(--spacing-xl);
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .search-box {
     display: flex;
-    justify-content: center;
-    gap: var(--spacing-md); /* Espacio entre input y botón */
-    margin-bottom: var(--spacing-xxl); /* Más espacio debajo de la caja de búsqueda */
-    flex-wrap: wrap; /* Para que se envuelvan en pantallas pequeñas */
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: var(--spacing-xl);
+    max-width: 600px; /* Limitar el ancho de la caja de búsqueda */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .nit-input {
-    flex-grow: 1;
-    max-width: 450px; /* Ancho máximo para el input */
-    padding: 15px 20px; /* Mayor padding */
-    border: 2px solid var(--border-color-light); /* Borde más visible */
-    border-radius: 8px; /* Bordes redondeados */
-    font-size: 1.2em; /* Texto más grande */
-    color: var(--text-color-dark);
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: var(--font-size-base);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    background-color: var(--light-grey-bg); /* Fondo ligeramente gris */
-}
-
-.nit-input::placeholder {
-    color: var(--text-color-medium);
-    opacity: 0.7;
+    margin-bottom: var(--spacing-md); /* Espacio debajo del input */
 }
 
 .nit-input:focus {
-    outline: none;
     border-color: var(--secondary-color);
-    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.25); /* Sombra de enfoque más prominente */
-    background-color: var(--white);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+    outline: none;
 }
 
-.search-button {
+.search-button, .download-pdf-button {
     background-color: var(--secondary-color);
     color: var(--white);
-    padding: 15px 30px; /* Mayor padding */
+    padding: var(--spacing-md) var(--spacing-xl);
     border: none;
-    border-radius: 8px; /* Bordes redondeados */
-    font-size: 1.2em;
-    font-weight: 700; /* Más audaz */
+    border-radius: 8px;
+    font-size: var(--font-size-lg);
+    font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2); /* Sombra suave */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%; /* Ocupa todo el ancho de la caja de búsqueda */
+    max-width: 300px; /* Limitar el ancho del botón */
 }
 
-.search-button:hover {
+.search-button:hover, .download-pdf-button:hover {
     background-color: var(--primary-dark-blue);
-    transform: translateY(-3px); /* Efecto de "levantar" */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra más fuerte al pasar el ratón */
-}
-
-.search-button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
 }
 
 .error-message {
-    color: var(--danger-color);
-    background-color: rgba(220, 53, 69, 0.1); /* Fondo muy suave para errores */
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: 5px;
-    margin-bottom: var(--spacing-lg);
+    color: #dc3545; /* Color rojo para errores */
+    font-size: var(--font-size-base);
+    text-align: center;
+    margin-top: var(--spacing-md);
     font-weight: 600;
-    border: 1px solid rgba(220, 53, 69, 0.2);
 }
 
 .results-box {
-    background-color: var(--light-grey-bg);
-    border: 1px solid var(--border-color-light);
-    border-radius: 10px; /* Bordes más redondeados */
+    background-color: var(--white);
     padding: var(--spacing-xl);
-    margin-top: var(--spacing-lg);
-    text-align: left;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Sombra para la caja de resultados */
-    animation: fadeIn 0.5s ease-out; /* Animación de aparición */
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    max-width: 800px; /* Ancho máximo para los resultados */
+    margin: 0 auto var(--spacing-xl) auto; /* Centrar y margen inferior */
+    text-align: left; /* Alineación de texto por defecto para los detalles */
 }
 
 .not-found-message {
-    color: var(--text-color-dark);
-    font-size: 1.1em;
-    font-weight: 500;
+    font-size: var(--font-size-lg);
+    color: #6c757d; /* Gris para mensajes de no encontrado */
+    text-align: center;
+    font-style: italic;
+}
+
+.certificate-details {
     padding: var(--spacing-md);
-    background-color: rgba(255, 193, 7, 0.1); /* Fondo suave amarillo para no encontrado */
-    border-radius: 5px;
-    border: 1px solid rgba(255, 193, 7, 0.2);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.certificate-details.vigente {
+    border-color: #28a745; /* Verde para certificado vigente */
+    background-color: #e6ffe6; /* Fondo verde claro */
+}
+
+.certificate-details.vencido {
+    border-color: #dc3545; /* Rojo para certificado vencido */
+    background-color: #ffe6e6; /* Fondo rojo claro */
 }
 
 .certificate-details h3 {
-    color: var(--primary-dark-blue);
-    margin-top: 0;
-    margin-bottom: var(--spacing-lg);
-    font-size: 2em; /* Título de detalles más grande */
-    font-weight: 700;
-    border-bottom: 2px solid var(--secondary-color); /* Línea azul debajo del título de detalles */
-    padding-bottom: var(--spacing-sm);
+    font-family: 'Montserrat', sans-serif;
+    font-size: var(--font-size-xl);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
 }
 
 .certificate-details p {
-    margin-bottom: var(--spacing-sm); /* Espacio entre cada línea de detalle */
-    font-size: 1.05em;
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-sm);
     color: var(--text-color-dark);
-    line-height: 1.5;
 }
 
 .certificate-details p strong {
-    color: var(--primary-color);
-    min-width: 120px; /* Para alinear los dos puntos si el texto es muy corto */
-    display: inline-block; /* Permite el min-width */
+    color: var(--primary-dark-blue);
 }
 
 .status-label {
-    font-size: 1.3em; /* Estado más grande */
+    font-size: var(--font-size-lg);
     font-weight: 700;
-    display: flex;
-    align-items: center;
-    margin-top: var(--spacing-xl); /* Más espacio encima del estado */
-    justify-content: center; /* Centrar el estado */
+    text-align: center;
+    margin-top: var(--spacing-lg);
 }
 
 .status-text {
-    padding: 8px 20px; /* Mayor padding para la etiqueta de estado */
-    border-radius: 25px; /* Bordes más redondeados (píldora) */
-    margin-left: var(--spacing-md);
+    padding: 5px 10px;
+    border-radius: 5px;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    color: var(--white);
 }
 
 .status-text.vigente {
-    background-color: var(--success-color);
-    color: var(--white);
+    background-color: #28a745; /* Verde */
 }
 
 .status-text.vencido {
-    background-color: var(--danger-color);
-    color: var(--white);
+    background-color: #dc3545; /* Rojo */
 }
 
 .action-required-message {
-    background-color: rgba(220, 53, 69, 0.15); /* Fondo rojo más notorio */
-    color: var(--danger-color);
-    padding: var(--spacing-md);
-    border-radius: 8px;
-    margin-top: var(--spacing-xl); /* Más espacio arriba */
+    font-size: var(--font-size-base);
+    color: #dc3545;
     font-weight: 600;
-    border: 1px solid var(--danger-color);
-    line-height: 1.6;
-    font-size: 1.05em;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    margin-top: var(--spacing-md);
 }
 
-/* Responsive adjustments */
+.download-pdf-button {
+    margin-top: var(--spacing-lg);
+    background-color: #007bff; /* Azul primario para descargar */
+}
+
+.download-pdf-button:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+}
+
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .consulta-container {
-        padding: var(--spacing-xl) var(--spacing-md);
-        margin: var(--spacing-xl) auto;
+        padding: var(--spacing-lg) var(--spacing-sm);
     }
     .consulta-title {
-        font-size: 2.2em;
+        font-size: 2em;
     }
     .consulta-description {
         font-size: 1em;
     }
     .search-box {
-        flex-direction: column; /* Apila el input y el botón en móviles */
-        gap: var(--spacing-sm);
+        padding: var(--spacing-lg);
     }
-    .nit-input, .search-button {
-        max-width: 100%;
-        width: 100%;
+    .nit-input,
+    .search-button,
+    .download-pdf-button {
+        font-size: 0.9em;
+        padding: var(--spacing-sm) var(--spacing-md);
     }
     .results-box {
         padding: var(--spacing-lg);
     }
     .certificate-details h3 {
-        font-size: 1.6em;
+        font-size: 1.5em;
+    }
+    .certificate-details p {
+        font-size: 0.9em;
     }
     .status-label {
-        flex-direction: column; /* Apila el "Estado:" y la etiqueta de estado */
-        align-items: center;
-    }
-    .status-text {
-        margin-left: 0;
-        margin-top: var(--spacing-sm); /* Espacio entre el texto "Estado:" y la píldora */
+        font-size: 1em;
     }
 }
 
 @media (max-width: 480px) {
-    .consulta-container {
-        padding: var(--spacing-lg) var(--spacing-sm);
-    }
     .consulta-title {
         font-size: 1.8em;
     }
-    .nit-input, .search-button {
-        padding: 12px 15px;
-        font-size: 1em;
+    .consulta-description {
+        font-size: 0.85em;
     }
-    .certificate-details h3 {
-        font-size: 1.3em;
-    }
-    .status-text {
-        padding: 6px 15px;
-        font-size: 1.1em;
-    }
-    .action-required-message {
-        font-size: 0.95em;
-        padding: var(--spacing-sm);
+    .search-box {
+        padding: var(--spacing-md);
     }
 }

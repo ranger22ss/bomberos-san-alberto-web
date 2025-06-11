@@ -2,15 +2,345 @@
   {
     "nit": "824006767-7",
     "nombreEmpresa": "MULTISERVICIOS LA Y DE LA PALMA",
-    "direccion": "KM 2 VIA LA PALMA",
-    "fechaExpedicion": "2025-01-08",
-    "fechaVencimiento": "2026-01-08"
+    "direccion": "KILOMETRO 2 VIA LA PALMA",
+    "fechaExpedicion": "2025-01-06",
+    "fechaVencimiento": "2026-01-06",
+    "radicado": "001-25"
   },
   {
     "nit": "7363788-8",
     "nombreEmpresa": "HOTEL SAN ALBERTO PLAZA",
-    "direccion": "CL 3 4 88 VIA LA PALMA",
+    "direccion": "CALLE 3 # 4-88 VÍA LA PALMA EL CENTRO",
     "fechaExpedicion": "2025-02-15",
-    "fechaVencimiento": "2026-02-15"
+    "fechaVencimiento": "2026-02-15",
+    "radicado": "002-25"
+  },
+  {
+    "nit": "900276962-1",
+    "nombreEmpresa": "D1 S.A.S.",
+    "direccion": "CARRERA 4 804-05",
+    "fechaExpedicion": "2025-03-19",
+    "fechaVencimiento": "2026-03-19",
+    "radicado": "003-25"
+  },
+  {
+    "nit": "900868347-0",
+    "nombreEmpresa": "ESTACION DE SERVICIO EL AMARILLO",
+    "direccion": "KILOMETRO 6 VIA AL MAR",
+    "fechaExpedicion": "2025-01-29",
+    "fechaVencimiento": "2026-01-29",
+    "radicado": "004-25"
+  },
+  {
+    "nit": "63338262-4",
+    "nombreEmpresa": "PLAZOLETA CLUB GUS",
+    "direccion": "CALLE 2A # 6-110 BARRIO VILLA FANNY",
+    "fechaExpedicion": "2025-01-31",
+    "fechaVencimiento": "2026-01-31",
+    "radicado": "005-25"
+  },
+  {
+    "nit": "900580962-2",
+    "nombreEmpresa": "DISFARMA GC SAS",
+    "direccion": "CARRERA 4#5-39 EL CENTRO",
+    "fechaExpedicion": "2025-02-05",
+    "fechaVencimiento": "2026-02-05",
+    "radicado": "006-25"
+  },
+  {
+    "nit": "900276962-1",
+    "nombreEmpresa": "TIENDA D1 SAN ALBERTO PLAZA",
+    "direccion": "CARRERA 68 # 2A-23",
+    "fechaExpedicion": "2025-03-19",
+    "fechaVencimiento": "2026-03-19",
+    "radicado": "007-25"
+  },
+  {
+    "nit": "901528877-8",
+    "nombreEmpresa": "ESTACION DE SERVICIO CAFE CORRIENDO",
+    "direccion": "VEREDA CAÑO DE HOYO, municipio de La Esperanza, Norte de Santander",
+    "fechaExpedicion": "2025-01-26",
+    "fechaVencimiento": "2026-01-26",
+    "radicado": "008-25"
+  },
+  {
+    "nit": "901448862-4",
+    "nombreEmpresa": "CERVYLICORES DISTRIBUCIONES SAS",
+    "direccion": "KILOMETRO 4 VIA AEROPUERTO OCAÑA AGUAS CLARAS",
+    "fechaExpedicion": "2025-02-11",
+    "fechaVencimiento": "2026-02-11",
+    "radicado": "009-25"
+  },
+  {
+    "nit": "900988550-5",
+    "nombreEmpresa": "OFFI-MEDICAS SAN ALBERTO",
+    "direccion": "CALLE 3#4-99 LOCAL 1 BARRIO EL CENTRO",
+    "fechaExpedicion": "2025-02-18",
+    "fechaVencimiento": "2026-02-18",
+    "radicado": "010-25"
+  },
+  {
+    "nit": "1098728059-6",
+    "nombreEmpresa": "CLUB RECREATIVO LA CASCAJERA",
+    "direccion": "CALLE 4 # 5-46 BARRIO OASIS",
+    "fechaExpedicion": "2025-02-18",
+    "fechaVencimiento": "2026-02-18",
+    "radicado": "011-25"
+  },
+  {
+    "nit": "36458328-8",
+    "nombreEmpresa": "ACADEMIA DE BILLARES EL CHALAN",
+    "direccion": "CARRERA 2 # 10-35 BARRIO CENTRO",
+    "fechaExpedicion": "2025-02-18",
+    "fechaVencimiento": "2026-02-18",
+    "radicado": "012-25"
+  },
+  {
+    "nit": "42487406-1",
+    "nombreEmpresa": "HOTEL NECHI",
+    "direccion": "CALLE 3 # 2-34 BARRIO CENTRO",
+    "fechaExpedicion": "2025-02-20",
+    "fechaVencimiento": "2026-02-20",
+    "radicado": "013-25"
+  },
+  {
+    "nit": "36455600-3",
+    "nombreEmpresa": "HOSPEDAJE Y PARQUEADERO LA VECINA",
+    "direccion": "CALLE 3 # 121-34 BARRIO BETANCOUR",
+    "fechaExpedicion": "2025-02-24",
+    "fechaVencimiento": "2026-02-24",
+    "radicado": "014-25"
+  },
+  {
+    "nit": "26862400-6",
+    "nombreEmpresa": "ESTACION DE SERVICIO EL JAPON",
+    "direccion": "KILOMETRO 70 VIA SAN ALBERTO",
+    "fechaExpedicion": "2025-02-26",
+    "fechaVencimiento": "2026-02-26",
+    "radicado": "015-25"
+  },
+  {
+    "nit": "60361435-7",
+    "nombreEmpresa": "CACHAERRIA YAJAIRA",
+    "direccion": "CARRERA 2#3-20 BARRIO CENTRO",
+    "fechaExpedicion": "2025-02-27",
+    "fechaVencimiento": "2026-02-27",
+    "radicado": "016-25"
+  },
+  {
+    "nit": "1065653892-2",
+    "nombreEmpresa": "DR. PAULA BLANCO ODONTOLOGIA INTEGRAL Y ESTETICA",
+    "direccion": "CALLE 4 # 5-64 CA",
+    "fechaExpedicion": "2025-03-03",
+    "fechaVencimiento": "2026-03-03",
+    "radicado": "017-25"
+  },
+  {
+    "nit": "1065237997-3",
+    "nombreEmpresa": "RESTAURANTE EL BACHUE DE ALEX",
+    "direccion": "CALLE 4 LT 1 BARRIO OASIS",
+    "fechaExpedicion": "2025-03-03",
+    "fechaVencimiento": "2026-03-03",
+    "radicado": "018-25"
+  },
+  {
+    "nit": "824005420-2",
+    "nombreEmpresa": "SANTA SALUD INSTITUCION PRESTADORA DE SERVICIOS DE SALUD LIMITADA",
+    "direccion": "CARRERA 35-14 BARRIO CENTRO",
+    "fechaExpedicion": "2025-03-04",
+    "fechaVencimiento": "2026-03-04",
+    "radicado": "019-25"
+  },
+  {
+    "nit": "900900178-3",
+    "nombreEmpresa": "RED INTEGRADA SALUD COLOMBIA IPS S.A.S. ( REDINSALUD IPS SAS )",
+    "direccion": "CARRERA 4#4-18 BARRIO CENTRO",
+    "fechaExpedicion": "2025-03-04",
+    "fechaVencimiento": "2026-03-04",
+    "radicado": "020-25"
+  },
+  {
+    "nit": "901106545-7",
+    "nombreEmpresa": "GALENOS S.A.S & LABORATORIO CLINICO IPS S.A.S.",
+    "direccion": "CALLE 4 # 3-26 BARRIO CENTRO",
+    "fechaExpedicion": "2025-03-04",
+    "fechaVencimiento": "2026-03-04",
+    "radicado": "021-25"
+  },
+  {
+    "nit": "900327048-2",
+    "nombreEmpresa": "UNIDAD RADIOLOGICA CENFISEM",
+    "direccion": "CARRERA 7A # 2 BIS 75 BARRIO VILLA FANNY",
+    "fechaExpedicion": "2025-03-04",
+    "fechaVencimiento": "2026-03-04",
+    "radicado": "022-25"
+  },
+  {
+    "nit": "900779990-5",
+    "nombreEmpresa": "IPS MI SALUD EN CASA S.A.S.",
+    "direccion": "CALLE 4 # 68-12 LA MARINA",
+    "fechaExpedicion": "2025-03-04",
+    "fechaVencimiento": "2026-03-04",
+    "radicado": "023-25"
+  },
+  {
+    "nit": "63563155-8",
+    "nombreEmpresa": "CONSULTORIO ODONTOLOGICO SONRISITAS APAR",
+    "direccion": "CALLE 4#4-15",
+    "fechaExpedicion": "2025-03-07",
+    "fechaVencimiento": "2026-03-07",
+    "radicado": "024-25"
+  },
+  {
+    "nit": "1094574780-2",
+    "nombreEmpresa": "TIENDA EL RANCHO ALEGRE",
+    "direccion": "CALLE 5 # 5-110 BARRIO LA MARINA",
+    "fechaExpedicion": "2025-03-06",
+    "fechaVencimiento": "2026-03-08",
+    "radicado": "025-25"
+  },
+  {
+    "nit": "88139480-0",
+    "nombreEmpresa": "ESTACION DE SERVICIO EL RETORNO",
+    "direccion": "VIA AL MAR SALIDA SAN ALBERTO",
+    "fechaExpedicion": "2025-03-10",
+    "fechaVencimiento": "2026-03-10",
+    "radicado": "026-25"
+  },
+  {
+    "nit": "37711196-0",
+    "nombreEmpresa": "FERREGUILLER",
+    "direccion": "CALLE 3 # 7-11 VIA LA PALMA",
+    "fechaExpedicion": "2025-03-11",
+    "fechaVencimiento": "2026-03-11",
+    "radicado": "027-25"
+  },
+  {
+    "nit": "1082850124-0",
+    "nombreEmpresa": "DRA. NELLY PARRA RUEDA ODONTOLOGIA ESTETICA",
+    "direccion": "CALLE 3 # 2-23 APTO 201 VIA LA PALMA",
+    "fechaExpedicion": "2025-03-14",
+    "fechaVencimiento": "2026-03-14",
+    "radicado": "028-25"
+  },
+  {
+    "nit": "13347545-1",
+    "nombreEmpresa": "ESTACION DE SERVICIO LA PEDREGOSA",
+    "direccion": "CARRERA 2 # 12-55 BARRIO SAGRADO CORAZON , LA PEDREGOSA",
+    "fechaExpedicion": "2025-03-18",
+    "fechaVencimiento": "2026-03-18",
+    "radicado": "029-25"
+  },
+  {
+    "nit": "",
+    "nombreEmpresa": "EL PALACIO NORTE",
+    "direccion": "CARRERA 2 # 7-150 LA PEDREGOSA",
+    "fechaExpedicion": "2025-03-21",
+    "fechaVencimiento": "2026-03-21",
+    "radicado": "030-25"
+  },
+  {
+    "nit": "42415066-0",
+    "nombreEmpresa": "BILLARES EL TENAMPA",
+    "direccion": "CARRERA 2 #1-35 BARRIO CENTRO",
+    "fechaExpedicion": "2025-03-26",
+    "fechaVencimiento": "2026-03-26",
+    "radicado": "031-25"
+  },
+  {
+    "nit": "",
+    "nombreEmpresa": "TIENDAS MAS X MENOS",
+    "direccion": "CALLE 3 #3-94 BARRIO EL CENTRO",
+    "fechaExpedicion": "2025-03-27",
+    "fechaVencimiento": "2026-03-27",
+    "radicado": "032-25"
+  },
+  {
+    "nit": "",
+    "nombreEmpresa": "FORMACION TECNICA EN SALUD E.U.",
+    "direccion": "CALLE 2 D # 19 BARRIO PRIMERO DE ABRIL",
+    "fechaExpedicion": "2025-03-31",
+    "fechaVencimiento": "2026-03-31",
+    "radicado": "033-25"
+  },
+  {
+    "nit": "",
+    "nombreEmpresa": "PARROQUIA SAN ALBERTO MAGNO",
+    "direccion": "CARRERA 4#6-80 BARRIO EL CENTRO",
+    "fechaExpedicion": "2025-04-16",
+    "fechaVencimiento": "2026-04-16",
+    "radicado": "034-25"
+  },
+  {
+    "nit": "890505363-6",
+    "nombreEmpresa": "CREDISERVICIOS SAN ALBERTO",
+    "direccion": "CALLE 6#2-26 PARQUE PRINCIPAL",
+    "fechaExpedicion": "2025-04-23",
+    "fechaVencimiento": "2026-04-23",
+    "radicado": "035-25"
+  },
+  {
+    "nit": "",
+    "nombreEmpresa": "CERRAJERIA CALA",
+    "direccion": "CALLE 3 # 7-11 BARRIO LA MARINA",
+    "fechaExpedicion": "2025-05-06",
+    "fechaVencimiento": "2026-05-06",
+    "radicado": "037-25"
+  },
+  {
+    "nit": "",
+    "nombreEmpresa": "QUESERIA FAJARDO DISTRIBUCION",
+    "direccion": "CALLE 7 #2 N 19 BARRIO PRIMERO DE MAYO",
+    "fechaExpedicion": "2025-05-06",
+    "fechaVencimiento": "2026-05-06",
+    "radicado": "038-25"
+  },
+  {
+    "nit": "1098632271-9",
+    "nombreEmpresa": "MEDIFARMACOS PLUS",
+    "direccion": "CALLE 1E # 3-66 BARRIO VILLA FANNY",
+    "fechaExpedicion": "2025-05-09",
+    "fechaVencimiento": "2026-05-09",
+    "radicado": "039-25"
+  },
+  {
+    "nit": "",
+    "nombreEmpresa": "HOGAR Y MODA",
+    "direccion": "CARRERA 02 04 16 BARRIO EL CENTRO",
+    "fechaExpedicion": "2025-05-13",
+    "fechaVencimiento": "2026-05-13",
+    "radicado": "040-25"
+  },
+  {
+    "nit": "12457460-0",
+    "nombreEmpresa": "ESTADERO EL DIVISO",
+    "direccion": "CALLE 2 #3-60 BARRIO EL CENTRO",
+    "fechaExpedicion": "2025-05-14",
+    "fechaVencimiento": "2026-05-14",
+    "radicado": "041-25"
+  },
+  {
+    "nit": "",
+    "nombreEmpresa": "BEBIDAS ALCOHOLICAS Y PLATOS PREPARADOS A LA MESA",
+    "direccion": "DIAGONAL 2 C # 10-22 BARRIO BRISAS",
+    "fechaExpedicion": "2025-05-14",
+    "fechaVencimiento": "2026-05-14",
+    "radicado": "042-25"
+  },
+  {
+    "nit": "",
+    "nombreEmpresa": "QUIMICOS SAN ALBERTO",
+    "direccion": "CARRERA 5 A # 2-106 BARRIO VILLA FANNY",
+    "fechaExpedicion": "2025-06-04",
+    "fechaVencimiento": "2026-06-04",
+    "radicado": "043-25"
+  },
+  {
+    "nit": "900279175-3",
+    "nombreEmpresa": "Cuerpo de bomberos voluntarios de San Alberto",
+    "direccion": "calle 5 #7-44 La Marina",
+    "fechaExpedicion": "2024-05-14",
+    "fechaVencimiento": "2025-05-14",
+    "radicado": "044-25"
   }
 ]
