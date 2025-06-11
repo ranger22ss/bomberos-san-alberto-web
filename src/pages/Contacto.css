@@ -117,8 +117,10 @@
 }
 
 .info-item .icon-circle {
-    background-color: var(--secondary-color);
-    color: var(--white);
+    /* CAMBIOS AQUÍ: Para que los iconos se vean más elegantes */
+    background-color: transparent; /* Fondo transparente */
+    border: 2px solid var(--secondary-color); /* Borde con el color secundario */
+    color: var(--secondary-color); /* El color del icono será el secundario */
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -127,8 +129,17 @@
     align-items: center;
     font-size: 2rem;
     margin-bottom: var(--spacing-md);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: none; /* Eliminar sombra del círculo para un look más limpio */
+    transition: all 0.3s ease; /* Transición para efectos de hover */
 }
+
+.info-item:hover .icon-circle {
+    background-color: var(--secondary-color); /* Fondo al pasar el ratón */
+    color: var(--white); /* Icono blanco al pasar el ratón */
+    transform: scale(1.1); /* Efecto de crecimiento al pasar el ratón */
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3); /* Sombra suave para el hover */
+}
+
 
 .info-item h3 {
     font-family: 'Montserrat', sans-serif;
@@ -390,6 +401,8 @@
         width: 50px;
         height: 50px;
         font-size: 1.8rem;
+        /* Ajustes para móviles */
+        border-width: 1px; /* Borde más delgado en móviles */
     }
     .info-item h3 {
         font-size: 1.2rem;
