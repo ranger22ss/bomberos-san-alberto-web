@@ -1,297 +1,286 @@
-/* Importar fuentes de Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+/* Portafolio.css */
 
-/* Variables CSS para colores (consistente con Inicio.css y Contacto.css) */
-/*
-   *******************************************************************************
-   * ¡¡¡NOTA IMPORTANTE SOBRE VARIABLES CSS!!!                                  *
-   * Es ALTAMENTE RECOMENDABLE CENTRALIZAR TODAS las variables CSS (:root)      *
-   * en un ÚNICO archivo global (como src/index.css o src/App.css).            *
-   * *
-   * Si ya tienes o vas a crear un archivo global con tus variables, puedes     *
-   * ELIMINAR COMPLETAMENTE esta sección ':root' de este archivo.              *
-   * *
-   * Asegúrate de que los NOMBRES de las variables sean CONSISTENTES           *
-   * en todo tu proyecto si usas diferentes archivos CSS.                       *
-   * *
-   * Actualmente, hay varias variables con nombres similares o que cumplen      *
-   * funciones similares en tus diferentes archivos CSS (Nosotros, Contacto, Cotizar, Inicio, Portafolio).
-   * Unificar esto es clave para la consistencia global.                        *
-   *******************************************************************************
-*/
-:root {
-    --primary-dark-blue: #0b1f3a; /* Tu azul oscuro original para el fondo */
-    --primary-color: #2c3e50; /* Azul oscuro, casi negro, fuerte como base */
-    --secondary-color: #3498db; /* Azul vibrante para acentos y enlaces */
-    --accent-color: #e67e22; /* Naranja/ámbar para destacar */
-    --text-color-light: #ecf0f1; /* Gris claro para el texto sobre fondo oscuro */
-    --text-color-dark: #34495e; /* Azul grisáceo para el texto sobre fondos claros */
-    --link-color: #ffcc00; /* Tu amarillo original para enlaces */
-    --white: #ffffff;
-    --light-grey: #bdc3c7; /* Este es un gris para el fondo general de la página, por ejemplo */
-    --border-color: #dee2e6; /* Color de borde para tablas y cajas */
-
-    /* Considera renombrar --light-grey a algo más genérico para el fondo principal de las páginas
-       si no hay otra variable global para ello. Por ejemplo:
-       --page-background-color: #ecf0f1; (o el valor de --light-grey si es ese)
-    */
-}
-
-/* Estilos generales para la página de portafolio */
+/* Estilos Generales del Contenedor del Portafolio */
 .portafolio-container {
-    background-color: var(--light-grey); /* Usando --light-grey como fondo general, o la nueva --page-background-color */
-    color: var(--text-color-dark); /* Texto oscuro para el contenido principal */
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', sans-serif; /* Fuente consistente */
+    color: #333;
     line-height: 1.6;
-    padding-bottom: 50px; /* Espacio al final de la página */
+    background-color: #f8f9fa; /* Fondo claro */
+    min-height: 100vh;
 }
 
-.portafolio-content-wrapper {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 0;
-}
-
-/* Header de la página de portafolio */
+/* Encabezado del Portafolio */
 .portafolio-header {
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 50px 20px;
+    background: linear-gradient(135deg, #004d99 0%, #007bff 100%); /* Degradado de azul */
+    color: white;
+    padding: 60px 20px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 20px; /* Esquinas redondeadas */
+    border-bottom-right-radius: 20px;
 }
 
 .portafolio-header h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3.5em;
+    font-size: 3em;
     margin-bottom: 10px;
+    letter-spacing: 1.5px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .portafolio-header p {
-    font-size: 1.3em;
-    opacity: 0.9;
+    font-size: 1.2em;
     max-width: 800px;
     margin: 0 auto;
 }
 
-/* Estilos para cada sección del portafolio */
-.portafolio-section {
-    background-color: var(--white);
-    padding: 30px;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+/* Wrapper para el contenido principal (para centrar y limitar ancho) */
+.portafolio-content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
-.portafolio-section h2,
-.portafolio-section h3 {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--primary-color); /* Títulos en azul oscuro */
+/* Secciones de Contenido */
+.portafolio-section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    border: 1px solid #e0e0e0;
+}
+
+.portafolio-section h2 {
+    font-size: 2.5em;
+    color: #0056b3; /* Azul más oscuro para títulos de sección */
     margin-bottom: 25px;
     text-align: center;
     position: relative;
     padding-bottom: 10px;
 }
 
-.portafolio-section h2 {
-    font-size: 2.5em;
-}
-
-.portafolio-section h3 {
-    font-size: 1.8em;
-    color: var(--secondary-color); /* Subtítulos en azul vibrante */
-}
-
-/* Línea decorativa debajo de los títulos de sección */
-.portafolio-section h2::after,
-.portafolio-section h3::after {
+.portafolio-section h2::after {
     content: '';
-    display: block;
-    width: 70px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 80px;
     height: 4px;
-    background-color: var(--secondary-color); /* Línea de acento azul */
-    margin: 15px auto 0;
+    background-color: #007bff;
     border-radius: 2px;
 }
 
 .portafolio-section p {
     font-size: 1.1em;
-    line-height: 1.8;
     margin-bottom: 15px;
-    text-align: justify;
 }
 
-/* Estilos para listas de servicios (cada item ahora es un enlace) */
-.service-list {
-    list-style: none;
-    padding: 0;
+/* Grid para las tarjetas de servicio */
+.service-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+    padding: 20px 0;
 }
 
-/* Estilo para el enlace que envuelve cada tarjeta de servicio */
-.service-list .service-card-link {
-    background-color: var(--light-grey); /* Usando --light-grey, o la nueva --page-background-color si es global */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-    display: flex; /* Para mantener el icono y el texto alineados */
+/* Estilo para cada tarjeta de servicio */
+.service-card {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
-    font-size: 1.1em;
-    font-weight: 600;
-    color: var(--primary-color); /* Color del texto del servicio */
-    text-decoration: none; /* Quitar el subrayado por defecto del enlace */
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    height: 100%; /* Asegura que cada tarjeta ocupe el mismo alto en la cuadrícula */
-    cursor: pointer; /* Indica que es clickeable */
+    text-align: center;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border: 1px solid #e0e0e0;
 }
 
-.service-list .service-card-link:hover {
-    transform: translateY(-5px);
-    background-color: #dbe9f5; /* Un azul muy suave al pasar el ratón */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al pasar el ratón */
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background-color: #e6f7ff; /* Fondo ligeramente azul al pasar el ratón */
 }
 
-.service-list .service-card-link i {
-    font-size: 1.8em;
-    color: var(--secondary-color); /* Color del icono */
-    flex-shrink: 0; /* Evita que el icono se encoja */
+.service-card svg { /* Estilo para los iconos de Lucide */
+    color: #007bff; /* Color azul brillante para los iconos */
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
 }
 
-.service-list .service-card-link h3 {
-    margin-bottom: 5px; /* Ajuste el margen del título dentro de la tarjeta */
-    text-align: left; /* Alinea el texto a la izquierda dentro de la tarjeta */
-    font-size: 1.3em; /* Ajustar el tamaño del título de servicio */
-    color: var(--primary-color); /* Color del título */
+.service-card:hover svg {
+    color: #0056b3; /* Color más oscuro al pasar el ratón */
 }
 
-.service-list .service-card-link h3::after {
-    display: none; /* Oculta la línea decorativa de los h3 dentro de las tarjetas de servicio */
+.service-card h3 {
+    font-size: 1.5em;
+    color: #0056b3;
+    margin-bottom: 10px;
 }
 
-.service-list .service-card-link p {
-    font-size: 0.9em; /* Tamaño de fuente más pequeño para la descripción */
-    color: var(--text-color-dark);
-    margin-bottom: 0; /* Quita el margen inferior del párrafo */
-    text-align: left; /* Asegura que el texto sea justificado pero no centrado */
+.service-card p {
+    font-size: 0.95em;
+    color: #555;
 }
 
-/* Estilos para la sección de tarifas (si es una tabla) */
-.tarifas-table {
+/* Sección de detalles de servicio (se despliega) */
+.service-detail-section {
+    background-color: #f0f8ff; /* Fondo más claro para los detalles */
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 30px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #cceeff;
+}
+
+.service-detail-section h4 {
+    font-size: 2em;
+    color: #0056b3;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.service-detail-section h5,
+.service-detail-section h6 {
+    color: #004d99;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.service-detail-section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.service-detail-section li {
+    margin-bottom: 8px;
+    color: #444;
+}
+
+.service-detail-section p.note {
+    font-style: italic;
+    color: #777;
+    margin-top: 20px;
+    border-left: 4px solid #007bff;
+    padding-left: 15px;
+    background-color: #e9f5ff;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+/* Estilos para tablas dentro de los detalles */
+.detail-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    font-size: 1.1em;
+    font-size: 0.95em;
 }
 
-.tarifas-table th,
-.tarifas-table td {
-    border: 1px solid var(--border-color);
-    padding: 12px 15px;
+.detail-table th,
+.detail-table td {
+    border: 1px solid #cceeff; /* Borde más suave */
+    padding: 12px;
     text-align: left;
 }
 
-.tarifas-table th {
-    background-color: var(--secondary-color);
-    color: var(--white);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-}
-
-.tarifas-table tr:nth-child(even) {
-    background-color: var(--light-grey); /* Usando --light-grey, o el color de fondo general de tu proyecto */
-}
-
-.tarifas-table tr:hover {
-    background-color: #f1f8fe; /* Azul más claro al pasar el ratón */
-}
-
-/* Estilos para Póliza y Contacto simplificados */
-.policy-contact-text {
-    font-size: 1.1em;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.policy-contact-text a {
-    color: var(--secondary-color);
-    text-decoration: none;
+.detail-table th {
+    background-color: #add8e6; /* Azul claro para encabezados de tabla */
+    color: #004d99;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
-.policy-contact-text a:hover {
-    text-decoration: underline;
-    color: var(--accent-color);
+.detail-table tbody tr:nth-child(even) {
+    background-color: #f0faff; /* Rayas para mejor legibilidad */
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-    .portafolio-header h1 {
-        font-size: 3em;
-    }
-    .portafolio-header p {
-        font-size: 1.1em;
-    }
-    .portafolio-section h2 {
-        font-size: 2em;
-    }
-    .portafolio-section h3 {
-        font-size: 1.6em;
-    }
+.detail-table tbody tr:hover {
+    background-color: #e0f2ff; /* Resaltar fila al pasar el ratón */
 }
 
+/* Contenedor del botón "Cotizar" */
+.cotizar-button-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px; /* Más espacio para que se vea bien */
+    background-color: #eaf6ff; /* Un color de fondo diferente para destacarlo */
+    margin-top: 40px; /* Espacio entre la última sección y el botón */
+    border-top: 1px solid #d0e8f8;
+    border-radius: 15px;
+}
+
+/* Estilo del botón "Cotizar" */
+.cotizar-button {
+    background-color: #007bff; /* Color azul, puedes ajustarlo */
+    color: white;
+    padding: 18px 35px;
+    font-size: 1.3em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3); /* Sombra azulada */
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cotizar-button:hover {
+    background-color: #0056b3; /* Un azul más oscuro al pasar el ratón */
+    transform: translateY(-3px); /* Pequeño efecto de elevación */
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+}
+
+.cotizar-button:active {
+    transform: translateY(0); /* Efecto de clic */
+    background-color: #004085;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Estilos para pantallas más pequeñas */
 @media (max-width: 768px) {
     .portafolio-header h1 {
-        font-size: 2.5em;
+        font-size: 2.2em;
     }
+
     .portafolio-header p {
         font-size: 1em;
     }
-    .portafolio-section {
-        padding: 20px;
-    }
+
     .portafolio-section h2 {
         font-size: 1.8em;
     }
-    .portafolio-section h3 {
-        font-size: 1.4em;
-    }
-    .portafolio-section p {
-        font-size: 1em;
-    }
-    .service-list {
+
+    .service-cards-grid {
         grid-template-columns: 1fr; /* Una columna en móviles */
     }
-    .service-list li {
-        padding: 15px;
-        font-size: 1em;
-    }
-    .tarifas-table {
-        font-size: 0.9em;
-    }
-    .tarifas-table th,
-    .tarifas-table td {
-        padding: 8px 10px;
-    }
-}
 
-@media (max-width: 480px) {
-    .portafolio-header h1 {
-        font-size: 2em;
+    .service-card {
+        padding: 20px;
     }
-    .portafolio-header p {
+
+    .service-card h3 {
+        font-size: 1.3em;
+    }
+
+    .service-detail-section {
+        padding: 20px;
+    }
+
+    .detail-table th,
+    .detail-table td {
+        padding: 8px;
         font-size: 0.9em;
     }
-    .portafolio-section h2::after,
-    .portafolio-section h3::after {
-        width: 50px;
-        height: 3px;
-        margin-top: 10px;
+
+    .cotizar-button {
+        padding: 15px 25px;
+        font-size: 1.1em;
     }
 }
