@@ -1,46 +1,25 @@
-/* Importar fuentes de Google Fonts (Montserrat para títulos, Open Sans para texto) */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+/* src/pages/Inicio.css */
 
-/* Variables CSS para colores (consistente en toda la plataforma) */
+/* Importar fuentes de Google Fonts (Montserrat para títulos, Open Sans para texto) */
+/* Es recomendable que esto esté SOLO en index.css */
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap'); */
+
 /*
    *******************************************************************************
-   * ¡¡¡NOTA IMPORTANTE SOBRE VARIABLES CSS!!!                                  *
-   * Es ALTAMENTE RECOMENDABLE CENTRALIZAR TODAS las variables CSS (:root)      *
-   * en un ÚNICO archivo global (como src/index.css o src/App.css).            *
-   * *
-   * Si ya tienes o vas a crear un archivo global con tus variables, puedes     *
-   * ELIMINAR COMPLETAMENTE esta sección ':root' de este archivo.              *
-   * *
-   * Asegúrate de que los NOMBRES de las variables sean CONSISTENTES           *
-   * en todo tu proyecto si usas diferentes archivos CSS.                       *
-   * *
-   * Actualmente, hay varias variables con nombres similares o que cumplen      *
-   * funciones similares en tus diferentes archivos CSS (Nosotros, Contacto, Cotizar, Inicio).
-   * Unificar esto es clave para la consistencia global.                        *
+   * ¡¡¡NOTA IMPORTANTE SOBRE VARIABLES CSS!!!
+   * Este bloque :root ha sido ELIMINADO de este archivo porque las variables
+   * ya están centralizadas en src/index.css, como habíamos acordado.
+   * ¡Esto ayuda a evitar conflictos y mantener la consistencia!
    *******************************************************************************
 */
-:root {
-    --primary-dark-blue: #0b1f3a; /* Azul oscuro principal para fondos */
-    --primary-color: #2c3e50; /* Azul oscuro casi negro para títulos y texto fuerte */
-    --secondary-color: #3498db; /* Azul vibrante para acentos, iconos y botones */
-    --accent-color: #e67e22; /* Naranja/ámbar para destacar elementos clave */
-    --text-color-light: #ecf0f1; /* Gris claro para texto sobre fondos oscuros */
-    --text-color-dark: #34495e; /* Azul grisáceo oscuro para texto principal */
-    --link-color: #ffcc00; /* Amarillo para enlaces (si se usa explícitamente) */
-    --white: #ffffff;
-    --light-grey: #f4f7f9; /* Fondo muy claro para la página principal */
-    --medium-grey: #bdc3c7; /* Gris para bordes o texto secundario */
-    --section-bg-light: #ffffff; /* Fondo de sección principal */
-    --section-bg-dark: #f0f4f7; /* Fondo de sección alternativo (gris claro) */
-}
 
 /* Estilos Generales del Contenedor de Inicio */
 .inicio-container {
-    background-color: var(--light-grey); /* Fondo general más claro */
+    background-color: var(--page-background-color); /* Usar variable global de index.css */
     color: var(--text-color-dark); /* Color de texto principal */
     font-family: 'Open Sans', sans-serif;
     line-height: 1.7;
-    padding-bottom: 50px; /* Espacio inferior */
+    padding-bottom: var(--spacing-xl); /* Usar variable de espaciado */
 }
 
 /* Contenedor centralizado para el contenido */
@@ -48,7 +27,7 @@
     width: 90%;
     max-width: 1200px; /* Ancho máximo para contenido centrado */
     margin: 0 auto; /* Centrar en la página */
-    padding: 20px 0;
+    padding: var(--spacing-md) 0; /* Usar variable de espaciado */
 }
 
 /* Header Principal (Encabezado de la página de inicio) */
@@ -58,19 +37,21 @@
     padding: 80px 20px; /* Más padding para que se vea imponente */
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
-    margin-bottom: 50px; /* Espacio antes de la primera sección */
+    margin-bottom: var(--spacing-xl); /* Usar variable de espaciado */
 }
 
 .inicio-header-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 4.5em; /* Título más grande */
-    margin-bottom: 15px;
+    /* Reducir el tamaño base para que se adapte mejor en móviles antes de media queries */
+    font-size: 3.5em; /* Reducido de 4.5em */
+    margin-bottom: var(--spacing-sm); /* Usar variable de espaciado */
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Sombra de texto más pronunciada */
     line-height: 1.1;
 }
 
 .inicio-header-slogan {
-    font-size: 1.8em; /* Slogan más grande */
+    /* Reducir el tamaño base */
+    font-size: 1.5em; /* Reducido de 1.8em */
     opacity: 0.9;
     max-width: 900px;
     margin: 0 auto;
@@ -80,8 +61,8 @@
 /* Estilos para cada sección del contenido principal */
 .inicio-section {
     background-color: var(--section-bg-light); /* Fondo blanco para las secciones */
-    padding: 40px;
-    margin-bottom: 40px;
+    padding: var(--spacing-xl); /* Usar variable de espaciado */
+    margin-bottom: var(--spacing-xl); /* Usar variable de espaciado */
     border-radius: 12px; /* Bordes más redondeados */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra más notable */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para hover */
@@ -100,12 +81,13 @@
 
 .inicio-section-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2.8em; /* Títulos de sección más grandes */
+    /* Reducir el tamaño base */
+    font-size: 2.2em; /* Reducido de 2.8em */
     color: var(--primary-color);
-    margin-bottom: 25px;
+    margin-bottom: var(--spacing-lg); /* Usar variable de espaciado */
     text-align: center;
     position: relative;
-    padding-bottom: 15px;
+    padding-bottom: var(--spacing-sm); /* Usar variable de espaciado */
 }
 
 /* Línea decorativa debajo de los títulos de sección */
@@ -115,13 +97,13 @@
     width: 80px; /* Más ancha */
     height: 5px; /* Más gruesa */
     background-color: var(--secondary-color); /* Línea de acento azul */
-    margin: 20px auto 0; /* Centrado y más espacio */
+    margin: var(--spacing-md) auto 0; /* Centrado y más espacio */
     border-radius: 3px;
 }
 
 .inicio-section p {
-    font-size: 1.15em; /* Texto un poco más grande */
-    margin-bottom: 20px;
+    font-size: 1.1em; /* Ligeramente más pequeño */
+    margin-bottom: var(--spacing-md); /* Usar variable de espaciado */
     text-align: justify; /* Justificado para mejor lectura */
 }
 
@@ -130,22 +112,22 @@
     list-style: none; /* Eliminar viñetas por defecto */
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas responsivas */
-    gap: 15px; /* Espacio entre ítems */
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Reducir minmax para móviles */
+    gap: var(--spacing-md); /* Usar variable de espaciado */
+    margin-top: var(--spacing-md); /* Usar variable de espaciado */
 }
 
 .inicio-list li {
     background-color: var(--white); /* Fondo blanco para los ítems de lista */
-    padding: 15px 20px;
+    padding: var(--spacing-md) var(--spacing-lg); /* Usar variable de espaciado */
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    font-size: 1.1em;
+    font-size: 1em; /* Ligeramente más pequeño */
     font-weight: 600;
     color: var(--primary-color);
     display: flex;
     align-items: center;
-    gap: 10px; /* Espacio entre icono y texto */
+    gap: var(--spacing-sm); /* Usar variable de espaciado */
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -156,7 +138,7 @@
 
 /* Estilos para los iconos dentro de las listas */
 .inicio-list li i {
-    font-size: 1.5em; /* Tamaño del icono */
+    font-size: 1.3em; /* Ligeramente más pequeño */
     color: var(--secondary-color); /* Color del icono */
     flex-shrink: 0; /* Evita que el icono se encoja */
 }
@@ -164,7 +146,7 @@
 /* Estilos específicos para la sección de "Años de Servicio" */
 .anios-servicio {
     text-align: center;
-    padding: 30px;
+    padding: var(--spacing-lg); /* Usar variable de espaciado */
     background-color: var(--secondary-color); /* Fondo azul vibrante */
     color: var(--text-color-light); /* Texto claro */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
@@ -179,17 +161,17 @@
 }
 
 .anios-servicio p {
-    font-size: 1.25em; /* Texto más grande */
+    font-size: 1.1em; /* Ligeramente más pequeño */
     font-weight: 400;
     line-height: 1.6;
 }
 
 .anios-servicio strong {
-    font-size: 1.8em; /* Años de servicio más destacados */
+    font-size: 1.5em; /* Ligeramente más pequeño */
     font-family: 'Montserrat', sans-serif;
     display: block; /* Para que ocupe su propia línea */
-    margin-top: 10px;
-    color: var(--link-color); /* Color amarillo para resaltarlo */
+    margin-top: var(--spacing-sm); /* Usar variable de espaciado */
+    color: var(--gold-accent); /* Usar variable global para consistencia */
 }
 
 /* Estilos para la lista de "Otras Páginas" */
@@ -199,20 +181,20 @@
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se envuelvan */
     justify-content: center; /* Centra los elementos */
-    gap: 20px; /* Espacio entre los enlaces */
+    gap: var(--spacing-md); /* Usar variable de espaciado */
 }
 
 .otras-paginas-list li {
     background-color: var(--section-bg-dark); /* Fondo gris claro para los ítems */
-    padding: 10px 15px;
+    padding: var(--spacing-sm) var(--spacing-md); /* Usar variable de espaciado */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    font-size: 1.1em;
+    font-size: 1em; /* Ligeramente más pequeño */
     font-weight: 600;
     color: var(--text-color-dark);
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     flex: 1 1 auto; /* Permite que los ítems crezcan y se encojan */
-    max-width: 280px; /* Ancho máximo para cada tarjeta de enlace */
+    max-width: 250px; /* Reducir ancho máximo para tarjetas de enlace */
     text-align: center;
 }
 
@@ -227,7 +209,7 @@
     text-decoration: none;
     font-weight: 700; /* Negrita para el texto del enlace */
     display: block; /* Para que el enlace ocupe todo el espacio del li */
-    margin-bottom: 5px; /* Espacio entre el link y la descripción */
+    margin-bottom: var(--spacing-xs); /* Usar variable de espaciado */
 }
 
 .otras-paginas-list li a:hover {
@@ -236,7 +218,7 @@
 }
 
 .otras-paginas-list li p {
-    font-size: 0.9em;
+    font-size: 0.85em; /* Ligeramente más pequeño */
     line-height: 1.4;
     margin: 0;
 }
@@ -244,18 +226,18 @@
 /* Estilos para el botón "Conócenos" */
 .inicio-button-wrapper {
     text-align: center; /* Centrar el botón */
-    margin-top: 50px;
+    margin-top: var(--spacing-xl); /* Usar variable de espaciado */
 }
 
 .inicio-button {
     display: inline-block; /* Permite aplicar padding y centrar */
     background-color: var(--accent-color); /* Naranja vibrante para el botón */
     color: var(--white);
-    padding: 18px 35px;
+    padding: 15px 30px; /* Reducir padding */
     border-radius: 8px;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.3em;
+    font-size: 1.2em; /* Reducir tamaño */
     font-weight: 700;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -269,95 +251,146 @@
 
 /* Responsive Design */
 @media (max-width: 992px) {
-    .inicio-header-title {
-        font-size: 3.5em;
+    .inicio-content-wrapper {
+        width: 95%; /* Aumentar un poco el ancho en tablets */
+        padding: var(--spacing-lg) 0; /* Ajustar padding */
     }
-    .inicio-header-slogan {
-        font-size: 1.5em;
-    }
-    .inicio-section-title {
-        font-size: 2.2em;
-    }
-    .inicio-section p {
-        font-size: 1.05em;
-    }
-    .inicio-list {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-    .anios-servicio strong {
-        font-size: 1.5em;
-    }
-    .otras-paginas-list li {
-        max-width: none; /* Que ocupe todo el ancho disponible */
-        flex-basis: 100%; /* Una columna en móviles */
-    }
-}
-
-@media (max-width: 768px) {
     .inicio-header {
-        padding: 60px 15px;
+        padding: 60px 15px; /* Reducir padding del header */
     }
     .inicio-header-title {
-        font-size: 2.8em;
+        font-size: 2.8em; /* Ajustar tamaños de fuente */
     }
     .inicio-header-slogan {
         font-size: 1.2em;
     }
     .inicio-section {
-        padding: 30px;
-        margin-bottom: 30px;
+        padding: var(--spacing-lg); /* Ajustar padding de secciones */
+        margin-bottom: var(--spacing-lg);
     }
     .inicio-section-title {
-        font-size: 1.8em;
-        margin-bottom: 20px;
+        font-size: 2em;
     }
-    .inicio-section-title::after {
-        width: 60px;
-        height: 4px;
-        margin: 15px auto 0;
-    }
-    .inicio-list {
-        gap: 10px;
-    }
-    .inicio-list li {
-        padding: 12px 15px;
+    .inicio-section p {
         font-size: 1em;
     }
-    .inicio-list li i {
-        font-size: 1.3em;
+    .inicio-list {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Reducir minmax */
     }
     .anios-servicio p {
-        font-size: 1.1em;
+        font-size: 1em;
     }
     .anios-servicio strong {
         font-size: 1.3em;
     }
+    .otras-paginas-list li {
+        max-width: 220px; /* Reducir max-width en tablets */
+    }
     .inicio-button {
-        font-size: 1.1em;
-        padding: 15px 30px;
+        font-size: 1em;
+        padding: 12px 25px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+    .inicio-content-wrapper {
+        width: 98%; /* Casi ancho completo en móviles */
+        padding: var(--spacing-md) 0;
+    }
+    .inicio-header {
+        padding: 40px 10px; /* Más reducido */
+    }
     .inicio-header-title {
-        font-size: 2.2em;
+        font-size: 2em;
     }
     .inicio-header-slogan {
         font-size: 1em;
     }
+    .inicio-section {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+    }
     .inicio-section-title {
         font-size: 1.6em;
+        margin-bottom: var(--spacing-md);
     }
     .inicio-section-title::after {
         width: 50px;
         height: 3px;
-        margin: 10px auto 0;
+        margin: var(--spacing-sm) auto 0;
     }
     .inicio-list {
-        grid-template-columns: 1fr; /* Una sola columna en los móviles más pequeños */
+        grid-template-columns: 1fr; /* Una sola columna para todos los elementos */
+        gap: var(--spacing-sm);
     }
     .inicio-list li {
-        padding: 10px 15px;
-        font-size: 0.95em;
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.9em;
+    }
+    .anios-servicio p {
+        font-size: 0.9em;
+    }
+    .anios-servicio strong {
+        font-size: 1.1em;
+    }
+    .otras-paginas-list li {
+        flex-basis: 100%; /* Una sola columna */
+        max-width: none;
+    }
+    .inicio-button {
+        font-size: 0.9em;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .inicio-header {
+        padding: 30px 5px; /* Más reducido aún */
+    }
+    .inicio-header-title {
+        font-size: 1.8em;
+    }
+    .inicio-header-slogan {
+        font-size: 0.9em;
+    }
+    .inicio-section {
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+    }
+    .inicio-section-title {
+        font-size: 1.4em;
+    }
+    .inicio-section-title::after {
+        width: 40px;
+        height: 2px;
+        margin: var(--spacing-xs) auto 0;
+    }
+    .inicio-section p {
+        font-size: 0.9em;
+    }
+    .inicio-list li {
+        font-size: 0.85em;
+        flex-direction: column; /* Apilar en pantallas muy pequeñas */
+        align-items: flex-start;
+        text-align: left;
+    }
+    .inicio-list li i {
+        margin-bottom: var(--spacing-xs);
+    }
+}
+
+/* Nuevo breakpoint para móviles ultra-pequeños (opcional, si el problema persiste) */
+@media (max-width: 320px) {
+    .inicio-header-title {
+        font-size: 1.6em;
+    }
+    .inicio-header-slogan {
+        font-size: 0.8em;
+    }
+    .inicio-section-title {
+        font-size: 1.2em;
+    }
+    .inicio-section p {
+        font-size: 0.8em;
     }
 }
