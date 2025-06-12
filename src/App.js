@@ -8,7 +8,8 @@ import './index.css'; // Tus estilos globales
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Noticias from './components/Noticias';
-import EmergencyButton from './components/EmergencyButton'; // ¡Importar el nuevo componente!
+import EmergencyButton from './components/EmergencyButton';
+import Chatbot from './components/Chatbot'; // ¡CORREGIDO: Casing a 'Chatbot' para coincidir con el nombre del archivo!
 
 // Importar páginas
 import Inicio from './pages/Inicio';
@@ -43,8 +44,9 @@ function App() {
 
         <Footer />
 
-        {/* ¡Renderizar el botón de emergencia aquí! */}
+        {/* Renderizar el botón de emergencia y el chatbot aquí */}
         <EmergencyButton />
+        <Chatbot /> {/* ¡Aquí se renderiza el Chatbot! */}
       </div>
     </BrowserRouter>
   );

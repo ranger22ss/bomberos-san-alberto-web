@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
 /* ****************************************************************** */
-/* GLOBAL RESET & BOX-SIZING                                          */
+/* GLOBAL RESET & BOX-SIZING                                        */
 /* Asegura que el padding y el borde se incluyan en el ancho/alto total de un elemento */
 /* ****************************************************************** */
 *, *::before, *::after {
@@ -23,7 +23,6 @@
     --accent-color: #e67e22; /* Usado en el borde del header de noticias */
     --text-color-light: #f0f0f0; /* Blanco */
     --text-color-dark: #34495e; /* Azul oscuro para texto general */
-    --gold-accent: #ffd700; /* Puedes usarlo como acento en otros lugares */
     --white: #ffffff;
     --light-grey: #bdc3c7;
     --border-color: #dee2e6;
@@ -31,7 +30,7 @@
 
     /* Variables específicas para el Header (usadas en Header.css y para el padding-top) */
     --header-height-desktop: 125.234px; /* ALTURA MEDIDA DEL ENCABEZADO */
-    --header-height-mobile: 90px;         /* Altura estimada del header en móviles (ajustar si es necesario) */
+    --header-height-mobile: 90px;        /* Altura estimada del header en móviles (ajustar si es necesario) */
 
     /* Variables para el Footer */
     --footer-bg-color: #1e3a8a;
@@ -52,7 +51,7 @@
 }
 
 /* ****************************************************************** */
-/* BASE STYLES & GLOBAL RESPONSIVE RULES                              */
+/* BASE STYLES & GLOBAL RESPONSIVE RULES                            */
 /* Asegura que HTML, BODY y el contenedor #root de React tomen el 100% de la altura visible */
 /* ****************************************************************** */
 html {
@@ -72,7 +71,7 @@ body {
     /* Evita el scroll horizontal forzado por contenido que se desborda */
     overflow-x: hidden; 
     -webkit-font-smoothing: antialiased; /* Suavizado de fuentes para WebKit */
-    -moz-osx-font-smoothing: grayscale; /* Suavizado de fuentes para Firefox */
+    -moz-osx-smoothing: grayscale; /* Suavizado de fuentes para Firefox */
 }
 
 /* Contenedores principales de la aplicación */
@@ -110,7 +109,7 @@ a:hover {
 /* Estilos para títulos */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
-    color: var(--text-color-light); /* Ahora serán BLANCOS por defecto */
+    color: var(--text-color-dark); /* Color de texto para títulos, ajustado a oscuro */
     margin-top: 0;
     margin-bottom: var(--spacing-md);
     line-height: 1.2;
@@ -127,7 +126,7 @@ h5 { font-size: 1.25rem; } /* 20px */
 h6 { font-size: 1rem; }    /* 16px */
 
 /* ****************************************************************** */
-/* NUEVO LAYOUT: CONTENIDO PRINCIPAL Y BARRA LATERAL DE NOTICIAS      */
+/* NUEVO LAYOUT: CONTENIDO PRINCIPAL Y BARRA LATERAL DE NOTICIAS    */
 /* ****************************************************************** */
 .content-and-sidebar-wrapper {
     display: grid; /* Usar CSS Grid para las columnas */
@@ -170,7 +169,7 @@ h6 { font-size: 1rem; }    /* 16px */
 
 
 /* ****************************************************************** */
-/* MEDIA QUERIES GLOBALES (Para que todo se adapte)                   */
+/* MEDIA QUERIES GLOBALES (Para que todo se adapte)                  */
 /* ****************************************************************** */
 
 @media (max-width: 992px) { /* Tablets y pantallas medianas */
