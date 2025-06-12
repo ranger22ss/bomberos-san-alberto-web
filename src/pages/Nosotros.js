@@ -15,6 +15,8 @@ import SierraImage from '../assets/sierra.png';
 import CudrisImage from '../assets/cudris.png';
 import carlosImage from '../assets/monroy5.png';
 import AdrianaImage from '../assets/adriana.jpg';
+import VeraImage from '../assets/vera.jpg';
+import MoralesImage from '../assets/morales.jpg';
 
 const equipoCategorizado = {
     "Comandancia": [
@@ -86,7 +88,7 @@ const equipoCategorizado = {
         {
             nombre: "Sebastián Morales",
             cargo: "Cabo",
-            foto: "https://placehold.co/150x150/007bff/ffffff?text=Sebastian+M.", // Placeholder si no tienes la imagen
+            foto: MoralesImage,
             biografia: "Cabo activo con experiencia en manejo de máquina extintora. Se destaca por su liderazgo en emergencias y por su compromiso con la formación y disciplina del equipo.",
             rangoIcono: "🧑‍🚒"
         },
@@ -100,7 +102,7 @@ const equipoCategorizado = {
         {
             nombre: "Shayra Vera",
             cargo: "Bombera Operativa",
-            foto: "https://placehold.co/150x150/007bff/ffffff?text=Shayra+V.", // Placeholder si no tienes la imagen
+            foto: VeraImage,
             biografia: "Miembro activo del equipo. Participa con disposición en las actividades operativas y está en constante proceso de formación.",
             rangoIcono: "👩‍🚒"
         },
