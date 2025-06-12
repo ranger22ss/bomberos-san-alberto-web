@@ -110,12 +110,14 @@ const Contacto = () => {
                             </a>
                         </div>
                         <div className="info-item">
+                            {/* Ícono de Email */}
                             <div className="icon-circle"><i className="fas fa-envelope"></i></div>
                             <h3>Correos Electrónicos</h3>
                             <p>cuerpobomberossanalberto@gmail.com</p>
                             <p>cuerpobomberosvoluntariossanalberto@hotmail.com</p>
                         </div>
                         <div className="info-item">
+                            {/* Ícono de Facebook */}
                             <div className="icon-circle"><i className="fab fa-facebook-f"></i></div>
                             <h3>Síguenos en Facebook</h3>
                             <a href="https://www.facebook.com/profile.php?id=61563465837882" target="_blank" rel="noreferrer" className="facebook-button">
