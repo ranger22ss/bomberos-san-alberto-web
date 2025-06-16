@@ -117,7 +117,7 @@ const Contacto = () => {
                         </div>
                         <div className="info-item">
                             {/* Ícono de Facebook */}
-                            <div className="icon-circle">imagen: facebook<i className="fab fa-facebook-f"></i></div>
+                            <div className="icon-circle"><i className={Facebook}></i></div>
                             <h3>Síguenos en Facebook</h3>
                             <a href="https://www.facebook.com/profile.php?id=61563465837882" target="_blank" rel="noreferrer" className="facebook-button">
                                 <i className="fab fa-facebook-f"></i> Página de Facebook
