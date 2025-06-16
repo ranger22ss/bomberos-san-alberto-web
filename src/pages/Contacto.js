@@ -194,7 +194,7 @@ const Contacto = () => {
                         {/* Puedes reemplazar esto con un mapa interactivo de Google Maps */}
                         {/* Por ahora, es un placeholder visual */}
                         <img
-                            src="https://placehold.co/800x450/4CAF50/ffffff?text=Mapa+de+Ubicación+Aquí"
+                            src="https://maps.app.goo.gl/NXcTzpHV5Eztagbp8"
                             alt="Placeholder de Mapa"
                             className="map-image"
                         />
