@@ -194,7 +194,7 @@ const Contacto = () => {
                         {/* Puedes reemplazar esto con un mapa interactivo de Google Maps */}
                         {/* Por ahora, es un placeholder visual */}
                         <img
-                            src="https://maps.app.goo.gl/NXcTzpHV5Eztagbp8"
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d988.3269411298392!2d-73.39295922334827!3d7.7571472!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e67f48aa13e62c5%3A0xecc0260ed8729866!2sSede%20de%20bomberos%20San%20Alberto!5e0!3m2!1ses!2sco!4v1750092522204!5m2!1ses!2sco" 
                             alt="Placeholder de Mapa"
                             className="map-image"
                         />
