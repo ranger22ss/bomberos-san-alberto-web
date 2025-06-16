@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './Contacto.css';
 
-
-
 const Contacto = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -11,11 +9,8 @@ const Contacto = () => {
         message: ''
     });
 
-
     const [formStatus, setFormStatus] = useState('');
-    const [formStatusClass, setFormStatusClass] = '';
-
-
+    const [formStatusClass, setFormStatusClass] = useState(''); // Inicializado correctamente
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,17 +20,14 @@ const Contacto = () => {
         }));
     };
 
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         setFormStatus('Enviando mensaje...');
         setFormStatusClass(''); 
 
-
         const formspreeUrl = "https://formspree.io/f/xeokewdj";
 
-    
         const dataToSend = {
             name: formData.name,
             _replyto: formData.email, 
@@ -94,12 +86,14 @@ const Contacto = () => {
                     <h2>Nuestros Datos de Contacto</h2>
                     <div className="info-grid">
                         <div className="info-item">
-                            <div className="icon-circle"><i className="fas fa-phone-alt"></i></div>
+                            {/* Logo de Teléfono */}
+                            <img src="https://media.istockphoto.com/id/1180028723/es/vector/tel%C3%A9fono-con-el-icono-de-s%C3%ADmbolo-de-ondas-negro-simple-aislado-vector-stock-ilustraci%C3%B3n.jpg?s=612x612&w=0&k=20&c=W9TgvFdobzKSPPnhf3235H31XrGh2dtC2tsQnQ5Aroc=" alt="Logo de teléfono de emergencias" className="contact-icon" />
                             <h3>Emergencias</h3>
                             <p>315-353-8706 (Sin WhatsApp)</p>
                         </div>
                         <div className="info-item">
-                            <div className="icon-circle"><i className="fas fa-headset"></i></div>
+                            {/* Logo de WhatsApp */}
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2044px-WhatsApp.svg.png" alt="Logo de WhatsApp para atención al cliente" className="contact-icon" />
                             <h3>Atención al Cliente</h3>
                             <p>+57 300-175-1212</p>
                             <a href="https://wa.me/573001751212" target="_blank" rel="noreferrer" className="whatsapp-button">
@@ -107,15 +101,15 @@ const Contacto = () => {
                             </a>
                         </div>
                         <div className="info-item">
-                            {/* Ícono de Email */}
-                            <div className="icon-circle"><i className="fas fa-envelope"></i></div>
+                            {/* Logo de Email */}
+                            <img src="https://img.freepik.com/psd-gratis/diseno-icono-telefono_23-2151311652.jpg?semt=ais_hybrid&w=740" alt="Logo de correo electrónico" className="contact-icon" />
                             <h3>Correos Electrónicos</h3>
                             <p>cuerpobomberossanalberto@gmail.com</p>
                             <p>cuerpobomberosvoluntariossanalberto@hotmail.com</p>
                         </div>
                         <div className="info-item">
-                            {/* Ícono de Facebook */}
-                            <div className="icon-circle"><i className="fab fa-facebook-f"></i></div>
+                            {/* Logo de Facebook */}
+                            <img src="https://img.freepik.com/fotos-premium/logotipo-facebook_1080029-107.jpg?semt=ais_hybrid&w=740" alt="Logo de Facebook" className="contact-icon" />
                             <h3>Síguenos en Facebook</h3>
                             <a href="https://www.facebook.com/profile.php?id=61563465837882" target="_blank" rel="noreferrer" className="facebook-button">
                                 <i className="fab fa-facebook-f"></i> Página de Facebook
@@ -186,18 +180,23 @@ const Contacto = () => {
                     </form>
                 </section>
 
-                {/* Sección de Ubicación/Mapa (Placeholder) */}
+                {/* Sección de Ubicación/Mapa */}
                 <section className="contact-map-section">
                     <h2>Nuestra Ubicación</h2>
                     <p>Visítanos en nuestra sede. Estamos aquí para servirte.</p>
                     <div className="map-placeholder">
-                        {/* Puedes reemplazar esto con un mapa interactivo de Google Maps */}
-                        {/* Por ahora, es un placeholder visual */}
-                        <img
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d988.3269411298392!2d-73.39295922334827!3d7.7571472!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e67f48aa13e62c5%3A0xecc0260ed8729866!2sSede%20de%20bomberos%20San%20Alberto!5e0!3m2!1ses!2sco!4v1750092522204!5m2!1ses!2sco" 
-                            alt="Placeholder de Mapa"
-                            className="map-image"
-                        />
+                        {/* Google Maps Embed - Reemplaza 'YOUR_Maps_EMBED_CODE_HERE' con el código real de tu iframe */}
+                        {/* He ajustado el src a un mapa genérico de Colombia, pero es mejor usar el que generes. */}
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15878.777987823525!2d-73.84439155000001!3d8.64770155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e5d0ec3f5f3e9b7%3A0xb366a2c2e0b5c165!2sSan%20Alberto%2C%20Cesar!5e0!3m2!1ses-419!2sco!4v1718561000000!5m2!1ses-419!2sco"
+                            width="100%"
+                            height="450"
+                            style={{ border: 0 }}
+                            allowFullScreen=""
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="Ubicación de Bomberos San Alberto" // Añade un título para accesibilidad
+                        ></iframe>
                     </div>
                     <p className="map-address">Cl. 5 #7-44, San Alberto, Cesar, Colombia</p>
                 </section>

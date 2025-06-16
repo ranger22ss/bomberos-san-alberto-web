@@ -8,27 +8,27 @@
     width: 100%;
     margin: 0 auto;
     padding: 0;
-    min-height: calc(100vh - var(--header-height-desktop) - var(--footer-height-desktop));
+    /* Ajusta min-height si tienes un footer que también tiene altura variable */
+    min-height: calc(100vh - var(--header-height-desktop, 80px) - var(--footer-height-desktop, 100px)); 
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--page-background-color);
+    background-color: var(--page-background-color, #f0f2f5); /* Añadir fallback si no está definida */
 }
 
 .contact-hero {
     width: 100%;
-    background-color: var(--primary-dark-blue); /* Fondo oscuro del encabezado */
-    color: var(--text-color-light); /* Texto blanco */
-    padding: var(--spacing-xxl) var(--spacing-lg); /* Espaciado generoso */
+    background-color: var(--primary-dark-blue, #003366); /* Fondo oscuro del encabezado */
+    color: var(--text-color-light, #ffffff); /* Texto blanco */
+    padding: var(--spacing-xxl, 80px) var(--spacing-lg, 30px); /* Espaciado generoso */
     text-align: center;
-    /* Un degradado sutil o imagen de fondo puede ir aquí si se desea un toque más visual */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .contact-hero h1 {
     font-size: 3.5rem; /* Título principal grande */
-    margin-bottom: var(--spacing-md);
-    color: var(--text-color-light); /* Asegura que sea blanco, como en la imagen */
+    margin-bottom: var(--spacing-md, 15px);
+    color: var(--text-color-light, #ffffff); /* Asegura que sea blanco, como en la imagen */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra sutil para el texto */
 }
 
@@ -42,21 +42,21 @@
 .contact-main-content {
     width: 100%;
     max-width: 1200px; /* Ancho máximo para el contenido principal */
-    padding: var(--spacing-xxl) var(--spacing-lg);
+    padding: var(--spacing-xxl, 80px) var(--spacing-lg, 30px);
     display: grid;
-    gap: var(--spacing-xxl); /* Espacio generoso entre secciones */
+    gap: var(--spacing-xxl, 80px); /* Espacio generoso entre secciones */
     grid-template-columns: 1fr; /* Por defecto una columna */
-    background-color: var(--page-background-color);
+    background-color: var(--page-background-color, #f0f2f5);
 }
 
 /* Estilos de las secciones */
 .contact-info-section,
 .contact-form-section,
 .contact-map-section {
-    background-color: var(--white);
+    background-color: var(--white, #ffffff);
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    padding: var(--spacing-lg);
+    padding: var(--spacing-lg, 30px);
     text-align: center;
 }
 
@@ -64,25 +64,25 @@
 .contact-form-section h2,
 .contact-map-section h2 {
     font-size: 2rem;
-    color: var(--primary-dark-blue); /* Títulos de sección en azul oscuro */
-    margin-bottom: var(--spacing-xl);
+    color: var(--primary-dark-blue, #003366); /* Títulos de sección en azul oscuro */
+    margin-bottom: var(--spacing-xl, 40px);
 }
 
 .contact-info-section p {
-    color: var(--text-color-dark);
+    color: var(--text-color-dark, #333333);
 }
 
 /* GRID de información de contacto */
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas responsivas */
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-xl);
+    gap: var(--spacing-lg, 30px);
+    margin-top: var(--spacing-xl, 40px);
 }
 
 .info-item {
-    padding: var(--spacing-md);
-    background-color: var(--section-bg-dark); /* Fondo ligeramente diferente para cada item */
+    padding: var(--spacing-md, 15px);
+    background-color: var(--section-bg-dark, #f8f8f8); /* Fondo ligeramente diferente para cada item */
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     display: flex;
@@ -94,53 +94,71 @@
 
 .info-item h3 {
     font-size: 1.4rem;
-    color: var(--primary-color); /* Títulos de items en azul más suave */
-    margin-top: var(--spacing-md);
-    margin-bottom: var(--spacing-sm);
+    color: var(--primary-color, #3498db); /* Títulos de items en azul más suave */
+    margin-top: var(--spacing-md, 15px);
+    margin-bottom: var(--spacing-sm, 10px);
 }
 
 .info-item p {
     font-size: 1rem;
-    color: var(--text-color-dark);
-    margin-bottom: var(--spacing-sm);
+    color: var(--text-color-dark, #333333);
+    margin-bottom: var(--spacing-sm, 10px);
 }
 
-/* Estilos para los círculos de íconos (telefono, headset, email, facebook) */
-.icon-circle {
-    background-color: var(--secondary-color); /* Azul principal */
-    color: var(--white);
+/* ESTILOS PARA LOS NUEVOS LOGOS (IMAGENES) */
+.contact-icon {
+    width: 70px; /* Tamaño del logo */
+    height: 70px;
+    object-fit: contain; /* Asegura que la imagen se ajuste sin distorsionarse */
+    margin-bottom: var(--spacing-md, 15px);
+    /* Opcional: Si quieres que los logos se vean circulares */
+    /* border-radius: 50%; */ 
+    /* background-color: var(--secondary-color, #3498db); */ /* Fondo si el logo tiene transparencia */
+    /* padding: 5px; */ /* Espaciado interno si el fondo es visible */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-icon:hover {
+    transform: translateY(-3px); /* Efecto de elevación */
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Puedes eliminar o comentar la regla .icon-circle si ya no la usarás */
+/* .icon-circle {
+    background-color: var(--secondary-color, #3498db);
+    color: var(--white, #ffffff);
     border-radius: 50%;
-    width: 70px; /* Tamaño del círculo */
+    width: 70px;
     height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2.2rem; /* Tamaño del ícono dentro del círculo */
-    margin-bottom: var(--spacing-md);
+    font-size: 2.2rem;
+    margin-bottom: var(--spacing-md, 15px);
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
 
 .icon-circle:hover {
-    background-color: var(--primary-dark-blue); /* Azul más oscuro al pasar el ratón */
-    transform: translateY(-3px); /* Efecto de elevación */
+    background-color: var(--primary-dark-blue, #003366);
+    transform: translateY(-3px);
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
-}
+} */
 
 /* Estilos para los botones de WhatsApp y Facebook */
 .whatsapp-button, .facebook-button {
-    display: inline-flex; /* Para alinear ícono y texto */
+    display: inline-flex;
     align-items: center;
-    gap: var(--spacing-xs); /* Espacio entre ícono y texto */
+    gap: var(--spacing-xs, 8px);
     padding: 10px 20px;
-    border-radius: 25px; /* Bordes redondeados */
+    border-radius: 25px;
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
-    color: var(--white); /* Texto blanco */
+    color: var(--white, #ffffff);
     transition: all 0.3s ease;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    margin-top: var(--spacing-sm); /* Espacio sobre el botón */
+    margin-top: var(--spacing-sm, 10px);
 }
 
 .whatsapp-button {
@@ -164,7 +182,7 @@
 }
 
 .whatsapp-button i, .facebook-button i {
-    font-size: 1.2em; /* Tamaño del ícono dentro del botón */
+    font-size: 1.2em;
 }
 
 
@@ -172,7 +190,7 @@
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-md, 15px);
     max-width: 600px; /* Ancho máximo para el formulario */
     margin: 0 auto;
     text-align: left; /* Alinea etiquetas a la izquierda */
@@ -180,32 +198,32 @@
 
 .form-group label {
     display: block;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs, 8px);
     font-weight: 600;
-    color: var(--text-color-dark);
+    color: var(--text-color-dark, #333333);
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-color, #dddddd);
     border-radius: 8px;
     font-size: 1rem;
-    font-family: 'Open Sans', sans-serif; /* Asegura la fuente en los inputs */
+    font-family: 'Open Sans', sans-serif;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: var(--secondary-color);
+    border-color: var(--secondary-color, #3498db);
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
     outline: none;
 }
 
 .submit-button {
-    background-color: var(--accent-color); /* Naranja vibrante */
-    color: var(--white);
+    background-color: var(--accent-color, #e67e22); /* Naranja vibrante */
+    color: var(--white, #ffffff);
     padding: 12px 25px;
     border: none;
     border-radius: 25px;
@@ -214,11 +232,11 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    display: flex; /* Para centrar contenido del botón */
+    display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--spacing-sm);
-    margin-top: var(--spacing-md);
+    gap: var(--spacing-sm, 10px);
+    margin-top: var(--spacing-md, 15px);
 }
 
 .submit-button:hover {
@@ -228,12 +246,12 @@
 }
 
 .send-icon {
-    font-size: 1.2em; /* Tamaño del icono de envío */
+    font-size: 1.2em;
 }
 
 .form-message {
-    margin-top: var(--spacing-md);
-    padding: var(--spacing-sm);
+    margin-top: var(--spacing-md, 15px);
+    padding: var(--spacing-sm, 10px);
     border-radius: 8px;
     font-weight: 600;
     text-align: center;
@@ -258,34 +276,42 @@
 }
 
 .contact-map-section p {
-    color: var(--text-color-dark);
-    margin-bottom: var(--spacing-md);
+    color: var(--text-color-dark, #333333);
+    margin-bottom: var(--spacing-md, 15px);
 }
 
 .map-placeholder {
     width: 100%;
-    height: 450px; /* Altura fija para el placeholder del mapa */
-    background-color: var(--light-grey);
+    height: 450px; /* Altura fija para el contenedor del mapa */
+    background-color: var(--light-grey, #e9ecef);
     border-radius: 12px;
-    overflow: hidden; /* Asegura que la imagen no se desborde */
+    overflow: hidden; /* Asegura que el iframe no se desborde */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    display: flex;
+    display: flex; /* Para centrar el iframe si fuera necesario */
     justify-content: center;
     align-items: center;
 }
 
-.map-image {
+/* Asegura que el iframe ocupe todo el espacio del contenedor */
+.map-placeholder iframe {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cubre el contenedor manteniendo la proporción */
-    border-radius: 12px; /* Hereda el border-radius del contenedor */
+    border-radius: 12px; /* Aplica el mismo border-radius que el contenedor */
 }
+
+/* Puedes eliminar la regla .map-image ya que ahora usas un iframe */
+/* .map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+} */
 
 .map-address {
     font-weight: 600;
-    margin-top: var(--spacing-md);
+    margin-top: var(--spacing-md, 15px);
     font-size: 1.1rem;
-    color: var(--primary-color);
+    color: var(--primary-color, #3498db);
 }
 
 
@@ -295,11 +321,10 @@
 
 @media (min-width: 993px) { /* Desktop layout */
     .contact-main-content {
-        grid-template-columns: 1fr; /* Una columna en desktop */
-        /* Considera cambiar a grid-template-columns: 2fr 1fr; si quieres el formulario y el mapa lado a lado */
+        grid-template-columns: 1fr; 
     }
     .contact-form-section {
-        grid-column: 1 / -1; /* Ocupa todo el ancho si se usa una sola columna principal */
+        grid-column: 1 / -1; 
     }
 }
 
@@ -316,16 +341,16 @@
         font-size: 1.8rem;
     }
     .info-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Ajusta min-width para más columnas */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
     }
 }
 
 @media (max-width: 768px) { /* Móviles grandes y medianos */
     .contact-page {
-        padding: 0; /* Elimina padding horizontal global en móvil */
+        padding: 0;
     }
     .contact-hero {
-        padding: var(--spacing-xl) var(--spacing-md);
+        padding: var(--spacing-xl, 40px) var(--spacing-md, 15px);
     }
     .contact-hero h1 {
         font-size: 2.2rem;
@@ -334,39 +359,39 @@
         font-size: 1rem;
     }
     .contact-main-content {
-        padding: var(--spacing-xl) var(--spacing-md); /* Ajusta padding en móvil */
-        gap: var(--spacing-lg);
+        padding: var(--spacing-xl, 40px) var(--spacing-md, 15px);
+        gap: var(--spacing-lg, 30px);
     }
     .contact-info-section,
     .contact-form-section,
     .contact-map-section {
-        padding: var(--spacing-md);
+        padding: var(--spacing-md, 15px);
     }
     .contact-info-section h2,
     .contact-form-section h2,
     .contact-map-section h2 {
         font-size: 1.6rem;
-        margin-bottom: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg, 30px);
     }
     .info-grid {
-        grid-template-columns: 1fr; /* Una sola columna en móviles */
+        grid-template-columns: 1fr; 
     }
-    .icon-circle {
-        width: 60px; /* Reducir tamaño del círculo del icono */
+    /* Asegura que el nuevo .contact-icon se ajuste */
+    .contact-icon {
+        width: 60px; 
         height: 60px;
-        font-size: 2rem;
     }
     .whatsapp-button, .facebook-button, .submit-button {
-        width: 100%; /* Botones de ancho completo */
+        width: 100%; 
     }
     .map-placeholder {
-        height: 300px; /* Reducir altura del mapa */
+        height: 300px;
     }
 }
 
 @media (max-width: 480px) { /* Móviles pequeños */
     .contact-hero {
-        padding: var(--spacing-lg) var(--spacing-sm);
+        padding: var(--spacing-lg, 30px) var(--spacing-sm, 10px);
     }
     .contact-hero h1 {
         font-size: 1.8rem;
@@ -375,17 +400,17 @@
         font-size: 0.9rem;
     }
     .contact-main-content {
-        padding: var(--spacing-lg) var(--spacing-sm);
+        padding: var(--spacing-lg, 30px) var(--spacing-sm, 10px);
     }
     .contact-info-section h2,
     .contact-form-section h2,
     .contact-map-section h2 {
         font-size: 1.4rem;
     }
-    .icon-circle {
+    /* Asegura que el nuevo .contact-icon se ajuste */
+    .contact-icon {
         width: 50px;
         height: 50px;
-        font-size: 1.8rem;
     }
     .whatsapp-button, .facebook-button, .submit-button {
         padding: 10px 15px;
