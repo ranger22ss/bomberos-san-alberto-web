@@ -5,7 +5,7 @@ import './Noticias.css'; // ¡Importando el estilo externo como debe ser!
 
 // Importaciones de imágenes y videos (rutas relativas a 'src/components/')
 import Acompañamiento1 from '../pictures/Acompañamiento1.jpg';
-import Incendio1 from '../('../pictures/Incendio1.jpg'); // Corregido para asegurar la ruta correcta
+import Incendio1 from '../pictures/Incendio1.jpg';
 import Incendio4 from '../pictures/Incendio4.jpg';
 import capacitacion1 from '../pictures/Capacitacion1.jpg';
 import Incendio5 from '../pictures/Incendio5.jpg';
