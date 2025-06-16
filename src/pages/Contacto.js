@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-// Importa el archivo CSS que acabas de crear
-import './Contacto.css'; // Asegúrate de que la ruta sea correcta
+import './Contacto.css';
+import Facebook from '../Facebook-logo.png';
 
-// NOTA: Se asume que Font Awesome ha sido incluido en tu index.html
-// o configurado globalmente para que los íconos se muestren correctamente.
+
+
 
 const Contacto = () => {
-    // Estado para manejar los datos del formulario
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -14,11 +13,12 @@ const Contacto = () => {
         message: ''
     });
 
-    // Estado para manejar el estado del envío del formulario (éxito, error, cargando)
-    const [formStatus, setFormStatus] = useState('');
-    const [formStatusClass, setFormStatusClass] = useState('');
 
-    // Maneja los cambios en los inputs del formulario
+    const [formStatus, setFormStatus] = useState('');
+    const [formStatusClass, setFormStatusClass] = '';
+
+
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevData => ({
@@ -27,21 +27,20 @@ const Contacto = () => {
         }));
     };
 
-    // Maneja el envío del formulario
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         setFormStatus('Enviando mensaje...');
-        setFormStatusClass(''); // Limpia clases anteriores
+        setFormStatusClass(''); 
 
-        // URL de Formspree (¡REEMPLAZA YOUR_FORMSPREE_FORM_ID CON TU ID REAL!)
-        // La URL que tienes es: "https://formspree.io/f/xeokewdj"
+
         const formspreeUrl = "https://formspree.io/f/xeokewdj";
 
-        // Prepara los datos para Formspree
+    
         const dataToSend = {
             name: formData.name,
-            _replyto: formData.email, // Formspree usa _replyto para el email de respuesta
+            _replyto: formData.email, 
             subject: formData.subject,
             message: formData.message,
         };
@@ -97,12 +96,12 @@ const Contacto = () => {
                     <h2>Nuestros Datos de Contacto</h2>
                     <div className="info-grid">
                         <div className="info-item">
-                            <div className="icon-circle"><i className="fas fa-phone-alt"></i></div>
+                            <div className="icon-circle">☎<i className="fas fa-phone-alt"></i></div>
                             <h3>Emergencias</h3>
                             <p>315-353-8706 (Sin WhatsApp)</p>
                         </div>
                         <div className="info-item">
-                            <div className="icon-circle"><i className="fas fa-headset"></i></div>
+                            <div className="icon-circle">📲<i className="fas fa-headset"></i></div>
                             <h3>Atención al Cliente</h3>
                             <p>+57 300-175-1212</p>
                             <a href="https://wa.me/573001751212" target="_blank" rel="noreferrer" className="whatsapp-button">
@@ -111,14 +110,14 @@ const Contacto = () => {
                         </div>
                         <div className="info-item">
                             {/* Ícono de Email */}
-                            <div className="icon-circle"><i className="fas fa-envelope"></i></div>
+                            <div className="icon-circle">✉<i className="fas fa-envelope"></i></div>
                             <h3>Correos Electrónicos</h3>
                             <p>cuerpobomberossanalberto@gmail.com</p>
                             <p>cuerpobomberosvoluntariossanalberto@hotmail.com</p>
                         </div>
                         <div className="info-item">
                             {/* Ícono de Facebook */}
-                            <div className="icon-circle"><i className="fab fa-facebook-f"></i></div>
+                            <div className="icon-circle">imagen: facebook<i className="fab fa-facebook-f"></i></div>
                             <h3>Síguenos en Facebook</h3>
                             <a href="https://www.facebook.com/profile.php?id=61563465837882" target="_blank" rel="noreferrer" className="facebook-button">
                                 <i className="fab fa-facebook-f"></i> Página de Facebook
