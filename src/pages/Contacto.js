@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './Contacto.css';
-import Facebook from '../Facebook-logo.png';
-
 
 
 
@@ -96,12 +94,12 @@ const Contacto = () => {
                     <h2>Nuestros Datos de Contacto</h2>
                     <div className="info-grid">
                         <div className="info-item">
-                            <div className="icon-circle">☎<i className="fas fa-phone-alt"></i></div>
+                            <div className="icon-circle"><i className="fas fa-phone-alt"></i></div>
                             <h3>Emergencias</h3>
                             <p>315-353-8706 (Sin WhatsApp)</p>
                         </div>
                         <div className="info-item">
-                            <div className="icon-circle">📲<i className="fas fa-headset"></i></div>
+                            <div className="icon-circle"><i className="fas fa-headset"></i></div>
                             <h3>Atención al Cliente</h3>
                             <p>+57 300-175-1212</p>
                             <a href="https://wa.me/573001751212" target="_blank" rel="noreferrer" className="whatsapp-button">
@@ -110,14 +108,14 @@ const Contacto = () => {
                         </div>
                         <div className="info-item">
                             {/* Ícono de Email */}
-                            <div className="icon-circle">✉<i className="fas fa-envelope"></i></div>
+                            <div className="icon-circle"><i className="fas fa-envelope"></i></div>
                             <h3>Correos Electrónicos</h3>
                             <p>cuerpobomberossanalberto@gmail.com</p>
                             <p>cuerpobomberosvoluntariossanalberto@hotmail.com</p>
                         </div>
                         <div className="info-item">
                             {/* Ícono de Facebook */}
-                            <div className="icon-circle"><i className={Facebook}></i></div>
+                            <div className="icon-circle"><i className="fab fa-facebook-f"></i></div>
                             <h3>Síguenos en Facebook</h3>
                             <a href="https://www.facebook.com/profile.php?id=61563465837882" target="_blank" rel="noreferrer" className="facebook-button">
                                 <i className="fab fa-facebook-f"></i> Página de Facebook
