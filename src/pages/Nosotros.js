@@ -19,6 +19,7 @@ import VeraImage from '../assets/vera.jpg';
 import MoralesImage from '../assets/morales.jpg';
 import GermanImage from '../assets/german.jpg';
 import JorgeImage from '../assets/jorge.jpg';
+import NavasImage from '../assets/navas.jpg';
 
 const equipoCategorizado = {
     "Comandancia": [
@@ -83,7 +84,7 @@ const equipoCategorizado = {
         {
             nombre: "Cristian Navas",
             cargo: "Bombero Operativo",
-            foto: "https://placehold.co/150x150/007bff/ffffff?text=Cristian+N.", // Placeholder si no tienes la imagen
+            foto: NavasImage,
             biografia: "Bombero capacitado y conductor habilitado para manejar máquina extintora. Cuenta con sólida experiencia en emergencias, destacándose por su responsabilidad y precisión al momento de conducir bajo presión.",
             rangoIcono: "🧑‍🚒"
         },
