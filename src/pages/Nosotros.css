@@ -51,7 +51,8 @@ body.no-scroll {
     justify-content: center;
     align-items: center;
     border-radius: 12px; /* Bordes redondeados */
-    margin-top: var(--spacing-lg, 24px); /* Espacio superior */
+    /* Se elimina el margin-top para quitar el exceso de espacio superior */
+    /* margin-top: var(--spacing-lg, 24px); */
 }
 
 .nosotros-h1 {
