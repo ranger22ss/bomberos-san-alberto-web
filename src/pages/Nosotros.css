@@ -1,129 +1,107 @@
-/* 1. Importación de fuentes (Si usas Google Fonts) */
+/* Importaciones y variables (pueden venir de index.css si está configurado globalmente) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
-/* Variables CSS (Deberían estar en index.css idealmente, pero las pongo aquí para que las tengas a mano) */
-/* Si ya tienes estas variables en index.css, ELIMINA esta sección :root de aquí para evitar duplicados. */
-:root {
-    /* Colores primarios y de acento (Ajustados para consistencia con tu paleta de index.css) */
-    --primary-dark-blue: #0b1f3a;
-    --primary-color: #2c3e50; /* Azul oscuro */
-    --secondary-color: #3498db; /* Azul vibrante */
-    --accent-color: #e67e22; /* Naranja/ámbar */
-    --text-color-light: #f0f0f0; /* Blanco */
-    --text-color-dark: #34495e; /* Azul oscuro para texto general */
-    --gold-accent: #ffd700;
-    --white: #ffffff;
-    --light-grey: #bdc3c7; /* Gris claro */
-    --border-color: #dee2e6; /* Color de borde para tablas y cajas */
-    --page-background-color: #f4f7f9; /* Fondo claro general */
-
-    /* Espaciado */
-    --spacing-xs: 4px;
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 24px;
-    --spacing-xl: 40px;
-    --spacing-xxl: 60px;
-
-    /* Sombras */
-    --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --shadow-medium: 0 8px 16px rgba(0, 0, 0, 0.15);
-
-    /* Tamaños de fuente */
-    --font-size-base: 1rem; /* 16px por defecto */
-    --font-size-md: 1.125rem; /* Medio */
-    --font-size-lg: 1.25rem; /* Grande */
-    --font-size-xl: 2rem; /* Títulos grandes */
-    --font-size-xxl: 2.5rem; /* Títulos muy grandes */
-    --font-size-hero: 3.5rem; /* Títulos de héroe */
+/*
+ * NUEVO WRAPPER DE PÁGINA
+ * Este es el cambio principal. Este contenedor aísla el layout de la página "Nosotros"
+ * del resto de la web, garantizando que el scroll funcione correctamente.
+ */
+.nosotros-page-wrapper {
+    width: 100%;
+    /* Añadimos padding superior para compensar la altura del header fijo */
+    /* Estas variables deben estar definidas en tu index.css */
+    padding-top: var(--header-height-desktop, 125px); 
 }
 
-/* Estilos globales para el body cuando el modal está abierto (no relacionados con el layout de página) */
+@media (max-width: 992px) {
+    .nosotros-page-wrapper {
+        padding-top: var(--header-height-mobile, 90px);
+    }
+}
+/* Fin del nuevo wrapper */
+
+
+/* Estilos globales para el body cuando el modal está abierto */
 body.no-scroll {
     overflow: hidden;
 }
 
 /* Contenedor principal de la página Nosotros */
 .nosotros-main-container {
-    background-color: var(--page-background-color); /* Fondo de la página */
-    color: var(--text-color-dark);
-    font-family: 'Open Sans', sans-serif; /* Usando Open Sans para el cuerpo del texto */
+    background-color: var(--page-background-color, #f4f7f9);
+    color: var(--text-color-dark, #34495e);
+    font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
-    /* QUITAMOS el padding y max-width de aquí, ya que el wrapper del acordeón y el header lo manejarán */
-    /* El main-content-area de index.css ya le da un padding general a toda la columna central */
+    max-width: 1400px; /* Ancho máximo consistente con el resto del sitio */
+    margin: 0 auto; /* Centrar el contenido */
+    padding: 0 var(--spacing-md, 16px); /* Padding horizontal */
 }
 
 /* Sección Hero (cabecera) */
 .nosotros-hero-section {
-    background-color: var(--primary-color); /* Fondo oscuro consistente con portafolio */
-    color: var(--white);
-    padding: 50px 20px; /* Padding grande como en Portafolio */
+    background-color: var(--primary-color, #2c3e50);
+    color: var(--white, #ffffff);
+    padding: 50px 20px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px; /* Margen inferior */
+    margin-bottom: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* NO margin: 0 auto; en el hero, debe ocupar el ancho completo del main-content-area */
-}
-
-/* Wrapper para el texto del encabezado, para controlar su ancho y centrarlo */
-.header-text-wrapper {
-    max-width: 900px; /* Ancho máximo para el texto del encabezado, similar a Portafolio */
-    margin: 0 auto; /* Centrar el texto dentro del header */
-    padding: 0 var(--spacing-md); /* Pequeño padding horizontal para que el texto no se pegue en móviles */
+    border-radius: 12px; /* Bordes redondeados */
+    margin-top: var(--spacing-lg, 24px); /* Espacio superior */
 }
 
 .nosotros-h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: var(--font-size-hero); /* Tamaño grande como en Portafolio */
+    font-size: var(--font-size-hero, 3.5rem);
     font-weight: 800;
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-md, 16px);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-    color: var(--white); /* Asegura que el título sea blanco */
+    color: var(--white, #ffffff);
 }
 
 .nosotros-hero-subtitle {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-lg, 1.25rem);
     line-height: 1.5;
     max-width: 900px;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-md, 16px);
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    color: var(--white); /* Asegura que el subtítulo sea blanco */
+    color: var(--white, #ffffff);
 }
 
 /* Contenedor para todas las secciones del acordeón */
 .accordion-sections-wrapper {
-    max-width: 1200px; /* Ancho máximo para el contenido principal, como en Portafolio */
-    margin: 0 auto var(--spacing-xl) auto; /* Centrar y añadir margen inferior */
-    padding: var(--spacing-md); /* Padding interno para que las tarjetas no se peguen a los bordes */
+    max-width: 1200px;
+    margin: 0 auto var(--spacing-xl, 40px) auto;
+    padding: 0; /* El padding ya lo gestiona nosotros-main-container */
     box-sizing: border-box;
 }
 
 /* Estilo para cada item del acordeón */
 .accordion-item {
-    background-color: var(--white);
-    border: 1px solid var(--border-color);
-    border-radius: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-    overflow: hidden; /* Importante para la transición de altura */
-    box-shadow: var(--shadow-light);
+    background-color: var(--white, #ffffff);
+    border: 1px solid var(--border-color, #dee2e6);
+    border-radius: var(--spacing-md, 16px);
+    margin-bottom: var(--spacing-md, 16px);
+    overflow: hidden;
+    box-shadow: var(--shadow-light, 0 4px 8px rgba(0, 0, 0, 0.1));
     transition: box-shadow 0.3s ease;
 }
 
 .accordion-item:hover {
-    box-shadow: var(--shadow-medium);
+    box-shadow: var(--shadow-medium, 0 8px 16px rgba(0, 0, 0, 0.15));
 }
 
 /* Estilo para el encabezado del acordeón (el botón clickeable) */
 .accordion-header {
-    background-color: var(--primary-color); /* Fondo oscuro para el encabezado del acordeón */
-    color: var(--white);
-    padding: var(--spacing-lg) var(--spacing-xl); /* Padding generoso */
+    background-color: var(--primary-color, #2c3e50);
+    color: var(--white, #ffffff);
+    padding: var(--spacing-lg, 24px) var(--spacing-xl, 40px);
     font-family: 'Montserrat', sans-serif;
-    font-size: var(--font-size-xl); /* Título grande */
+    font-size: var(--font-size-xl, 2rem);
     font-weight: 600;
     width: 100%;
     text-align: left;
@@ -136,138 +114,91 @@ body.no-scroll {
 }
 
 .accordion-header:hover, .accordion-header.active {
-    background-color: var(--primary-dark-blue); /* Color más oscuro al pasar el mouse o activo */
+    background-color: var(--primary-dark-blue, #0b1f3a);
 }
 
 .accordion-header i {
-    font-size: 1.5em; /* Tamaño del icono de la flecha */
+    font-size: 1.5em;
     transition: transform 0.3s ease;
 }
 
 .accordion-header i.rotate {
-    transform: rotate(180deg); /* Gira la flecha cuando está expandido */
+    transform: rotate(180deg);
 }
 
 /* Estilo para el contenido del acordeón */
 .accordion-content {
-    background-color: var(--page-background-color); /* Fondo claro para el contenido */
-    padding: 0 var(--spacing-xl); /* Padding horizontal */
-    max-height: 0; /* Inicialmente oculto */
+    background-color: var(--page-background-color, #f4f7f9);
+    padding: 0 var(--spacing-xl, 40px);
+    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-out, padding 0.5s ease-out; /* Transición suave */
+    transition: max-height 0.7s ease-out, padding 0.7s ease-out; /* Transición más suave */
 }
 
 .accordion-content.expanded {
-    max-height: 2000px; /* Suficientemente grande para contener el contenido, ajustar si es necesario */
-    padding: var(--spacing-xl); /* Padding cuando está expandido */
+    max-height: 5000px; /* Aumentado para contenido muy largo */
+    padding: var(--spacing-xl, 40px);
 }
 
-/* --- Ajustes para contenido existente dentro del acordeón --- */
+/* --- Contenido específico dentro del acordeón --- */
 
-/* Sección Historia (dentro del acordeón) */
 .nosotros-historia-paragraph {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-base, 1rem);
     line-height: 1.7;
-    color: var(--text-color-dark); /* Color oscuro para el texto */
-    margin-bottom: var(--spacing-md);
+    color: var(--text-color-dark, #34495e);
+    margin-bottom: var(--spacing-md, 16px);
     text-align: justify;
 }
 
-/* Sección Misión, Visión, Valores (dentro del acordeón) */
 .nosotros-mvv-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-lg);
-    margin: var(--spacing-md) auto; /* Margen dentro del contenido del acordeón */
+    gap: var(--spacing-lg, 24px);
+    margin: var(--spacing-md, 16px) auto;
 }
 
 .nosotros-mvv-card {
-    background-color: var(--white);
-    padding: var(--spacing-lg);
-    border-radius: var(--spacing-md);
-    box-shadow: var(--shadow-light);
+    background-color: var(--white, #ffffff);
+    padding: var(--spacing-lg, 24px);
+    border-radius: var(--spacing-md, 16px);
+    box-shadow: var(--shadow-light, 0 4px 8px rgba(0, 0, 0, 0.1));
     border-top: 4px solid;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
-    min-height: 200px; /* Para que las tarjetas tengan una altura mínima */
+    min-height: 200px;
 }
-
-.nosotros-mvv-mission { border-top-color: var(--primary-color); }
-.nosotros-mvv-vision { border-top-color: var(--accent-color); }
-.nosotros-mvv-values { border-top-color: var(--secondary-color); } /* Ajuste de color */
+.nosotros-mvv-mission { border-top-color: var(--primary-color, #2c3e50); }
+.nosotros-mvv-vision { border-top-color: var(--accent-color, #e67e22); }
+.nosotros-mvv-values { border-top-color: var(--secondary-color, #3498db); }
 
 .nosotros-mvv-title {
-    font-size: var(--font-size-lg); /* Ajuste el tamaño del título de MVV */
+    font-size: var(--font-size-lg, 1.25rem);
     font-weight: 700;
-    margin-bottom: var(--spacing-md);
-    color: var(--primary-dark-blue); /* Un azul más oscuro para los títulos de MVV */
+    margin-bottom: var(--spacing-md, 16px);
+    color: var(--primary-dark-blue, #0b1f3a);
 }
 
-.nosotros-mvv-text {
-    font-size: var(--font-size-base);
-    color: var(--text-color-dark);
+.nosotros-mvv-text, .nosotros-mvv-list {
+    font-size: var(--font-size-base, 1rem);
+    color: var(--text-color-dark, #34495e);
     line-height: 1.6;
 }
+.nosotros-mvv-list { list-style: none; padding-left: 0; text-align: left; }
+.nosotros-mvv-list li { margin-bottom: var(--spacing-xs, 4px); position: relative; padding-left: var(--spacing-lg, 24px); }
+.nosotros-mvv-list li::before { content: '—'; position: absolute; left: 0; color: var(--secondary-color, #3498db); font-weight: bold; }
+.nosotros-mvv-value-title { font-weight: 600; color: var(--primary-dark-blue, #0b1f3a); }
 
-.nosotros-mvv-list {
-    list-style: none;
-    padding-left: 0;
-    text-align: left;
-    font-size: var(--font-size-base);
-    color: var(--text-color-dark);
-}
-
-.nosotros-mvv-list li {
-    margin-bottom: var(--spacing-xs);
-    position: relative;
-    padding-left: var(--spacing-lg);
-}
-
-.nosotros-mvv-list li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--secondary-color); /* Color de viñeta */
-    font-weight: bold;
-}
-
-.nosotros-mvv-value-title {
-    font-weight: 600;
-    color: var(--primary-dark-blue);
-}
-
-
-/* Sección Talento Humano (antes Nuestro Equipo, dentro del acordeón) */
-.nuestro-equipo-section {
-    /* Eliminamos padding/margin de aquí, ya que .accordion-content lo manejará */
-    background-color: transparent;
-    box-shadow: none;
-}
-
-.nuestro-equipo-title {
-    /* Título del equipo, lo quitamos de aqui y lo ponemos en el header del acordeon */
-    display: none; /* Lo ocultamos */
-}
-
-.equipo-categorias {
-    margin: var(--spacing-md) auto;
-    max-width: 900px; /* Ancho máximo para la cuadrícula del equipo dentro del acordeón */
-}
-
-.equipo-categoria-container {
-    margin-bottom: var(--spacing-xl);
-}
-
+.equipo-categorias { margin: var(--spacing-md, 16px) auto; max-width: 900px; }
+.equipo-categoria-container { margin-bottom: var(--spacing-xl, 40px); }
 .equipo-categoria-title {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-xl, 2rem);
     font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-lg);
+    color: var(--primary-color, #2c3e50);
+    margin-bottom: var(--spacing-lg, 24px);
     position: relative;
     display: inline-block;
-    padding-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm, 8px);
 }
-
 .equipo-categoria-title::after {
     content: '';
     position: absolute;
@@ -276,436 +207,111 @@ body.no-scroll {
     bottom: 0;
     width: 60px;
     height: 3px;
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color, #3498db);
     border-radius: 2px;
 }
 
 .equipo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ajuste para que se vea bien */
-    gap: var(--spacing-md);
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-md, 16px);
     max-width: 100%;
     margin: 0 auto;
 }
 
 .miembro-card {
-    background-color: var(--white);
-    padding: var(--spacing-md);
-    border-radius: var(--spacing-md);
-    box-shadow: var(--shadow-light);
+    background-color: var(--white, #ffffff);
+    padding: var(--spacing-md, 16px);
+    border-radius: var(--spacing-md, 16px);
+    box-shadow: var(--shadow-light, 0 4px 8px rgba(0, 0, 0, 0.1));
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
+.miembro-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium, 0 8px 16px rgba(0, 0, 0, 0.15)); }
+.miembro-foto-container { position: relative; width: 100px; height: 100px; margin: 0 auto var(--spacing-sm, 8px) auto; }
+.miembro-foto { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-color, #2c3e50); }
+.miembro-rango-icon { position: absolute; bottom: 0; right: 0; background-color: var(--secondary-color, #3498db); border-radius: 50%; padding: 2px 5px; font-size: 0.9em; line-height: 1; color: var(--white, #ffffff); box-shadow: var(--shadow-light, 0 4px 8px rgba(0, 0, 0, 0.1)); }
+.miembro-nombre { font-size: var(--font-size-md, 1.125rem); font-weight: 600; color: var(--primary-dark-blue, #0b1f3a); margin-bottom: var(--spacing-xs, 4px); }
+.miembro-cargo { font-size: var(--font-size-base, 1rem); color: var(--text-color-dark, #34495e); }
 
-.miembro-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-medium);
-}
+/* Modal Styles */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(5px); }
+.modal-content { background-color: var(--white, #ffffff); padding: var(--spacing-xl, 40px); border-radius: var(--spacing-md, 16px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 500px; width: 90%; position: relative; animation: fadeIn 0.3s ease-out; }
+.modal-close-button { position: absolute; top: var(--spacing-md, 16px); right: var(--spacing-md, 16px); background: none; border: none; font-size: var(--font-size-xl, 2rem); color: var(--text-color-dark, #34495e); cursor: pointer; transition: color 0.3s ease; }
+.modal-close-button:hover { color: var(--primary-dark-blue, #0b1f3a); }
+.modal-header { text-align: center; margin-bottom: var(--spacing-lg, 24px); }
+.modal-foto { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: var(--spacing-md, 16px); border: 4px solid var(--secondary-color, #3498db); }
+.modal-nombre { font-size: var(--font-size-xl, 2rem); font-weight: 700; color: var(--primary-dark-blue, #0b1f3a); margin-bottom: var(--spacing-sm, 8px); }
+.modal-cargo { font-size: var(--font-size-lg, 1.25rem); color: var(--text-color-dark, #34495e); }
+.modal-biography { font-size: var(--font-size-base, 1rem); color: var(--text-color-dark, #34495e); line-height: 1.7; text-align: justify; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-.miembro-foto-container {
-    position: relative;
-    width: 100px; /* Tamaño fijo para la foto */
-    height: 100px;
-    margin: 0 auto var(--spacing-sm) auto;
-}
+/* Vehiculos & Himno */
+.vehiculos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg, 24px); margin-top: var(--spacing-md, 16px); padding: var(--spacing-md, 16px) 0; }
+.vehiculo-card { background-color: var(--white, #ffffff); border-radius: var(--spacing-md, 16px); box-shadow: var(--shadow-light, 0 4px 8px rgba(0, 0, 0, 0.1)); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; text-align: center; }
+.vehiculo-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium, 0 8px 16px rgba(0, 0, 0, 0.15)); }
+.vehiculo-card img { width: 100%; height: 200px; object-fit: cover; display: block; border-bottom: 3px solid var(--secondary-color, #3498db); }
+.vehiculo-card h3 { font-family: 'Montserrat', sans-serif; font-size: var(--font-size-lg, 1.25rem); color: var(--primary-dark-blue, #0b1f3a); margin: var(--spacing-md, 16px) 0 var(--spacing-sm, 8px) 0; padding: 0 var(--spacing-md, 16px); }
+.vehiculo-card p { font-size: var(--font-size-base, 1rem); color: var(--text-color-dark, #34495e); padding: 0 var(--spacing-md, 16px) var(--spacing-md, 16px) var(--spacing-md, 16px); text-align: justify; }
 
-.miembro-foto {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%; /* Imágenes circulares */
-    object-fit: cover;
-    border: 3px solid var(--primary-color); /* Borde alrededor de la imagen */
-}
+.himno-content { background-color: var(--white, #ffffff); padding: var(--spacing-xl, 40px); border-radius: var(--spacing-md, 16px); box-shadow: var(--shadow-light, 0 4px 8px rgba(0, 0, 0, 0.1)); margin-top: var(--spacing-md, 16px); text-align: center; }
+.himno-content h3 { font-family: 'Montserrat', sans-serif; font-size: var(--font-size-xl, 2rem); color: var(--primary-color, #2c3e50); margin-bottom: var(--spacing-lg, 24px); }
+.himno-content p { font-size: var(--font-size-md, 1.125rem); line-height: 2; color: var(--text-color-dark, #34495e); margin-bottom: var(--spacing-md, 16px); white-space: pre-wrap; }
+.himno-link { margin-top: var(--spacing-lg, 24px); font-size: var(--font-size-base, 1rem); font-weight: 600; }
+.himno-link a { color: var(--secondary-color, #3498db); text-decoration: none; }
+.himno-link a:hover { text-decoration: underline; color: var(--primary-dark-blue, #0b1f3a); }
 
-.miembro-rango-icon {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background-color: var(--secondary-color);
-    border-radius: 50%;
-    padding: 2px 5px;
-    font-size: 0.9em;
-    line-height: 1;
-    color: var(--white);
-    box-shadow: var(--shadow-light);
-}
-
-.miembro-nombre {
-    font-size: var(--font-size-md);
-    font-weight: 600;
-    color: var(--primary-dark-blue);
-    margin-bottom: var(--spacing-xs);
-}
-
-.miembro-cargo {
-    font-size: var(--font-size-base);
-    color: var(--text-color-dark);
-}
-
-/* Estilos del Modal (Mantenidos) */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Asegura que esté por encima de todo */
-    backdrop-filter: blur(5px);
-}
-
-.modal-content {
-    background-color: var(--white);
-    padding: var(--spacing-xl);
-    border-radius: var(--spacing-md);
-    box-shadow: var(--shadow-large);
-    max-width: 500px;
-    width: 90%;
-    position: relative;
-    animation: fadeIn 0.3s ease-out;
-}
-
-.modal-close-button {
-    position: absolute;
-    top: var(--spacing-md);
-    right: var(--spacing-md);
-    background: none;
-    border: none;
-    font-size: var(--font-size-xl);
-    color: var(--text-color-secondary);
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.modal-close-button:hover {
-    color: var(--primary-dark-blue);
-}
-
-.modal-header {
-    text-align: center;
-    margin-bottom: var(--spacing-lg);
-}
-
-.modal-foto {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: var(--spacing-md);
-    border: 4px solid var(--secondary-color);
-}
-
-.modal-nombre {
-    font-size: var(--font-size-xl);
-    font-weight: 700;
-    color: var(--primary-dark-blue);
-    margin-bottom: var(--spacing-sm);
-}
-
-.modal-cargo {
-    font-size: var(--font-size-lg);
-    color: var(--text-color-secondary);
-}
-
-.modal-biography {
-    font-size: var(--font-size-base);
-    color: var(--text-color-dark);
-    line-height: 1.7;
-    text-align: justify;
-}
-
-/* Animación para el modal */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Nuevos estilos para la sección de Vehículos */
-.vehiculos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-lg);
-    margin-top: var(--spacing-md);
-    padding: var(--spacing-md) 0;
-}
-
-.vehiculo-card {
-    background-color: var(--white);
-    border-radius: var(--spacing-md);
-    box-shadow: var(--shadow-light);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center;
-}
-
-.vehiculo-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-medium);
-}
-
-.vehiculo-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-    border-bottom: 3px solid var(--secondary-color);
-}
-
-.vehiculo-card h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: var(--font-size-lg);
-    color: var(--primary-dark-blue);
-    margin: var(--spacing-md) 0 var(--spacing-sm) 0;
-    padding: 0 var(--spacing-md);
-}
-
-.vehiculo-card p {
-    font-size: var(--font-size-base);
-    color: var(--text-color-dark);
-    padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
-    text-align: justify;
-}
-
-/* Nuevos estilos para la sección del Himno */
-.himno-content {
-    background-color: var(--white);
-    padding: var(--spacing-xl);
-    border-radius: var(--spacing-md);
-    box-shadow: var(--shadow-light);
-    margin-top: var(--spacing-md);
-    text-align: center; /* Centrar el texto del himno */
-}
-
-.himno-content h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: var(--font-size-xl);
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-lg);
-}
-
-.himno-content p {
-    font-size: var(--font-size-md);
-    line-height: 2; /* Mayor interlineado para la lectura del himno */
-    color: var(--text-color-dark);
-    margin-bottom: var(--spacing-md);
-    white-space: pre-wrap; /* Mantiene saltos de línea del HTML */
-}
-
-.himno-link {
-    margin-top: var(--spacing-lg);
-    font-size: var(--font-size-base);
-    font-weight: 600;
-}
-
-.himno-link a {
-    color: var(--secondary-color);
-    text-decoration: none;
-}
-
-.himno-link a:hover {
-    text-decoration: underline;
-    color: var(--primary-dark-blue);
-}
-
-
-/* Sección de Contacto (Fuera del acordeón, mantenida) */
-.nosotros-contacto-section {
-    padding: var(--spacing-xl) var(--spacing-md);
-    text-align: center;
-    background-color: var(--secondary-color); /* Fondo azul para el call to action */
-    color: var(--white);
-    margin-top: var(--spacing-xl);
-    border-radius: var(--spacing-md);
-    box-shadow: var(--shadow-medium);
-    max-width: 1200px; /* Consistente con el ancho del acordeón */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.nosotros-contacto-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: var(--font-size-xxl);
-    color: var(--white);
-    margin-bottom: var(--spacing-md);
-}
-
-.nosotros-contacto-card {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.nosotros-contacto-text {
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--spacing-lg);
-    line-height: 1.5;
-}
-
-.nosotros-contacto-button {
-    background-color: var(--accent-color); /* Botón de acento naranja */
-    color: var(--white);
-    padding: var(--spacing-md) var(--spacing-lg);
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: var(--font-size-md);
-    font-weight: 700;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: inline-block; /* Para que el padding y margin funcionen */
-    margin-bottom: var(--spacing-lg);
-}
-
-.nosotros-contacto-button:hover {
-    background-color: #cf6811; /* Naranja más oscuro al pasar el mouse */
-    transform: translateY(-2px);
-}
-
-.nosotros-contacto-social-text {
-    font-size: var(--font-size-base);
-    opacity: 0.9;
-}
-
+/* Sección de Contacto */
+.nosotros-contacto-section { padding: var(--spacing-xl, 40px) var(--spacing-md, 16px); text-align: center; background-color: var(--secondary-color, #3498db); color: var(--white, #ffffff); margin-top: var(--spacing-xl, 40px); border-radius: var(--spacing-md, 16px); box-shadow: var(--shadow-medium, 0 8px 16px rgba(0, 0, 0, 0.15)); max-width: 1200px; margin-left: auto; margin-right: auto; margin-bottom: var(--spacing-xl, 40px); }
+.nosotros-contacto-title { font-family: 'Montserrat', sans-serif; font-size: var(--font-size-xxl, 2.5rem); color: var(--white, #ffffff); margin-bottom: var(--spacing-md, 16px); }
+.nosotros-contacto-card { max-width: 800px; margin: 0 auto; }
+.nosotros-contacto-text { font-size: var(--font-size-lg, 1.25rem); margin-bottom: var(--spacing-lg, 24px); line-height: 1.5; }
+.nosotros-contacto-button { background-color: var(--accent-color, #e67e22); color: var(--white, #ffffff); padding: var(--spacing-md, 16px) var(--spacing-lg, 24px); border-radius: 8px; text-decoration: none; font-size: var(--font-size-md, 1.125rem); font-weight: 700; transition: background-color 0.3s ease, transform 0.2s ease; display: inline-block; margin-bottom: var(--spacing-lg, 24px); }
+.nosotros-contacto-button:hover { background-color: #cf6811; transform: translateY(-2px); }
+.nosotros-contacto-social-text { font-size: var(--font-size-base, 1rem); opacity: 0.9; }
 
 /* Responsive Design */
 @media (max-width: 992px) {
-    .nosotros-hero-section {
-        padding: 40px 15px;
-        height: 250px;
-    }
-    .nosotros-h1 {
-        font-size: 3em;
-    }
-    .nosotros-hero-subtitle {
-        font-size: 1.1em;
-    }
-    .header-text-wrapper {
-        max-width: 800px;
-    }
-    .accordion-header {
-        font-size: 1.5em;
-        padding: var(--spacing-md);
-    }
-    .accordion-content.expanded {
-        padding: var(--spacing-md);
-    }
-    .nosotros-mvv-card {
-        min-height: auto; /* Dejar que la altura se ajuste en pantallas más pequeñas */
-    }
-    .gallery-grid { /* Aunque se eliminó la sección principal, las reglas específicas no deberían causar daño */
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-    .vehiculos-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
-    .equipo-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    }
-    .miembro-foto-container {
-        width: 80px;
-        height: 80px;
-    }
-    .miembro-foto {
-        border-width: 2px;
-    }
-    .modal-content {
-        max-width: 450px;
-    }
+    .nosotros-h1 { font-size: 3em; }
+    .nosotros-hero-subtitle { font-size: 1.1em; }
+    .accordion-header { font-size: 1.5em; padding: var(--spacing-md, 16px); }
+    .accordion-content.expanded { padding: var(--spacing-md, 16px); }
+    .nosotros-mvv-card { min-height: auto; }
+    .vehiculos-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .equipo-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+    .miembro-foto-container { width: 80px; height: 80px; }
+    .miembro-foto { border-width: 2px; }
+    .modal-content { max-width: 450px; }
 }
 
 @media (max-width: 768px) {
-    .nosotros-hero-section {
-        height: 200px;
-    }
-    .nosotros-h1 {
-        font-size: 2.5em;
-    }
-    .nosotros-hero-subtitle {
-        font-size: 1em;
-    }
-    .accordion-header {
-        font-size: 1.3em;
-        padding: var(--spacing-sm) var(--spacing-md);
-    }
-    .accordion-content.expanded {
-        padding: var(--spacing-sm);
-    }
-    .nosotros-mvv-grid {
-        grid-template-columns: 1fr; /* Una columna para MVV en móviles */
-    }
-    .gallery-grid { /* Aunque se eliminó la sección principal, las reglas específicas no deberían causar daño */
-        grid-template-columns: 1fr; /* Una columna para la galería en móviles */
-    }
-    .vehiculos-grid {
-        grid-template-columns: 1fr; /* Una columna para vehículos en móviles */
-    }
-    .equipo-grid {
-        grid-template-columns: repeat(2, 1fr); /* Dos columnas en móviles */
-    }
-    .modal-content {
-        max-width: 90%;
-        padding: var(--spacing-md);
-    }
-    .modal-foto {
-        width: 100px;
-        height: 100px;
-    }
-    .modal-nombre {
-        font-size: 1.3em;
-    }
-    .modal-cargo {
-        font-size: 1em;
-    }
-    .modal-biography {
-        font-size: 0.9em;
-    }
+    .nosotros-h1 { font-size: 2.5em; }
+    .nosotros-hero-subtitle { font-size: 1em; }
+    .accordion-header { font-size: 1.3em; padding: var(--spacing-sm, 8px) var(--spacing-md, 16px); }
+    .accordion-content.expanded { padding: var(--spacing-sm, 8px); }
+    .nosotros-mvv-grid { grid-template-columns: 1fr; }
+    .vehiculos-grid { grid-template-columns: 1fr; }
+    .equipo-grid { grid-template-columns: repeat(2, 1fr); }
+    .modal-content { max-width: 90%; padding: var(--spacing-md, 16px); }
+    .modal-foto { width: 100px; height: 100px; }
+    .modal-nombre { font-size: 1.3em; }
+    .modal-cargo { font-size: 1em; }
+    .modal-biography { font-size: 0.9em; }
 }
 
 @media (max-width: 480px) {
-    .nosotros-hero-section {
-        height: 180px;
-        padding: 30px 10px;
-    }
-    .nosotros-h1 {
-        font-size: 2em;
-    }
-    .nosotros-hero-subtitle {
-        font-size: 0.9em;
-    }
-    .accordion-header {
-        font-size: 1.1em;
-        padding: var(--spacing-sm);
-    }
-    .accordion-content.expanded {
-        padding: var(--spacing-sm);
-    }
-    .equipo-grid {
-        grid-template-columns: 1fr; /* Una columna en móviles muy pequeños */
-    }
-    .miembro-card {
-        padding: var(--spacing-sm);
-    }
-    .miembro-foto-container {
-        width: 70px;
-        height: 70px;
-    }
-    .miembro-nombre {
-        font-size: 1em;
-    }
-    .miembro-cargo {
-        font-size: 0.85em;
-    }
-    .vehiculo-card h3 {
-        font-size: 1.1em;
-    }
-    .vehiculo-card p {
-        font-size: 0.9em;
-    }
-    .himno-content h3 {
-        font-size: 1.5em;
-    }
-    .himno-content p {
-        font-size: 0.9em;
-    }
+    .nosotros-h1 { font-size: 2em; }
+    .nosotros-hero-subtitle { font-size: 0.9em; }
+    .accordion-header { font-size: 1.1em; padding: var(--spacing-sm, 8px); }
+    .accordion-content.expanded { padding: var(--spacing-sm, 8px); }
+    .equipo-grid { grid-template-columns: repeat(2, 1fr); } /* Mantenemos 2 columnas para mejor aspecto */
+    .miembro-card { padding: var(--spacing-sm, 8px); }
+    .miembro-foto-container { width: 70px; height: 70px; }
+    .miembro-nombre { font-size: 1em; }
+    .miembro-cargo { font-size: 0.85em; }
+    .vehiculo-card h3 { font-size: 1.1em; }
+    .vehiculo-card p { font-size: 0.9em; }
+    .himno-content h3 { font-size: 1.5em; }
+    .himno-content p { font-size: 0.9em; }
 }
