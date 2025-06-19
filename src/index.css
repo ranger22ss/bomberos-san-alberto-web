@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
 /* ****************************************************************** */
-/* GLOBAL RESET & BOX-SIZING                                        */
+/* GLOBAL RESET & BOX-SIZING                                          */
 /* Asegura que el padding y el borde se incluyan en el ancho/alto total de un elemento */
 /* ****************************************************************** */
 *, *::before, *::after {
@@ -14,7 +14,6 @@
 /* ****************************************************************** */
 /* VARIABLES CSS GLOBALES                                             */
 /* Centraliza AQUÍ todas tus variables de color, tipografía, espaciado, etc. */
-/* ELIMINA LOS BLOQUES :root DE TODOS LOS DEMÁS ARCHIVOS CSS (Header.css, Footer.css, etc.) */
 /* ****************************************************************** */
 :root {
     
@@ -23,18 +22,17 @@
     
     --primary-dark-blue: #0b1f3a;
     --primary-color: #2c3e50;
-    --secondary-color: #3498db;
+    /*--secondary-color está duplicado, se usará el último que se defina */
     --accent-color: #e67e22; /* Usado en el borde del header de noticias */
     --text-color-light: #f0f0f0; /* Blanco */
     --text-color-dark: #34495e; /* Azul oscuro para texto general */
-    --white: #ffffff; /* Blanco puro */
     --light-grey: #bdc3c7;
     --border-color: #dee2e6;
     --page-background-color: #f4f7f9; /* Fondo general de las páginas */
 
     /* Variables específicas para el Header (usadas en Header.css y para el padding-top) */
     --header-height-desktop: 125.234px; /* ALTURA MEDIDA DEL ENCABEZADO */
-    --header-height-mobile: 90px;        /* Altura estimada del header en móviles (ajustar si es necesario) */
+    --header-height-mobile: 90px;      /* Altura estimada del header en móviles (ajustar si es necesario) */
 
     /* Variables para el Footer */
     --footer-bg-color: #1e3a8a;
@@ -55,7 +53,7 @@
 }
 
 /* ****************************************************************** */
-/* BASE STYLES & GLOBAL RESPONSIVE RULES                            */
+/* BASE STYLES & GLOBAL RESPONSIVE RULES                              */
 /* Asegura que HTML, BODY y el contenedor #root de React tomen el 100% de la altura visible */
 /* ****************************************************************** */
 html {
@@ -80,8 +78,9 @@ body {
 
 /* Contenedores principales de la aplicación */
 #root, .App {
-    height: 100%;
-    min-height: 100vh; /* Asegura que el elemento tenga al menos el 100% de la altura de la ventana visible */
+    /* height: 100%; <-- ESTA LÍNEA FUE ELIMINADA. Era la causa del problema de scroll. */
+    /* Forzaba al contenedor a tener la altura de la pantalla, impidiendo que creciera con el contenido. */
+    min-height: 100vh; /* Asegura que la app ocupe al menos toda la altura de la pantalla, lo cual es correcto. */
     width: 100%; /* Asegura que siempre ocupe el 100% del ancho disponible */
     margin: 0;
     padding: 0;
@@ -127,7 +126,7 @@ h2 { font-size: 2rem; }   /* 32px */
 h3 { font-size: 1.75rem; } /* 28px */
 h4 { font-size: 1.5rem; } /* 24px */
 h5 { font-size: 1.25rem; } /* 20px */
-h6 { font-size: 1rem; }    /* 16px */
+h6 { font-size: 1rem; }   /* 16px */
 
 /* ****************************************************************** */
 /* NUEVO LAYOUT: CONTENIDO PRINCIPAL Y BARRA LATERAL DE NOTICIAS    */
@@ -173,7 +172,7 @@ h6 { font-size: 1rem; }    /* 16px */
 
 
 /* ****************************************************************** */
-/* MEDIA QUERIES GLOBALES (Para que todo se adapte)                  */
+/* MEDIA QUERIES GLOBALES (Para que todo se adapte)                   */
 /* ****************************************************************** */
 
 @media (max-width: 992px) { /* Tablets y pantallas medianas */
