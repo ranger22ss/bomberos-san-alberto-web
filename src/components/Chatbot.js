@@ -79,7 +79,7 @@ const Chatbot = () => {
         "Quiero saber sobre el portafolio.",
         "¿Cómo puedo contactar por WhatsApp?",
         "¿Cómo solicito una cotización?",
-        "¿Qué información tienen sobre la página Nosotros?"
+        "Consultas Generales"
     ];
 
     // ***** BASE DE CONOCIMIENTO DE LA PÁGINA WEB *****

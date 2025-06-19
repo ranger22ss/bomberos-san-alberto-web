@@ -17,6 +17,8 @@ import carlosImage from '../assets/monroy5.png';
 import AdrianaImage from '../assets/adriana.jpg';
 import VeraImage from '../assets/vera.jpg';
 import MoralesImage from '../assets/morales.jpg';
+import GermanImage from '../assets/german.jpg';
+import JorgeImage from '../assets/jorge.jpg';
 
 const equipoCategorizado = {
     "Comandancia": [
@@ -139,14 +141,14 @@ const equipoCategorizado = {
         {
             nombre: "German Gonzales",
             cargo: "Psicologo",
-            foto: "https://placehold.co/150x150/007bff/ffffff?text=German+G.", // Placeholder si no tienes la imagen
+            foto: GermanImage, // Placeholder si no tienes la imagen
             biografia: "Brinda apoyo emocional y psicosocial al personal operativo y administrativo. Su trabajo fortalece la salud mental, la convivencia y la preparación emocional ante situaciones de alto estrés, propias del servicio bomberil.",
             rangoIcono: "✍️"
         },
         {
             nombre: "Jorge Nuñez",
             cargo: "Juridico",
-            foto: "https://placehold.co/150x150/007bff/ffffff?text=Jorge+N.", // Placeholder si no tienes la imagen
+            foto: JorgeImage, // Placeholder si no tienes la imagen
             biografia: "Encargado de brindar soporte legal al cuerpo de bomberos. Garantiza que cada acción institucional esté dentro del marco normativo vigente. Su orientación jurídica fortalece la transparencia, el cumplimiento y la toma de decisiones responsables.",
             rangoIcono: "✍️"
         },
