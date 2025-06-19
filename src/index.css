@@ -59,7 +59,6 @@
 html {
     font-size: 100%; /* Base para rem units */
     scroll-behavior: smooth; /* Desplazamiento suave */
-    /* Asegura que el HTML no tenga un ancho mínimo que impida el encogimiento */
     min-width: 0; 
 }
 
@@ -68,25 +67,17 @@ body {
     background-color: var(--page-background-color);
     color: var(--text-color-dark); /* Color de texto por defecto, oscuro sobre fondo claro */
     line-height: 1.6;
-    /* Asegura que el body no tenga un ancho mínimo que impida el encogimiento */
     min-width: 0;
-    /* La siguiente línea se comenta para verificar si está bloqueando el scroll vertical en móviles */
-    /* overflow-x: hidden; */ 
     -webkit-font-smoothing: antialiased; /* Suavizado de fuentes para WebKit */
     -moz-osx-font-smoothing: grayscale; /* Suavizado de fuentes para Firefox */
 }
 
 /* Contenedores principales de la aplicación */
+/* SE MODIFICÓ ESTE BLOQUE PARA QUITAR 'display:flex' y permitir el scroll natural del body */
 #root, .App {
-    /* height: 100%; <-- ESTA LÍNEA FUE ELIMINADA. Era la causa del problema de scroll. */
-    /* Forzaba al contenedor a tener la altura de la pantalla, impidiendo que creciera con el contenido. */
-    min-height: 100vh; /* Asegura que la app ocupe al menos toda la altura de la pantalla, lo cual es correcto. */
-    width: 100%; /* Asegura que siempre ocupe el 100% del ancho disponible */
+    width: 100%;
     margin: 0;
     padding: 0;
-    display: flex; /* Añadir flexbox a .App para que el Footer quede abajo si el contenido es corto */
-    flex-direction: column;
-    /* Importante: Asegurarse de que no tengan min-width fijos */
     min-width: 0; 
 }
 
@@ -112,50 +103,49 @@ a:hover {
 /* Estilos para títulos */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
-    color: var(--white); /* ¡CAMBIADO A BLANCO! */
+    color: var(--white);
     margin-top: 0;
     margin-bottom: var(--spacing-md);
     line-height: 1.2;
-    /* Asegura que los títulos no fuercen anchos excesivos */
-    word-wrap: break-word; /* Permite que palabras largas se rompan si es necesario */
+    word-wrap: break-word; 
     overflow-wrap: break-word;
 }
 
-h1 { font-size: 2.5rem; } /* 40px */
-h2 { font-size: 2rem; }   /* 32px */
-h3 { font-size: 1.75rem; } /* 28px */
-h4 { font-size: 1.5rem; } /* 24px */
-h5 { font-size: 1.25rem; } /* 20px */
-h6 { font-size: 1rem; }   /* 16px */
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
 
 /* ****************************************************************** */
 /* NUEVO LAYOUT: CONTENIDO PRINCIPAL Y BARRA LATERAL DE NOTICIAS    */
 /* ****************************************************************** */
 .content-and-sidebar-wrapper {
-    display: grid; /* Usar CSS Grid para las columnas */
-    /* Define 2 columnas: 1 flexible (contenido principal) y 1 fija (sidebar) */
-    grid-template-columns: 1fr 320px; /* 1fr toma el espacio restante, 320px es el ancho del sidebar */
-    gap: var(--spacing-lg); /* Espacio entre las columnas */
-    max-width: 1400px; /* Ancho máximo para todo el layout (contenido + sidebar) */
-    width: 100%; /* Asegura que tome el 100% del ancho disponible de su padre */
-    margin: 0 auto; /* Centrar el layout en pantallas grandes */
-    padding-top: var(--header-height-desktop); /* Padding superior para el header fijo */
-    padding-bottom: var(--spacing-xl); /* Padding inferior del wrapper */
-    flex-grow: 1; /* Permite que este wrapper ocupe el espacio restante si el App es flex column */
-    /* Asegura que no tenga un ancho mínimo que impida el encogimiento */
-    min-width: 0; 
+    display: grid; 
+    grid-template-columns: 1fr 320px;
+    gap: var(--spacing-lg); 
+    max-width: 1400px; 
+    width: 100%; 
+    margin: 0 auto; 
+    padding-top: var(--header-height-desktop);
+    padding-bottom: var(--spacing-xl); 
+    min-width: 0;
+    /* Se agrega min-height para empujar el footer hacia abajo en páginas con poco contenido */
+    min-height: calc(100vh - var(--header-height-desktop) - var(--footer-height-desktop));
+    /* SE ELIMINARON flex-grow y overflow-y para permitir el scroll natural del BODY */
 }
 
 /* MAIN CONTENT AREA - Padding horizontal revertido a CERO para evitar errores */
 .main-content-area {
     background-color: var(--page-background-color);
-    padding-left: 0; /* REVERTIDO a 0 */
-    padding-right: 0; /* REVERTIDO a 0 */
+    padding-left: 0;
+    padding-right: 0;
     padding-bottom: 0;
     max-width: none;
     margin: 0;
-    width: 100%; /* Asegura que tome el 100% del ancho disponible en su celda de grid */
-    min-width: 0; /* Asegura que no tenga un ancho mínimo que impida el encogimiento */
+    width: 100%; 
+    min-width: 0; 
 }
 
 /* SIDEBAR DE NOTICIAS */
@@ -164,9 +154,8 @@ h6 { font-size: 1rem; }   /* 16px */
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     padding: var(--spacing-md);
-    align-self: start; /* Alinea el sidebar al inicio de su fila en el grid */
-    height: fit-content; /* Asegura que el sidebar solo ocupe la altura de su contenido */
-    /* Asegura que no tenga un ancho mínimo que impida el encogimiento, especialmente cuando se apila */
+    align-self: start;
+    height: fit-content;
     min-width: 0; 
 }
 
@@ -177,33 +166,33 @@ h6 { font-size: 1rem; }   /* 16px */
 
 @media (max-width: 992px) { /* Tablets y pantallas medianas */
     .content-and-sidebar-wrapper {
-        grid-template-columns: 1fr; /* Una sola columna: sidebar se apila debajo */
-        padding-top: var(--header-height-mobile); /* Ajustar padding-top para header móvil */
+        grid-template-columns: 1fr;
+        padding-top: var(--header-height-mobile);
         padding-left: var(--spacing-md);
         padding-right: var(--spacing-md);
-        /* Si se apila, el min-width de 0 asegura que puede encogerse sin forzar el layout */
         min-width: 0;
+        /* Se ajusta el min-height para la altura del header en móviles */
+        min-height: calc(100vh - var(--header-height-mobile) - var(--footer-height-mobile));
     }
-    /* Ajustes de tipografía para pantallas más pequeñas */
+    
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
+
     .main-content-area {
-        /* Asegura que el área de contenido principal ocupe el 100% del ancho disponible cuando está apilada */
         width: 100%;
         min-width: 0;
     }
     .noticias-sidebar {
-        /* Asegura que la barra lateral ocupe el 100% del ancho disponible cuando está apilada */
         width: 100%;
-        padding: var(--spacing-lg); /* Aumentar padding para que Noticias respire */
-        margin-top: var(--spacing-lg); /* Espacio entre el contenido principal y el sidebar apilado */
+        padding: var(--spacing-lg);
+        margin-top: var(--spacing-lg);
         min-width: 0;
     }
 }
 
 @media (max-width: 768px) { /* Móviles grandes y medianos */
     .content-and-sidebar-wrapper {
-        padding-left: var(--spacing-sm); /* Reducir padding horizontal */
+        padding-left: var(--spacing-sm); 
         padding-right: var(--spacing-sm);
     }
     h1 { font-size: 2rem; }
@@ -214,7 +203,7 @@ h6 { font-size: 1rem; }   /* 16px */
 
 @media (max-width: 480px) { /* Móviles pequeños */
     .content-and-sidebar-wrapper {
-        padding-left: var(--spacing-xs); /* Reducir aún más padding */
+        padding-left: var(--spacing-xs);
         padding-right: var(--spacing-xs);
     }
     h1 { font-size: 1.8rem; }
