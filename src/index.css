@@ -70,8 +70,8 @@ body {
     line-height: 1.6;
     /* Asegura que el body no tenga un ancho mínimo que impida el encogimiento */
     min-width: 0;
-    /* Evita el scroll horizontal forzado por contenido que se desborda */
-    overflow-x: hidden; 
+    /* La siguiente línea se comenta para verificar si está bloqueando el scroll vertical en móviles */
+    /* overflow-x: hidden; */ 
     -webkit-font-smoothing: antialiased; /* Suavizado de fuentes para WebKit */
     -moz-osx-font-smoothing: grayscale; /* Suavizado de fuentes para Firefox */
 }
