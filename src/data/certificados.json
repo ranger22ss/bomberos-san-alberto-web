@@ -342,5 +342,21 @@
     "fechaExpedicion": "2024-05-14",
     "fechaVencimiento": "2025-05-14",
     "radicado": "044-25"
+  },
+ {
+    "nit": "901799747-0",
+    "nombreEmpresa": "DISTRIBUIDORA REX SAS",
+    "direccion": "CARRERA 2 2 17 BARRIO CENTRO",
+    "fechaExpedicion": "2025-06-26",
+    "fechaVencimiento": "2026-06-26",
+    "radicado": "044-25"
+  },
+   {
+    "nit": "1063618361-8",
+    "nombreEmpresa": "DISCO BAR DONDE LA MONA",
+    "direccion": "CALLE 3 2-13 EL CENTRO",
+    "fechaExpedicion": "2025-06-21",
+    "fechaVencimiento": "2026-06-21",
+    "radicado": "046-25"
   }
 ]
