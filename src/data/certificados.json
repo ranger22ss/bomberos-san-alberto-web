@@ -358,5 +358,29 @@
     "fechaExpedicion": "2025-06-21",
     "fechaVencimiento": "2026-06-21",
     "radicado": "046-25"
+  },
+  {
+    "nit": "901787562-3",
+    "nombreEmpresa": "ESTACION DE SERVICIO YANELI Y LA CUADRA",
+    "direccion": "VIA AL MAR KM 74 850 BARRIO LA FERIA",
+    "fechaExpedicion": "2025-06-21",
+    "fechaVencimiento": "2026-06-21",
+    "radicado": "047 y 048 -25"
+  },
+  {
+    "nit": "88278337-0",
+    "nombreEmpresa": "ESTACION DE SERVICIO GEDEON",
+    "direccion": "CR 18 7 90 BARRIO LAS CAJAS",
+    "fechaExpedicion": "2025-07-07",
+    "fechaVencimiento": "2026-07-07",
+    "radicado": "049-25"
+  },
+  {
+    "nit": "899999034-1",
+    "nombreEmpresa": "SERVICIO NACIONAL DE APRENDIZJE",
+    "direccion": "CL 57 8 69",
+    "fechaExpedicion": "2025-07-14",
+    "fechaVencimiento": "2026-07-14",
+    "radicado": "050-25"
   }
 ]
