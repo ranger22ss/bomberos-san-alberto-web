@@ -28,54 +28,76 @@ function Header() {
       <div className="header-overlay"></div>
 
       <div className="header-content-wrapper">
-        <Link to="/" className="header-logo-link" onClick={() => setMenuOpen(false)}>
-          <img src={logoBomberos} alt="Logo Cuerpo de Bomberos" className="header-logo" />
-        </Link>
+        <div className="header-top-bar">
+          <div className="header-top-info">
+            <span><i className="fas fa-phone-alt" aria-hidden="true"></i> Emergencias 119</span>
+            <span><i className="fas fa-envelope" aria-hidden="true"></i> contacto@bomberos-sanalberto.gov.co</span>
+            <span><i className="fas fa-map-marker-alt" aria-hidden="true"></i> San Alberto, Cesar</span>
+          </div>
+          <span className="header-top-pill">Disponibles 24/7</span>
+        </div>
 
-        <button
-          className={`nav-toggle ${menuOpen ? 'open' : ''}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
-        >
-          <span className="icon-bar"></span>
-          <span className="icon-bar"></span>
-          <span className="icon-bar"></span>
-        </button>
+        <div className="header-main-row">
+          <div className="header-brand-block">
+            <Link to="/" className="header-logo-link" onClick={() => setMenuOpen(false)}>
+              <img src={logoBomberos} alt="Logo Cuerpo de Bomberos" className="header-logo" />
+            </Link>
+            <div className="header-identity">
+              <p className="header-institution">Cuerpo de Bomberos Voluntarios</p>
+              <p className="header-location">San Alberto, Cesar</p>
+            </div>
+          </div>
 
-        <nav className={`header-nav ${menuOpen ? 'nav-open' : ''}`}>
-          <ul className="nav-links">
-            <li>
-              <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>
-                Inicio
-              </Link>
-            </li>
-            <li>
-              <Link to="/consulta" className="nav-link" onClick={() => setMenuOpen(false)}>
-                Consulta
-              </Link>
-            </li>
-            <li>
-              <Link to="/portafolio" className="nav-link" onClick={() => setMenuOpen(false)}>
-                Portafolio
-              </Link>
-            </li>
-            <li>
-              <Link to="/contacto" className="nav-link" onClick={() => setMenuOpen(false)}>
-                Contacto
-              </Link>
-            </li>
-            <li>
-              <Link to="/nosotros" className="nav-link" onClick={() => setMenuOpen(false)}>
-                Nosotros
-              </Link>
-            </li>
-            <li>
-              <Link to="/cotizar" className="nav-link" onClick={() => setMenuOpen(false)}>
-                Cotizar
-              </Link>
-            </li>
-          </ul>
-        </nav>
+          <button
+            className={`nav-toggle ${menuOpen ? 'open' : ''}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          >
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
+            <span className="icon-bar"></span>
+          </button>
+
+          <nav className={`header-nav ${menuOpen ? 'nav-open' : ''}`}>
+            <ul className="nav-links">
+              <li>
+                <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>
+                  Inicio
+                </Link>
+              </li>
+              <li>
+                <Link to="/consulta" className="nav-link" onClick={() => setMenuOpen(false)}>
+                  Consulta
+                </Link>
+              </li>
+              <li>
+                <Link to="/portafolio" className="nav-link" onClick={() => setMenuOpen(false)}>
+                  Portafolio
+                </Link>
+              </li>
+              <li>
+                <Link to="/contacto" className="nav-link" onClick={() => setMenuOpen(false)}>
+                  Contacto
+                </Link>
+              </li>
+              <li>
+                <Link to="/nosotros" className="nav-link" onClick={() => setMenuOpen(false)}>
+                  Nosotros
+                </Link>
+              </li>
+              <li>
+                <Link to="/cotizar" className="nav-link" onClick={() => setMenuOpen(false)}>
+                  Cotizar
+                </Link>
+              </li>
+              <li className="nav-cta">
+                <a href="tel:119" className="nav-link nav-emergency" onClick={() => setMenuOpen(false)}>
+                  <i className="fas fa-fire-extinguisher" aria-hidden="true"></i> Línea de Emergencia 119
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
   );

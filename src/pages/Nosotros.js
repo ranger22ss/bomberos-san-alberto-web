@@ -14,7 +14,6 @@ import martinezImage from '../assets/martinez.png';
 import SierraImage from '../assets/sierra.png';
 import CudrisImage from '../assets/cudris.png';
 import carlosImage from '../assets/monroy5.png';
-import AdrianaImage from '../assets/adriana.jpg';
 import VeraImage from '../assets/vera.jpg';
 import MoralesImage from '../assets/morales.jpg';
 import GermanImage from '../assets/german.jpg';
@@ -165,13 +164,6 @@ const equipoCategorizado = {
             cargo: "Profesional de SST",
             foto: "https://placehold.co/150x150/007bff/ffffff?text=Jesus+C.",
             biografia: "Responsable de implementar y mantener las condiciones seguras en las actividades operativas y administrativas. Su labor garantiza que cada miembro del cuerpo trabaje bajo estándares que protejan su integridad física y mental.",
-            rangoIcono: "✍️"
-        },
-        {
-            nombre: "Adriana Cuadros",
-            cargo: "Secretaria",
-            foto: AdrianaImage,
-            biografia: "Es el eje organizativo del cuerpo. Maneja documentación, coordina comunicaciones internas y externas, y mantiene al día los procesos administrativos. Su eficiencia, orden y compromiso hacen posible que cada área funcione con fluidez y precisión.",
             rangoIcono: "✍️"
         },
     ],

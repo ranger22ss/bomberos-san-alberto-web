@@ -1,427 +1,261 @@
-/* src/pages/Contacto.css */
-
-/* Se asume que las variables como --primary-dark-blue, --secondary-color,
-   --text-color-light, --text-color-dark, --white, --light-grey, --border-color,
-   y las de espaciado (spacing-md, etc.) están definidas en src/index.css */
-
 .contact-page {
     width: 100%;
     margin: 0 auto;
     padding: 0;
-    /* Ajusta min-height si tienes un footer que también tiene altura variable */
-    min-height: calc(100vh - var(--header-height-desktop, 80px) - var(--footer-height-desktop, 100px)); 
+    min-height: calc(100vh - var(--header-height-desktop, 80px) - var(--footer-height-desktop, 0px));
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--page-background-color, #f0f2f5); /* Añadir fallback si no está definida */
+    background-color: var(--page-background-color);
+    color: var(--text-color-dark);
 }
 
 .contact-hero {
     width: 100%;
-    background-color: var(--primary-dark-blue, #003366); /* Fondo oscuro del encabezado */
-    color: var(--text-color-light, #ffffff); /* Texto blanco */
-    padding: var(--spacing-xxl, 80px) var(--spacing-lg, 30px); /* Espaciado generoso */
+    background: radial-gradient(circle at 15% 20%, rgba(250, 204, 21, 0.25), transparent 60%),
+                linear-gradient(135deg, rgba(93, 11, 11, 0.95), rgba(153, 27, 27, 0.92));
+    color: var(--text-color-light);
+    padding: var(--spacing-xxl, 80px) var(--spacing-lg, 30px);
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--card-shadow);
+    border-bottom-left-radius: 28px;
+    border-bottom-right-radius: 28px;
 }
 
 .contact-hero h1 {
-    font-size: 3.5rem; /* Título principal grande */
-    margin-bottom: var(--spacing-md, 15px);
-    color: var(--text-color-light, #ffffff); /* Asegura que sea blanco, como en la imagen */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra sutil para el texto */
+    font-size: 3.2rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color-light);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.35);
 }
 
 .contact-hero p {
     font-size: 1.2rem;
-    max-width: 700px;
+    max-width: 760px;
     margin: 0 auto;
     opacity: 0.9;
 }
 
 .contact-main-content {
     width: 100%;
-    max-width: 1200px; /* Ancho máximo para el contenido principal */
+    max-width: 1200px;
     padding: var(--spacing-xxl, 80px) var(--spacing-lg, 30px);
     display: grid;
-    gap: var(--spacing-xxl, 80px); /* Espacio generoso entre secciones */
-    grid-template-columns: 1fr; /* Por defecto una columna */
-    background-color: var(--page-background-color, #f0f2f5);
+    gap: var(--spacing-xxl, 80px);
+    grid-template-columns: 1fr;
+    background-color: var(--page-background-color);
 }
 
-/* Estilos de las secciones */
 .contact-info-section,
 .contact-form-section,
 .contact-map-section {
-    background-color: var(--white, #ffffff);
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    padding: var(--spacing-lg, 30px);
+    background: linear-gradient(160deg, rgba(255, 241, 242, 0.95), rgba(255, 228, 230, 0.9));
+    border-radius: 24px;
+    box-shadow: var(--card-shadow);
+    padding: var(--spacing-xl, 40px);
     text-align: center;
+    border: 1px solid rgba(250, 204, 21, 0.35);
 }
 
 .contact-info-section h2,
 .contact-form-section h2,
 .contact-map-section h2 {
-    font-size: 2rem;
-    color: var(--primary-dark-blue, #003366); /* Títulos de sección en azul oscuro */
-    margin-bottom: var(--spacing-xl, 40px);
+    font-size: 2.2rem;
+    color: var(--primary-dark-blue);
+    margin-bottom: var(--spacing-lg);
 }
 
-.contact-info-section p {
-    color: var(--text-color-dark, #333333);
-}
-
-/* GRID de información de contacto */
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas responsivas */
-    gap: var(--spacing-lg, 30px);
-    margin-top: var(--spacing-xl, 40px);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
 }
 
 .info-item {
-    padding: var(--spacing-md, 15px);
-    background-color: var(--section-bg-dark, #f8f8f8); /* Fondo ligeramente diferente para cada item */
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: var(--spacing-md);
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(153, 27, 27, 0.12);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
+    border: 1px solid rgba(250, 204, 21, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--card-hover-shadow);
 }
 
 .info-item h3 {
-    font-size: 1.4rem;
-    color: var(--primary-color, #3498db); /* Títulos de items en azul más suave */
-    margin-top: var(--spacing-md, 15px);
-    margin-bottom: var(--spacing-sm, 10px);
+    font-size: 1.35rem;
+    color: var(--primary-color);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
 }
 
 .info-item p {
     font-size: 1rem;
-    color: var(--text-color-dark, #333333);
-    margin-bottom: var(--spacing-sm, 10px);
+    color: var(--text-color-dark);
+    margin-bottom: var(--spacing-xs);
 }
 
-/* ESTILOS PARA LOS NUEVOS LOGOS (IMAGENES) */
 .contact-icon {
-    width: 70px; /* Tamaño del logo */
-    height: 70px;
-    object-fit: contain; /* Asegura que la imagen se ajuste sin distorsionarse */
-    margin-bottom: var(--spacing-md, 15px);
-    /* Opcional: Si quieres que los logos se vean circulares */
-    /* border-radius: 50%; */ 
-    /* background-color: var(--secondary-color, #3498db); */ /* Fondo si el logo tiene transparencia */
-    /* padding: 5px; */ /* Espaciado interno si el fondo es visible */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-icon:hover {
-    transform: translateY(-3px); /* Efecto de elevación */
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Puedes eliminar o comentar la regla .icon-circle si ya no la usarás */
-/* .icon-circle {
-    background-color: var(--secondary-color, #3498db);
-    color: var(--white, #ffffff);
-    border-radius: 50%;
     width: 70px;
     height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.2rem;
-    margin-bottom: var(--spacing-md, 15px);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    object-fit: contain;
+    margin-bottom: var(--spacing-md);
+    filter: drop-shadow(0 8px 16px rgba(17, 24, 39, 0.25));
 }
 
-.icon-circle:hover {
-    background-color: var(--primary-dark-blue, #003366);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
-} */
-
-/* Estilos para los botones de WhatsApp y Facebook */
-.whatsapp-button, .facebook-button {
+.whatsapp-button,
+.facebook-button {
     display: inline-flex;
     align-items: center;
-    gap: var(--spacing-xs, 8px);
+    gap: var(--spacing-xs);
     padding: 10px 20px;
     border-radius: 25px;
     font-size: 1rem;
     font-weight: 600;
     text-decoration: none;
-    color: var(--white, #ffffff);
+    color: var(--white);
     transition: all 0.3s ease;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    margin-top: var(--spacing-sm, 10px);
+    box-shadow: 0 10px 20px rgba(17, 24, 39, 0.2);
+    margin-top: var(--spacing-sm);
 }
 
 .whatsapp-button {
-    background-color: #25D366; /* Verde de WhatsApp */
+    background-color: #25d366;
 }
 
 .whatsapp-button:hover {
-    background-color: #1DA851; /* Verde más oscuro al pasar el ratón */
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background-color: #1da851;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 24px rgba(17, 24, 39, 0.28);
 }
 
 .facebook-button {
-    background-color: #3b5998; /* Azul de Facebook */
+    background-color: #3b5998;
 }
 
 .facebook-button:hover {
-    background-color: #2d4373; /* Azul más oscuro al pasar el ratón */
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background-color: #2d4373;
+    transform: translateY(-3px);
+    box-shadow: 0 14px 24px rgba(17, 24, 39, 0.28);
 }
 
-.whatsapp-button i, .facebook-button i {
-    font-size: 1.2em;
-}
-
-
-/* Estilos del Formulario de Contacto */
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md, 15px);
-    max-width: 600px; /* Ancho máximo para el formulario */
+    gap: var(--spacing-md);
+    max-width: 620px;
     margin: 0 auto;
-    text-align: left; /* Alinea etiquetas a la izquierda */
+    text-align: left;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: var(--spacing-xs, 8px);
     font-weight: 600;
-    color: var(--text-color-dark, #333333);
+    margin-bottom: var(--spacing-xs);
+    color: var(--primary-dark-blue);
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid var(--border-color, #dddddd);
-    border-radius: 8px;
+    padding: var(--spacing-md);
+    border: 1px solid rgba(249, 115, 22, 0.35);
+    border-radius: 12px;
     font-size: 1rem;
-    font-family: 'Open Sans', sans-serif;
+    background-color: #fffdf8;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: var(--secondary-color, #3498db);
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.18);
     outline: none;
 }
 
-.submit-button {
-    background-color: var(--accent-color, #e67e22); /* Naranja vibrante */
-    color: var(--white, #ffffff);
-    padding: 12px 25px;
+.contact-form button {
+    align-self: center;
+    padding: 14px 48px;
+    border-radius: 999px;
     border: none;
-    border-radius: 25px;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 700;
+    color: #4b0c0c;
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--spacing-sm, 10px);
-    margin-top: var(--spacing-md, 15px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 18px 32px rgba(249, 115, 22, 0.35);
 }
 
-.submit-button:hover {
-    background-color: #cf6d16; /* Naranja más oscuro al pasar el ratón */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+.contact-form button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 22px 38px rgba(249, 115, 22, 0.45);
 }
 
-.send-icon {
-    font-size: 1.2em;
-}
-
-.form-message {
-    margin-top: var(--spacing-md, 15px);
-    padding: var(--spacing-sm, 10px);
-    border-radius: 8px;
-    font-weight: 600;
-    text-align: center;
-}
-
-.form-message.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.form-message.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-
-/* Estilos de la Sección de Mapa */
-.contact-map-section {
-    text-align: center;
-}
-
-.contact-map-section p {
-    color: var(--text-color-dark, #333333);
-    margin-bottom: var(--spacing-md, 15px);
-}
-
-.map-placeholder {
+.contact-map-section iframe {
     width: 100%;
-    height: 450px; /* Altura fija para el contenedor del mapa */
-    background-color: var(--light-grey, #e9ecef);
-    border-radius: 12px;
-    overflow: hidden; /* Asegura que el iframe no se desborde */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    display: flex; /* Para centrar el iframe si fuera necesario */
-    justify-content: center;
-    align-items: center;
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(17, 24, 39, 0.2);
+    min-height: 360px;
 }
 
-/* Asegura que el iframe ocupe todo el espacio del contenedor */
-.map-placeholder iframe {
-    width: 100%;
-    height: 100%;
-    border-radius: 12px; /* Aplica el mismo border-radius que el contenedor */
-}
-
-/* Puedes eliminar la regla .map-image ya que ahora usas un iframe */
-/* .map-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-} */
-
-.map-address {
-    font-weight: 600;
-    margin-top: var(--spacing-md, 15px);
-    font-size: 1.1rem;
-    color: var(--primary-color, #3498db);
-}
-
-
-/* -------------------------------------------------------- */
-/* MEDIA QUERIES (Responsive Design para la página Contacto) */
-/* -------------------------------------------------------- */
-
-@media (min-width: 993px) { /* Desktop layout */
-    .contact-main-content {
-        grid-template-columns: 1fr; 
-    }
-    .contact-form-section {
-        grid-column: 1 / -1; 
-    }
-}
-
-@media (max-width: 992px) { /* Tablets y pantallas medianas */
+@media (max-width: 992px) {
     .contact-hero h1 {
         font-size: 2.8rem;
     }
-    .contact-hero p {
-        font-size: 1.1rem;
-    }
-    .contact-info-section h2,
-    .contact-form-section h2,
-    .contact-map-section h2 {
-        font-size: 1.8rem;
-    }
-    .info-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+
+    .contact-main-content {
+        padding: var(--spacing-xl) var(--spacing-lg);
     }
 }
 
-@media (max-width: 768px) { /* Móviles grandes y medianos */
-    .contact-page {
-        padding: 0;
-    }
+@media (max-width: 768px) {
     .contact-hero {
-        padding: var(--spacing-xl, 40px) var(--spacing-md, 15px);
+        padding: var(--spacing-xl) var(--spacing-md);
     }
+
     .contact-hero h1 {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
     }
-    .contact-hero p {
-        font-size: 1rem;
-    }
+
     .contact-main-content {
-        padding: var(--spacing-xl, 40px) var(--spacing-md, 15px);
-        gap: var(--spacing-lg, 30px);
+        padding: var(--spacing-xl) var(--spacing-md);
+        gap: var(--spacing-xl);
     }
+
     .contact-info-section,
     .contact-form-section,
     .contact-map-section {
-        padding: var(--spacing-md, 15px);
-    }
-    .contact-info-section h2,
-    .contact-form-section h2,
-    .contact-map-section h2 {
-        font-size: 1.6rem;
-        margin-bottom: var(--spacing-lg, 30px);
-    }
-    .info-grid {
-        grid-template-columns: 1fr; 
-    }
-    /* Asegura que el nuevo .contact-icon se ajuste */
-    .contact-icon {
-        width: 60px; 
-        height: 60px;
-    }
-    .whatsapp-button, .facebook-button, .submit-button {
-        width: 100%; 
-    }
-    .map-placeholder {
-        height: 300px;
+        padding: var(--spacing-lg);
     }
 }
 
-@media (max-width: 480px) { /* Móviles pequeños */
-    .contact-hero {
-        padding: var(--spacing-lg, 30px) var(--spacing-sm, 10px);
-    }
+@media (max-width: 576px) {
     .contact-hero h1 {
-        font-size: 1.8rem;
+        font-size: 2.1rem;
     }
+
     .contact-hero p {
-        font-size: 0.9rem;
+        font-size: 1.05rem;
     }
-    .contact-main-content {
-        padding: var(--spacing-lg, 30px) var(--spacing-sm, 10px);
+
+    .info-grid {
+        grid-template-columns: 1fr;
     }
-    .contact-info-section h2,
-    .contact-form-section h2,
-    .contact-map-section h2 {
-        font-size: 1.4rem;
-    }
-    /* Asegura que el nuevo .contact-icon se ajuste */
-    .contact-icon {
-        width: 50px;
-        height: 50px;
-    }
-    .whatsapp-button, .facebook-button, .submit-button {
-        padding: 10px 15px;
-        font-size: 0.95rem;
-    }
-    .map-placeholder {
-        height: 250px;
-    }
-    .form-group input,
-    .form-group textarea {
-        padding: 10px;
-        font-size: 0.9rem;
+
+    .contact-info-section,
+    .contact-form-section,
+    .contact-map-section {
+        padding: var(--spacing-md);
+        border-radius: 18px;
     }
 }

@@ -1,17 +1,9 @@
-/* Importaciones y variables (pueden venir de index.css si está configurado globalmente) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
-/*
- * NUEVO WRAPPER DE PÁGINA
- * Este es el cambio principal. Este contenedor aísla el layout de la página "Nosotros"
- * del resto de la web, garantizando que el scroll funcione correctamente.
- */
 .nosotros-page-wrapper {
     width: 100%;
-    /* Añadimos padding superior para compensar la altura del header fijo */
-    /* Estas variables deben estar definidas en tu index.css */
-    padding-top: var(--header-height-desktop, 125px); 
+    padding-top: var(--header-height-desktop, 125px);
 }
 
 @media (max-width: 992px) {
@@ -19,45 +11,48 @@
         padding-top: var(--header-height-mobile, 90px);
     }
 }
-/* Fin del nuevo wrapper */
 
-
-/* Estilos globales para el body cuando el modal está abierto */
 body.no-scroll {
     overflow: hidden;
 }
 
-/* Contenedor principal de la página Nosotros */
 .nosotros-main-container {
     background-color: var(--page-background-color, #f4f7f9);
     color: var(--text-color-dark, #34495e);
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
-    max-width: 1400px; /* Ancho máximo consistente con el resto del sitio */
-    margin: 0 auto; /* Centrar el contenido */
-    padding: 0 var(--spacing-md, 16px); /* Padding horizontal */
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md, 16px);
 }
 
-/* Sección Hero (cabecera) */
 .nosotros-hero-section {
-    background-color: var(--primary-color, #2c3e50);
+    background: radial-gradient(circle at 20% 20%, rgba(250, 204, 21, 0.25), transparent 60%),
+                linear-gradient(135deg, rgba(93, 11, 11, 0.95), rgba(153, 27, 27, 0.92));
     color: var(--white, #ffffff);
-    padding: 50px 20px;
+    padding: 60px 24px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px; /* Bordes redondeados */
-    /* Se elimina el margin-top para quitar el exceso de espacio superior */
-    /* margin-top: var(--spacing-lg, 24px); */
+    box-shadow: var(--card-shadow);
+    margin-bottom: 45px;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.nosotros-hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: -45px;
+    right: -65px;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.28), transparent 70%);
+    transform: rotate(18deg);
 }
 
 .nosotros-h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: var(--font-size-hero, 3.5rem);
+    font-size: 3.3rem;
     font-weight: 800;
     margin-bottom: var(--spacing-md, 16px);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
@@ -65,44 +60,42 @@ body.no-scroll {
 }
 
 .nosotros-hero-subtitle {
-    font-size: var(--font-size-lg, 1.25rem);
+    font-size: 1.3rem;
     line-height: 1.5;
     max-width: 900px;
+    margin: 0 auto;
     padding: 0 var(--spacing-md, 16px);
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    color: var(--white, #ffffff);
 }
 
-/* Contenedor para todas las secciones del acordeón */
 .accordion-sections-wrapper {
     max-width: 1200px;
-    margin: 0 auto var(--spacing-xl, 40px) auto;
-    padding: 0; /* El padding ya lo gestiona nosotros-main-container */
+    margin: 0 auto var(--spacing-xl, 40px);
+    padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilo para cada item del acordeón */
 .accordion-item {
-    background-color: var(--white, #ffffff);
-    border: 1px solid var(--border-color, #dee2e6);
-    border-radius: var(--spacing-md, 16px);
+    background: linear-gradient(160deg, rgba(255, 241, 242, 0.95), rgba(255, 228, 230, 0.9));
+    border: 1px solid rgba(250, 204, 21, 0.35);
+    border-radius: 20px;
     margin-bottom: var(--spacing-md, 16px);
     overflow: hidden;
-    box-shadow: var(--shadow-light, 0 4px 8px rgba(0, 0, 0, 0.1));
-    transition: box-shadow 0.3s ease;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .accordion-item:hover {
-    box-shadow: var(--shadow-medium, 0 8px 16px rgba(0, 0, 0, 0.15));
+    transform: translateY(-4px);
+    box-shadow: var(--card-hover-shadow);
 }
 
-/* Estilo para el encabezado del acordeón (el botón clickeable) */
 .accordion-header {
-    background-color: var(--primary-color, #2c3e50);
+    background: linear-gradient(135deg, rgba(93, 11, 11, 0.92), rgba(153, 27, 27, 0.88));
     color: var(--white, #ffffff);
     padding: var(--spacing-lg, 24px) var(--spacing-xl, 40px);
     font-family: 'Montserrat', sans-serif;
-    font-size: var(--font-size-xl, 2rem);
+    font-size: 1.9rem;
     font-weight: 600;
     width: 100%;
     text-align: left;
@@ -111,11 +104,13 @@ body.no-scroll {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.accordion-header:hover, .accordion-header.active {
-    background-color: var(--primary-dark-blue, #0b1f3a);
+.accordion-header:hover,
+.accordion-header.active {
+    background: linear-gradient(135deg, rgba(153, 27, 27, 0.95), rgba(249, 115, 22, 0.9));
+    transform: translateY(-2px);
 }
 
 .accordion-header i {
@@ -127,26 +122,22 @@ body.no-scroll {
     transform: rotate(180deg);
 }
 
-/* Estilo para el contenido del acordeón */
 .accordion-content {
-    background-color: var(--page-background-color, #f4f7f9);
+    background-color: rgba(255, 247, 244, 0.95);
     padding: 0 var(--spacing-xl, 40px);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.7s ease-out, padding 0.7s ease-out; /* Transición más suave */
+    transition: max-height 0.7s ease-out, padding 0.7s ease-out;
 }
 
 .accordion-content.expanded {
-    max-height: 5000px; /* Aumentado para contenido muy largo */
+    max-height: 5000px;
     padding: var(--spacing-xl, 40px);
 }
 
-/* --- Contenido específico dentro del acordeón --- */
-
 .nosotros-historia-paragraph {
-    font-size: var(--font-size-base, 1rem);
+    font-size: 1rem;
     line-height: 1.7;
-    color: var(--text-color-dark, #34495e);
     margin-bottom: var(--spacing-md, 16px);
     text-align: justify;
 }
@@ -159,40 +150,75 @@ body.no-scroll {
 }
 
 .nosotros-mvv-card {
-    background-color: var(--white, #ffffff);
+    background: #ffffff;
     padding: var(--spacing-lg, 24px);
-    border-radius: var(--spacing-md, 16px);
-    box-shadow: var(--shadow-light, 0 4px 8px rgba(0, 0, 0, 0.1));
-    border-top: 4px solid;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    border-top: 5px solid;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
     min-height: 200px;
 }
+
+.nosotros-mvv-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-hover-shadow);
+}
+
 .nosotros-mvv-mission { border-top-color: var(--primary-color, #2c3e50); }
 .nosotros-mvv-vision { border-top-color: var(--accent-color, #e67e22); }
 .nosotros-mvv-values { border-top-color: var(--secondary-color, #3498db); }
 
 .nosotros-mvv-title {
-    font-size: var(--font-size-lg, 1.25rem);
+    font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: var(--spacing-md, 16px);
     color: var(--primary-dark-blue, #0b1f3a);
 }
 
-.nosotros-mvv-text, .nosotros-mvv-list {
-    font-size: var(--font-size-base, 1rem);
+.nosotros-mvv-text,
+.nosotros-mvv-list {
+    font-size: 1rem;
     color: var(--text-color-dark, #34495e);
     line-height: 1.6;
 }
-.nosotros-mvv-list { list-style: none; padding-left: 0; text-align: left; }
-.nosotros-mvv-list li { margin-bottom: var(--spacing-xs, 4px); position: relative; padding-left: var(--spacing-lg, 24px); }
-.nosotros-mvv-list li::before { content: '—'; position: absolute; left: 0; color: var(--secondary-color, #3498db); font-weight: bold; }
-.nosotros-mvv-value-title { font-weight: 600; color: var(--primary-dark-blue, #0b1f3a); }
 
-.equipo-categorias { margin: var(--spacing-md, 16px) auto; max-width: 900px; }
-.equipo-categoria-container { margin-bottom: var(--spacing-xl, 40px); }
+.nosotros-mvv-list {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+}
+
+.nosotros-mvv-list li {
+    margin-bottom: var(--spacing-xs, 4px);
+    position: relative;
+    padding-left: var(--spacing-lg, 24px);
+}
+
+.nosotros-mvv-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color, #3498db);
+    font-weight: bold;
+}
+
+.nosotros-mvv-value-title {
+    font-weight: 600;
+    color: var(--primary-dark-blue, #0b1f3a);
+}
+
+.equipo-categorias {
+    margin: var(--spacing-md, 16px) auto;
+    max-width: 900px;
+}
+
+.equipo-categoria-container {
+    margin-bottom: var(--spacing-xl, 40px);
+}
+
 .equipo-categoria-title {
-    font-size: var(--font-size-xl, 2rem);
+    font-size: 2rem;
     font-weight: 700;
     color: var(--primary-color, #2c3e50);
     margin-bottom: var(--spacing-lg, 24px);
@@ -200,119 +226,359 @@ body.no-scroll {
     display: inline-block;
     padding-bottom: var(--spacing-sm, 8px);
 }
+
 .equipo-categoria-title::after {
     content: '';
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     bottom: 0;
-    width: 60px;
-    height: 3px;
-    background-color: var(--secondary-color, #3498db);
-    border-radius: 2px;
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+    border-radius: 999px;
 }
 
 .equipo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: var(--spacing-md, 16px);
-    max-width: 100%;
     margin: 0 auto;
 }
 
 .miembro-card {
-    background-color: var(--white, #ffffff);
-    padding: var(--spacing-md, 16px);
-    border-radius: var(--spacing-md, 16px);
-    box-shadow: var(--shadow-light, 0 4px 8px rgba(0, 0, 0, 0.1));
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(255, 228, 230, 0.92));
+    padding: var(--spacing-md, 18px);
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
-.miembro-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium, 0 8px 16px rgba(0, 0, 0, 0.15)); }
-.miembro-foto-container { position: relative; width: 100px; height: 100px; margin: 0 auto var(--spacing-sm, 8px) auto; }
-.miembro-foto { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-color, #2c3e50); }
-.miembro-rango-icon { position: absolute; bottom: 0; right: 0; background-color: var(--secondary-color, #3498db); border-radius: 50%; padding: 2px 5px; font-size: 0.9em; line-height: 1; color: var(--white, #ffffff); box-shadow: var(--shadow-light, 0 4px 8px rgba(0, 0, 0, 0.1)); }
-.miembro-nombre { font-size: var(--font-size-md, 1.125rem); font-weight: 600; color: var(--primary-dark-blue, #0b1f3a); margin-bottom: var(--spacing-xs, 4px); }
-.miembro-cargo { font-size: var(--font-size-base, 1rem); color: var(--text-color-dark, #34495e); }
 
-/* Modal Styles */
-.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center; z-index: 1000; backdrop-filter: blur(5px); }
-.modal-content { background-color: var(--white, #ffffff); padding: var(--spacing-xl, 40px); border-radius: var(--spacing-md, 16px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 500px; width: 90%; position: relative; animation: fadeIn 0.3s ease-out; }
-.modal-close-button { position: absolute; top: var(--spacing-md, 16px); right: var(--spacing-md, 16px); background: none; border: none; font-size: var(--font-size-xl, 2rem); color: var(--text-color-dark, #34495e); cursor: pointer; transition: color 0.3s ease; }
-.modal-close-button:hover { color: var(--primary-dark-blue, #0b1f3a); }
-.modal-header { text-align: center; margin-bottom: var(--spacing-lg, 24px); }
-.modal-foto { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: var(--spacing-md, 16px); border: 4px solid var(--secondary-color, #3498db); }
-.modal-nombre { font-size: var(--font-size-xl, 2rem); font-weight: 700; color: var(--primary-dark-blue, #0b1f3a); margin-bottom: var(--spacing-sm, 8px); }
-.modal-cargo { font-size: var(--font-size-lg, 1.25rem); color: var(--text-color-dark, #34495e); }
-.modal-biography { font-size: var(--font-size-base, 1rem); color: var(--text-color-dark, #34495e); line-height: 1.7; text-align: justify; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+.miembro-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--card-hover-shadow);
+}
 
-/* Vehiculos & Himno */
-.vehiculos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg, 24px); margin-top: var(--spacing-md, 16px); padding: var(--spacing-md, 16px) 0; }
-.vehiculo-card { background-color: var(--white, #ffffff); border-radius: var(--spacing-md, 16px); box-shadow: var(--shadow-light, 0 4px 8px rgba(0, 0, 0, 0.1)); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; text-align: center; }
-.vehiculo-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium, 0 8px 16px rgba(0, 0, 0, 0.15)); }
-.vehiculo-card img { width: 100%; height: 200px; object-fit: cover; display: block; border-bottom: 3px solid var(--secondary-color, #3498db); }
-.vehiculo-card h3 { font-family: 'Montserrat', sans-serif; font-size: var(--font-size-lg, 1.25rem); color: var(--primary-dark-blue, #0b1f3a); margin: var(--spacing-md, 16px) 0 var(--spacing-sm, 8px) 0; padding: 0 var(--spacing-md, 16px); }
-.vehiculo-card p { font-size: var(--font-size-base, 1rem); color: var(--text-color-dark, #34495e); padding: 0 var(--spacing-md, 16px) var(--spacing-md, 16px) var(--spacing-md, 16px); text-align: justify; }
+.miembro-foto-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto var(--spacing-sm, 8px);
+}
 
-.himno-content { background-color: var(--white, #ffffff); padding: var(--spacing-xl, 40px); border-radius: var(--spacing-md, 16px); box-shadow: var(--shadow-light, 0 4px 8px rgba(0, 0, 0, 0.1)); margin-top: var(--spacing-md, 16px); text-align: center; }
-.himno-content h3 { font-family: 'Montserrat', sans-serif; font-size: var(--font-size-xl, 2rem); color: var(--primary-color, #2c3e50); margin-bottom: var(--spacing-lg, 24px); }
-.himno-content p { font-size: var(--font-size-md, 1.125rem); line-height: 2; color: var(--text-color-dark, #34495e); margin-bottom: var(--spacing-md, 16px); white-space: pre-wrap; }
-.himno-link { margin-top: var(--spacing-lg, 24px); font-size: var(--font-size-base, 1rem); font-weight: 600; }
-.himno-link a { color: var(--secondary-color, #3498db); text-decoration: none; }
-.himno-link a:hover { text-decoration: underline; color: var(--primary-dark-blue, #0b1f3a); }
+.miembro-foto {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color, #2c3e50);
+    box-shadow: 0 8px 18px rgba(153, 27, 27, 0.2);
+}
 
-/* Sección de Contacto */
-.nosotros-contacto-section { padding: var(--spacing-xl, 40px) var(--spacing-md, 16px); text-align: center; background-color: var(--secondary-color, #3498db); color: var(--white, #ffffff); margin-top: var(--spacing-xl, 40px); border-radius: var(--spacing-md, 16px); box-shadow: var(--shadow-medium, 0 8px 16px rgba(0, 0, 0, 0.15)); max-width: 1200px; margin-left: auto; margin-right: auto; margin-bottom: var(--spacing-xl, 40px); }
-.nosotros-contacto-title { font-family: 'Montserrat', sans-serif; font-size: var(--font-size-xxl, 2.5rem); color: var(--white, #ffffff); margin-bottom: var(--spacing-md, 16px); }
-.nosotros-contacto-card { max-width: 800px; margin: 0 auto; }
-.nosotros-contacto-text { font-size: var(--font-size-lg, 1.25rem); margin-bottom: var(--spacing-lg, 24px); line-height: 1.5; }
-.nosotros-contacto-button { background-color: var(--accent-color, #e67e22); color: var(--white, #ffffff); padding: var(--spacing-md, 16px) var(--spacing-lg, 24px); border-radius: 8px; text-decoration: none; font-size: var(--font-size-md, 1.125rem); font-weight: 700; transition: background-color 0.3s ease, transform 0.2s ease; display: inline-block; margin-bottom: var(--spacing-lg, 24px); }
-.nosotros-contacto-button:hover { background-color: #cf6811; transform: translateY(-2px); }
-.nosotros-contacto-social-text { font-size: var(--font-size-base, 1rem); opacity: 0.9; }
+.miembro-rango-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    border-radius: 50%;
+    padding: 4px 6px;
+    font-size: 0.9em;
+    line-height: 1;
+    color: var(--white, #ffffff);
+    box-shadow: 0 6px 14px rgba(153, 27, 27, 0.2);
+}
 
-/* Responsive Design */
+.miembro-nombre {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--primary-dark-blue, #0b1f3a);
+    margin-bottom: var(--spacing-xs, 4px);
+}
+
+.miembro-cargo {
+    font-size: 1rem;
+    color: var(--text-color-dark, #34495e);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(255, 241, 242, 0.95));
+    padding: var(--spacing-xl, 40px);
+    border-radius: 22px;
+    box-shadow: 0 18px 40px rgba(17, 24, 39, 0.25);
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+    border: 1px solid rgba(250, 204, 21, 0.35);
+}
+
+.modal-close-button {
+    position: absolute;
+    top: var(--spacing-md, 16px);
+    right: var(--spacing-md, 16px);
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color-dark, #34495e);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close-button:hover {
+    color: var(--primary-dark-blue, #0b1f3a);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg, 24px);
+}
+
+.modal-foto {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--spacing-md, 16px);
+    border: 4px solid var(--secondary-color, #3498db);
+    box-shadow: 0 10px 24px rgba(153, 27, 27, 0.25);
+}
+
+.modal-nombre {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-dark-blue, #0b1f3a);
+    margin-bottom: var(--spacing-sm, 8px);
+}
+
+.modal-cargo {
+    font-size: 1.25rem;
+    color: var(--text-color-dark, #34495e);
+}
+
+.modal-biography {
+    font-size: 1rem;
+    color: var(--text-color-dark, #34495e);
+    line-height: 1.7;
+    text-align: justify;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.vehiculos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg, 24px);
+    margin-top: var(--spacing-md, 16px);
+    padding: var(--spacing-md, 16px) 0;
+}
+
+.vehiculo-card {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(255, 241, 242, 0.92));
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    border: 1px solid rgba(250, 204, 21, 0.3);
+}
+
+.vehiculo-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--card-hover-shadow);
+}
+
+.vehiculo-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 4px solid var(--secondary-color, #3498db);
+}
+
+.vehiculo-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    color: var(--primary-dark-blue, #0b1f3a);
+    margin: var(--spacing-md, 16px) 0 var(--spacing-sm, 8px);
+    padding: 0 var(--spacing-md, 16px);
+}
+
+.vehiculo-card p {
+    font-size: 1rem;
+    color: var(--text-color-dark, #34495e);
+    padding: 0 var(--spacing-md, 16px) var(--spacing-md, 16px);
+    text-align: justify;
+}
+
+.himno-content {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(255, 228, 230, 0.92));
+    padding: var(--spacing-xl, 40px);
+    border-radius: 22px;
+    box-shadow: var(--card-shadow);
+    margin-top: var(--spacing-md, 16px);
+    text-align: center;
+    border: 1px solid rgba(250, 204, 21, 0.3);
+}
+
+.himno-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    color: var(--primary-dark-blue, #0b1f3a);
+    margin-bottom: var(--spacing-lg, 24px);
+}
+
+.himno-content p {
+    font-size: 1.1rem;
+    line-height: 2;
+    color: var(--text-color-dark, #34495e);
+    margin-bottom: var(--spacing-md, 16px);
+    white-space: pre-wrap;
+}
+
+.himno-link {
+    margin-top: var(--spacing-lg, 24px);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.himno-link a {
+    color: var(--primary-color, #2c3e50);
+    text-decoration: none;
+}
+
+.himno-link a:hover {
+    text-decoration: underline;
+    color: var(--secondary-color, #3498db);
+}
+
+.nosotros-contacto-section {
+    padding: var(--spacing-xl, 40px) var(--spacing-md, 16px);
+    text-align: center;
+    background: linear-gradient(135deg, rgba(93, 11, 11, 0.95), rgba(153, 27, 27, 0.9));
+    color: var(--white, #ffffff);
+    margin-top: var(--spacing-xl, 40px);
+    border-radius: 24px;
+    box-shadow: var(--card-hover-shadow);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--spacing-xl, 40px);
+    position: relative;
+    overflow: hidden;
+}
+
+.nosotros-contacto-section::after {
+    content: '';
+    position: absolute;
+    top: -60px;
+    left: -50px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(250, 204, 21, 0.35), transparent 70%);
+}
+
+.nosotros-contacto-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    color: var(--white, #ffffff);
+    margin-bottom: var(--spacing-md, 16px);
+}
+
+.nosotros-contacto-card {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.nosotros-contacto-text {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-lg, 24px);
+    line-height: 1.5;
+}
+
+.nosotros-contacto-button {
+    background: linear-gradient(135deg, var(--accent-color, #e67e22), var(--secondary-color, #3498db));
+    color: #4b0c0c;
+    padding: var(--spacing-md, 16px) var(--spacing-lg, 28px);
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    margin-bottom: var(--spacing-lg, 24px);
+    box-shadow: 0 18px 32px rgba(249, 115, 22, 0.35);
+}
+
+.nosotros-contacto-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 22px 38px rgba(249, 115, 22, 0.45);
+}
+
+.nosotros-contacto-social-text {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
 @media (max-width: 992px) {
-    .nosotros-h1 { font-size: 3em; }
-    .nosotros-hero-subtitle { font-size: 1.1em; }
-    .accordion-header { font-size: 1.5em; padding: var(--spacing-md, 16px); }
+    .nosotros-h1 { font-size: 3rem; }
+    .nosotros-hero-subtitle { font-size: 1.1rem; }
+    .accordion-header { font-size: 1.6rem; padding: var(--spacing-md, 16px); }
     .accordion-content.expanded { padding: var(--spacing-md, 16px); }
     .nosotros-mvv-card { min-height: auto; }
     .vehiculos-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
     .equipo-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
-    .miembro-foto-container { width: 80px; height: 80px; }
-    .miembro-foto { border-width: 2px; }
-    .modal-content { max-width: 450px; }
+    .miembro-foto-container { width: 90px; height: 90px; }
+    .modal-content { max-width: 460px; }
 }
 
 @media (max-width: 768px) {
-    .nosotros-h1 { font-size: 2.5em; }
-    .nosotros-hero-subtitle { font-size: 1em; }
-    .accordion-header { font-size: 1.3em; padding: var(--spacing-sm, 8px) var(--spacing-md, 16px); }
+    .nosotros-h1 { font-size: 2.6rem; }
+    .nosotros-hero-subtitle { font-size: 1rem; }
+    .accordion-header { font-size: 1.4rem; padding: var(--spacing-sm, 8px) var(--spacing-md, 16px); }
     .accordion-content.expanded { padding: var(--spacing-sm, 8px); }
     .nosotros-mvv-grid { grid-template-columns: 1fr; }
     .vehiculos-grid { grid-template-columns: 1fr; }
     .equipo-grid { grid-template-columns: repeat(2, 1fr); }
     .modal-content { max-width: 90%; padding: var(--spacing-md, 16px); }
     .modal-foto { width: 100px; height: 100px; }
-    .modal-nombre { font-size: 1.3em; }
-    .modal-cargo { font-size: 1em; }
-    .modal-biography { font-size: 0.9em; }
+    .modal-nombre { font-size: 1.4rem; }
+    .modal-cargo { font-size: 1rem; }
+    .modal-biography { font-size: 0.95rem; }
 }
 
 @media (max-width: 480px) {
-    .nosotros-h1 { font-size: 2em; }
-    .nosotros-hero-subtitle { font-size: 0.9em; }
-    .accordion-header { font-size: 1.1em; padding: var(--spacing-sm, 8px); }
+    .nosotros-h1 { font-size: 2.2rem; }
+    .nosotros-hero-subtitle { font-size: 0.95rem; }
+    .accordion-header { font-size: 1.2rem; padding: var(--spacing-sm, 8px); }
     .accordion-content.expanded { padding: var(--spacing-sm, 8px); }
-    .equipo-grid { grid-template-columns: repeat(2, 1fr); } /* Mantenemos 2 columnas para mejor aspecto */
-    .miembro-card { padding: var(--spacing-sm, 8px); }
-    .miembro-foto-container { width: 70px; height: 70px; }
-    .miembro-nombre { font-size: 1em; }
-    .miembro-cargo { font-size: 0.85em; }
-    .vehiculo-card h3 { font-size: 1.1em; }
-    .vehiculo-card p { font-size: 0.9em; }
-    .himno-content h3 { font-size: 1.5em; }
-    .himno-content p { font-size: 0.9em; }
+    .equipo-grid { grid-template-columns: repeat(2, 1fr); }
+    .miembro-card { padding: var(--spacing-sm, 10px); }
+    .miembro-foto-container { width: 75px; height: 75px; }
+    .miembro-nombre { font-size: 1rem; }
+    .miembro-cargo { font-size: 0.85rem; }
+    .vehiculo-card h3 { font-size: 1.1rem; }
+    .vehiculo-card p { font-size: 0.9rem; }
+    .himno-content h3 { font-size: 1.6rem; }
+    .himno-content p { font-size: 0.95rem; }
 }

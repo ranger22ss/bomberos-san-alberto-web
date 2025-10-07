@@ -16,19 +16,23 @@
 /* Centraliza AQUÍ todas tus variables de color, tipografía, espaciado, etc. */
 /* ****************************************************************** */
 :root {
-    
-    --secondary-color: #3498db; /* Un azul para los círculos */
+
     --white: #ffffff; /* Blanco puro para los íconos */
-    
-    --primary-dark-blue: #0b1f3a;
-    --primary-color: #2c3e50;
-    /*--secondary-color está duplicado, se usará el último que se defina */
-    --accent-color: #e67e22; /* Usado en el borde del header de noticias */
-    --text-color-light: #f0f0f0; /* Blanco */
-    --text-color-dark: #34495e; /* Azul oscuro para texto general */
-    --light-grey: #bdc3c7;
-    --border-color: #dee2e6;
-    --page-background-color: #f4f7f9; /* Fondo general de las páginas */
+
+    --primary-dark-blue: #5d0b0b; /* Rojo institucional profundo */
+    --primary-color: #991b1b; /* Rojo principal */
+    --secondary-color: #f97316; /* Naranja de apoyo */
+    --accent-color: #facc15; /* Dorado para detalles */
+    --text-color-light: #fff7ed; /* Marfil cálido */
+    --text-color-dark: #1f2937; /* Gris azulado oscuro */
+    --light-grey: #e5e7eb;
+    --border-color: #fbbf24;
+    --page-background-color: #fff7f4; /* Fondo cálido para todas las páginas */
+    --section-bg-light: #fff1f2;
+    --section-bg-dark: #ffe4e6;
+    --card-shadow: 0 12px 30px rgba(93, 11, 11, 0.15);
+    --card-hover-shadow: 0 20px 45px rgba(93, 11, 11, 0.25);
+    --gold-accent: #facc15;
 
     /* Variables específicas para el Header (usadas en Header.css y para el padding-top) */
     --header-height-desktop: 125.234px; /* ALTURA MEDIDA DEL ENCABEZADO */
@@ -64,7 +68,9 @@ html {
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: var(--page-background-color);
+    background: radial-gradient(circle at 20% 20%, rgba(249, 115, 22, 0.1), transparent 55%),
+                radial-gradient(circle at 80% 0%, rgba(250, 204, 21, 0.12), transparent 60%),
+                linear-gradient(180deg, #fff1f2 0%, #fff7f4 45%, #ffffff 100%);
     color: var(--text-color-dark); /* Color de texto por defecto, oscuro sobre fondo claro */
     line-height: 1.6;
     min-width: 0;
@@ -91,19 +97,20 @@ img, video {
 
 /* Estilos para enlaces */
 a {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 a:hover {
-    color: var(--primary-dark-blue);
+    color: var(--secondary-color);
+    transform: translateY(-1px);
 }
 
 /* Estilos para títulos */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
-    color: var(--white);
+    color: var(--primary-dark-blue);
     margin-top: 0;
     margin-bottom: var(--spacing-md);
     line-height: 1.2;
@@ -150,13 +157,14 @@ h6 { font-size: 1rem; }
 
 /* SIDEBAR DE NOTICIAS */
 .noticias-sidebar {
-    background-color: var(--white);
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    padding: var(--spacing-md);
+    background: linear-gradient(180deg, rgba(255, 241, 242, 0.92), rgba(255, 228, 230, 0.95));
+    border-radius: 18px;
+    box-shadow: var(--card-shadow);
+    padding: var(--spacing-lg);
     align-self: start;
     height: fit-content;
-    min-width: 0; 
+    min-width: 0;
+    border: 1px solid rgba(250, 204, 21, 0.35);
 }
 
 
