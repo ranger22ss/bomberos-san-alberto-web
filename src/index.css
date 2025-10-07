@@ -1,50 +1,38 @@
-/* src/index.css (Tu archivo CSS global) */
+/* src/index.css (estilos globales) */
 
-/* Importar fuentes de Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
-/* ****************************************************************** */
-/* GLOBAL RESET & BOX-SIZING                                          */
-/* Asegura que el padding y el borde se incluyan en el ancho/alto total de un elemento */
-/* ****************************************************************** */
+/* RESET BÁSICO */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
-/* ****************************************************************** */
-/* VARIABLES CSS GLOBALES                                             */
-/* Centraliza AQUÍ todas tus variables de color, tipografía, espaciado, etc. */
-/* ****************************************************************** */
 :root {
+    --white: #ffffff;
 
-    --white: #ffffff; /* Blanco puro para los íconos */
+    --primary-dark-blue: #0c1f3f;
+    --primary-color: #1d4ed8;
+    --secondary-color: #1e3a8a;
+    --accent-color: #38bdf8;
+    --text-color-light: #f8fafc;
+    --text-color-dark: #0f172a;
+    --light-grey: #e2e8f0;
+    --border-color: #cbd5f5;
+    --page-background-color: #f3f6fb;
+    --section-bg-light: #ffffff;
+    --section-bg-dark: #e0e9f9;
+    --card-shadow: 0 16px 40px rgba(12, 31, 63, 0.12);
+    --card-hover-shadow: 0 24px 48px rgba(12, 31, 63, 0.18);
+    --gold-accent: #fbbf24;
 
-    --primary-dark-blue: #5d0b0b; /* Rojo institucional profundo */
-    --primary-color: #991b1b; /* Rojo principal */
-    --secondary-color: #f97316; /* Naranja de apoyo */
-    --accent-color: #facc15; /* Dorado para detalles */
-    --text-color-light: #fff7ed; /* Marfil cálido */
-    --text-color-dark: #1f2937; /* Gris azulado oscuro */
-    --light-grey: #e5e7eb;
-    --border-color: #fbbf24;
-    --page-background-color: #fff7f4; /* Fondo cálido para todas las páginas */
-    --section-bg-light: #fff1f2;
-    --section-bg-dark: #ffe4e6;
-    --card-shadow: 0 12px 30px rgba(93, 11, 11, 0.15);
-    --card-hover-shadow: 0 20px 45px rgba(93, 11, 11, 0.25);
-    --gold-accent: #facc15;
+    --header-height-desktop: 240px;
+    --header-height-mobile: 160px;
 
-    /* Variables específicas para el Header (usadas en Header.css y para el padding-top) */
-    --header-height-desktop: 125.234px; /* ALTURA MEDIDA DEL ENCABEZADO */
-    --header-height-mobile: 90px;      /* Altura estimada del header en móviles (ajustar si es necesario) */
-
-    /* Variables para el Footer */
-    --footer-bg-color: #1e3a8a;
-    --link-color-footer: #d4edda;
-    --footer-height-desktop: 0px; /* Asume 0px si no tienes un footer de altura fija */
+    --footer-bg-color: #0f172a;
+    --link-color-footer: #e0f2fe;
+    --footer-height-desktop: 0px;
     --footer-height-mobile: 0px;
 
-    /* Spacing variables (consistencia en padding/margin) */
     --spacing-xs: 4px;
     --spacing-sm: 8px;
     --spacing-md: 16px;
@@ -52,50 +40,41 @@
     --spacing-xl: 40px;
     --spacing-xxl: 60px;
 
-    /* Typography variables */
-    --font-size-base: 16px; /* Define un tamaño base para usar con rem */
+    --font-size-base: 16px;
 }
 
-/* ****************************************************************** */
-/* BASE STYLES & GLOBAL RESPONSIVE RULES                              */
-/* Asegura que HTML, BODY y el contenedor #root de React tomen el 100% de la altura visible */
-/* ****************************************************************** */
 html {
-    font-size: 100%; /* Base para rem units */
-    scroll-behavior: smooth; /* Desplazamiento suave */
-    min-width: 0; 
+    font-size: 100%;
+    scroll-behavior: smooth;
+    min-width: 0;
 }
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background: radial-gradient(circle at 20% 20%, rgba(249, 115, 22, 0.1), transparent 55%),
-                radial-gradient(circle at 80% 0%, rgba(250, 204, 21, 0.12), transparent 60%),
-                linear-gradient(180deg, #fff1f2 0%, #fff7f4 45%, #ffffff 100%);
-    color: var(--text-color-dark); /* Color de texto por defecto, oscuro sobre fondo claro */
+    background:
+        radial-gradient(circle at 18% 20%, rgba(56, 189, 248, 0.18), transparent 55%),
+        radial-gradient(circle at 82% 0%, rgba(29, 78, 216, 0.18), transparent 60%),
+        linear-gradient(180deg, #f9fbff 0%, #eef3fc 40%, #ffffff 100%);
+    color: var(--text-color-dark);
     line-height: 1.6;
     min-width: 0;
-    -webkit-font-smoothing: antialiased; /* Suavizado de fuentes para WebKit */
-    -moz-osx-font-smoothing: grayscale; /* Suavizado de fuentes para Firefox */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Contenedores principales de la aplicación */
-/* SE MODIFICÓ ESTE BLOQUE PARA QUITAR 'display:flex' y permitir el scroll natural del body */
 #root, .App {
     width: 100%;
     margin: 0;
     padding: 0;
-    min-width: 0; 
+    min-width: 0;
 }
 
-
-/* Global responsive images and videos */
 img, video {
-    max-width: 100%; /* Asegura que no se salgan de sus contenedores */
-    height: auto;    /* Mantiene la proporción */
-    display: block;  /* Elimina espacio extra debajo de imágenes */
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-/* Estilos para enlaces */
 a {
     color: var(--primary-color);
     text-decoration: none;
@@ -103,18 +82,16 @@ a {
 }
 
 a:hover {
-    color: var(--secondary-color);
+    color: var(--accent-color);
     transform: translateY(-1px);
 }
 
-/* Estilos para títulos */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     color: var(--primary-dark-blue);
     margin-top: 0;
     margin-bottom: var(--spacing-md);
     line-height: 1.2;
-    word-wrap: break-word; 
     overflow-wrap: break-word;
 }
 
@@ -125,97 +102,64 @@ h4 { font-size: 1.5rem; }
 h5 { font-size: 1.25rem; }
 h6 { font-size: 1rem; }
 
-/* ****************************************************************** */
-/* NUEVO LAYOUT: CONTENIDO PRINCIPAL Y BARRA LATERAL DE NOTICIAS    */
-/* ****************************************************************** */
 .content-and-sidebar-wrapper {
-    display: grid; 
+    display: grid;
     grid-template-columns: 1fr 320px;
-    gap: var(--spacing-lg); 
-    max-width: 1400px; 
-    width: 100%; 
-    margin: 0 auto; 
-    padding-top: var(--header-height-desktop);
-    padding-bottom: var(--spacing-xl); 
+    gap: var(--spacing-lg);
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: calc(var(--header-height-desktop) + var(--spacing-lg));
+    padding-bottom: var(--spacing-xl);
     min-width: 0;
-    /* Se agrega min-height para empujar el footer hacia abajo en páginas con poco contenido */
     min-height: calc(100vh - var(--header-height-desktop) - var(--footer-height-desktop));
-    /* SE ELIMINARON flex-grow y overflow-y para permitir el scroll natural del BODY */
 }
 
-/* MAIN CONTENT AREA - Padding horizontal revertido a CERO para evitar errores */
 .main-content-area {
     background-color: var(--page-background-color);
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: 0;
-    max-width: none;
+    padding: 0;
     margin: 0;
-    width: 100%; 
-    min-width: 0; 
-}
-
-/* SIDEBAR DE NOTICIAS */
-.noticias-sidebar {
-    background: linear-gradient(180deg, rgba(255, 241, 242, 0.92), rgba(255, 228, 230, 0.95));
-    border-radius: 18px;
-    box-shadow: var(--card-shadow);
-    padding: var(--spacing-lg);
-    align-self: start;
-    height: fit-content;
+    width: 100%;
     min-width: 0;
-    border: 1px solid rgba(250, 204, 21, 0.35);
 }
 
+.noticias-sidebar {
+    background: linear-gradient(180deg, rgba(224, 233, 249, 0.92), rgba(249, 252, 255, 0.98));
+    border-radius: 28px;
+    padding: var(--spacing-lg);
+    box-shadow: var(--card-shadow);
+    position: sticky;
+    top: calc(var(--spacing-xl) + 120px);
+    height: fit-content;
+}
 
-/* ****************************************************************** */
-/* MEDIA QUERIES GLOBALES (Para que todo se adapte)                   */
-/* ****************************************************************** */
-
-@media (max-width: 992px) { /* Tablets y pantallas medianas */
+@media (max-width: 1100px) {
     .content-and-sidebar-wrapper {
         grid-template-columns: 1fr;
-        padding-top: var(--header-height-mobile);
+        padding-top: calc(var(--header-height-desktop) + var(--spacing-lg));
+    }
+
+    .noticias-sidebar {
+        position: static;
+        top: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 0.98rem;
+    }
+
+    .content-and-sidebar-wrapper {
+        padding-top: calc(var(--header-height-mobile) + var(--spacing-lg));
         padding-left: var(--spacing-md);
         padding-right: var(--spacing-md);
-        min-width: 0;
-        /* Se ajusta el min-height para la altura del header en móviles */
-        min-height: calc(100vh - var(--header-height-mobile) - var(--footer-height-mobile));
-    }
-    
-    h1 { font-size: 2.2rem; }
-    h2 { font-size: 1.8rem; }
-
-    .main-content-area {
-        width: 100%;
-        min-width: 0;
-    }
-    .noticias-sidebar {
-        width: 100%;
-        padding: var(--spacing-lg);
-        margin-top: var(--spacing-lg);
-        min-width: 0;
     }
 }
 
-@media (max-width: 768px) { /* Móviles grandes y medianos */
+@media (max-width: 576px) {
     .content-and-sidebar-wrapper {
-        padding-left: var(--spacing-sm); 
+        padding-left: var(--spacing-sm);
         padding-right: var(--spacing-sm);
     }
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.6rem; }
-    h3 { font-size: 1.4rem; }
-    p { font-size: 0.95rem; }
-}
-
-@media (max-width: 480px) { /* Móviles pequeños */
-    .content-and-sidebar-wrapper {
-        padding-left: var(--spacing-xs);
-        padding-right: var(--spacing-xs);
-    }
-    h1 { font-size: 1.8rem; }
-    h2 { font-size: 1.4rem; }
-    h3 { font-size: 1.2rem; }
-    p { font-size: 0.9rem; }
 }
