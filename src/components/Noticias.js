@@ -4,7 +4,7 @@ import './Noticias.css'; // ¡Importando el estilo externo como debe ser!
 
 
 // Importaciones de imágenes y videos (rutas relativas a 'src/components/')
-import Acompañamiento1 from '../pictures/Acompañamiento1.jpg';
+import Acompañamiento1 from '../pictures/Accidente1.jpg';
 import Incendio1 from '../pictures/Incendio1.jpg';
 import Incendio4 from '../pictures/Incendio4.jpg';
 import capacitacion1 from '../pictures/Capacitacion1.jpg';
@@ -28,9 +28,9 @@ const noticiasData = [
   {
     id: 2,
     imagen: Acompañamiento1,
-    titulo: 'Gran recibimiento de los campeones de la XXV Olimpiada Especial FIDES',
+    titulo: 'Accidente de Transito',
     link: 'https://www.facebook.com/share/p/1Q9tqcZA8i/',
-    descripcion: 'Felicitamos de todo corazón a los campeones..'
+    descripcion: 'Ocurrio un accidente en lugar frente bomberos'
   },
   {
     id: 3,
