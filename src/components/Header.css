@@ -3,22 +3,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
 .header-container {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: clamp(18px, 4vw, 28px) clamp(16px, 6vw, 40px);
+    padding: clamp(14px, 3.5vw, 22px) clamp(16px, 5vw, 32px);
     color: var(--text-color-light);
-    z-index: 1000;
-    min-height: clamp(200px, calc(16vw + 140px), 340px);
+    z-index: 10;
+    min-height: clamp(160px, calc(12vw + 120px), 280px);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: 0 30px 50px rgba(12, 31, 63, 0.25);
+    box-shadow: 0 18px 36px rgba(12, 31, 63, 0.22);
     overflow: hidden;
+    border-radius: clamp(16px, 4vw, 28px);
+    margin: var(--spacing-sm) auto var(--spacing-lg);
 }
 
 .header-overlay {
@@ -33,9 +33,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: clamp(var(--spacing-md), 4vw, var(--spacing-xl));
+    gap: clamp(var(--spacing-sm), 3vw, var(--spacing-lg));
     width: 100%;
-    max-width: min(1280px, 96vw);
+    max-width: min(1160px, 94vw);
     z-index: 2;
 }
 
@@ -43,20 +43,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: clamp(var(--spacing-sm), 2.5vw, var(--spacing-lg));
-    background: rgba(15, 23, 42, 0.4);
-    padding: clamp(10px, 2vw, 14px) clamp(16px, 4vw, 24px);
-    border-radius: 18px;
-    border: 1px solid rgba(56, 189, 248, 0.28);
+    gap: clamp(var(--spacing-xs), 2vw, var(--spacing-md));
+    background: rgba(15, 23, 42, 0.42);
+    padding: clamp(8px, 1.6vw, 12px) clamp(14px, 3.2vw, 20px);
+    border-radius: 14px;
+    border: 1px solid rgba(56, 189, 248, 0.24);
     backdrop-filter: blur(6px);
 }
 
 .header-top-info {
     display: flex;
     flex-wrap: wrap;
-    gap: clamp(var(--spacing-sm), 2vw, var(--spacing-md));
-    font-size: clamp(0.75rem, 0.75rem + 0.4vw, 0.9rem);
-    letter-spacing: 0.4px;
+    gap: clamp(var(--spacing-xs), 1.6vw, var(--spacing-sm));
+    font-size: clamp(0.72rem, 0.7rem + 0.35vw, 0.85rem);
+    letter-spacing: 0.35px;
     text-transform: uppercase;
 }
 
@@ -73,28 +73,28 @@
 }
 
 .header-top-pill {
-    background: rgba(56, 189, 248, 0.18);
-    border: 1px solid rgba(148, 197, 254, 0.4);
+    background: rgba(56, 189, 248, 0.2);
+    border: 1px solid rgba(148, 197, 254, 0.35);
     color: var(--text-color-light);
     font-weight: 700;
-    padding: clamp(6px, 1.4vw, 9px) clamp(14px, 4vw, 20px);
+    padding: clamp(5px, 1.2vw, 8px) clamp(12px, 3.5vw, 18px);
     border-radius: 999px;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.55px;
     text-transform: uppercase;
-    font-size: clamp(0.7rem, 0.6rem + 0.4vw, 0.85rem);
+    font-size: clamp(0.68rem, 0.6rem + 0.35vw, 0.82rem);
 }
 
 .header-main-row {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    gap: clamp(var(--spacing-md), 4vw, var(--spacing-xl));
+    gap: clamp(var(--spacing-sm), 3vw, var(--spacing-lg));
 }
 
 .header-brand-block {
     display: flex;
     align-items: center;
-    gap: clamp(var(--spacing-sm), 3vw, var(--spacing-lg));
+    gap: clamp(var(--spacing-sm), 2.5vw, var(--spacing-md));
 }
 
 .header-logo-link {
@@ -103,7 +103,7 @@
 }
 
 .header-logo {
-    width: clamp(84px, 10vw, 120px);
+    width: clamp(72px, 9vw, 110px);
     height: auto;
     display: block;
 }
@@ -115,7 +115,7 @@
 }
 
 .header-institution {
-    font-size: clamp(1rem, 0.6rem + 1vw, 1.1rem);
+    font-size: clamp(0.95rem, 0.6rem + 0.9vw, 1.05rem);
     font-weight: 700;
     color: var(--text-color-light);
     margin: 0;
@@ -125,45 +125,46 @@
 
 .header-location {
     margin: 0;
-    font-size: clamp(0.85rem, 0.6rem + 0.6vw, 0.95rem);
-    color: rgba(248, 250, 252, 0.75);
+    font-size: clamp(0.8rem, 0.6rem + 0.5vw, 0.9rem);
+    color: rgba(248, 250, 252, 0.78);
     letter-spacing: 0.4px;
 }
 
 .header-actions {
     display: flex;
     align-items: stretch;
-    gap: clamp(var(--spacing-md), 4vw, var(--spacing-xl));
+    gap: clamp(var(--spacing-sm), 3vw, var(--spacing-lg));
     margin-left: auto;
     flex: 1 1 auto;
     justify-content: flex-end;
 }
 
 .header-message {
-    flex: 1 1 320px;
+    flex: 1 1 260px;
     display: flex;
     flex-direction: column;
-    gap: clamp(var(--spacing-sm), 2.4vw, var(--spacing-lg));
-    max-width: clamp(280px, 52vw, 420px);
-    background: rgba(15, 23, 42, 0.58);
-    border: 1px solid rgba(56, 189, 248, 0.32);
-    padding: clamp(18px, 3vw, 26px) clamp(20px, 4vw, 28px);
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(12, 31, 63, 0.35);
+    gap: clamp(var(--spacing-xs), 2vw, var(--spacing-md));
+    max-width: clamp(260px, 48vw, 360px);
+    background: rgba(15, 23, 42, 0.62);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    padding: clamp(16px, 2.6vw, 22px) clamp(18px, 3.6vw, 24px);
+    border-radius: 20px;
+    box-shadow: 0 16px 32px rgba(12, 31, 63, 0.32);
     backdrop-filter: blur(8px);
 }
 
 .header-message p {
     margin: 0;
-    font-size: clamp(0.95rem, 0.8rem + 0.6vw, 1.05rem);
-    color: rgba(241, 245, 249, 0.94);
-    line-height: 1.6;
+    font-size: clamp(0.9rem, 0.75rem + 0.55vw, 1rem);
+    color: rgba(241, 245, 249, 0.95);
+    line-height: 1.5;
 }
 
 .header-cta-group {
     display: flex;
     gap: clamp(var(--spacing-xs), 2vw, var(--spacing-sm));
     flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .header-controls {
@@ -298,13 +299,14 @@
 
 @media (max-width: 1100px) {
     .header-container {
-        padding: clamp(18px, 3.5vw, 24px) clamp(18px, 5vw, var(--spacing-lg));
+        padding: clamp(12px, 3vw, 20px) clamp(16px, 5vw, var(--spacing-lg));
+        margin: var(--spacing-xs) auto var(--spacing-lg);
     }
 
     .header-main-row {
         flex-direction: column;
         align-items: flex-start;
-        gap: clamp(var(--spacing-md), 5vw, var(--spacing-xl));
+        gap: clamp(var(--spacing-sm), 4vw, var(--spacing-lg));
     }
 
     .header-actions {
@@ -315,6 +317,7 @@
 
     .header-message {
         width: 100%;
+        max-width: 100%;
     }
 
     .header-controls {
@@ -324,13 +327,17 @@
 }
 
 @media (max-width: 900px) {
+    .header-container {
+        padding: clamp(12px, 4vw, 18px) clamp(14px, 5vw, 22px);
+    }
+
     .header-top-bar {
         flex-direction: column;
         align-items: flex-start;
     }
 
     .header-actions {
-        gap: clamp(var(--spacing-sm), 4vw, var(--spacing-lg));
+        gap: clamp(var(--spacing-sm), 4vw, var(--spacing-md));
     }
 
     .header-message {
@@ -340,11 +347,7 @@
     }
 
     .header-message p {
-        font-size: clamp(0.92rem, 0.8rem + 0.6vw, 1rem);
-    }
-
-    .header-controls {
-        justify-content: flex-end;
+        font-size: clamp(0.9rem, 0.75rem + 0.55vw, 0.98rem);
     }
 
     .nav-toggle {
@@ -434,8 +437,10 @@
 
 @media (max-width: 640px) {
     .header-container {
-        padding: clamp(16px, 4vw, 22px) clamp(var(--spacing-sm), 5vw, var(--spacing-md));
-        min-height: clamp(150px, calc(18vw + 100px), 220px);
+        padding: clamp(12px, 5vw, 18px) clamp(var(--spacing-sm), 6vw, var(--spacing-md));
+        min-height: clamp(140px, calc(18vw + 90px), 210px);
+        border-radius: 0;
+        margin: 0 0 var(--spacing-md);
     }
 
     .header-top-bar {
@@ -456,25 +461,27 @@
     }
 
     .header-actions {
-        gap: clamp(var(--spacing-sm), 5vw, var(--spacing-lg));
+        gap: clamp(var(--spacing-xs), 5vw, var(--spacing-md));
+        align-items: center;
     }
 
     .header-message {
-        padding: clamp(16px, 4vw, 22px) clamp(16px, 5vw, 22px);
+        padding: clamp(14px, 4vw, 20px) clamp(14px, 5vw, 20px);
     }
 
     .header-message p {
-        font-size: clamp(0.9rem, 0.75rem + 0.6vw, 0.95rem);
+        font-size: clamp(0.88rem, 0.72rem + 0.55vw, 0.94rem);
     }
 
     .header-cta-group {
         flex-wrap: wrap;
         gap: clamp(var(--spacing-xs), 4vw, var(--spacing-sm));
+        justify-content: center;
     }
 
     .header-controls {
         width: 100%;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .header-nav {
@@ -484,7 +491,7 @@
 
 @media (max-width: 480px) {
     .header-container {
-        min-height: clamp(140px, calc(20vw + 90px), 200px);
+        min-height: clamp(130px, calc(20vw + 80px), 190px);
     }
 
     .header-brand-block {
