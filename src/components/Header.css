@@ -331,6 +331,7 @@
     .header-actions {
         gap: var(--spacing-md);
     }
+}
 
     .header-message {
         max-width: 100%;
