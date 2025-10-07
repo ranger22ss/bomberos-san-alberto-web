@@ -1,0 +1,288 @@
+/* src/pages/Cotizar.css */
+
+.cotizar-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxl);
+    background: var(--page-background-color);
+    padding-bottom: var(--spacing-xxl);
+}
+
+.cotizar-hero {
+    position: relative;
+    min-height: 360px;
+    border-bottom-left-radius: 48px;
+    border-bottom-right-radius: 48px;
+    overflow: hidden;
+    padding: var(--spacing-xxl) var(--spacing-xl);
+    background: url('../Fondo.jpg') center/cover no-repeat;
+}
+
+.cotizar-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(12, 31, 63, 0.92) 0%, rgba(30, 64, 175, 0.78) 65%, rgba(37, 99, 235, 0.65) 100%);
+    z-index: 1;
+}
+
+.cotizar-hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+    color: var(--text-color-light);
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.cotizar-hero__logo {
+    width: 92px;
+    border-radius: 16px;
+    padding: 10px;
+    background: rgba(241, 245, 249, 0.12);
+}
+
+.cotizar-hero__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: rgba(226, 232, 240, 0.85);
+}
+
+.cotizar-hero h1 {
+    margin: 0;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--text-color-light);
+}
+
+.cotizar-hero p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: rgba(241, 245, 249, 0.85);
+    line-height: 1.6;
+}
+
+.cotizar-hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.cotizar-hero__button {
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cotizar-hero__button.primary {
+    background: linear-gradient(135deg, var(--accent-color), #60a5fa);
+    color: var(--primary-dark-blue);
+}
+
+.cotizar-hero__button.secondary {
+    border: 1px solid rgba(191, 219, 254, 0.6);
+    color: var(--text-color-light);
+    background: transparent;
+}
+
+.cotizar-hero__button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 24px rgba(12, 31, 63, 0.28);
+}
+
+.cotizar-highlights {
+    margin: 0 var(--spacing-xl);
+}
+
+.cotizar-highlights__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.cotizar-highlight-card {
+    background: var(--section-bg-light);
+    padding: var(--spacing-lg);
+    border-radius: 24px;
+    border: 1px solid rgba(148, 197, 254, 0.35);
+    box-shadow: var(--card-shadow);
+    display: grid;
+    gap: var(--spacing-sm);
+    text-align: left;
+}
+
+.cotizar-highlight-card__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--secondary-color);
+}
+
+.cotizar-highlight-card h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.cotizar-highlight-card p {
+    margin: 0;
+    color: rgba(15, 23, 42, 0.7);
+}
+
+.cotizar-process {
+    padding: 0 var(--spacing-xl);
+}
+
+.cotizar-process__content {
+    background: var(--section-bg-light);
+    border-radius: 32px;
+    padding: var(--spacing-xl);
+    border: 1px solid rgba(148, 197, 254, 0.35);
+    box-shadow: var(--card-shadow);
+    display: grid;
+    gap: var(--spacing-xl);
+}
+
+.cotizar-process__intro {
+    max-width: 620px;
+}
+
+.cotizar-process__eyebrow {
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--secondary-color);
+    font-size: 0.85rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.cotizar-process__steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.cotizar-process__step {
+    background: rgba(37, 99, 235, 0.08);
+    border-radius: 20px;
+    padding: var(--spacing-lg);
+    border: 1px solid rgba(148, 197, 254, 0.35);
+    display: grid;
+    gap: var(--spacing-sm);
+}
+
+.cotizar-process__step-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.cotizar-process__step h3 {
+    margin: 0;
+}
+
+.cotizar-process__step p {
+    margin: 0;
+    color: rgba(15, 23, 42, 0.7);
+}
+
+.cotizar-form-section {
+    margin: 0 var(--spacing-xl);
+}
+
+.cotizar-portfolio-link {
+    margin: 0 var(--spacing-xl);
+}
+
+.cotizar-portfolio-link__content {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 64, 175, 0.88));
+    border-radius: 32px;
+    padding: var(--spacing-xl);
+    color: var(--text-color-light);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    box-shadow: var(--card-shadow);
+}
+
+.cotizar-portfolio-link__button {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: var(--text-color-light);
+    color: var(--primary-dark-blue);
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cotizar-portfolio-link__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 28px rgba(15, 23, 42, 0.4);
+}
+
+@media (max-width: 1024px) {
+    .cotizar-hero {
+        padding: var(--spacing-xxl) var(--spacing-lg);
+    }
+
+    .cotizar-highlights,
+    .cotizar-process,
+    .cotizar-form-section,
+    .cotizar-portfolio-link {
+        margin: 0 var(--spacing-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .cotizar-page {
+        gap: var(--spacing-xl);
+    }
+
+    .cotizar-hero {
+        border-bottom-left-radius: 32px;
+        border-bottom-right-radius: 32px;
+        min-height: 320px;
+    }
+
+    .cotizar-hero__content {
+        gap: var(--spacing-sm);
+    }
+
+    .cotizar-highlights,
+    .cotizar-process,
+    .cotizar-form-section,
+    .cotizar-portfolio-link {
+        margin: 0 var(--spacing-md);
+    }
+
+    .cotizar-portfolio-link__content {
+        padding: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 520px) {
+    .cotizar-hero {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .cotizar-hero__button {
+        width: 100%;
+    }
+
+    .cotizar-portfolio-link__button {
+        width: 100%;
+        justify-content: center;
+    }
+}

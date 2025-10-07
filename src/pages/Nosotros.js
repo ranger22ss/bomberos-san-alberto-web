@@ -13,7 +13,6 @@ import ChanagaImage from '../assets/chanaga.png';
 import martinezImage from '../assets/martinez.png';
 import SierraImage from '../assets/sierra.png';
 import CudrisImage from '../assets/cudris.png';
-import carlosImage from '../assets/monroy5.png';
 import VeraImage from '../assets/vera.jpg';
 import MoralesImage from '../assets/morales.jpg';
 import GermanImage from '../assets/german.jpg';
@@ -113,13 +112,6 @@ const equipoCategorizado = {
             cargo: "Bombero Operativo",
             foto: gerardoImage,
             biografia: "Miembro con experiencia en conducción de vehículos de apoyo tipo carro tanque. Comprometido con la operatividad segura y eficiente en cada salida.",
-            rangoIcono: "🧑‍🚒"
-        },
-        {
-            nombre: "Carlos Monroy",
-            cargo: "Bombero Operativo",
-            foto: carlosImage,
-            biografia: "Conductor responsable y constante. Apoya eficazmente las operaciones logísticas mediante la conducción de carro tanque, cumpliendo con los protocolos establecidos.",
             rangoIcono: "🧑‍🚒"
         },
     ],
