@@ -1,396 +1,305 @@
 /* src/pages/Inicio.css */
 
-/* Importar fuentes de Google Fonts (Montserrat para títulos, Open Sans para texto) */
-/* Es recomendable que esto esté SOLO en index.css */
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap'); */
-
-/*
-   *******************************************************************************
-   * ¡¡¡NOTA IMPORTANTE SOBRE VARIABLES CSS!!!
-   * Este bloque :root ha sido ELIMINADO de este archivo porque las variables
-   * ya están centralizadas en src/index.css, como habíamos acordado.
-   * ¡Esto ayuda a evitar conflictos y mantener la consistencia!
-   *******************************************************************************
-*/
-
-/* Estilos Generales del Contenedor de Inicio */
 .inicio-container {
-    background-color: var(--page-background-color); /* Usar variable global de index.css */
-    color: var(--text-color-dark); /* Color de texto principal */
+    background-color: var(--page-background-color);
+    color: var(--text-color-dark);
     font-family: 'Open Sans', sans-serif;
     line-height: 1.7;
-    padding-bottom: var(--spacing-xl); /* Usar variable de espaciado */
+    padding-bottom: var(--spacing-xl);
 }
 
-/* Contenedor centralizado para el contenido */
 .inicio-content-wrapper {
     width: 90%;
-    max-width: 1200px; /* Ancho máximo para contenido centrado */
-    margin: 0 auto; /* Centrar en la página */
-    padding: var(--spacing-md) 0; /* Usar variable de espaciado */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md) 0;
 }
 
-/* Header Principal (Encabezado de la página de inicio) */
 .inicio-header {
-    background: linear-gradient(135deg, var(--primary-dark-blue), var(--primary-color)); /* Gradiente azul oscuro */
+    background: radial-gradient(circle at 20% 20%, rgba(250, 204, 21, 0.2), transparent 65%),
+                linear-gradient(135deg, rgba(93, 11, 11, 0.95), rgba(153, 27, 27, 0.92));
     color: var(--text-color-light);
-    padding: 80px 20px; /* Más padding para que se vea imponente */
+    padding: 90px 20px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
-    margin-bottom: var(--spacing-xl); /* Usar variable de espaciado */
+    box-shadow: var(--card-shadow);
+    margin-bottom: var(--spacing-xl);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.inicio-header::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.28), transparent 70%);
+    transform: rotate(25deg);
 }
 
 .inicio-header-title {
     font-family: 'Montserrat', sans-serif;
-    /* Reducir el tamaño base para que se adapte mejor en móviles antes de media queries */
-    font-size: 3.5em; /* Reducido de 4.5em */
-    margin-bottom: var(--spacing-sm); /* Usar variable de espaciado */
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Sombra de texto más pronunciada */
+    font-size: 3.2em;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
     line-height: 1.1;
 }
 
 .inicio-header-slogan {
-    /* Reducir el tamaño base */
-    font-size: 1.5em; /* Reducido de 1.8em */
-    opacity: 0.9;
+    font-size: 1.45em;
+    opacity: 0.92;
     max-width: 900px;
     margin: 0 auto;
     font-weight: 600;
 }
 
-/* Estilos para cada sección del contenido principal */
 .inicio-section {
-    background-color: var(--section-bg-light); /* Fondo blanco para las secciones */
-    padding: var(--spacing-xl); /* Usar variable de espaciado */
-    margin-bottom: var(--spacing-xl); /* Usar variable de espaciado */
-    border-radius: 12px; /* Bordes más redondeados */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Sombra más notable */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición para hover */
+    background-color: var(--section-bg-light);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(250, 204, 21, 0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .inicio-section:hover {
-    transform: translateY(-5px); /* Pequeño levantamiento al pasar el ratón */
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra más fuerte al pasar el ratón */
+    transform: translateY(-6px);
+    box-shadow: var(--card-hover-shadow);
+    border-color: rgba(249, 115, 22, 0.45);
 }
 
-/* Alternar colores de fondo para las secciones para mayor contraste */
 .inicio-section:nth-of-type(even) {
-    background-color: var(--section-bg-dark); /* Fondo gris claro para secciones pares */
+    background-color: var(--section-bg-dark);
 }
-
 
 .inicio-section-title {
     font-family: 'Montserrat', sans-serif;
-    /* Reducir el tamaño base */
-    font-size: 2.2em; /* Reducido de 2.8em */
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-lg); /* Usar variable de espaciado */
+    font-size: 2.3em;
+    color: var(--primary-dark-blue);
+    margin-bottom: var(--spacing-lg);
     text-align: center;
     position: relative;
-    padding-bottom: var(--spacing-sm); /* Usar variable de espaciado */
+    padding-bottom: var(--spacing-sm);
 }
 
-/* Línea decorativa debajo de los títulos de sección */
 .inicio-section-title::after {
     content: '';
     display: block;
-    width: 80px; /* Más ancha */
-    height: 5px; /* Más gruesa */
-    background-color: var(--secondary-color); /* Línea de acento azul */
-    margin: var(--spacing-md) auto 0; /* Centrado y más espacio */
-    border-radius: 3px;
+    width: 90px;
+    height: 6px;
+    background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+    margin: var(--spacing-md) auto 0;
+    border-radius: 999px;
 }
 
 .inicio-section p {
-    font-size: 1.1em; /* Ligeramente más pequeño */
-    margin-bottom: var(--spacing-md); /* Usar variable de espaciado */
-    text-align: justify; /* Justificado para mejor lectura */
+    font-size: 1.05em;
+    margin-bottom: var(--spacing-md);
+    text-align: justify;
+    color: var(--text-color-dark);
 }
 
-/* Estilos para listas generales (Valores, Servicios) */
+.inicio-section-subtitle {
+    font-size: 1.5em;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 .inicio-list {
-    list-style: none; /* Eliminar viñetas por defecto */
+    list-style: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Reducir minmax para móviles */
-    gap: var(--spacing-md); /* Usar variable de espaciado */
-    margin-top: var(--spacing-md); /* Usar variable de espaciado */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
 }
 
 .inicio-list li {
-    background-color: var(--white); /* Fondo blanco para los ítems de lista */
-    padding: var(--spacing-md) var(--spacing-lg); /* Usar variable de espaciado */
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    font-size: 1em; /* Ligeramente más pequeño */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 228, 230, 0.9));
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(153, 27, 27, 0.08);
+    font-size: 1.02em;
     font-weight: 600;
     color: var(--primary-color);
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm); /* Usar variable de espaciado */
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    gap: var(--spacing-sm);
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .inicio-list li:hover {
-    background-color: #eaf3fa; /* Fondo azul claro al pasar el ratón */
-    transform: translateY(-3px); /* Ligeramente levantado */
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.18), rgba(255, 228, 230, 0.95));
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(153, 27, 27, 0.15);
 }
 
-/* Estilos para los iconos dentro de las listas */
 .inicio-list li i {
-    font-size: 1.3em; /* Ligeramente más pequeño */
-    color: var(--secondary-color); /* Color del icono */
-    flex-shrink: 0; /* Evita que el icono se encoja */
+    font-size: 1.35em;
+    color: var(--secondary-color);
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 6px rgba(249, 115, 22, 0.25));
 }
 
-/* Estilos específicos para la sección de "Años de Servicio" */
 .anios-servicio {
     text-align: center;
-    padding: var(--spacing-lg); /* Usar variable de espaciado */
-    background-color: var(--secondary-color); /* Fondo azul vibrante */
-    color: var(--text-color-light); /* Texto claro */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--secondary-color), #fb923c);
+    color: var(--text-color-light);
+    box-shadow: var(--card-shadow);
+    border-radius: 18px;
 }
 
 .anios-servicio .inicio-section-title {
-    color: var(--white); /* Título en blanco */
+    color: var(--white);
 }
 
 .anios-servicio .inicio-section-title::after {
-    background-color: var(--accent-color); /* Línea de acento naranja */
+    background: linear-gradient(90deg, var(--accent-color), var(--white));
 }
 
 .anios-servicio p {
-    font-size: 1.1em; /* Ligeramente más pequeño */
+    font-size: 1.05em;
     font-weight: 400;
     line-height: 1.6;
 }
 
 .anios-servicio strong {
-    font-size: 1.5em; /* Ligeramente más pequeño */
+    font-size: 1.5em;
     font-family: 'Montserrat', sans-serif;
-    display: block; /* Para que ocupe su propia línea */
-    margin-top: var(--spacing-sm); /* Usar variable de espaciado */
-    color: var(--gold-accent); /* Usar variable global para consistencia */
+    display: block;
+    margin-top: var(--spacing-sm);
+    color: var(--gold-accent);
 }
 
-/* Estilos para la lista de "Otras Páginas" */
 .otras-paginas-list {
     list-style: none;
     padding: 0;
     display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
-    justify-content: center; /* Centra los elementos */
-    gap: var(--spacing-md); /* Usar variable de espaciado */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
 }
 
 .otras-paginas-list li {
-    background-color: var(--section-bg-dark); /* Fondo gris claro para los ítems */
-    padding: var(--spacing-sm) var(--spacing-md); /* Usar variable de espaciado */
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    font-size: 1em; /* Ligeramente más pequeño */
+    background: linear-gradient(160deg, rgba(255, 241, 242, 0.95), rgba(255, 228, 230, 0.9));
+    padding: var(--spacing-md);
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(93, 11, 11, 0.08);
+    font-size: 1em;
     font-weight: 600;
     color: var(--text-color-dark);
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    flex: 1 1 auto; /* Permite que los ítems crezcan y se encojan */
-    max-width: 250px; /* Reducir ancho máximo para tarjetas de enlace */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 auto;
+    max-width: 260px;
     text-align: center;
+    border: 1px solid rgba(250, 204, 21, 0.35);
 }
 
 .otras-paginas-list li:hover {
-    background-color: #dbe9f5; /* Azul muy suave al pasar el ratón */
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: var(--primary-dark-blue);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--card-hover-shadow);
 }
 
 .otras-paginas-list li a {
-    color: var(--secondary-color); /* Color azul para los enlaces */
-    text-decoration: none;
-    font-weight: 700; /* Negrita para el texto del enlace */
-    display: block; /* Para que el enlace ocupe todo el espacio del li */
-    margin-bottom: var(--spacing-xs); /* Usar variable de espaciado */
-}
-
-.otras-paginas-list li a:hover {
-    text-decoration: underline;
     color: var(--primary-color);
+    font-weight: 700;
+    display: block;
+    margin-bottom: var(--spacing-xs);
 }
 
 .otras-paginas-list li p {
-    font-size: 0.85em; /* Ligeramente más pequeño */
-    line-height: 1.4;
     margin: 0;
-}
-
-/* Estilos para el botón "Conócenos" */
-.inicio-button-wrapper {
-    text-align: center; /* Centrar el botón */
-    margin-top: var(--spacing-xl); /* Usar variable de espaciado */
+    font-size: 0.95em;
 }
 
 .inicio-button {
-    display: inline-block; /* Permite aplicar padding y centrar */
-    background-color: var(--accent-color); /* Naranja vibrante para el botón */
-    color: var(--white);
-    padding: 15px 30px; /* Reducir padding */
-    border-radius: 8px;
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.2em; /* Reducir tamaño */
+    display: inline-block;
+    padding: 16px 42px;
+    font-size: 1.05em;
     font-weight: 700;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #4b0c0c;
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 18px 32px rgba(249, 115, 22, 0.35);
+    border: none;
 }
 
 .inicio-button:hover {
-    background-color: #cf681c; /* Naranja más oscuro al pasar el ratón */
-    transform: translateY(-3px) scale(1.02); /* Efecto de levantamiento y ligero aumento */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-6px);
+    box-shadow: 0 22px 38px rgba(249, 115, 22, 0.45);
 }
 
-/* Responsive Design */
 @media (max-width: 992px) {
-    .inicio-content-wrapper {
-        width: 95%; /* Aumentar un poco el ancho en tablets */
-        padding: var(--spacing-lg) 0; /* Ajustar padding */
-    }
     .inicio-header {
-        padding: 60px 15px; /* Reducir padding del header */
+        padding: 70px 20px;
     }
+
     .inicio-header-title {
-        font-size: 2.8em; /* Ajustar tamaños de fuente */
+        font-size: 2.8em;
     }
-    .inicio-header-slogan {
-        font-size: 1.2em;
-    }
+
     .inicio-section {
-        padding: var(--spacing-lg); /* Ajustar padding de secciones */
-        margin-bottom: var(--spacing-lg);
-    }
-    .inicio-section-title {
-        font-size: 2em;
-    }
-    .inicio-section p {
-        font-size: 1em;
-    }
-    .inicio-list {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Reducir minmax */
-    }
-    .anios-servicio p {
-        font-size: 1em;
-    }
-    .anios-servicio strong {
-        font-size: 1.3em;
-    }
-    .otras-paginas-list li {
-        max-width: 220px; /* Reducir max-width en tablets */
-    }
-    .inicio-button {
-        font-size: 1em;
-        padding: 12px 25px;
+        padding: var(--spacing-lg);
     }
 }
 
 @media (max-width: 768px) {
     .inicio-content-wrapper {
-        width: 98%; /* Casi ancho completo en móviles */
-        padding: var(--spacing-md) 0;
+        width: 94%;
     }
-    .inicio-header {
-        padding: 40px 10px; /* Más reducido */
-    }
-    .inicio-header-title {
-        font-size: 2em;
-    }
-    .inicio-header-slogan {
-        font-size: 1em;
-    }
-    .inicio-section {
-        padding: var(--spacing-md);
-        margin-bottom: var(--spacing-md);
-    }
-    .inicio-section-title {
-        font-size: 1.6em;
-        margin-bottom: var(--spacing-md);
-    }
-    .inicio-section-title::after {
-        width: 50px;
-        height: 3px;
-        margin: var(--spacing-sm) auto 0;
-    }
-    .inicio-list {
-        grid-template-columns: 1fr; /* Una sola columna para todos los elementos */
-        gap: var(--spacing-sm);
-    }
-    .inicio-list li {
-        padding: var(--spacing-sm) var(--spacing-md);
-        font-size: 0.9em;
-    }
-    .anios-servicio p {
-        font-size: 0.9em;
-    }
-    .anios-servicio strong {
-        font-size: 1.1em;
-    }
-    .otras-paginas-list li {
-        flex-basis: 100%; /* Una sola columna */
-        max-width: none;
-    }
-    .inicio-button {
-        font-size: 0.9em;
-        padding: 10px 20px;
-    }
-}
 
-@media (max-width: 480px) {
-    .inicio-header {
-        padding: 30px 5px; /* Más reducido aún */
-    }
     .inicio-header-title {
-        font-size: 1.8em;
+        font-size: 2.5em;
     }
-    .inicio-header-slogan {
-        font-size: 0.9em;
-    }
-    .inicio-section {
-        padding: var(--spacing-sm);
-        margin-bottom: var(--spacing-sm);
-    }
-    .inicio-section-title {
-        font-size: 1.4em;
-    }
-    .inicio-section-title::after {
-        width: 40px;
-        height: 2px;
-        margin: var(--spacing-xs) auto 0;
-    }
-    .inicio-section p {
-        font-size: 0.9em;
-    }
-    .inicio-list li {
-        font-size: 0.85em;
-        flex-direction: column; /* Apilar en pantallas muy pequeñas */
-        align-items: flex-start;
-        text-align: left;
-    }
-    .inicio-list li i {
-        margin-bottom: var(--spacing-xs);
-    }
-}
 
-/* Nuevo breakpoint para móviles ultra-pequeños (opcional, si el problema persiste) */
-@media (max-width: 320px) {
-    .inicio-header-title {
-        font-size: 1.6em;
-    }
     .inicio-header-slogan {
-        font-size: 0.8em;
-    }
-    .inicio-section-title {
         font-size: 1.2em;
     }
-    .inicio-section p {
-        font-size: 0.8em;
+
+    .inicio-section {
+        padding: var(--spacing-lg);
+    }
+
+    .inicio-section-title {
+        font-size: 2em;
+    }
+
+    .inicio-list {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .inicio-header {
+        padding: 60px 16px;
+    }
+
+    .inicio-header-title {
+        font-size: 2.1em;
+    }
+
+    .inicio-header-slogan {
+        font-size: 1.05em;
+    }
+
+    .inicio-section {
+        padding: var(--spacing-md);
+    }
+
+    .inicio-section-title {
+        font-size: 1.7em;
+    }
+
+    .inicio-list {
+        grid-template-columns: 1fr;
     }
 }

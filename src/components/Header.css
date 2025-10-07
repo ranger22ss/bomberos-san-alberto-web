@@ -1,130 +1,202 @@
 /* src/components/Header.css */
 
-/* Importar fuentes de Google Fonts (MANTENER SOLO SI NO SE IMPORTAN GLOBALMENTE EN INDEX.CSS) */
-/* Si ya están en index.css, puedes comentar o borrar la línea de @import url() aquí. */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
-/* *******************************************************************************
- * ¡¡¡NOTA IMPORTANTE SOBRE VARIABLES CSS!!!                                    *
- * ESTE BLOQUE :root HA SIDO ELIMINADO PARA EVITAR CONFLICTOS.                  *
- * TODAS LAS VARIABLES SE DEFINEN EN UN ARCHIVO CSS GLOBAL (src/index.css).    *
- * Asegúrate de que los nombres de las variables aquí coincidan con index.css. *
- ******************************************************************************* */
-
-/* Estilos para el contenedor principal del encabezado */
 .header-container {
-    position: fixed; /* Mantiene el encabezado fijo en la parte superior */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Usar las variables de espaciado globales definidas en index.css */
-    padding: var(--header-padding-vertical, 15px) var(--spacing-xl, 40px); /* Usa las variables globales, con fallback */
-    color: var(--text-color-light); /* Color de texto claro para el encabezado */
+    padding: var(--header-padding-vertical, 20px) var(--spacing-xl, 40px);
+    color: var(--text-color-light);
     font-weight: 600;
-    font-size: 1.1rem;
-    z-index: 1000; /* Asegura que el header esté por encima de otros contenidos */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 1.05rem;
+    z-index: 1000;
+    box-shadow: 0 20px 30px rgba(17, 24, 39, 0.25);
     transition: padding 0.3s ease;
-    min-height: var(--header-min-height-desktop, 80px); /* Usa la variable de altura mínima */
+    min-height: var(--header-min-height-desktop, 100px);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* Color de fondo de respaldo si la imagen o el gradiente fallan */
     background-color: var(--primary-dark-blue);
+    overflow: hidden;
 }
 
-/* Overlay con gradiente para la imagen de fondo */
 .header-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* ¡CORREGIDO! Sintaxis correcta para el gradiente con transparencia */
-    background: linear-gradient(to right,
-                                rgba(11, 31, 58, 0.93) /* --primary-dark-blue con 93% de opacidad (EE ≈ 93%) */,
-                                rgba(11, 31, 58, 0.53) /* --primary-dark-blue con 53% de opacidad (88 ≈ 53%) */,
-                                transparent,
-                                rgba(11, 31, 58, 0.53),
-                                rgba(11, 31, 58, 0.93));
-    z-index: 1; /* Asegura que el overlay esté entre la imagen de fondo y el contenido del header */
+    inset: 0;
+    background: linear-gradient(115deg,
+            rgba(93, 11, 11, 0.95) 0%,
+            rgba(153, 27, 27, 0.92) 45%,
+            rgba(249, 115, 22, 0.75) 85%);
+    z-index: 1;
 }
 
-/* Contenedor del contenido (logo y navegación) para limitar el ancho */
 .header-content-wrapper {
-    position: relative; /* Para que el z-index de los hijos funcione correctamente */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    width: 100%;
+    max-width: 1200px;
+    z-index: 2;
+}
+
+.header-top-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    max-width: 1200px; /* Limita el ancho del contenido del header */
-    z-index: 2; /* Asegura que el contenido del header esté por encima del overlay */
+    gap: var(--spacing-md);
+    background: rgba(17, 24, 39, 0.35);
+    padding: 12px 20px;
+    border-radius: 18px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(250, 204, 21, 0.35);
 }
 
-/* Estilos para el enlace del logo */
+.header-top-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    font-size: 0.85rem;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.header-top-info span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-color-light);
+}
+
+.header-top-info i {
+    color: var(--accent-color);
+    font-size: 0.95rem;
+}
+
+.header-top-pill {
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    color: #612308;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    box-shadow: 0 10px 24px rgba(250, 204, 21, 0.35);
+}
+
+.header-main-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+}
+
+.header-brand-block {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
 .header-logo-link {
     text-decoration: none;
     z-index: 2;
 }
 
-/* Estilos para la imagen del logo */
 .header-logo {
-    width: 100px; /* Ancho del logo en desktop */
+    width: 110px;
     height: auto;
-    flex-shrink: 0; /* Evita que el logo se encoja */
+    flex-shrink: 0;
     display: block;
 }
 
-/* Contenedor de la navegación (ul) */
-.header-nav {
-    margin-left: auto; /* Empuja la navegación a la derecha */
+.header-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
-/* Lista de enlaces de navegación */
+.header-institution {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-color-light);
+    margin: 0;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.header-location {
+    margin: 0;
+    font-size: 0.9rem;
+    color: rgba(255, 247, 237, 0.85);
+    letter-spacing: 0.4px;
+}
+
+.header-nav {
+    margin-left: auto;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px; /* Espacio entre los enlaces */
+    gap: 22px;
     padding: 0;
     margin: 0;
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    align-items: center;
 }
 
-/* Estilos para cada enlace individual */
 .nav-link {
-    color: var(--text-color-light); /* Color del texto del enlace */
+    color: var(--text-color-light);
     text-decoration: none;
     transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
-    padding: 10px 15px;
-    border-radius: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    display: block;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
-/* Efectos hover para los enlaces */
 .nav-link:hover {
-    color: var(--gold-accent);
-    background-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
+    color: var(--primary-dark-blue);
+    background-color: rgba(255, 247, 237, 0.9);
+    transform: translateY(-3px);
 }
 
-/* Estilos del botón de hamburguesa para móviles (oculto por defecto en desktop) */
+.nav-cta {
+    margin-left: var(--spacing-sm);
+}
+
+.nav-emergency {
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    color: #611414;
+    font-weight: 700;
+    box-shadow: 0 12px 25px rgba(250, 204, 21, 0.35);
+}
+
+.nav-emergency:hover {
+    color: #450a0a;
+    background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+}
+
 .nav-toggle {
-    display: none; /* Oculto en desktop */
+    display: none;
     background: none;
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 3; /* Por encima de todo en el header */
-    position: relative; /* Para animar las barras internas */
+    z-index: 3;
+    position: relative;
     width: 40px;
     height: 40px;
-    flex-direction: column; /* Las barras se apilan verticalmente */
+    flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
@@ -133,12 +205,11 @@
     display: block;
     width: 30px;
     height: 3px;
-    background-color: var(--text-color-light); /* Color de las barras */
+    background-color: var(--text-color-light);
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
 }
 
-/* Animación de la hamburguesa a 'X' */
 .nav-toggle.open .icon-bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
@@ -151,90 +222,132 @@
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* -------------------------------------------------------- */
-/* MEDIA QUERIES (RESPONSIVE DESIGN)                         */
-/* -------------------------------------------------------- */
-
-@media (max-width: 992px) { /* Tablets y pantallas medianas */
+@media (max-width: 992px) {
     .header-container {
-        padding: var(--header-padding-vertical, 15px) 20px; /* Ajustar padding */
-        min-height: var(--header-min-height-mobile, 60px); /* Usa altura de móvil para tablet */
+        padding: var(--header-padding-vertical, 20px) 24px;
     }
+
+    .header-main-row {
+        gap: var(--spacing-md);
+    }
+
+    .header-logo {
+        width: 95px;
+    }
+
     .nav-links {
-        gap: 15px; /* Reducir espacio entre enlaces */
+        gap: 16px;
     }
 }
 
-@media (max-width: 768px) { /* Móviles grandes y medianos */
+@media (max-width: 768px) {
     .header-container {
-        justify-content: space-between; /* Espacio entre logo y hamburguesa */
-        padding: var(--header-padding-vertical, 15px) 20px;
-        min-height: var(--header-min-height-mobile, 60px);
+        justify-content: space-between;
+        padding: var(--header-padding-vertical, 18px) 20px;
+    }
+
+    .header-content-wrapper {
+        gap: var(--spacing-sm);
+    }
+
+    .header-top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .header-top-pill {
+        align-self: stretch;
+        text-align: center;
+    }
+
+    .header-main-row {
+        width: 100%;
+    }
+
+    .header-brand-block {
+        flex: 1;
+    }
+
+    .header-institution {
+        font-size: 0.95rem;
+    }
+
+    .header-location {
+        font-size: 0.85rem;
     }
 
     .nav-toggle {
-        display: flex; /* Muestra el botón de hamburguesa */
+        display: flex;
     }
 
     .header-nav {
-        position: absolute; /* El menú se posiciona absolutamente */
-        top: var(--header-total-height-mobile, 90px); /* Empieza justo debajo del header móvil */
-        left: 0;
-        width: 100%;
-        background: var(--primary-dark-blue); /* Fondo del menú móvil */
-        padding: 20px 0;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        z-index: 999; /* Por debajo del toggle, pero por encima del contenido */
-        text-align: center;
-        overflow-y: auto; /* Permite scroll si el menú es muy largo */
-        max-height: calc(100vh - var(--header-total-height-mobile, 90px)); /* Ajusta la altura máxima */
-
-        transform: translateY(-150%); /* Oculta el menú por defecto */
+        position: absolute;
+        top: calc(100% + 12px);
+        right: 0;
+        width: min(340px, 92vw);
+        background: rgba(17, 24, 39, 0.98);
+        padding: 24px 20px;
+        box-shadow: 0 20px 35px rgba(17, 24, 39, 0.45);
+        border-radius: 18px;
+        border: 1px solid rgba(250, 204, 21, 0.35);
+        z-index: 999;
+        text-align: left;
+        overflow-y: auto;
+        max-height: calc(100vh - var(--header-total-height-mobile, 90px));
+        transform: translateY(-20px) scale(0.9);
         opacity: 0;
-        pointer-events: none; /* No interactuable cuando está oculto */
+        pointer-events: none;
         transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     }
 
     .header-nav.nav-open {
-        transform: translateY(0); /* Muestra el menú */
+        transform: translateY(0) scale(1);
         opacity: 1;
-        pointer-events: auto; /* Interactuable cuando está abierto */
+        pointer-events: auto;
     }
 
     .nav-links {
-        flex-direction: column; /* Los enlaces se apilan verticalmente */
-        gap: 0; /* Elimina el espacio entre enlaces apilados */
-    }
-
-    .nav-links li {
-        margin-bottom: 10px; /* Espacio entre elementos de la lista */
+        flex-direction: column;
+        gap: 14px;
+        align-items: flex-start;
     }
 
     .nav-link {
-        padding: 15px 0;
         width: 100%;
-        border-radius: 0;
-        font-size: 1.2rem;
+        justify-content: flex-start;
+        font-size: 1.05rem;
     }
 
-    .nav-link:hover {
-        background-color: var(--primary-color);
-        transform: none;
+    .nav-cta {
+        width: 100%;
     }
 
-    .header-logo {
-        width: 90px; /* Tamaño del logo en móvil/tablet */
+    .nav-emergency {
+        width: 100%;
+        justify-content: center;
     }
 }
 
-@media (max-width: 480px) { /* Móviles pequeños */
+@media (max-width: 576px) {
     .header-container {
-        padding: var(--header-padding-vertical, 15px) 15px; /* Reducir padding horizontal */
+        padding: var(--header-padding-vertical, 16px) var(--spacing-md, 16px);
     }
+
+    .header-top-info {
+        font-size: 0.78rem;
+        gap: var(--spacing-sm);
+    }
+
     .header-logo {
-        width: 80px; /* Tamaño del logo más pequeño */
+        width: 82px;
     }
-    .nav-link {
-        font-size: 1rem; /* Fuentes más pequeñas */
+
+    .header-institution {
+        font-size: 0.9rem;
+    }
+
+    .header-location {
+        font-size: 0.78rem;
     }
 }

@@ -1,167 +1,142 @@
-/* Importar fuentes de Google Fonts (consistente con index.css) */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
 
-/* NOTA: Las variables :root deberían estar CENTRALIZADAS en src/index.css */
-/* Si ya están en index.css, puedes quitar este bloque de aquí. */
-:root {
-    --primary-dark-blue: #0b1f3a;
-    --primary-color: #2c3e50; /* Azul oscuro */
-    --secondary-color: #3498db; /* Azul vibrante */
-    --accent-color: #e67e22; /* Naranja/ámbar */
-    --text-color-light: #f0f0f0; /* Blanco */
-    --text-color-dark: #34495e; /* Azul oscuro para texto general */
-    --white: #ffffff;
-    --light-grey: #bdc3c7; /* Gris claro */
-    --border-color: #dee2e6;
-    --page-background-color: #f4f7f9; /* Fondo claro general */
-
-    /* Espaciado */
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 24px;
-    --spacing-xl: 40px;
-    --font-size-base: 1rem;
-    --font-size-lg: 1.25rem;
-    --font-size-xl: 2rem;
-    --font-size-xxl: 2.5rem;
-    --font-size-hero: 3.5rem;
-}
-
-/* Contenedor principal de la página de Consulta */
 .consulta-container {
     background-color: var(--page-background-color);
     color: var(--text-color-dark);
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
-    padding: var(--spacing-xl) var(--spacing-md); /* Padding general para toda la página */
-    max-width: 1200px; /* Ancho máximo para la página */
-    margin: 0 auto; /* Centrar la página */
+    padding: var(--spacing-xl) var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
     box-sizing: border-box;
 }
 
 .consulta-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: var(--font-size-xxl);
+    font-size: 2.6rem;
     font-weight: 700;
     text-align: center;
     color: var(--primary-dark-blue);
     margin-bottom: var(--spacing-md);
-    padding-top: var(--spacing-lg); /* Espacio superior */
+    padding-top: var(--spacing-lg);
 }
 
 .consulta-description {
-    font-size: var(--font-size-lg);
+    font-size: 1.15rem;
     text-align: center;
-    color: var(--text-color-dark);
-    margin-bottom: var(--spacing-xl);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto var(--spacing-xl);
+    max-width: 760px;
 }
 
 .search-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--white);
+    background: linear-gradient(160deg, rgba(255, 241, 242, 0.95), rgba(255, 228, 230, 0.9));
     padding: var(--spacing-xl);
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border-radius: 22px;
+    box-shadow: var(--card-shadow);
     margin-bottom: var(--spacing-xl);
-    max-width: 600px; /* Limitar el ancho de la caja de búsqueda */
+    max-width: 640px;
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid rgba(250, 204, 21, 0.35);
 }
 
 .nit-input {
     width: 100%;
     padding: var(--spacing-md);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: var(--font-size-base);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(249, 115, 22, 0.35);
+    border-radius: 12px;
+    font-size: 1rem;
+    box-shadow: inset 0 1px 3px rgba(153, 27, 27, 0.08);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: var(--spacing-md); /* Espacio debajo del input */
+    margin-bottom: var(--spacing-md);
+    background-color: #fffdf8;
 }
 
 .nit-input:focus {
     border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.2);
     outline: none;
 }
 
-.search-button, .download-pdf-button {
-    background-color: var(--secondary-color);
-    color: var(--white);
+.search-button,
+.download-pdf-button {
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    color: #4b0c0c;
     padding: var(--spacing-md) var(--spacing-xl);
     border: none;
-    border-radius: 8px;
-    font-size: var(--font-size-lg);
+    border-radius: 999px;
+    font-size: 1.05rem;
     font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    width: 100%; /* Ocupa todo el ancho de la caja de búsqueda */
-    max-width: 300px; /* Limitar el ancho del botón */
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0 16px 28px rgba(249, 115, 22, 0.28);
 }
 
-.search-button:hover, .download-pdf-button:hover {
-    background-color: var(--primary-dark-blue);
-    transform: translateY(-2px);
+.search-button:hover,
+.download-pdf-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 38px rgba(249, 115, 22, 0.4);
 }
 
 .error-message {
-    color: #dc3545; /* Color rojo para errores */
-    font-size: var(--font-size-base);
+    color: #c53030;
+    font-size: 1rem;
     text-align: center;
     margin-top: var(--spacing-md);
     font-weight: 600;
 }
 
 .results-box {
-    background-color: var(--white);
+    background: #ffffff;
     padding: var(--spacing-xl);
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    max-width: 800px; /* Ancho máximo para los resultados */
-    margin: 0 auto var(--spacing-xl) auto; /* Centrar y margen inferior */
-    text-align: left; /* Alineación de texto por defecto para los detalles */
+    border-radius: 22px;
+    box-shadow: var(--card-shadow);
+    max-width: 860px;
+    margin: 0 auto var(--spacing-xl);
+    text-align: left;
+    border: 1px solid rgba(250, 204, 21, 0.3);
 }
 
 .not-found-message {
-    font-size: var(--font-size-lg);
-    color: #6c757d; /* Gris para mensajes de no encontrado */
+    font-size: 1.15rem;
+    color: #9f1239;
     text-align: center;
     font-style: italic;
 }
 
 .certificate-details {
     padding: var(--spacing-md);
-    border-radius: 8px;
+    border-radius: 12px;
     border: 1px solid var(--border-color);
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(255, 241, 242, 0.92));
 }
 
 .certificate-details.vigente {
-    border-color: #28a745; /* Verde para certificado vigente */
-    background-color: #e6ffe6; /* Fondo verde claro */
+    border-color: rgba(34, 197, 94, 0.5);
+    background: linear-gradient(140deg, rgba(187, 247, 208, 0.85), rgba(236, 253, 245, 0.95));
 }
 
 .certificate-details.vencido {
-    border-color: #dc3545; /* Rojo para certificado vencido */
-    background-color: #ffe6e6; /* Fondo rojo claro */
+    border-color: rgba(239, 68, 68, 0.4);
+    background: linear-gradient(140deg, rgba(254, 226, 226, 0.85), rgba(255, 241, 242, 0.95));
 }
 
 .certificate-details h3 {
     font-family: 'Montserrat', sans-serif;
-    font-size: var(--font-size-xl);
+    font-size: 1.6rem;
     color: var(--primary-color);
     margin-bottom: var(--spacing-md);
     text-align: center;
 }
 
 .certificate-details p {
-    font-size: var(--font-size-base);
+    font-size: 1rem;
     margin-bottom: var(--spacing-sm);
-    color: var(--text-color-dark);
 }
 
 .certificate-details p strong {
@@ -169,87 +144,71 @@
 }
 
 .status-label {
-    font-size: var(--font-size-lg);
+    font-size: 1.15rem;
     font-weight: 700;
     text-align: center;
     margin-top: var(--spacing-lg);
 }
 
 .status-text {
-    padding: 5px 10px;
-    border-radius: 5px;
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
     font-weight: 700;
     color: var(--white);
+    letter-spacing: 0.5px;
 }
 
 .status-text.vigente {
-    background-color: #28a745; /* Verde */
+    background-color: #16a34a;
 }
 
 .status-text.vencido {
-    background-color: #dc3545; /* Rojo */
+    background-color: #dc2626;
 }
 
 .action-required-message {
-    font-size: var(--font-size-base);
-    color: #dc3545;
+    font-size: 1rem;
+    color: #b91c1c;
     font-weight: 600;
     text-align: center;
     margin-top: var(--spacing-md);
 }
 
-.download-pdf-button {
-    margin-top: var(--spacing-lg);
-    background-color: #007bff; /* Azul primario para descargar */
-}
-
-.download-pdf-button:hover {
-    background-color: #0056b3; /* Azul más oscuro */
-}
-
-
-/* Responsive Design */
 @media (max-width: 768px) {
     .consulta-container {
         padding: var(--spacing-lg) var(--spacing-sm);
     }
+
     .consulta-title {
-        font-size: 2em;
+        font-size: 2.2rem;
     }
-    .consulta-description {
-        font-size: 1em;
-    }
+
     .search-box {
         padding: var(--spacing-lg);
     }
-    .nit-input,
-    .search-button,
-    .download-pdf-button {
-        font-size: 0.9em;
-        padding: var(--spacing-sm) var(--spacing-md);
-    }
+
     .results-box {
         padding: var(--spacing-lg);
     }
-    .certificate-details h3 {
-        font-size: 1.5em;
-    }
-    .certificate-details p {
-        font-size: 0.9em;
-    }
-    .status-label {
-        font-size: 1em;
-    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
     .consulta-title {
-        font-size: 1.8em;
+        font-size: 2rem;
     }
+
     .consulta-description {
-        font-size: 0.85em;
+        font-size: 1rem;
     }
+
     .search-box {
         padding: var(--spacing-md);
+        border-radius: 18px;
+    }
+
+    .results-box {
+        padding: var(--spacing-md);
+        border-radius: 18px;
     }
 }
