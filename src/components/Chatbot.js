@@ -1,88 +1,65 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './Chatbot.css'; // Importa los estilos CSS para el chatbot
+import './Chatbot.css';
+import logoBomberos from '../logo.png';
 
 const Chatbot = () => {
-    // Estado para controlar si el chat está abierto o cerrado
     const [isOpen, setIsOpen] = useState(false);
-    // Estado para almacenar los mensajes del chat (historial)
     const [messages, setMessages] = useState([]);
-    // Estado para el mensaje que el usuario está escribiendo
     const [inputMessage, setInputMessage] = useState('');
-    // Estado para indicar si el bot está pensando/escribiendo una respuesta
     const [isTyping, setIsTyping] = useState(false);
 
-    // Referencia para el área de mensajes, para hacer scroll automático
     const messagesEndRef = useRef(null);
 
-    // Efecto para hacer scroll al final de los mensajes cada vez que se actualiza el historial
     useEffect(() => {
         if (messagesEndRef.current) {
             messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     }, [messages]);
 
-    // Función para alternar la visibilidad del chat
     const toggleChat = () => {
         setIsOpen(!isOpen);
     };
 
-    // Respuestas automáticas predefinidas (para preguntas muy directas y rápidas)
     const automaticResponses = [
         {
             keywords: ['hola', 'saludos', 'buenos días', 'buenas tardes', 'buenas noches'],
-            response: '¡Hola! Soy tu asistente del Cuerpo de Bomberos Voluntarios San Alberto. ¿En qué puedo ayudarte hoy?'
+            response: '¡Hola! Soy el asistente virtual del Cuerpo de Bomberos Voluntarios de San Alberto. Estoy disponible para orientarte con información institucional y solicitudes no emergentes.'
         },
         {
-            keywords: ['emergencias', 'llamar bomberos', 'número de emergencia'],
-            response: 'Para emergencias, por favor, llama directamente al 315-353-8706. Este número no tiene WhatsApp.'
+            keywords: ['emergencia', 'emergencias', 'urgencia', 'llamar bomberos', 'número de emergencia'],
+            response: 'Ante cualquier emergencia comunícate de inmediato a la línea 315 353 8706. Es un canal exclusivo para llamadas de emergencia.'
         },
         {
-            keywords: ['whatsapp', 'atención al cliente', 'hablar con asesor'],
-            response: 'Puedes contactar a nuestro equipo de atención al cliente a través de WhatsApp al +57 300-175-1212. También puedes encontrar nuestros correos electrónicos en la sección de Contacto.'
+            keywords: ['whatsapp', 'atención al cliente', 'asesor'],
+            response: 'Nuestro canal institucional de atención al cliente (no emergencias) es el WhatsApp +57 300 175 1212. Con gusto daremos seguimiento a tu solicitud.'
         },
         {
-            keywords: ['servicios', 'que hacen', 'tipo de ayuda'],
-            response: 'En el Cuerpo de Bomberos Voluntarios San Alberto brindamos atención a incendios, rescates, accidentes, prevención de desastres y capacitaciones a la comunidad.'
+            keywords: ['servicios', 'portafolio', 'portafolio de servicios', 'qué hacen'],
+            response: 'Ofrecemos prevención, inspecciones, mantenimiento y recarga de extintores, capacitaciones, suministro de agua potable y venta de equipos certificados. Puedes revisar el portafolio completo en la sección "Portafolio".'
         },
         {
-            keywords: ['como ayudar', 'donaciones', 'voluntariado'],
-            response: '¡Tu apoyo es muy valioso! Para conocer cómo puedes colaborar con donaciones o unirte como voluntario, te invitamos a visitar nuestra sección "Nosotros" o "Contacto" en la página web.'
+            keywords: ['cotizar', 'presupuesto', 'cotización', 'precio'],
+            response: 'Para recibir una propuesta formal ingresa a la sección "Cotizar" y completa el formulario con los servicios de interés. Nuestro equipo responderá en el menor tiempo posible.'
         },
         {
-            keywords: ['ubicación', 'donde estan', 'dirección'],
-            response: 'Nuestra sede principal está ubicada en Cl. 5 #7-44, San Alberto, Cesar, Colombia.'
+            keywords: ['donde estan', 'ubicación', 'dirección'],
+            response: 'Nuestra base se encuentra en la Cl. 5 #7-44 de San Alberto, Cesar, Colombia. Atendemos a la comunidad y al sector empresarial de la región.'
         },
         {
-            keywords: ['gracias', 'muchas gracias'],
-            response: '¡De nada! Es un placer ayudarte. No dudes en preguntar si tienes más dudas.'
-        },
-        {
-            keywords: ['portafolio', 'proyectos', 'nuestro trabajo'],
-            response: 'Puedes ver nuestro trabajo y proyectos en la sección de "Portafolio" de nuestra página web. ¡Ahí encontrarás más detalles sobre nuestras actividades!'
-        },
-        {
-            keywords: ['cotizar', 'presupuesto', 'costo', 'precios'],
-            response: 'Para solicitar una cotización de nuestros servicios o capacitaciones, por favor, visita nuestra sección "Cotizar" en la página web y llena el formulario.'
-        },
-        {
-            keywords: ['consulta', 'duda', 'preguntas generales'],
-            response: 'Si tienes alguna consulta o duda general, puedes utilizar el formulario en nuestra sección "Consulta" o la sección de "Contacto".'
+            keywords: ['gracias'],
+            response: '¡Con gusto! Seguiremos atentos si necesitas acompañamiento adicional.'
         }
     ];
 
-    // Preguntas sugeridas para la UI
     const suggestedQuestions = [
-        "¿Cuál es el número de emergencia?",
-        "¿Qué servicios ofrecen los bomberos?",
-        "¿Cómo puedo ayudar a los bomberos?",
-        "¿Dónde están ubicados?",
-        "Quiero saber sobre el portafolio.",
-        "¿Cómo puedo contactar por WhatsApp?",
-        "¿Cómo solicito una cotización?",
-        "Consultas Generales"
+        '¿Cuál es la línea de emergencia?',
+        'Necesito mantenimiento de extintores',
+        '¿Brindan capacitaciones empresariales?',
+        '¿Cómo solicito una inspección de seguridad?',
+        '¿Cuál es la dirección de la estación?',
+        'Quiero solicitar una cotización formal'
     ];
 
-    // ***** BASE DE CONOCIMIENTO DE LA PÁGINA WEB *****
     const websiteKnowledgeBase = `
     Información general del Cuerpo de Bomberos Voluntarios San Alberto:
     Somos una institución dedicada a la protección y seguridad de la comunidad de San Alberto, Cesar, Colombia.
@@ -90,49 +67,32 @@ const Chatbot = () => {
     Estamos comprometidos con la prevención y la respuesta efectiva ante diversas emergencias.
 
     Servicios principales que ofrecemos:
-    - Atención de incendios estructurales (hogares, edificios, negocios) y forestales (quemas de vegetación).
-    - Operaciones de rescate en diferentes situaciones: rescates vehiculares (accidentes de tránsito), rescates en alturas (personas atrapadas en edificios altos o estructuras), y rescates acuáticos (personas en cuerpos de agua).
+    - Atención de incendios estructurales y forestales.
+    - Operaciones de rescate vehicular, en alturas y acuáticos.
     - Atención prehospitalaria y primeros auxilios en el lugar de accidentes.
-    - Prevención y gestión del riesgo de desastres naturales y provocados por el hombre.
-    - Capacitaciones y talleres para la comunidad y empresas en temas como primeros auxilios, prevención de incendios, uso de extintores, planes de evacuación y simulacros.
+    - Prevención y gestión del riesgo de desastres naturales o provocados por el hombre.
+    - Capacitaciones y talleres para la comunidad y empresas en primeros auxilios, manejo de extintores y planes de emergencia.
 
-    Cómo contactarnos:
-    - Para EMERGENCIAS URGENTES: Llama directamente al 315-353-8706. Este número es solo para llamadas de emergencia y NO tiene servicio de WhatsApp.
-    - Para ATENCIÓN AL CLIENTE y consultas NO URGENTES (incluyendo WhatsApp): Puedes contactar a nuestro equipo al +57 300-175-1212.
-    - Correos electrónicos de contacto:
-        - cuerpobomberossanalberto@gmail.com
-        - cuerpobomberosvoluntariossanalberto@hotmail.com
-    - Síguenos en Facebook: Puedes encontrar nuestra página oficial "Cuerpo de Bomberos Voluntarios San Alberto" en https://www.facebook.com/profile.php?id=61563465837882 para noticias y actualizaciones.
+    Contacto institucional:
+    - Emergencias: 315-353-8706 (solo llamadas).
+    - Atención al cliente y WhatsApp: +57 300-175-1212.
+    - Correos: cuerpobomberossanalberto@gmail.com y cuerpobomberosvoluntariossanalberto@hotmail.com.
+    - Ubicación: Cl. 5 #7-44, San Alberto, Cesar, Colombia.
 
-    Nuestra Ubicación:
-    Nuestra sede principal está ubicada en Cl. 5 #7-44, San Alberto, Cesar, Colombia. Te invitamos a visitarnos.
+    Cómo apoyar:
+    Aceptamos donaciones y voluntariado. Encuentra más información en la sección "Nosotros" o "Contacto".
 
-    Sobre Nosotros (Sección de la página):
-    En la sección "Nosotros" de nuestra página web, encontrarás información detallada sobre nuestra historia, nuestros valores fundamentales, la misión y visión de nuestra institución. También podrás conocer más sobre nuestro equipo de voluntarios y la dedicación que ponen en su trabajo.
-
-    Portafolio (Sección de la página):
-    La sección "Portafolio" exhibe una galería de nuestro trabajo y proyectos. Aquí mostramos ejemplos visuales (imágenes y videos) de nuestras intervenciones, capacitaciones realizadas, simulacros de emergencia, y diversas actividades en las que hemos participado para el beneficio de la comunidad. Es una muestra de nuestro impacto y compromiso.
-
-    Cómo puedes apoyar a los Bomberos:
-    Tu apoyo es fundamental para que podamos continuar con nuestra labor. Aceptamos donaciones de recursos, equipos o fondos. También puedes unirte a nuestra valiosa labor a través de programas de voluntariado. Para más información sobre cómo colaborar, por favor, visita nuestra sección "Nosotros" o "Contacto" en la página web, o comunícate con nosotros directamente.
-
-    Cotizar Servicios:
-    Si tu empresa o institución requiere capacitaciones especializadas o servicios de prevención y seguridad, puedes solicitar una cotización personalizada. Dirígete a la sección "Cotizar" en nuestra página web, donde encontrarás un formulario específico para describir tus necesidades y te enviaremos una propuesta.
-
-    Consultas Generales:
-    Para cualquier otra duda o pregunta que no sea una emergencia ni una cotización formal, te invitamos a usar el formulario de contacto en la sección "Contacto" o la sección "Consulta" de nuestra página web.
+    Cotizar servicios:
+    Visita la sección "Cotizar" para detallar tus necesidades y recibir una propuesta.
     `;
-    // *******************************************************************
 
-    // Función para manejar el clic en una pregunta sugerida
     const handleSuggestedQuestionClick = (question) => {
-        setInputMessage(question); // Establece la pregunta en el input
+        setInputMessage(question);
         setTimeout(() => {
             handleSendMessage({ preventDefault: () => {} });
         }, 0);
     };
 
-    // Función para manejar el envío de mensajes por parte del usuario
     const handleSendMessage = async (e) => {
         e.preventDefault();
 
@@ -142,12 +102,9 @@ const Chatbot = () => {
         const userMessage = { text: currentMessage, sender: 'user' };
         setMessages((prevMessages) => [...prevMessages, userMessage]);
         setInputMessage('');
-
         setIsTyping(true);
 
         let botResponseText = '';
-
-        // Lógica para respuestas automáticas
         const lowerCaseInput = currentMessage.toLowerCase();
         let matched = false;
 
@@ -169,27 +126,25 @@ const Chatbot = () => {
             return;
         }
 
-        // Si no hay respuesta automática, llama a la API de Gemini con el conocimiento de la web
         try {
             let chatHistory = [];
-            
-            chatHistory.push({
-                role: "user",
-                parts: [{ text: `Eres un asistente amigable y útil del Cuerpo de Bomberos Voluntarios San Alberto. Tu tarea es responder con PRECISIÓN las preguntas de los usuarios utilizando EXCLUSIVAMENTE la siguiente "Información de la página web".
-                Si una pregunta NO puede ser respondida con la información proporcionada, debes indicar CLARAMENTE que no tienes esa información específica en tu base de datos, y sugerir visitar las secciones relevantes de la página o contactar directamente a los bomberos, proporcionando los datos de contacto pertinentes si aplica. NO inventes información.
 
-                Información de la página web:
-                ${websiteKnowledgeBase}` }]
+            chatHistory.push({
+                role: 'user',
+                parts: [{
+                    text: `Eres un asistente institucional del Cuerpo de Bomberos Voluntarios San Alberto. Responde únicamente con la información proporcionada a continuación. Si la pregunta supera el alcance, indícalo con transparencia y sugiere comunicarse con los canales oficiales.\n\nInformación de la página web:\n${websiteKnowledgeBase}`
+                }]
             });
-            chatHistory.push({ role: "model", parts: [{ text: "Entendido, responderé solo con la información proporcionada sobre el Cuerpo de Bomberos Voluntarios San Alberto." }] });
+
+            chatHistory.push({ role: 'model', parts: [{ text: 'Entendido. Responderé únicamente con la información institucional proporcionada.' }] });
 
             messages.forEach(msg => {
                 chatHistory.push({ role: msg.sender === 'user' ? 'user' : 'model', parts: [{ text: msg.text }] });
             });
-            chatHistory.push({ role: "user", parts: [{ text: currentMessage }] });
+            chatHistory.push({ role: 'user', parts: [{ text: currentMessage }] });
 
             const payload = { contents: chatHistory };
-            const apiKey = "";
+            const apiKey = '';
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
             const response = await fetch(apiUrl, {
@@ -199,24 +154,23 @@ const Chatbot = () => {
             });
 
             const result = await response.json();
-            console.log("Respuesta completa del LLM (con base de conocimiento):", result);
 
-            botResponseText = "Lo siento, no pude encontrar una respuesta específica a eso en la información que tengo disponible. Te sugiero que revises las secciones relevantes de nuestra página web o nos contactes directamente en los teléfonos de emergencia 315-353-8706 o atención al cliente +57 300-175-1212.";
-            
+            botResponseText = 'Lo siento, no tengo información suficiente para responder a esa consulta. Por favor visita nuestras secciones de Portafolio o Cotizar, o comunícate con nosotros en la línea institucional.';
+
             if (result.candidates && result.candidates.length > 0 &&
                 result.candidates[0].content && result.candidates[0].content.parts &&
                 result.candidates[0].content.parts.length > 0) {
                 botResponseText = result.candidates[0].content.parts[0].text;
-            } else {
-                console.error("Estructura de respuesta inesperada de la API:", result);
             }
 
             const botMessage = { text: botResponseText, sender: 'bot' };
             setMessages((prevMessages) => [...prevMessages, botMessage]);
-
         } catch (error) {
-            console.error("Error al comunicarse con la API de Gemini (con base de conocimiento):", error);
-            const errorMessage = { text: "Disculpa, hubo un error de conexión al obtener la respuesta. Por favor, inténtalo de nuevo más tarde.", sender: 'bot' };
+            console.error('Error al comunicarse con la API de Gemini:', error);
+            const errorMessage = {
+                text: 'En este momento no puedo conectar con nuestra base de conocimientos ampliada. Escríbenos nuevamente o utiliza nuestros canales de contacto institucionales.',
+                sender: 'bot'
+            };
             setMessages((prevMessages) => [...prevMessages, errorMessage]);
         } finally {
             setIsTyping(false);
@@ -225,33 +179,34 @@ const Chatbot = () => {
 
     return (
         <div className="chatbot-container">
-            {/* Botón flotante para abrir/cerrar el chat */}
-            <button className="chatbot-toggle-button" onClick={toggleChat}>
-                {/* Ícono de casco de bombero SVG */}
+            <button className="chatbot-toggle-button" onClick={toggleChat} aria-expanded={isOpen} aria-controls="chat-window">
                 {isOpen ? (
-                    <i className="fas fa-times"></i> // Ícono de Font Awesome para cerrar
+                    <i className="fas fa-times" aria-hidden="true"></i>
                 ) : (
-                    // SVG de un casco de bombero estilizado
-                    <svg className="firefighter-helmet-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C8.13 2 5 5.13 5 9v3H3v2h2v7h14v-7h2v-2h-2V9c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5v3H7V9zm12 10h-2v-5h-2v5H7v-5H5v5H3v-7h18v7h-2z"/>
+                    <svg className="firefighter-helmet-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M12 2C8.13 2 5 5.13 5 9v3H3v2h2v7h14v-7h2v-2h-2V9c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5v3H7V9zm12 10h-2v-5h-2v5H7v-5H5v5H3v-7h18v7h-2z" />
                     </svg>
                 )}
             </button>
 
-            {/* Ventana de chat (visible solo si isOpen es true) */}
             {isOpen && (
-                <div className="chat-window">
+                <div className="chat-window" id="chat-window" role="dialog" aria-label="Asistente virtual Bomberos San Alberto">
                     <div className="chat-header">
-                        <h3>Asistente de Bomberos San Alberto</h3>
-                        <button className="close-chat-button" onClick={toggleChat}>
-                            <i className="fas fa-times"></i>
+                        <div className="chat-brand">
+                            <img src={logoBomberos} alt="Logo Bomberos San Alberto" />
+                            <div>
+                                <h3>Asistente Bomberos San Alberto</h3>
+                                <p>Respuestas institucionales en tiempo real</p>
+                            </div>
+                        </div>
+                        <button className="close-chat-button" onClick={toggleChat} aria-label="Cerrar chat">
+                            <i className="fas fa-times" aria-hidden="true"></i>
                         </button>
                     </div>
                     <div className="chat-messages">
                         {messages.length === 0 && (
                             <div className="chat-welcome-message">
-                                ¡Hola! Soy tu asistente del Cuerpo de Bomberos Voluntarios San Alberto.
-                                ¿En qué puedo ayudarte hoy?
+                                ¡Hola! Soy tu asistente institucional. Puedo orientarte en solicitudes, servicios y contacto con nuestro equipo.
                             </div>
                         )}
                         {messages.map((msg, index) => (
@@ -260,7 +215,7 @@ const Chatbot = () => {
                             </div>
                         ))}
                         {isTyping && (
-                            <div className="message bot typing-indicator">
+                            <div className="message bot typing-indicator" aria-live="polite">
                                 <span className="dot"></span>
                                 <span className="dot"></span>
                                 <span className="dot"></span>
@@ -268,13 +223,14 @@ const Chatbot = () => {
                         )}
                         <div ref={messagesEndRef} />
                         <div className="suggested-questions-container">
-                            <p className="suggestions-title">O prueba con estas preguntas:</p>
+                            <p className="suggestions-title">Preguntas frecuentes</p>
                             <div className="suggestions-list">
                                 {suggestedQuestions.map((question, index) => (
                                     <button
                                         key={index}
                                         className="suggested-question-button"
                                         onClick={() => handleSuggestedQuestionClick(question)}
+                                        type="button"
                                     >
                                         {question}
                                     </button>
@@ -287,11 +243,12 @@ const Chatbot = () => {
                             type="text"
                             value={inputMessage}
                             onChange={(e) => setInputMessage(e.target.value)}
-                            placeholder="Escribe tu mensaje..."
+                            placeholder="Escribe tu mensaje institucional..."
                             disabled={isTyping}
+                            aria-label="Escribe tu mensaje"
                         />
-                        <button type="submit" disabled={isTyping}>
-                            <i className="fas fa-paper-plane"></i>
+                        <button type="submit" disabled={isTyping} aria-label="Enviar mensaje">
+                            <i className="fas fa-paper-plane" aria-hidden="true"></i>
                         </button>
                     </form>
                 </div>
