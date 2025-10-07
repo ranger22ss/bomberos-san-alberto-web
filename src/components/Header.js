@@ -76,57 +76,49 @@ function Header() {
               </div>
             </div>
 
-            <button
-              className={`nav-toggle ${menuOpen ? 'open' : ''}`}
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
-              aria-expanded={menuOpen}
-            >
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-            </button>
+            <div className="header-controls">
+              <button
+                className={`nav-toggle ${menuOpen ? 'open' : ''}`}
+                onClick={() => setMenuOpen(!menuOpen)}
+                aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+                aria-expanded={menuOpen}
+              >
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+                <span className="icon-bar"></span>
+              </button>
 
-            <nav className={`header-nav ${menuOpen ? 'nav-open' : ''}`} aria-label="Menú principal">
-              <ul className="nav-links">
-                <li>
-                  <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>
-                    Inicio
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/consulta" className="nav-link" onClick={() => setMenuOpen(false)}>
-                    Consulta
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/portafolio" className="nav-link" onClick={() => setMenuOpen(false)}>
-                    Portafolio
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/cotizar" className="nav-link" onClick={() => setMenuOpen(false)}>
-                    Cotizar
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contacto" className="nav-link" onClick={() => setMenuOpen(false)}>
-                    Contacto
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/nosotros" className="nav-link" onClick={() => setMenuOpen(false)}>
-                    Nosotros
-                  </Link>
-                </li>
-                <li className="nav-cta">
-                  <a href="tel:3153538706" className="nav-link nav-emergency" onClick={() => setMenuOpen(false)}>
-                    <i className="fas fa-fire-extinguisher" aria-hidden="true"></i>
-                    Línea de emergencia 315 353 8706
-                  </a>
-                </li>
-              </ul>
-            </nav>
+              <nav className={`header-nav ${menuOpen ? 'nav-open' : ''}`} aria-label="Menú principal">
+                <ul className="nav-links">
+                  <li>
+                    <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>
+                      Inicio
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/consulta" className="nav-link" onClick={() => setMenuOpen(false)}>
+                      Consulta
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/contacto" className="nav-link" onClick={() => setMenuOpen(false)}>
+                      Contacto
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/nosotros" className="nav-link" onClick={() => setMenuOpen(false)}>
+                      Nosotros
+                    </Link>
+                  </li>
+                  <li className="nav-cta">
+                    <a href="tel:3153538706" className="nav-link nav-emergency" onClick={() => setMenuOpen(false)}>
+                      <i className="fas fa-fire-extinguisher" aria-hidden="true"></i>
+                      Línea de emergencia 315 353 8706
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
       </div>
