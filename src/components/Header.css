@@ -10,10 +10,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 26px var(--spacing-xl);
+    padding: clamp(18px, 4vw, 28px) clamp(16px, 6vw, 40px);
     color: var(--text-color-light);
     z-index: 1000;
-    min-height: 220px;
+    min-height: clamp(200px, calc(16vw + 140px), 340px);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -33,9 +33,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-lg);
+    gap: clamp(var(--spacing-md), 4vw, var(--spacing-xl));
     width: 100%;
-    max-width: 1280px;
+    max-width: min(1280px, 96vw);
     z-index: 2;
 }
 
@@ -43,9 +43,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--spacing-md);
+    gap: clamp(var(--spacing-sm), 2.5vw, var(--spacing-lg));
     background: rgba(15, 23, 42, 0.4);
-    padding: 12px 20px;
+    padding: clamp(10px, 2vw, 14px) clamp(16px, 4vw, 24px);
     border-radius: 18px;
     border: 1px solid rgba(56, 189, 248, 0.28);
     backdrop-filter: blur(6px);
@@ -54,8 +54,8 @@
 .header-top-info {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-md);
-    font-size: 0.85rem;
+    gap: clamp(var(--spacing-sm), 2vw, var(--spacing-md));
+    font-size: clamp(0.75rem, 0.75rem + 0.4vw, 0.9rem);
     letter-spacing: 0.4px;
     text-transform: uppercase;
 }
@@ -77,23 +77,24 @@
     border: 1px solid rgba(148, 197, 254, 0.4);
     color: var(--text-color-light);
     font-weight: 700;
-    padding: 8px 18px;
+    padding: clamp(6px, 1.4vw, 9px) clamp(14px, 4vw, 20px);
     border-radius: 999px;
     letter-spacing: 0.6px;
     text-transform: uppercase;
+    font-size: clamp(0.7rem, 0.6rem + 0.4vw, 0.85rem);
 }
 
 .header-main-row {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
-    gap: var(--spacing-lg);
+    gap: clamp(var(--spacing-md), 4vw, var(--spacing-xl));
 }
 
 .header-brand-block {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: clamp(var(--spacing-sm), 3vw, var(--spacing-lg));
 }
 
 .header-logo-link {
@@ -102,7 +103,7 @@
 }
 
 .header-logo {
-    width: 120px;
+    width: clamp(84px, 10vw, 120px);
     height: auto;
     display: block;
 }
@@ -114,7 +115,7 @@
 }
 
 .header-institution {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 0.6rem + 1vw, 1.1rem);
     font-weight: 700;
     color: var(--text-color-light);
     margin: 0;
@@ -124,7 +125,7 @@
 
 .header-location {
     margin: 0;
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 0.6rem + 0.6vw, 0.95rem);
     color: rgba(248, 250, 252, 0.75);
     letter-spacing: 0.4px;
 }
@@ -132,7 +133,7 @@
 .header-actions {
     display: flex;
     align-items: stretch;
-    gap: var(--spacing-lg);
+    gap: clamp(var(--spacing-md), 4vw, var(--spacing-xl));
     margin-left: auto;
     flex: 1 1 auto;
     justify-content: flex-end;
@@ -142,11 +143,11 @@
     flex: 1 1 320px;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
-    max-width: 420px;
+    gap: clamp(var(--spacing-sm), 2.4vw, var(--spacing-lg));
+    max-width: clamp(280px, 52vw, 420px);
     background: rgba(15, 23, 42, 0.58);
     border: 1px solid rgba(56, 189, 248, 0.32);
-    padding: 22px 26px;
+    padding: clamp(18px, 3vw, 26px) clamp(20px, 4vw, 28px);
     border-radius: 24px;
     box-shadow: 0 20px 40px rgba(12, 31, 63, 0.35);
     backdrop-filter: blur(8px);
@@ -154,21 +155,21 @@
 
 .header-message p {
     margin: 0;
-    font-size: 1.05rem;
+    font-size: clamp(0.95rem, 0.8rem + 0.6vw, 1.05rem);
     color: rgba(241, 245, 249, 0.94);
     line-height: 1.6;
 }
 
 .header-cta-group {
     display: flex;
-    gap: var(--spacing-sm);
+    gap: clamp(var(--spacing-xs), 2vw, var(--spacing-sm));
     flex-wrap: wrap;
 }
 
 .header-controls {
     display: flex;
     align-items: stretch;
-    gap: var(--spacing-md);
+    gap: clamp(var(--spacing-sm), 2.5vw, var(--spacing-lg));
 }
 
 .header-controls .header-nav {
@@ -177,7 +178,7 @@
 
 .header-cta {
     border-radius: 999px;
-    padding: 10px 20px;
+    padding: clamp(10px, 1vw + 8px, 14px) clamp(18px, 3vw + 10px, 26px);
     font-weight: 600;
     font-family: 'Montserrat', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
@@ -213,11 +214,11 @@
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    padding: clamp(8px, 2vw, 12px);
     z-index: 1300;
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: clamp(36px, 8vw, 42px);
+    height: clamp(36px, 8vw, 42px);
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -225,8 +226,8 @@
 
 .nav-toggle .icon-bar {
     display: block;
-    width: 30px;
-    height: 3px;
+    width: clamp(24px, 7vw, 30px);
+    height: clamp(2px, 0.5vw, 3px);
     background-color: var(--text-color-light);
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
@@ -253,7 +254,7 @@
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: clamp(var(--spacing-sm), 3vw, 20px);
     padding: 0;
     margin: 0;
     align-items: center;
@@ -263,7 +264,7 @@
     color: var(--text-color-light);
     text-decoration: none;
     transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
-    padding: 10px 18px;
+    padding: clamp(10px, 0.8vw + 8px, 14px) clamp(16px, 2.5vw + 8px, 22px);
     border-radius: 999px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
@@ -297,13 +298,13 @@
 
 @media (max-width: 1100px) {
     .header-container {
-        padding: 22px var(--spacing-lg);
+        padding: clamp(18px, 3.5vw, 24px) clamp(18px, 5vw, var(--spacing-lg));
     }
 
     .header-main-row {
         flex-direction: column;
         align-items: flex-start;
-        gap: var(--spacing-lg);
+        gap: clamp(var(--spacing-md), 5vw, var(--spacing-xl));
     }
 
     .header-actions {
@@ -329,17 +330,17 @@
     }
 
     .header-actions {
-        gap: var(--spacing-md);
+        gap: clamp(var(--spacing-sm), 4vw, var(--spacing-lg));
     }
 
     .header-message {
         max-width: 100%;
-        padding: 20px 22px;
-        gap: var(--spacing-sm);
+        padding: clamp(18px, 3vw, 24px) clamp(18px, 4vw, 26px);
+        gap: clamp(var(--spacing-sm), 3vw, var(--spacing-md));
     }
 
     .header-message p {
-        font-size: 1rem;
+        font-size: clamp(0.92rem, 0.8rem + 0.6vw, 1rem);
     }
 
     .header-controls {
@@ -433,8 +434,8 @@
 
 @media (max-width: 640px) {
     .header-container {
-        padding: 18px var(--spacing-md);
-        min-height: 200px;
+        padding: clamp(16px, 4vw, 22px) clamp(var(--spacing-sm), 5vw, var(--spacing-md));
+        min-height: clamp(150px, calc(18vw + 100px), 220px);
     }
 
     .header-top-bar {
@@ -442,7 +443,7 @@
     }
 
     .header-main-row {
-        gap: var(--spacing-md);
+        gap: clamp(var(--spacing-sm), 6vw, var(--spacing-lg));
     }
 
     .header-brand-block {
@@ -451,24 +452,24 @@
     }
 
     .header-logo {
-        width: 92px;
+        width: clamp(78px, 12vw, 92px);
     }
 
     .header-actions {
-        gap: var(--spacing-md);
+        gap: clamp(var(--spacing-sm), 5vw, var(--spacing-lg));
     }
 
     .header-message {
-        padding: 18px 20px;
+        padding: clamp(16px, 4vw, 22px) clamp(16px, 5vw, 22px);
     }
 
     .header-message p {
-        font-size: 0.95rem;
+        font-size: clamp(0.9rem, 0.75rem + 0.6vw, 0.95rem);
     }
 
     .header-cta-group {
         flex-wrap: wrap;
-        gap: var(--spacing-sm);
+        gap: clamp(var(--spacing-xs), 4vw, var(--spacing-sm));
     }
 
     .header-controls {
@@ -482,6 +483,34 @@
 }
 
 @media (max-width: 480px) {
+    .header-container {
+        min-height: clamp(140px, calc(20vw + 90px), 200px);
+    }
+
+    .header-brand-block {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+
+    .header-identity {
+        align-items: center;
+    }
+
+    .header-controls {
+        justify-content: center;
+    }
+
+    .header-message {
+        text-align: center;
+    }
+
+    .header-message p {
+        width: 100%;
+    }
+
     .header-cta {
         flex: 1 1 100%;
         text-align: center;
