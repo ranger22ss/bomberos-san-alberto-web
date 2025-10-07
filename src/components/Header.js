@@ -1,5 +1,5 @@
 // src/components/Header.js
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
@@ -21,18 +21,38 @@ function Header() {
     };
   }, [menuOpen]);
 
-  useEffect(() => {
-    const updateHeaderHeight = () => {
-      if (!headerRef.current) return;
-      const height = headerRef.current.offsetHeight;
-      document.documentElement.style.setProperty('--header-height-desktop', `${height}px`);
-      document.documentElement.style.setProperty('--header-height-mobile', `${height}px`);
-    };
+  const updateHeaderHeight = useCallback(() => {
+    if (!headerRef.current || typeof window === 'undefined') return;
+    const height = headerRef.current.offsetHeight;
+    const isMobileView = window.matchMedia('(max-width: 768px)').matches;
+    const root = document.documentElement;
+    const desktopVar = '--header-height-desktop';
+    const mobileVar = '--header-height-mobile';
 
+    if (isMobileView) {
+      root.style.setProperty(mobileVar, `${height}px`);
+      if (!root.style.getPropertyValue(desktopVar)) {
+        const computedDesktop = getComputedStyle(root).getPropertyValue(desktopVar);
+        root.style.setProperty(desktopVar, computedDesktop.trim() || `${height}px`);
+      }
+    } else {
+      root.style.setProperty(desktopVar, `${height}px`);
+      if (!root.style.getPropertyValue(mobileVar)) {
+        const computedMobile = getComputedStyle(root).getPropertyValue(mobileVar);
+        root.style.setProperty(mobileVar, computedMobile.trim() || `${height}px`);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     updateHeaderHeight();
     window.addEventListener('resize', updateHeaderHeight);
     return () => window.removeEventListener('resize', updateHeaderHeight);
-  }, []);
+  }, [updateHeaderHeight]);
+
+  useEffect(() => {
+    updateHeaderHeight();
+  }, [menuOpen, updateHeaderHeight]);
 
   return (
     <header
