@@ -186,6 +186,7 @@
 
     .search-box {
         padding: var(--spacing-lg);
+        width: 100%;
     }
 
     .results-box {
@@ -205,10 +206,16 @@
     .search-box {
         padding: var(--spacing-md);
         border-radius: 18px;
+        width: 100%;
     }
 
     .results-box {
         padding: var(--spacing-md);
         border-radius: 18px;
+    }
+
+    .search-button,
+    .download-pdf-button {
+        max-width: none;
     }
 }

@@ -65,6 +65,35 @@
     animation: fadeInScale 0.25s ease-out forwards;
 }
 
+@media (max-width: 640px) {
+    .chatbot-container {
+        bottom: calc(var(--spacing-xl) + 52px);
+        right: var(--spacing-md);
+    }
+
+    .chatbot-toggle-button {
+        width: 56px;
+        height: 56px;
+    }
+
+    .chat-window {
+        width: min(340px, 92vw);
+        height: 460px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chatbot-container {
+        right: var(--spacing-sm);
+    }
+
+    .chat-window {
+        width: 92vw;
+        height: 70vh;
+        max-height: 520px;
+    }
+}
+
 @keyframes fadeInScale {
     from {
         opacity: 0;

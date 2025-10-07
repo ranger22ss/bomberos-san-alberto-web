@@ -277,6 +277,11 @@
     .portafolio-main {
         padding: var(--spacing-xxl) var(--spacing-lg);
     }
+
+    .portafolio-section,
+    .service-detail-section {
+        padding: var(--spacing-xl);
+    }
 }
 
 @media (max-width: 768px) {
@@ -302,6 +307,11 @@
     .service-detail-section {
         padding: var(--spacing-lg);
     }
+
+    .portafolio-header p,
+    .portafolio-section__lead {
+        text-align: center;
+    }
 }
 
 @media (max-width: 520px) {
@@ -311,5 +321,14 @@
 
     .service-cards-grid {
         grid-template-columns: 1fr;
+    }
+
+    .portafolio-main {
+        padding: var(--spacing-xl) var(--spacing-sm);
+    }
+
+    .portafolio-section,
+    .service-detail-section {
+        padding: var(--spacing-md);
     }
 }
