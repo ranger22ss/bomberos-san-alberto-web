@@ -25,8 +25,8 @@
     --card-hover-shadow: 0 24px 48px rgba(12, 31, 63, 0.18);
     --gold-accent: #fbbf24;
 
-    --header-height-desktop: 240px;
-    --header-height-mobile: 160px;
+    --header-height-desktop: 200px;
+    --header-height-mobile: 140px;
 
     --footer-bg-color: #0f172a;
     --link-color-footer: #e0f2fe;
@@ -112,10 +112,10 @@ h6 { font-size: 1rem; }
     margin: 0 auto;
     padding-left: var(--spacing-xl);
     padding-right: var(--spacing-xl);
-    padding-top: calc(var(--header-height-desktop) + var(--spacing-lg));
+    padding-top: var(--spacing-xl);
     padding-bottom: var(--spacing-xl);
     min-width: 0;
-    min-height: calc(100vh - var(--header-height-desktop) - var(--footer-height-desktop));
+    min-height: calc(100vh - var(--footer-height-desktop) - var(--spacing-xl));
 }
 
 .main-content-area {
@@ -139,7 +139,7 @@ h6 { font-size: 1rem; }
 @media (max-width: 1100px) {
     .content-and-sidebar-wrapper {
         grid-template-columns: 1fr;
-        padding-top: calc(var(--header-height-desktop) + var(--spacing-lg));
+        padding-top: var(--spacing-xl);
         gap: var(--spacing-xl);
     }
 
@@ -155,7 +155,7 @@ h6 { font-size: 1rem; }
     }
 
     .content-and-sidebar-wrapper {
-        padding-top: calc(var(--header-height-mobile) + var(--spacing-lg));
+        padding-top: var(--spacing-lg);
         padding-left: var(--spacing-md);
         padding-right: var(--spacing-md);
         gap: var(--spacing-lg);

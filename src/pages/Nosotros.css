@@ -3,12 +3,12 @@
 
 .nosotros-page-wrapper {
     width: 100%;
-    padding-top: var(--header-height-desktop, 125px);
+    padding-top: var(--spacing-xl, 40px);
 }
 
 @media (max-width: 992px) {
     .nosotros-page-wrapper {
-        padding-top: var(--header-height-mobile, 90px);
+        padding-top: var(--spacing-lg, 24px);
     }
 }
 

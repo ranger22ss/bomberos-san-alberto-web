@@ -2,7 +2,7 @@
     width: 100%;
     margin: 0 auto;
     padding: 0;
-    min-height: calc(100vh - var(--header-height-desktop, 80px) - var(--footer-height-desktop, 0px));
+    min-height: calc(100vh - var(--footer-height-desktop, 0px) - var(--spacing-xl, 40px));
     display: flex;
     flex-direction: column;
     align-items: center;
