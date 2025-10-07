@@ -258,4 +258,8 @@
         padding: var(--spacing-md);
         border-radius: 18px;
     }
+
+    .contact-form button {
+        width: 100%;
+    }
 }

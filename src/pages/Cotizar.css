@@ -254,10 +254,12 @@
         border-bottom-left-radius: 32px;
         border-bottom-right-radius: 32px;
         min-height: 320px;
+        text-align: center;
     }
 
     .cotizar-hero__content {
         gap: var(--spacing-sm);
+        justify-items: center;
     }
 
     .cotizar-highlights,
@@ -269,6 +271,7 @@
 
     .cotizar-portfolio-link__content {
         padding: var(--spacing-lg);
+        text-align: center;
     }
 }
 
@@ -284,5 +287,16 @@
     .cotizar-portfolio-link__button {
         width: 100%;
         justify-content: center;
+    }
+
+    .cotizar-highlights,
+    .cotizar-process,
+    .cotizar-form-section,
+    .cotizar-portfolio-link {
+        margin: 0 var(--spacing-sm);
+    }
+
+    .cotizar-process__content {
+        padding: var(--spacing-lg);
     }
 }
