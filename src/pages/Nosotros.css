@@ -21,7 +21,7 @@ body.no-scroll {
     color: var(--text-color-dark, #34495e);
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
-    width: min(100%, 960px);
+    width: min(100%, 1120px);
     margin: 0 auto;
     padding: 0 clamp(var(--spacing-sm, 8px), 5vw, var(--spacing-xl, 40px)) clamp(var(--spacing-lg, 24px), 8vw, var(--spacing-xxl, 60px));
     display: flex;
@@ -53,7 +53,7 @@ body.no-scroll {
     position: relative;
     overflow: hidden;
     margin: 0 auto;
-    width: min(100%, 900px);
+    width: min(100%, 1040px);
 }
 
 @media (max-width: 768px) {
@@ -98,7 +98,7 @@ body.no-scroll {
 }
 
 .accordion-sections-wrapper {
-    width: min(100%, 900px);
+    width: min(100%, 1040px);
     margin: 0 auto;
     padding: 0 clamp(var(--spacing-xs, 4px), 4vw, var(--spacing-md, 16px));
     box-sizing: border-box;
@@ -165,6 +165,7 @@ body.no-scroll {
 .accordion-content.expanded {
     max-height: 5000px;
     padding: clamp(var(--spacing-md, 16px), 5vw, var(--spacing-xl, 40px));
+    overflow: visible;
 }
 
 .nosotros-historia-paragraph {
@@ -243,7 +244,60 @@ body.no-scroll {
 
 .equipo-categorias {
     margin: var(--spacing-md, 16px) auto;
-    max-width: 900px;
+    max-width: 1040px;
+}
+
+.talento-scroll-controls {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto clamp(var(--spacing-md, 16px), 4vw, var(--spacing-lg, 24px));
+}
+
+.talento-scroll-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(8, 47, 94, 0.95), rgba(59, 130, 246, 0.92));
+    color: var(--white, #ffffff);
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.95rem, 0.9rem + 0.6vw, 1.05rem);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 18px 30px rgba(9, 34, 78, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.talento-scroll-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 26px 36px rgba(9, 34, 78, 0.32);
+}
+
+.talento-scroll-button:focus-visible {
+    outline: 3px solid var(--accent-color, #7dd3fc);
+    outline-offset: 4px;
+}
+
+.talento-scroll-icon {
+    font-size: 1.2em;
+}
+
+.talento-highlight {
+    animation: talentoGlow 1.6s ease-in-out;
+}
+
+@keyframes talentoGlow {
+    0% {
+        box-shadow: 0 0 0 rgba(59, 130, 246, 0);
+    }
+    40% {
+        box-shadow: 0 0 0 12px rgba(59, 130, 246, 0.18);
+    }
+    100% {
+        box-shadow: 0 0 0 rgba(59, 130, 246, 0);
+    }
 }
 
 .equipo-categoria-container {
