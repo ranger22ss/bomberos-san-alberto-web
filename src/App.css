@@ -5,6 +5,8 @@ body, html {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  background-color: #f4f7fb;
+  color: #1a1a1a;
 }
 
 *,
@@ -18,17 +20,21 @@ body, html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #a40000;
+  background-color: #003366; /* Azul institucional */
   color: white;
   padding: 15px 30px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .navbar-logo {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .navbar-links {
@@ -41,11 +47,12 @@ body, html {
 .navbar-links a {
   color: white;
   text-decoration: none;
-  transition: 0.2s;
+  font-weight: 500;
+  transition: 0.2s ease;
 }
 
 .navbar-links a:hover {
-  text-decoration: underline;
+  color: #66aaff;
 }
 
 /* === MOBILE MENU === */
@@ -69,6 +76,7 @@ body, html {
 
 .section h1, .section h2 {
   margin-bottom: 15px;
+  color: #003366;
 }
 
 .section p {
@@ -78,10 +86,12 @@ body, html {
 
 /* === FOOTER === */
 .footer {
-  background-color: #a40000;
+  background-color: #003366;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 25px 10px;
+  margin-top: 50px;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
 }
 
 /* === RESPONSIVE === */
@@ -97,7 +107,7 @@ body, html {
   .navbar-links {
     display: none;
     flex-direction: column;
-    background-color: #a40000;
+    background-color: #003366;
     position: absolute;
     top: 60px;
     right: 0;
@@ -118,4 +128,36 @@ body, html {
     padding: 40px 20px;
     text-align: center;
   }
+
+  .section p {
+    width: 100%;
+  }
+
+  .footer {
+    font-size: 0.9rem;
+    padding: 15px;
+  }
+}
+/* === HEADER === */
+.header {
+  background-color: #004080;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.header-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.header-subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
 }

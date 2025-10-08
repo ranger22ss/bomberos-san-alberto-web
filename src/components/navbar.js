@@ -6,7 +6,7 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar-logo">Bomberos San Alberto</div>
+      <div className="navbar-logo">Cuerpo de Bomberos Voluntarios de San Alberto</div>
 
       <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
         <div></div>
