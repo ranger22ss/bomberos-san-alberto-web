@@ -25,7 +25,8 @@
 
 .navbar-logo {
   display: inline-flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 14px;
   line-height: 1;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
@@ -34,6 +35,21 @@
   text-transform: uppercase;
   text-decoration: none;
   transition: transform 0.3s ease;
+}
+
+.navbar-logo__image {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 6px;
+  box-shadow: 0 12px 24px rgba(9, 34, 78, 0.35);
+}
+
+.navbar-logo__text {
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar-logo__highlight {
@@ -222,6 +238,15 @@
 @media (max-width: 992px) {
   .navbar-inner {
     flex-wrap: wrap;
+  }
+
+  .navbar-logo {
+    gap: 10px;
+  }
+
+  .navbar-logo__image {
+    width: 46px;
+    height: 46px;
   }
 
   .menu-toggle {

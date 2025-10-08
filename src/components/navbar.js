@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
+import logoBomberos from '../logo.png';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,8 +26,15 @@ function Navbar() {
     <nav className={`navbar${menuOpen ? ' open' : ''}`}>
       <div className="navbar-inner">
         <NavLink to="/" className="navbar-logo" onClick={closeMenu}>
-          <span className="navbar-logo__highlight">Bomberos</span>
-          <span className="navbar-logo__city">San Alberto</span>
+          <img
+            src={logoBomberos}
+            alt="Logo Cuerpo de Bomberos Voluntarios San Alberto"
+            className="navbar-logo__image"
+          />
+          <span className="navbar-logo__text">
+            <span className="navbar-logo__highlight">Bomberos</span>
+            <span className="navbar-logo__city">San Alberto</span>
+          </span>
         </NavLink>
 
         <button
