@@ -1,12 +1,8 @@
-/* === BASE === */
+/* === BASE LAYOUT UTILITIES === */
 body, html {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
-  scroll-behavior: smooth;
-  background-color: #f4f7fb;
-  color: #1a1a1a;
 }
 
 *,
@@ -15,149 +11,66 @@ body, html {
   box-sizing: inherit;
 }
 
-/* === NAVBAR === */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #003366; /* Azul institucional */
-  color: white;
-  padding: 15px 30px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.navbar-logo {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.navbar-links {
-  display: flex;
-  gap: 25px;
-  list-style: none;
-  margin: 0;
-}
-
-.navbar-links a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.2s ease;
-}
-
-.navbar-links a:hover {
-  color: #66aaff;
-}
-
-/* === MOBILE MENU === */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.menu-toggle div {
-  width: 25px;
-  height: 3px;
-  background-color: white;
-  margin: 4px 0;
-}
-
-/* === SECCIONES === */
 .section {
-  padding: 60px 100px;
+  padding: clamp(60px, 8vw, 100px) clamp(40px, 7vw, 120px);
 }
 
-.section h1, .section h2 {
-  margin-bottom: 15px;
-  color: #003366;
+.section h1,
+.section h2 {
+  margin-bottom: 20px;
+  color: var(--primary-dark-blue);
+  font-family: 'Montserrat', sans-serif;
 }
 
 .section p {
-  max-width: 800px;
-  line-height: 1.6;
+  max-width: 820px;
+  line-height: 1.7;
 }
 
-/* === FOOTER === */
-.footer {
-  background-color: #003366;
-  color: white;
-  text-align: center;
-  padding: 25px 10px;
-  margin-top: 50px;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+/* === LAYOUT WRAPPER === */
+.content-and-sidebar-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: clamp(30px, 6vw, 70px) clamp(30px, 7vw, 90px);
+  gap: clamp(30px, 6vw, 70px);
 }
 
-/* === RESPONSIVE === */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 15px 20px;
-  }
+.main-content-area {
+  flex: 3;
+  display: grid;
+  gap: clamp(30px, 4vw, 50px);
+}
 
-  .menu-toggle {
-    display: flex;
-  }
+.noticias-sidebar {
+  flex: 1;
+  max-width: 360px;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 24px;
+  padding: clamp(18px, 3vw, 28px);
+  box-shadow: 0 24px 48px rgba(9, 34, 78, 0.12);
+  backdrop-filter: blur(12px);
+}
 
-  .navbar-links {
-    display: none;
+@media (max-width: 1024px) {
+  .content-and-sidebar-wrapper {
     flex-direction: column;
-    background-color: #003366;
-    position: absolute;
-    top: 60px;
-    right: 0;
+    padding: clamp(24px, 6vw, 50px);
+  }
+
+  .noticias-sidebar {
+    max-width: 100%;
     width: 100%;
-    padding: 15px 0;
   }
+}
 
-  .navbar-links.active {
-    display: flex;
-  }
-
-  .navbar-links li {
-    text-align: center;
-    padding: 10px 0;
-  }
-
+@media (max-width: 768px) {
   .section {
-    padding: 40px 20px;
-    text-align: center;
+    padding: clamp(40px, 8vw, 60px) clamp(24px, 6vw, 40px);
+    text-align: left;
   }
 
   .section p {
     width: 100%;
   }
-
-  .footer {
-    font-size: 0.9rem;
-    padding: 15px;
-  }
-}
-/* === HEADER === */
-.header {
-  background-color: #004080;
-  color: white;
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.header-logo {
-  width: 120px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-.header-title {
-  margin: 0;
-  font-size: 1.6rem;
-}
-
-.header-subtitle {
-  font-size: 1rem;
-  opacity: 0.9;
 }

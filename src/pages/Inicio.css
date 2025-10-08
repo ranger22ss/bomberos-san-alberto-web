@@ -25,8 +25,8 @@
 }
 
 .inicio-header {
-    background: radial-gradient(circle at 20% 20%, rgba(250, 204, 21, 0.2), transparent 65%),
-                linear-gradient(135deg, rgba(93, 11, 11, 0.95), rgba(153, 27, 27, 0.92));
+    background: radial-gradient(circle at 20% 20%, rgba(125, 211, 252, 0.25), transparent 65%),
+                linear-gradient(135deg, rgba(8, 32, 75, 0.95), rgba(37, 99, 235, 0.92));
     color: var(--text-color-light);
     padding: clamp(48px, 12vw, 90px) clamp(18px, 6vw, 48px);
     text-align: center;
@@ -45,7 +45,7 @@
     right: -60px;
     width: 220px;
     height: 220px;
-    background: radial-gradient(circle, rgba(249, 115, 22, 0.28), transparent 70%);
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.32), transparent 70%);
     transform: rotate(25deg);
 }
 
@@ -71,14 +71,14 @@
     padding: clamp(var(--spacing-lg), 6vw, var(--spacing-xxl));
     border-radius: clamp(16px, 3vw, 22px);
     box-shadow: var(--card-shadow);
-    border: 1px solid rgba(250, 204, 21, 0.35);
+    border: 1px solid rgba(148, 197, 254, 0.35);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .inicio-section:hover {
     transform: translateY(-6px);
     box-shadow: var(--card-hover-shadow);
-    border-color: rgba(249, 115, 22, 0.45);
+    border-color: rgba(148, 197, 254, 0.45);
 }
 
 .inicio-section:nth-of-type(even) {
@@ -129,13 +129,13 @@
 }
 
 .inicio-list li {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 228, 230, 0.9));
+    background: linear-gradient(135deg, rgba(237, 248, 255, 0.95), rgba(219, 234, 254, 0.9));
     padding: clamp(var(--spacing-sm), 2.8vw, var(--spacing-lg)) clamp(var(--spacing-md), 3vw, var(--spacing-xl));
     border-radius: 14px;
-    box-shadow: 0 8px 18px rgba(153, 27, 27, 0.08);
+    box-shadow: 0 18px 36px rgba(15, 46, 91, 0.08);
     font-size: clamp(0.95rem, 0.9rem + 0.6vw, 1.05rem);
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     display: flex;
     align-items: center;
     gap: clamp(var(--spacing-xs), 2vw, var(--spacing-md));
@@ -143,22 +143,22 @@
 }
 
 .inicio-list li:hover {
-    background: linear-gradient(135deg, rgba(249, 115, 22, 0.18), rgba(255, 228, 230, 0.95));
+    background: linear-gradient(135deg, rgba(191, 219, 254, 0.3), rgba(224, 242, 254, 0.95));
     transform: translateY(-4px);
-    box-shadow: 0 14px 28px rgba(153, 27, 27, 0.15);
+    box-shadow: 0 24px 40px rgba(15, 46, 91, 0.18);
 }
 
 .inicio-list li i {
     font-size: 1.35em;
     color: var(--secondary-color);
     flex-shrink: 0;
-    filter: drop-shadow(0 4px 6px rgba(249, 115, 22, 0.25));
+    filter: drop-shadow(0 6px 10px rgba(59, 130, 246, 0.25));
 }
 
 .anios-servicio {
     text-align: center;
     padding: clamp(var(--spacing-lg), 6vw, 56px);
-    background: linear-gradient(135deg, var(--secondary-color), #fb923c);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--text-color-light);
     box-shadow: var(--card-shadow);
     border-radius: clamp(16px, 3vw, 22px);
@@ -196,10 +196,10 @@
 }
 
 .otras-paginas-list li {
-    background: linear-gradient(160deg, rgba(255, 241, 242, 0.95), rgba(255, 228, 230, 0.9));
+    background: linear-gradient(160deg, rgba(219, 234, 254, 0.95), rgba(224, 242, 254, 0.9));
     padding: var(--spacing-md);
     border-radius: 16px;
-    box-shadow: 0 12px 24px rgba(93, 11, 11, 0.08);
+    box-shadow: 0 18px 32px rgba(15, 46, 91, 0.12);
     font-size: 1em;
     font-weight: 600;
     color: var(--text-color-dark);
@@ -207,7 +207,7 @@
     flex: 1 1 auto;
     max-width: 260px;
     text-align: center;
-    border: 1px solid rgba(250, 204, 21, 0.35);
+    border: 1px solid rgba(148, 197, 254, 0.35);
 }
 
 .otras-paginas-list li:hover {
@@ -217,7 +217,7 @@
 }
 
 .otras-paginas-list li a {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     font-weight: 700;
     display: block;
     margin-bottom: var(--spacing-xs);
@@ -233,19 +233,19 @@
     padding: 16px 42px;
     font-size: 1.05em;
     font-weight: 700;
-    color: #4b0c0c;
+    color: var(--primary-dark-blue);
     background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
     border-radius: 999px;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 18px 32px rgba(249, 115, 22, 0.35);
+    box-shadow: 0 22px 36px rgba(15, 46, 91, 0.28);
     border: none;
 }
 
 .inicio-button:hover {
     transform: translateY(-6px);
-    box-shadow: 0 22px 38px rgba(249, 115, 22, 0.45);
+    box-shadow: 0 28px 46px rgba(15, 46, 91, 0.35);
 }
 
 @media (max-width: 992px) {

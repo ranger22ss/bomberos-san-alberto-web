@@ -32,7 +32,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(160deg, rgba(255, 241, 242, 0.95), rgba(255, 228, 230, 0.9));
+    background: linear-gradient(160deg, rgba(219, 234, 254, 0.95), rgba(224, 242, 254, 0.9));
     padding: var(--spacing-xl);
     border-radius: 22px;
     box-shadow: var(--card-shadow);
@@ -40,31 +40,31 @@
     max-width: 640px;
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid rgba(250, 204, 21, 0.35);
+    border: 1px solid rgba(148, 197, 254, 0.35);
 }
 
 .nit-input {
     width: 100%;
     padding: var(--spacing-md);
-    border: 1px solid rgba(249, 115, 22, 0.35);
+    border: 1px solid rgba(148, 197, 254, 0.35);
     border-radius: 12px;
     font-size: 1rem;
-    box-shadow: inset 0 1px 3px rgba(153, 27, 27, 0.08);
+    box-shadow: inset 0 1px 3px rgba(15, 46, 91, 0.08);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     margin-bottom: var(--spacing-md);
-    background-color: #fffdf8;
+    background-color: #f8fbff;
 }
 
 .nit-input:focus {
     border-color: var(--secondary-color);
-    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.2);
+    box-shadow: 0 0 0 4px rgba(148, 197, 254, 0.25);
     outline: none;
 }
 
 .search-button,
 .download-pdf-button {
     background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
-    color: #4b0c0c;
+    color: var(--primary-dark-blue);
     padding: var(--spacing-md) var(--spacing-xl);
     border: none;
     border-radius: 999px;
@@ -74,13 +74,13 @@
     transition: transform 0.2s ease, box-shadow 0.3s ease;
     width: 100%;
     max-width: 320px;
-    box-shadow: 0 16px 28px rgba(249, 115, 22, 0.28);
+    box-shadow: 0 20px 34px rgba(15, 46, 91, 0.26);
 }
 
 .search-button:hover,
 .download-pdf-button:hover {
     transform: translateY(-4px);
-    box-shadow: 0 22px 38px rgba(249, 115, 22, 0.4);
+    box-shadow: 0 28px 46px rgba(15, 46, 91, 0.32);
 }
 
 .error-message {
@@ -99,7 +99,7 @@
     max-width: 860px;
     margin: 0 auto var(--spacing-xl);
     text-align: left;
-    border: 1px solid rgba(250, 204, 21, 0.3);
+    border: 1px solid rgba(148, 197, 254, 0.35);
 }
 
 .not-found-message {
@@ -113,7 +113,7 @@
     padding: var(--spacing-md);
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(255, 241, 242, 0.92));
+    background: linear-gradient(160deg, rgba(237, 248, 255, 0.96), rgba(219, 234, 254, 0.92));
 }
 
 .certificate-details.vigente {
