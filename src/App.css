@@ -1,38 +1,121 @@
-.App {
-  text-align: center;
+/* === BASE === */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #f0f0f0;
-  min-height: 80vh;
+/* === NAVBAR === */
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #a40000;
   color: white;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.App-link {
-  color: #ffffff;
+.navbar-logo {
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.navbar-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  margin: 0;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+/* === MOBILE MENU === */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+}
+
+/* === SECCIONES === */
+.section {
+  padding: 60px 100px;
+}
+
+.section h1, .section h2 {
+  margin-bottom: 15px;
+}
+
+.section p {
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+/* === FOOTER === */
+.footer {
+  background-color: #a40000;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 20px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    background-color: #a40000;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    padding: 15px 0;
+  }
+
+  .navbar-links.active {
+    display: flex;
+  }
+
+  .navbar-links li {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .section {
+    padding: 40px 20px;
+    text-align: center;
   }
 }

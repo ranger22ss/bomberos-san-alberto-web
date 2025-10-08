@@ -1,15 +1,16 @@
 // src/App.js
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css'; // Tus estilos específicos de App
-import './index.css'; // Tus estilos globales
+import './App.css';
+import './index.css';
 
 // Importar componentes
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Noticias from './components/Noticias';
 import EmergencyButton from './components/EmergencyButton';
-import Chatbot from './components/Chatbot'; // ¡CORREGIDO: Casing a 'Chatbot' para coincidir con el nombre del archivo!
+import Chatbot from './components/Chatbot';
+import Navbar from './components/navbar';
 
 // Importar páginas
 import Inicio from './pages/Inicio';
@@ -23,8 +24,13 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        {/* 🔝 Barra de navegación principal */}
+        <Navbar />
+
+        {/* Encabezado institucional */}
         <Header />
 
+        {/* Contenido principal + barra lateral */}
         <div className="content-and-sidebar-wrapper">
           <main className="main-content-area">
             <Routes>
@@ -37,16 +43,18 @@ function App() {
             </Routes>
           </main>
 
+          {/* Noticias / barra lateral */}
           <aside className="noticias-sidebar">
             <Noticias />
           </aside>
         </div>
 
+        {/* Pie de página */}
         <Footer />
 
-        {/* Renderizar el botón de emergencia y el chatbot aquí */}
+        {/* Botón de emergencia y Chatbot */}
         <EmergencyButton />
-        <Chatbot /> {/* ¡Aquí se renderiza el Chatbot! */}
+        <Chatbot />
       </div>
     </BrowserRouter>
   );
