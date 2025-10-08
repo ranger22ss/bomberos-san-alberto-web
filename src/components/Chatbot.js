@@ -34,6 +34,10 @@ const Chatbot = () => {
             response: 'Nuestro canal institucional de atención al cliente (no emergencias) es el WhatsApp +57 300 175 1212. Con gusto daremos seguimiento a tu solicitud.'
         },
         {
+            keywords: ['certificados', 'certificado', 'validar certificado', 'consulta certificado'],
+            response: 'Para validar certificados institucionales ingresa a la sección "Consulta" y escribe el código del certificado que deseas revisar. El sistema te mostrará el estado y los detalles registrados.'
+        },
+        {
             keywords: ['servicios', 'portafolio', 'portafolio de servicios', 'qué hacen'],
             response: 'Ofrecemos prevención, inspecciones, mantenimiento y recarga de extintores, capacitaciones, suministro de agua potable y venta de equipos certificados. Puedes revisar el portafolio completo en la sección "Portafolio".'
         },
@@ -42,7 +46,19 @@ const Chatbot = () => {
             response: 'Para recibir una propuesta formal ingresa a la sección "Cotizar" y completa el formulario con los servicios de interés. Nuestro equipo responderá en el menor tiempo posible.'
         },
         {
-            keywords: ['donde estan', 'ubicación', 'dirección'],
+            keywords: ['contacto', 'correo', 'email', 'teléfono', 'telefonos', 'comunicar'],
+            response: 'Puedes comunicarte con nosotros por el correo cuerpobomberossanalberto@gmail.com o al WhatsApp institucional +57 300 175 1212. Si necesitas atención presencial, visita la Cl. 5 #7-44 en San Alberto, Cesar.'
+        },
+        {
+            keywords: ['horario', 'disponibilidad', 'abren', 'cierran'],
+            response: 'El equipo operativo permanece disponible 24/7 para emergencias en la línea 315 353 8706. Para trámites administrativos o comerciales escríbenos al WhatsApp +57 300 175 1212 y coordinaremos la atención.'
+        },
+        {
+            keywords: ['nosotros', 'quienes son', 'quiénes son', 'institución', 'institucion'],
+            response: 'Somos el Cuerpo de Bomberos Voluntarios de San Alberto, una institución que combina experiencia, vocación y tecnología para proteger a la comunidad. Puedes conocer nuestra historia y talento humano en la sección "Nosotros".'
+        },
+        {
+            keywords: ['donde estan', 'ubicación', 'direccion', 'dirección', 'donde queda', 'ubicacion'],
             response: 'Nuestra base se encuentra en la Cl. 5 #7-44 de San Alberto, Cesar, Colombia. Atendemos a la comunidad y al sector empresarial de la región.'
         },
         {
@@ -60,31 +76,27 @@ const Chatbot = () => {
         'Quiero solicitar una cotización formal'
     ];
 
-    const websiteKnowledgeBase = `
-    Información general del Cuerpo de Bomberos Voluntarios San Alberto:
-    Somos una institución dedicada a la protección y seguridad de la comunidad de San Alberto, Cesar, Colombia.
-    Nuestra misión es salvaguardar vidas y bienes, y trabajar activamente con la comunidad para un San Alberto más seguro y resiliente.
-    Estamos comprometidos con la prevención y la respuesta efectiva ante diversas emergencias.
+    const websiteKnowledgeBase = [
+        'Somos una institución voluntaria al servicio de la comunidad de San Alberto, Cesar, enfocada en prevención, atención de emergencias y fortalecimiento de la gestión del riesgo.',
+        'Servicios destacados: mantenimiento y recarga de extintores, botiquines certificados, inspecciones y conceptos de seguridad, capacitaciones especializadas, suministro de agua potable y acompañamiento logístico 24/7.',
+        'Línea de emergencias: 315 353 8706 (disponible 24/7 únicamente para llamadas).',
+        'Atención institucional y WhatsApp: +57 300 175 1212.',
+        'Correos oficiales: cuerpobomberossanalberto@gmail.com y cuerpobomberosvoluntariossanalberto@hotmail.com.',
+        'La base operativa se encuentra en la Cl. 5 #7-44, San Alberto, Cesar, Colombia.',
+        'Las solicitudes de cotización se realizan en la sección "Cotizar" del sitio web, completando el formulario con los servicios requeridos.',
+        'La validación de certificados institucionales está disponible en la sección "Consulta" ingresando el código correspondiente.'
+    ];
 
-    Servicios principales que ofrecemos:
-    - Atención de incendios estructurales y forestales.
-    - Operaciones de rescate vehicular, en alturas y acuáticos.
-    - Atención prehospitalaria y primeros auxilios en el lugar de accidentes.
-    - Prevención y gestión del riesgo de desastres naturales o provocados por el hombre.
-    - Capacitaciones y talleres para la comunidad y empresas en primeros auxilios, manejo de extintores y planes de emergencia.
+    const buildFallbackResponse = (question) => {
+        const formattedKnowledge = websiteKnowledgeBase.map((item) => `• ${item}`).join('\n');
 
-    Contacto institucional:
-    - Emergencias: 315-353-8706 (solo llamadas).
-    - Atención al cliente y WhatsApp: +57 300-175-1212.
-    - Correos: cuerpobomberossanalberto@gmail.com y cuerpobomberosvoluntariossanalberto@hotmail.com.
-    - Ubicación: Cl. 5 #7-44, San Alberto, Cesar, Colombia.
-
-    Cómo apoyar:
-    Aceptamos donaciones y voluntariado. Encuentra más información en la sección "Nosotros" o "Contacto".
-
-    Cotizar servicios:
-    Visita la sección "Cotizar" para detallar tus necesidades y recibir una propuesta.
-    `;
+        return (
+            `Gracias por tu mensaje${question ? ` sobre "${question}"` : ''}. ` +
+            'Soy el asistente virtual del Cuerpo de Bomberos Voluntarios de San Alberto y puedo compartir información institucional disponible en este sitio web.\n\n' +
+            `${formattedKnowledge}\n\n` +
+            'Si necesitas un trámite o detalle puntual, dime qué sección deseas consultar y te guiaré paso a paso o te indicaré nuestros canales oficiales.'
+        );
+    };
 
     const handleSuggestedQuestionClick = (question) => {
         setInputMessage(question);
@@ -119,62 +131,16 @@ const Chatbot = () => {
             if (matched) break;
         }
 
-        if (matched) {
-            const botMessage = { text: botResponseText, sender: 'bot' };
+        if (!matched) {
+            const botMessage = { text: buildFallbackResponse(currentMessage), sender: 'bot' };
             setMessages((prevMessages) => [...prevMessages, botMessage]);
             setIsTyping(false);
             return;
         }
 
-        try {
-            let chatHistory = [];
-
-            chatHistory.push({
-                role: 'user',
-                parts: [{
-                    text: `Eres un asistente institucional del Cuerpo de Bomberos Voluntarios San Alberto. Responde únicamente con la información proporcionada a continuación. Si la pregunta supera el alcance, indícalo con transparencia y sugiere comunicarse con los canales oficiales.\n\nInformación de la página web:\n${websiteKnowledgeBase}`
-                }]
-            });
-
-            chatHistory.push({ role: 'model', parts: [{ text: 'Entendido. Responderé únicamente con la información institucional proporcionada.' }] });
-
-            messages.forEach(msg => {
-                chatHistory.push({ role: msg.sender === 'user' ? 'user' : 'model', parts: [{ text: msg.text }] });
-            });
-            chatHistory.push({ role: 'user', parts: [{ text: currentMessage }] });
-
-            const payload = { contents: chatHistory };
-            const apiKey = '';
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-
-            const result = await response.json();
-
-            botResponseText = 'Lo siento, no tengo información suficiente para responder a esa consulta. Por favor visita nuestras secciones de Portafolio o Cotizar, o comunícate con nosotros en la línea institucional.';
-
-            if (result.candidates && result.candidates.length > 0 &&
-                result.candidates[0].content && result.candidates[0].content.parts &&
-                result.candidates[0].content.parts.length > 0) {
-                botResponseText = result.candidates[0].content.parts[0].text;
-            }
-
-            const botMessage = { text: botResponseText, sender: 'bot' };
-            setMessages((prevMessages) => [...prevMessages, botMessage]);
-        } catch (error) {
-            console.error('Error al comunicarse con la API de Gemini:', error);
-            const errorMessage = {
-                text: 'En este momento no puedo conectar con nuestra base de conocimientos ampliada. Escríbenos nuevamente o utiliza nuestros canales de contacto institucionales.',
-                sender: 'bot'
-            };
-            setMessages((prevMessages) => [...prevMessages, errorMessage]);
-        } finally {
-            setIsTyping(false);
-        }
+        const botMessage = { text: botResponseText, sender: 'bot' };
+        setMessages((prevMessages) => [...prevMessages, botMessage]);
+        setIsTyping(false);
     };
 
     return (
