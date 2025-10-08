@@ -21,22 +21,51 @@ body.no-scroll {
     color: var(--text-color-dark, #34495e);
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
-    max-width: 1400px;
+    width: min(100%, 960px);
     margin: 0 auto;
-    padding: 0 var(--spacing-xl, 40px) var(--spacing-xl, 40px);
+    padding: 0 clamp(var(--spacing-sm, 8px), 5vw, var(--spacing-xl, 40px)) clamp(var(--spacing-lg, 24px), 8vw, var(--spacing-xxl, 60px));
+    display: flex;
+    flex-direction: column;
+    gap: clamp(var(--spacing-xl, 40px), 8vw, var(--spacing-xxl, 60px));
+}
+
+@media (max-width: 900px) {
+    .nosotros-main-container {
+        padding: 0 clamp(var(--spacing-sm, 8px), 7vw, var(--spacing-lg, 24px)) clamp(var(--spacing-lg, 24px), 12vw, var(--spacing-xxl, 60px));
+    }
+}
+
+@media (max-width: 576px) {
+    .nosotros-main-container {
+        padding: 0 clamp(var(--spacing-xs, 4px), 7vw, var(--spacing-sm, 8px))
+                 clamp(var(--spacing-md, 16px), 14vw, var(--spacing-xl, 40px));
+    }
 }
 
 .nosotros-hero-section {
     background: radial-gradient(circle at 20% 20%, rgba(250, 204, 21, 0.25), transparent 60%),
                 linear-gradient(135deg, rgba(93, 11, 11, 0.95), rgba(153, 27, 27, 0.92));
     color: var(--white, #ffffff);
-    padding: 60px 24px;
+    padding: clamp(44px, 12vw, 72px) clamp(18px, 6vw, 48px);
     text-align: center;
     box-shadow: var(--card-shadow);
-    margin-bottom: 45px;
-    border-radius: 24px;
+    border-radius: clamp(18px, 4vw, 26px);
     position: relative;
     overflow: hidden;
+    margin: 0 auto;
+    width: min(100%, 900px);
+}
+
+@media (max-width: 768px) {
+    .nosotros-hero-section {
+        padding: clamp(40px, 14vw, 64px) clamp(var(--spacing-sm, 8px), 8vw, var(--spacing-lg, 24px));
+    }
+}
+
+@media (max-width: 520px) {
+    .nosotros-hero-section {
+        border-radius: 18px;
+    }
 }
 
 .nosotros-hero-section::after {
@@ -52,27 +81,30 @@ body.no-scroll {
 
 .nosotros-h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 3.3rem;
+    font-size: clamp(2.2rem, 1.5rem + 3vw, 3.1rem);
     font-weight: 800;
-    margin-bottom: var(--spacing-md, 16px);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    margin-bottom: clamp(var(--spacing-sm, 8px), 2.5vw, var(--spacing-lg, 24px));
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.35);
     color: var(--white, #ffffff);
 }
 
 .nosotros-hero-subtitle {
-    font-size: 1.3rem;
-    line-height: 1.5;
-    max-width: 900px;
+    font-size: clamp(1rem, 0.95rem + 1.1vw, 1.25rem);
+    line-height: 1.55;
+    max-width: min(100%, 720px);
     margin: 0 auto;
-    padding: 0 var(--spacing-md, 16px);
+    padding: 0 clamp(var(--spacing-xs, 4px), 4vw, var(--spacing-md, 16px));
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .accordion-sections-wrapper {
-    max-width: 1200px;
-    margin: 0 auto var(--spacing-xl, 40px);
-    padding: 0 var(--spacing-md, 16px);
+    width: min(100%, 900px);
+    margin: 0 auto;
+    padding: 0 clamp(var(--spacing-xs, 4px), 4vw, var(--spacing-md, 16px));
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(var(--spacing-md, 16px), 4vw, var(--spacing-xl, 40px));
 }
 
 .accordion-item {
@@ -93,9 +125,9 @@ body.no-scroll {
 .accordion-header {
     background: linear-gradient(135deg, rgba(93, 11, 11, 0.92), rgba(153, 27, 27, 0.88));
     color: var(--white, #ffffff);
-    padding: var(--spacing-lg, 24px) var(--spacing-xl, 40px);
+    padding: clamp(var(--spacing-md, 16px), 4vw, var(--spacing-xl, 40px));
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.9rem;
+    font-size: clamp(1.2rem, 1.05rem + 1.2vw, 1.65rem);
     font-weight: 600;
     width: 100%;
     text-align: left;
@@ -124,7 +156,7 @@ body.no-scroll {
 
 .accordion-content {
     background-color: rgba(255, 247, 244, 0.95);
-    padding: 0 var(--spacing-xl, 40px);
+    padding: 0 clamp(var(--spacing-md, 16px), 5vw, var(--spacing-xl, 40px));
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.7s ease-out, padding 0.7s ease-out;
@@ -132,21 +164,22 @@ body.no-scroll {
 
 .accordion-content.expanded {
     max-height: 5000px;
-    padding: var(--spacing-xl, 40px);
+    padding: clamp(var(--spacing-md, 16px), 5vw, var(--spacing-xl, 40px));
 }
 
 .nosotros-historia-paragraph {
-    font-size: 1rem;
+    font-size: clamp(0.98rem, 0.94rem + 0.5vw, 1.05rem);
     line-height: 1.7;
-    margin-bottom: var(--spacing-md, 16px);
-    text-align: justify;
+    margin-bottom: clamp(var(--spacing-sm, 8px), 2.5vw, var(--spacing-lg, 24px));
+    text-align: left;
 }
 
 .nosotros-mvv-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-lg, 24px);
-    margin: var(--spacing-md, 16px) auto;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: clamp(var(--spacing-md, 16px), 5vw, var(--spacing-xl, 40px));
+    margin: clamp(var(--spacing-sm, 8px), 3vw, var(--spacing-lg, 24px)) auto;
+    width: 100%;
 }
 
 .nosotros-mvv-card {
@@ -170,15 +203,15 @@ body.no-scroll {
 .nosotros-mvv-values { border-top-color: var(--secondary-color, #3498db); }
 
 .nosotros-mvv-title {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 1rem + 0.8vw, 1.35rem);
     font-weight: 700;
-    margin-bottom: var(--spacing-md, 16px);
+    margin-bottom: clamp(var(--spacing-sm, 8px), 2.4vw, var(--spacing-md, 16px));
     color: var(--primary-dark-blue, #0b1f3a);
 }
 
 .nosotros-mvv-text,
 .nosotros-mvv-list {
-    font-size: 1rem;
+    font-size: clamp(0.96rem, 0.92rem + 0.5vw, 1.05rem);
     color: var(--text-color-dark, #34495e);
     line-height: 1.6;
 }
@@ -218,13 +251,13 @@ body.no-scroll {
 }
 
 .equipo-categoria-title {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 1.25rem + 1.6vw, 2rem);
     font-weight: 700;
     color: var(--primary-color, #2c3e50);
-    margin-bottom: var(--spacing-lg, 24px);
+    margin-bottom: clamp(var(--spacing-md, 16px), 4vw, var(--spacing-lg, 24px));
     position: relative;
     display: inline-block;
-    padding-bottom: var(--spacing-sm, 8px);
+    padding-bottom: clamp(var(--spacing-xs, 4px), 1.6vw, var(--spacing-sm, 8px));
 }
 
 .equipo-categoria-title::after {
@@ -242,13 +275,13 @@ body.no-scroll {
 .equipo-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: var(--spacing-md, 16px);
+    gap: clamp(var(--spacing-sm, 8px), 4vw, var(--spacing-lg, 24px));
     margin: 0 auto;
 }
 
 .miembro-card {
     background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(255, 228, 230, 0.92));
-    padding: var(--spacing-md, 18px);
+    padding: clamp(var(--spacing-sm, 8px), 4vw, var(--spacing-lg, 24px));
     border-radius: 20px;
     box-shadow: var(--card-shadow);
     text-align: center;
@@ -263,9 +296,9 @@ body.no-scroll {
 
 .miembro-foto-container {
     position: relative;
-    width: 100px;
-    height: 100px;
-    margin: 0 auto var(--spacing-sm, 8px);
+    width: clamp(88px, 20vw, 104px);
+    height: clamp(88px, 20vw, 104px);
+    margin: 0 auto clamp(var(--spacing-xs, 4px), 2vw, var(--spacing-sm, 8px));
 }
 
 .miembro-foto {
@@ -291,14 +324,14 @@ body.no-scroll {
 }
 
 .miembro-nombre {
-    font-size: 1.15rem;
+    font-size: clamp(1rem, 0.95rem + 0.8vw, 1.2rem);
     font-weight: 600;
     color: var(--primary-dark-blue, #0b1f3a);
-    margin-bottom: var(--spacing-xs, 4px);
+    margin-bottom: clamp(var(--spacing-xs, 4px), 1.8vw, var(--spacing-sm, 8px));
 }
 
 .miembro-cargo {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 0.88rem + 0.5vw, 1rem);
     color: var(--text-color-dark, #34495e);
 }
 
@@ -318,11 +351,11 @@ body.no-scroll {
 
 .modal-content {
     background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(255, 241, 242, 0.95));
-    padding: var(--spacing-xl, 40px);
+    padding: clamp(var(--spacing-lg, 24px), 8vw, var(--spacing-xl, 40px));
     border-radius: 22px;
     box-shadow: 0 18px 40px rgba(17, 24, 39, 0.25);
-    max-width: 500px;
-    width: 90%;
+    max-width: 480px;
+    width: min(92%, 480px);
     position: relative;
     animation: fadeIn 0.3s ease-out;
     border: 1px solid rgba(250, 204, 21, 0.35);
@@ -360,22 +393,22 @@ body.no-scroll {
 }
 
 .modal-nombre {
-    font-size: 2rem;
+    font-size: clamp(1.4rem, 1.2rem + 1.5vw, 1.9rem);
     font-weight: 700;
     color: var(--primary-dark-blue, #0b1f3a);
-    margin-bottom: var(--spacing-sm, 8px);
+    margin-bottom: clamp(var(--spacing-xs, 4px), 2vw, var(--spacing-sm, 8px));
 }
 
 .modal-cargo {
-    font-size: 1.25rem;
+    font-size: clamp(1.05rem, 0.98rem + 1vw, 1.25rem);
     color: var(--text-color-dark, #34495e);
 }
 
 .modal-biography {
-    font-size: 1rem;
+    font-size: clamp(0.95rem, 0.92rem + 0.5vw, 1.05rem);
     color: var(--text-color-dark, #34495e);
     line-height: 1.7;
-    text-align: justify;
+    text-align: left;
 }
 
 @keyframes fadeIn {
@@ -385,10 +418,10 @@ body.no-scroll {
 
 .vehiculos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--spacing-lg, 24px);
-    margin-top: var(--spacing-md, 16px);
-    padding: var(--spacing-md, 16px) 0;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: clamp(var(--spacing-md, 16px), 5vw, var(--spacing-xl, 40px));
+    margin-top: clamp(var(--spacing-sm, 8px), 3vw, var(--spacing-lg, 24px));
+    padding: clamp(var(--spacing-sm, 8px), 3vw, var(--spacing-md, 16px)) 0;
 }
 
 .vehiculo-card {
@@ -416,41 +449,41 @@ body.no-scroll {
 
 .vehiculo-card h3 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 1rem + 0.8vw, 1.3rem);
     color: var(--primary-dark-blue, #0b1f3a);
-    margin: var(--spacing-md, 16px) 0 var(--spacing-sm, 8px);
-    padding: 0 var(--spacing-md, 16px);
+    margin: clamp(var(--spacing-sm, 8px), 2.5vw, var(--spacing-md, 16px)) 0 clamp(var(--spacing-xs, 4px), 2vw, var(--spacing-sm, 8px));
+    padding: 0 clamp(var(--spacing-sm, 8px), 4vw, var(--spacing-md, 16px));
 }
 
 .vehiculo-card p {
-    font-size: 1rem;
+    font-size: clamp(0.95rem, 0.92rem + 0.5vw, 1.05rem);
     color: var(--text-color-dark, #34495e);
-    padding: 0 var(--spacing-md, 16px) var(--spacing-md, 16px);
-    text-align: justify;
+    padding: 0 clamp(var(--spacing-sm, 8px), 4vw, var(--spacing-md, 16px)) clamp(var(--spacing-sm, 8px), 3vw, var(--spacing-md, 16px));
+    text-align: left;
 }
 
 .himno-content {
     background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(255, 228, 230, 0.92));
-    padding: var(--spacing-xl, 40px);
+    padding: clamp(var(--spacing-lg, 24px), 7vw, var(--spacing-xl, 40px));
     border-radius: 22px;
     box-shadow: var(--card-shadow);
-    margin-top: var(--spacing-md, 16px);
+    margin-top: clamp(var(--spacing-sm, 8px), 3vw, var(--spacing-lg, 24px));
     text-align: center;
     border: 1px solid rgba(250, 204, 21, 0.3);
 }
 
 .himno-content h3 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 1.25rem + 1.6vw, 2rem);
     color: var(--primary-dark-blue, #0b1f3a);
-    margin-bottom: var(--spacing-lg, 24px);
+    margin-bottom: clamp(var(--spacing-md, 16px), 4vw, var(--spacing-lg, 24px));
 }
 
 .himno-content p {
-    font-size: 1.1rem;
-    line-height: 2;
+    font-size: clamp(0.98rem, 0.94rem + 0.6vw, 1.1rem);
+    line-height: 1.8;
     color: var(--text-color-dark, #34495e);
-    margin-bottom: var(--spacing-md, 16px);
+    margin-bottom: clamp(var(--spacing-sm, 8px), 3vw, var(--spacing-md, 16px));
     white-space: pre-wrap;
 }
 
@@ -471,17 +504,17 @@ body.no-scroll {
 }
 
 .nosotros-contacto-section {
-    padding: var(--spacing-xl, 40px) var(--spacing-md, 16px);
+    padding: clamp(var(--spacing-lg, 24px), 8vw, var(--spacing-xl, 40px)) clamp(var(--spacing-sm, 8px), 6vw, var(--spacing-lg, 24px));
     text-align: center;
     background: linear-gradient(135deg, rgba(93, 11, 11, 0.95), rgba(153, 27, 27, 0.9));
     color: var(--white, #ffffff);
-    margin-top: var(--spacing-xl, 40px);
-    border-radius: 24px;
+    margin-top: clamp(var(--spacing-lg, 24px), 6vw, var(--spacing-xxl, 60px));
+    border-radius: clamp(18px, 4vw, 26px);
     box-shadow: var(--card-hover-shadow);
-    max-width: 1200px;
+    max-width: min(100%, 960px);
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: var(--spacing-xl, 40px);
+    margin-bottom: clamp(var(--spacing-lg, 24px), 6vw, var(--spacing-xxl, 60px));
     position: relative;
     overflow: hidden;
 }
@@ -498,9 +531,9 @@ body.no-scroll {
 
 .nosotros-contacto-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 1.4rem + 2.5vw, 2.4rem);
     color: var(--white, #ffffff);
-    margin-bottom: var(--spacing-md, 16px);
+    margin-bottom: clamp(var(--spacing-sm, 8px), 3vw, var(--spacing-md, 16px));
 }
 
 .nosotros-contacto-card {
@@ -511,22 +544,22 @@ body.no-scroll {
 }
 
 .nosotros-contacto-text {
-    font-size: 1.25rem;
-    margin-bottom: var(--spacing-lg, 24px);
-    line-height: 1.5;
+    font-size: clamp(1rem, 0.95rem + 1.2vw, 1.2rem);
+    margin-bottom: clamp(var(--spacing-md, 16px), 4vw, var(--spacing-lg, 24px));
+    line-height: 1.6;
 }
 
 .nosotros-contacto-button {
     background: linear-gradient(135deg, var(--accent-color, #e67e22), var(--secondary-color, #3498db));
     color: #4b0c0c;
-    padding: var(--spacing-md, 16px) var(--spacing-lg, 28px);
+    padding: clamp(var(--spacing-sm, 8px), 3vw, var(--spacing-md, 16px)) clamp(var(--spacing-md, 16px), 6vw, var(--spacing-lg, 28px));
     border-radius: 999px;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 0.92rem + 0.8vw, 1.1rem);
     font-weight: 700;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: inline-block;
-    margin-bottom: var(--spacing-lg, 24px);
+    margin-bottom: clamp(var(--spacing-md, 16px), 4vw, var(--spacing-lg, 24px));
     box-shadow: 0 18px 32px rgba(249, 115, 22, 0.35);
 }
 
@@ -536,74 +569,44 @@ body.no-scroll {
 }
 
 .nosotros-contacto-social-text {
-    font-size: 1rem;
+    font-size: clamp(0.92rem, 0.9rem + 0.4vw, 1rem);
     opacity: 0.9;
 }
 
 @media (max-width: 992px) {
-    .nosotros-main-container {
-        padding: 0 var(--spacing-lg, 24px) var(--spacing-xl, 40px);
+    .equipo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     }
-
-    .accordion-sections-wrapper {
-        padding: 0;
-    }
-
-    .nosotros-h1 { font-size: 3rem; }
-    .nosotros-hero-subtitle { font-size: 1.1rem; }
-    .accordion-header { font-size: 1.6rem; padding: var(--spacing-md, 16px); }
-    .accordion-content.expanded { padding: var(--spacing-md, 16px); }
-    .nosotros-mvv-card { min-height: auto; }
-    .vehiculos-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-    .equipo-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
-    .miembro-foto-container { width: 90px; height: 90px; }
-    .modal-content { max-width: 460px; }
 }
 
 @media (max-width: 768px) {
     .nosotros-main-container {
-        padding: 0 var(--spacing-md, 16px) var(--spacing-lg, 24px);
+        padding: 0 clamp(var(--spacing-sm, 8px), 6vw, var(--spacing-md, 16px)) clamp(var(--spacing-md, 16px), 10vw, var(--spacing-lg, 24px));
     }
 
-    .nosotros-hero-section {
-        padding: 48px var(--spacing-md, 16px);
-        text-align: center;
+    .nosotros-mvv-grid {
+        grid-template-columns: 1fr;
     }
 
-    .nosotros-h1 { font-size: 2.6rem; }
-    .nosotros-hero-subtitle { font-size: 1rem; }
-    .accordion-header { font-size: 1.4rem; padding: var(--spacing-sm, 8px) var(--spacing-md, 16px); }
-    .accordion-content.expanded { padding: var(--spacing-sm, 8px); }
-    .nosotros-mvv-grid { grid-template-columns: 1fr; }
-    .vehiculos-grid { grid-template-columns: 1fr; }
-    .equipo-grid { grid-template-columns: repeat(2, 1fr); }
-    .modal-content { max-width: 90%; padding: var(--spacing-md, 16px); }
-    .modal-foto { width: 100px; height: 100px; }
-    .modal-nombre { font-size: 1.4rem; }
-    .modal-cargo { font-size: 1rem; }
-    .modal-biography { font-size: 0.95rem; }
+    .vehiculos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .equipo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    }
 }
 
-@media (max-width: 480px) {
-    .nosotros-main-container {
-        padding: 0 var(--spacing-sm, 8px) var(--spacing-lg, 24px);
+@media (max-width: 576px) {
+    .vehiculos-grid {
+        grid-template-columns: 1fr;
     }
 
-    .accordion-sections-wrapper {
-        padding: 0;
+    .equipo-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
 
-    .nosotros-h1 { font-size: 2.2rem; }
-    .nosotros-hero-subtitle { font-size: 0.95rem; }
-    .accordion-header { font-size: 1.2rem; padding: var(--spacing-sm, 8px); }
-    .accordion-content.expanded { padding: var(--spacing-sm, 8px); }
-    .equipo-grid { grid-template-columns: repeat(2, 1fr); }
-    .miembro-card { padding: var(--spacing-sm, 10px); }
-    .miembro-foto-container { width: 75px; height: 75px; }
-    .miembro-nombre { font-size: 1rem; }
-    .miembro-cargo { font-size: 0.85rem; }
-    .vehiculo-card h3 { font-size: 1.1rem; }
-    .vehiculo-card p { font-size: 0.9rem; }
-    .himno-content h3 { font-size: 1.6rem; }
-    .himno-content p { font-size: 0.95rem; }
+    .modal-content {
+        width: 94%;
+    }
 }
