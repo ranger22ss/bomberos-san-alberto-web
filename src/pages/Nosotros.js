@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import './Nosotros.css'; // Asegúrate de que esta ruta sea correcta
 
 // Importa tus imágenes aquí
@@ -179,6 +179,8 @@ export default function Nosotros() {
     };
 
     const [selectedMember, setSelectedMember] = useState(null);
+    const talentoBottomRef = useRef(null);
+    const talentoGridRef = useRef(null);
 
     useEffect(() => {
         if (selectedMember) {
@@ -197,6 +199,18 @@ export default function Nosotros() {
 
     const closeModal = () => {
         setSelectedMember(null);
+    };
+
+    const scrollToFullTeam = () => {
+        if (talentoBottomRef.current) {
+            talentoBottomRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+        if (talentoGridRef.current) {
+            talentoGridRef.current.classList.add('talento-highlight');
+            setTimeout(() => {
+                talentoGridRef.current?.classList.remove('talento-highlight');
+            }, 1600);
+        }
     };
 
     return (
@@ -406,7 +420,17 @@ export default function Nosotros() {
                             <i className={`fas fa-chevron-down ${expandedSections.talentoHumano ? 'rotate' : ''}`}></i>
                         </button>
                         <div className={`accordion-content ${expandedSections.talentoHumano ? 'expanded' : ''}`}>
-                            <div className="equipo-categorias">
+                            <div className="talento-scroll-controls">
+                                <button
+                                    type="button"
+                                    className="talento-scroll-button"
+                                    onClick={scrollToFullTeam}
+                                >
+                                    Ver a todo el talento humano
+                                    <span className="talento-scroll-icon" aria-hidden="true">↓</span>
+                                </button>
+                            </div>
+                            <div className="equipo-categorias" ref={talentoGridRef}>
                                 {Object.entries(equipoCategorizado).map(([categoria, miembros]) => (
                                     <div key={categoria} className="equipo-categoria-container">
                                         <h3 className="equipo-categoria-title">
@@ -442,6 +466,7 @@ export default function Nosotros() {
                                         </div>
                                     </div>
                                 ))}
+                                <div ref={talentoBottomRef} aria-hidden="true"></div>
                             </div>
                         </div>
                     </div>
