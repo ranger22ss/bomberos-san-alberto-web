@@ -323,10 +323,10 @@ const Portafolio = () => {
                                 <tbody>
                                     {datosVentaExtintores.map((item) => (
                                         <tr key={item.producto}>
-                                            <td>{item.producto}</td>
-                                            <td>{item.contenido}</td>
-                                            <td>{item.precioCon}</td>
-                                            <td>{item.precioSin}</td>
+                                            <td data-label="Producto / Elemento">{item.producto}</td>
+                                            <td data-label="Contenido">{item.contenido}</td>
+                                            <td data-label="Precio (Con soporte y señalización)">{item.precioCon}</td>
+                                            <td data-label="Precio (Sin soporte ni señalización)">{item.precioSin}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -347,8 +347,8 @@ const Portafolio = () => {
                                 <tbody>
                                     {datosPartesExtintor.map((item) => (
                                         <tr key={item.parte}>
-                                            <td>{item.parte}</td>
-                                            <td>{item.precio}</td>
+                                            <td data-label="Parte">{item.parte}</td>
+                                            <td data-label="Precio">{item.precio}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -370,9 +370,9 @@ const Portafolio = () => {
                                 <tbody>
                                     {datosBotiquines.map((item) => (
                                         <tr key={item.tipo}>
-                                            <td>{item.tipo}</td>
-                                            <td>{item.contenido}</td>
-                                            <td>{item.precio}</td>
+                                            <td data-label="Tipo">{item.tipo}</td>
+                                            <td data-label="Contenido">{item.contenido}</td>
+                                            <td data-label="Precio">{item.precio}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -394,8 +394,8 @@ const Portafolio = () => {
                                 <tbody>
                                     {datosMantenimientoExtintores.map((item) => (
                                         <tr key={item.extintor}>
-                                            <td>{item.extintor}</td>
-                                            <td>{item.precio}</td>
+                                            <td data-label="Extintor">{item.extintor}</td>
+                                            <td data-label="Precio">{item.precio}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -417,9 +417,9 @@ const Portafolio = () => {
                                 <tbody>
                                     {datosRecargaExtintores.map((item) => (
                                         <tr key={item.extintor}>
-                                            <td>{item.extintor}</td>
-                                            <td>{item.precio}</td>
-                                            <td>{item.observaciones}</td>
+                                            <td data-label="Extintor">{item.extintor}</td>
+                                            <td data-label="Precio de Recarga">{item.precio}</td>
+                                            <td data-label="Observaciones">{item.observaciones}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -440,8 +440,8 @@ const Portafolio = () => {
                                 <tbody>
                                     {datosOtrosProductos.map((item) => (
                                         <tr key={item.producto}>
-                                            <td>{item.producto}</td>
-                                            <td>{item.precio}</td>
+                                            <td data-label="Producto">{item.producto}</td>
+                                            <td data-label="Precio">{item.precio}</td>
                                         </tr>
                                     ))}
                                 </tbody>
