@@ -1,197 +1,150 @@
 /* src/components/Footer/Footer.css */
 
-/*
-   ¡IMPORTANTE! Si ya tienes las variables CSS (:root) definidas en tu index.css o App.css,
-   ELIMINA TODO el bloque `:root { ... }` de este archivo para evitar duplicidad.
-   Si no las tienes globalmente, mantenlas aquí o en index.css.
-*/
-:root {
-    --footer-bg-dark: #0b1f3a; /* Azul oscuro, similar al del header */
-    --footer-text-color: #f0f0f0; /* Color de texto general claro */
-    --footer-link-color: #d4edda; /* Un verde suave para los enlaces */
-    --footer-link-hover-color: #a8dadc; /* Color al pasar el ratón */
-    --footer-title-color: #ffd700; /* Dorado para los títulos de sección */
-    --footer-border-color: rgba(255, 255, 255, 0.1); /* Líneas sutiles */
-
-    --spacing-xs: 4px;
-    --spacing-sm: 8px;
-    --spacing-md: 16px;
-    --spacing-lg: 24px;
-    --spacing-xl: 40px;
-    --spacing-xxl: 60px;
+.modern-footer {
+    background: linear-gradient(135deg, rgba(6, 26, 60, 0.95), rgba(15, 76, 129, 0.92));
+    color: var(--text-color-light);
+    padding: var(--spacing-xxl) var(--spacing-lg) var(--spacing-lg);
+    margin-top: var(--spacing-xxl);
+    box-shadow: 0 -20px 40px rgba(6, 26, 60, 0.35);
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
 }
 
-.modern-footer {
-    background-color: var(--footer-bg-dark);
-    color: var(--footer-text-color);
-    padding: var(--spacing-xxl) var(--spacing-lg) var(--spacing-md);
-    margin-top: var(--spacing-xxl);
-    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
-    font-family: 'Open Sans', sans-serif;
-    line-height: 1.6;
+.modern-footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 15%, rgba(125, 211, 252, 0.28), transparent 60%),
+                radial-gradient(circle at 85% 25%, rgba(59, 130, 246, 0.2), transparent 65%);
+    opacity: 0.85;
+    z-index: 0;
 }
 
 .footer-content-wrapper {
+    position: relative;
+    z-index: 1;
     display: grid;
-    /* AJUSTE CLAVE AQUÍ: Hemos aumentado el 'minmax' para asegurar más espacio para cada columna.
-       También puedes probar con 250px o 280px si sigue viéndose muy apretado. */
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: var(--spacing-xl); /* Espacio horizontal y vertical entre secciones */
-    max-width: 1200px; /* Ancho máximo para el contenido del footer */
-    margin: 0 auto; /* Centrar el contenido del footer */
+    gap: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
     padding-bottom: var(--spacing-xl);
-    border-bottom: 1px solid var(--footer-border-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .footer-section {
-    padding: 0; /* Aseguramos que no haya padding interno que restrinja el espacio */
-    text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+    text-align: left;
+    display: grid;
+    gap: var(--spacing-sm);
 }
 
 .footer-title {
     font-family: 'Montserrat', sans-serif;
-    color: var(--footer-title-color);
-    font-size: 1.4em;
-    margin-bottom: var(--spacing-md);
+    color: var(--accent-color);
+    font-size: 1.6rem;
+    margin: 0;
     font-weight: 700;
-    line-height: 1.2;
 }
 
 .footer-tagline {
-    font-size: 0.9em;
-    opacity: 0.8;
+    font-size: 0.95rem;
+    color: rgba(241, 245, 249, 0.85);
+}
+
+.footer-badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 14px 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(148, 197, 254, 0.3);
+    box-shadow: 0 18px 36px rgba(9, 34, 78, 0.32);
+}
+
+.footer-badge__value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent-color);
+}
+
+.footer-badge__label {
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(241, 245, 249, 0.75);
 }
 
 .section-title {
     font-family: 'Montserrat', sans-serif;
-    color: var(--footer-title-color);
-    font-size: 1.1em;
-    margin-bottom: var(--spacing-md); /* Espacio debajo del título de sección */
+    color: var(--text-color-light);
+    font-size: 1.2rem;
+    margin: 0;
     font-weight: 600;
     position: relative;
-    text-align: left;
 }
 
-/* Subrayado animado para títulos de sección */
 .section-title::after {
     content: '';
     display: block;
-    width: 50px;
+    width: 60px;
     height: 3px;
-    background-color: var(--footer-title-color);
-    margin-top: var(--spacing-sm);
-    transition: width 0.3s ease-in-out;
-    margin-left: 0;
-    margin-right: auto;
+    background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+    margin-top: var(--spacing-xs);
+    border-radius: 999px;
 }
 
-.footer-section:hover .section-title::after {
-    width: 70px;
-}
-
-.contact-list, .footer-nav-list {
+.contact-list,
+.footer-nav-list {
     list-style: none;
     padding: 0;
-    margin: 0; /* Aseguramos que no haya margen predeterminado de la lista */
+    margin: 0;
+    display: grid;
+    gap: var(--spacing-xs);
 }
 
-.contact-list li, .footer-nav-list li {
-    margin-bottom: var(--spacing-sm); /* Espacio entre cada ítem de la lista */
-    line-height: 1.4; /* **IMPORTANTE**: Ajusta la altura de línea para evitar que el texto se monte */
-    word-break: break-word; /* Permite que palabras largas se rompan si no caben */
-    text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+.contact-list li,
+.footer-nav-list li {
+    line-height: 1.5;
+    color: rgba(241, 245, 249, 0.85);
 }
 
 .footer-link {
-    color: var(--footer-link-color);
-    text-decoration: none;
-    transition: color 0.3s ease, transform 0.2s ease;
-    /* padding: var(--spacing-xs) 0;  No necesitamos padding vertical aquí si usamos margin-bottom en li */
-    display: inline-block; /* Permite transformaciones y padding */
+    color: rgba(241, 245, 249, 0.9);
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .footer-link:hover {
-    color: var(--footer-link-hover-color);
-    transform: translateX(5px);
-    text-decoration: underline;
+    color: var(--accent-color);
+    transform: translateX(6px);
 }
 
-/* Redes Sociales */
 .social-icons {
     display: flex;
-    gap: var(--spacing-md);
-    margin-top: var(--spacing-md);
-    justify-content: flex-start; /* Alinea a la izquierda */
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben */
-}
-
-.social-text-link {
-    display: inline-block;
-    background-color: #3b5998; /* Color de Facebook */
-    color: white;
-    padding: 8px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.social-text-link:hover {
-    background-color: #2d4373;
-    transform: translateY(-2px);
-    text-decoration: none;
+    gap: var(--spacing-sm);
+    align-items: center;
 }
 
 .footer-bottom {
+    position: relative;
+    z-index: 1;
     text-align: center;
-    padding-top: var(--spacing-md);
-    font-size: 0.8em;
-    color: rgba(255, 255, 255, 0.7);
+    margin-top: var(--spacing-lg);
+    color: rgba(241, 245, 249, 0.75);
+    font-size: 0.9rem;
 }
 
-/* --- Responsive Design para el Footer --- */
 @media (max-width: 768px) {
-    .footer-content-wrapper {
-        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
-        gap: var(--spacing-lg);
-        text-align: center; /* Centrar todo el texto en móvil */
-    }
-
-    .footer-section {
-        padding: var(--spacing-sm) 0;
-    }
-
-    .section-title {
-        text-align: center; /* Centrar el título en móvil */
-    }
-
-    .section-title::after {
-        margin-left: auto; /* Centrar el subrayado en móvil */
-        margin-right: auto;
-    }
-
-    .contact-list li, .footer-nav-list li {
-        justify-content: center; /* Centrar ítems de lista en móvil */
-        text-align: center;
-    }
-
-    .social-icons {
-        justify-content: center; /* Centrar iconos/texto sociales en móvil */
-    }
-}
-
-@media (max-width: 480px) {
     .modern-footer {
-        padding: var(--spacing-xl) var(--spacing-sm) var(--spacing-md);
+        padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg);
     }
-    .footer-title {
-        font-size: 1.2em;
-    }
-    .section-title {
-        font-size: 1em;
-    }
-    .social-text-link {
-        padding: 6px 12px;
-        font-size: 0.9em;
+
+    .footer-content-wrapper {
+        gap: var(--spacing-lg);
     }
 }

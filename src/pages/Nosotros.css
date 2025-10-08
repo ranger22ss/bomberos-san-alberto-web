@@ -43,8 +43,8 @@ body.no-scroll {
 }
 
 .nosotros-hero-section {
-    background: radial-gradient(circle at 20% 20%, rgba(250, 204, 21, 0.25), transparent 60%),
-                linear-gradient(135deg, rgba(93, 11, 11, 0.95), rgba(153, 27, 27, 0.92));
+    background: radial-gradient(circle at 20% 20%, rgba(125, 211, 252, 0.25), transparent 60%),
+                linear-gradient(135deg, rgba(8, 32, 75, 0.95), rgba(37, 99, 235, 0.92));
     color: var(--white, #ffffff);
     padding: clamp(44px, 12vw, 72px) clamp(18px, 6vw, 48px);
     text-align: center;
@@ -75,7 +75,7 @@ body.no-scroll {
     right: -65px;
     width: 240px;
     height: 240px;
-    background: radial-gradient(circle, rgba(249, 115, 22, 0.28), transparent 70%);
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.32), transparent 70%);
     transform: rotate(18deg);
 }
 
@@ -108,8 +108,8 @@ body.no-scroll {
 }
 
 .accordion-item {
-    background: linear-gradient(160deg, rgba(255, 241, 242, 0.95), rgba(255, 228, 230, 0.9));
-    border: 1px solid rgba(250, 204, 21, 0.35);
+    background: linear-gradient(160deg, rgba(219, 234, 254, 0.95), rgba(224, 242, 254, 0.9));
+    border: 1px solid rgba(148, 197, 254, 0.35);
     border-radius: 20px;
     margin-bottom: var(--spacing-md, 16px);
     overflow: hidden;
@@ -123,7 +123,7 @@ body.no-scroll {
 }
 
 .accordion-header {
-    background: linear-gradient(135deg, rgba(93, 11, 11, 0.92), rgba(153, 27, 27, 0.88));
+    background: linear-gradient(135deg, rgba(8, 32, 75, 0.9), rgba(59, 130, 246, 0.85));
     color: var(--white, #ffffff);
     padding: clamp(var(--spacing-md, 16px), 4vw, var(--spacing-xl, 40px));
     font-family: 'Montserrat', sans-serif;
@@ -141,7 +141,7 @@ body.no-scroll {
 
 .accordion-header:hover,
 .accordion-header.active {
-    background: linear-gradient(135deg, rgba(153, 27, 27, 0.95), rgba(249, 115, 22, 0.9));
+    background: linear-gradient(135deg, rgba(8, 47, 94, 0.95), rgba(59, 130, 246, 0.9));
     transform: translateY(-2px);
 }
 
@@ -155,7 +155,7 @@ body.no-scroll {
 }
 
 .accordion-content {
-    background-color: rgba(255, 247, 244, 0.95);
+    background-color: rgba(237, 248, 255, 0.95);
     padding: 0 clamp(var(--spacing-md, 16px), 5vw, var(--spacing-xl, 40px));
     max-height: 0;
     overflow: hidden;
@@ -280,7 +280,7 @@ body.no-scroll {
 }
 
 .miembro-card {
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(255, 228, 230, 0.92));
+    background: linear-gradient(160deg, rgba(237, 248, 255, 0.96), rgba(219, 234, 254, 0.92));
     padding: clamp(var(--spacing-sm, 8px), 4vw, var(--spacing-lg, 24px));
     border-radius: 20px;
     box-shadow: var(--card-shadow);
@@ -307,7 +307,7 @@ body.no-scroll {
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--primary-color, #2c3e50);
-    box-shadow: 0 8px 18px rgba(153, 27, 27, 0.2);
+    box-shadow: 0 18px 36px rgba(15, 46, 91, 0.18);
 }
 
 .miembro-rango-icon {
@@ -320,7 +320,7 @@ body.no-scroll {
     font-size: 0.9em;
     line-height: 1;
     color: var(--white, #ffffff);
-    box-shadow: 0 6px 14px rgba(153, 27, 27, 0.2);
+    box-shadow: 0 16px 30px rgba(15, 46, 91, 0.16);
 }
 
 .miembro-nombre {
@@ -350,7 +350,7 @@ body.no-scroll {
 }
 
 .modal-content {
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(255, 241, 242, 0.95));
+    background: linear-gradient(160deg, rgba(237, 248, 255, 0.98), rgba(219, 234, 254, 0.92));
     padding: clamp(var(--spacing-lg, 24px), 8vw, var(--spacing-xl, 40px));
     border-radius: 22px;
     box-shadow: 0 18px 40px rgba(17, 24, 39, 0.25);
@@ -358,7 +358,7 @@ body.no-scroll {
     width: min(92%, 480px);
     position: relative;
     animation: fadeIn 0.3s ease-out;
-    border: 1px solid rgba(250, 204, 21, 0.35);
+    border: 1px solid rgba(148, 197, 254, 0.35);
 }
 
 .modal-close-button {
@@ -389,7 +389,7 @@ body.no-scroll {
     object-fit: cover;
     margin-bottom: var(--spacing-md, 16px);
     border: 4px solid var(--secondary-color, #3498db);
-    box-shadow: 0 10px 24px rgba(153, 27, 27, 0.25);
+    box-shadow: 0 24px 42px rgba(15, 46, 91, 0.22);
 }
 
 .modal-nombre {
@@ -425,13 +425,13 @@ body.no-scroll {
 }
 
 .vehiculo-card {
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(255, 241, 242, 0.92));
+    background: linear-gradient(160deg, rgba(237, 248, 255, 0.96), rgba(219, 234, 254, 0.92));
     border-radius: 20px;
     box-shadow: var(--card-shadow);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
-    border: 1px solid rgba(250, 204, 21, 0.3);
+    border: 1px solid rgba(148, 197, 254, 0.3);
 }
 
 .vehiculo-card:hover {
@@ -463,13 +463,13 @@ body.no-scroll {
 }
 
 .himno-content {
-    background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(255, 228, 230, 0.92));
+    background: linear-gradient(160deg, rgba(237, 248, 255, 0.96), rgba(219, 234, 254, 0.92));
     padding: clamp(var(--spacing-lg, 24px), 7vw, var(--spacing-xl, 40px));
     border-radius: 22px;
     box-shadow: var(--card-shadow);
     margin-top: clamp(var(--spacing-sm, 8px), 3vw, var(--spacing-lg, 24px));
     text-align: center;
-    border: 1px solid rgba(250, 204, 21, 0.3);
+    border: 1px solid rgba(148, 197, 254, 0.3);
 }
 
 .himno-content h3 {
@@ -506,7 +506,7 @@ body.no-scroll {
 .nosotros-contacto-section {
     padding: clamp(var(--spacing-lg, 24px), 8vw, var(--spacing-xl, 40px)) clamp(var(--spacing-sm, 8px), 6vw, var(--spacing-lg, 24px));
     text-align: center;
-    background: linear-gradient(135deg, rgba(93, 11, 11, 0.95), rgba(153, 27, 27, 0.9));
+    background: linear-gradient(135deg, rgba(8, 32, 75, 0.95), rgba(37, 99, 235, 0.9));
     color: var(--white, #ffffff);
     margin-top: clamp(var(--spacing-lg, 24px), 6vw, var(--spacing-xxl, 60px));
     border-radius: clamp(18px, 4vw, 26px);
@@ -526,7 +526,7 @@ body.no-scroll {
     left: -50px;
     width: 220px;
     height: 220px;
-    background: radial-gradient(circle, rgba(250, 204, 21, 0.35), transparent 70%);
+    background: radial-gradient(circle, rgba(125, 211, 252, 0.35), transparent 70%);
 }
 
 .nosotros-contacto-title {
@@ -551,7 +551,7 @@ body.no-scroll {
 
 .nosotros-contacto-button {
     background: linear-gradient(135deg, var(--accent-color, #e67e22), var(--secondary-color, #3498db));
-    color: #4b0c0c;
+    color: var(--primary-dark-blue);
     padding: clamp(var(--spacing-sm, 8px), 3vw, var(--spacing-md, 16px)) clamp(var(--spacing-md, 16px), 6vw, var(--spacing-lg, 28px));
     border-radius: 999px;
     text-decoration: none;
@@ -560,12 +560,12 @@ body.no-scroll {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: inline-block;
     margin-bottom: clamp(var(--spacing-md, 16px), 4vw, var(--spacing-lg, 24px));
-    box-shadow: 0 18px 32px rgba(249, 115, 22, 0.35);
+    box-shadow: 0 24px 42px rgba(15, 46, 91, 0.26);
 }
 
 .nosotros-contacto-button:hover {
     transform: translateY(-5px);
-    box-shadow: 0 22px 38px rgba(249, 115, 22, 0.45);
+    box-shadow: 0 28px 48px rgba(15, 46, 91, 0.32);
 }
 
 .nosotros-contacto-social-text {
