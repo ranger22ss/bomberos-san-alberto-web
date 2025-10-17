@@ -4,12 +4,12 @@ import './Noticias.css'; // ¡Importando el estilo externo como debe ser!
 
 
 // Importaciones de imágenes y videos (rutas relativas a 'src/components/')
-import Acompañamiento1 from '../pictures/Accidente1.jpg';
-import Incendio1 from '../pictures/Incendio1.jpg';
-import Incendio4 from '../pictures/Incendio4.jpg';
-import capacitacion1 from '../pictures/Capacitacion1.jpg';
-import Incendio5 from '../pictures/Incendio5.jpg';
-import Emergencia2 from '../pictures/Emergencia2.jpg';
+import Arbol from '..src/pictures/arbol.jpg'
+import Capacitacioncuerda from '..src/pictures/cuerdas.jpg';
+import Enfermeria from '..src/pictures/enfermeria.jpg';
+import Quemaprohi from '..src/pictures/quemaprohibida.jpg';
+import Electrico1 from '..src/pictures/electrico.jpg';
+import CapacitacionSura from '..src/pictures/capacitacionsura.jpg';
 
 
 import Videoincendio1 from '../videos/Quema1.mp4';
@@ -27,31 +27,31 @@ const noticiasData = [
   },
   {
     id: 2,
-    imagen: Acompañamiento1,
-    titulo: 'Accidente de Transito',
-    link: 'https://www.facebook.com/share/p/1Q9tqcZA8i/',
-    descripcion: 'Ocurrio un accidente en lugar frente bomberos'
+    imagen: Arbol,
+    titulo: 'Caida de arbol',
+    link: 'https://www.facebook.com/share/p/1Jtcg7qiyK/',
+    descripcion: 'El Cuerpo de Bomberos de San Alberto atendió una emergencia por la caída de un árbol en el polideportivo.'
   },
   {
     id: 3,
-    imagen: Incendio1,
-    titulo: 'Incendio Eléctrico',
-    link: 'https://www.facebook.com/share/p/12GJJwM6kt7/',
-    descripcion: 'El cuerpo de bomberos de San Alberto atendió una emergencia el día 06 de junio.'
+    imagen: Capacitacioncuerda,
+    titulo: 'Fortaleciendo habilidades',
+    link: 'https://www.facebook.com/share/p/16Cc6yoWU8/',
+    descripcion: 'El cuerpo de Bomberos de San Alberto se Capacita en el manejo de cuerdas y nudos de rescate'
   },
   {
     id: 4,
-    imagen: Incendio5,
-    titulo: 'Incendio electrico',
-    link: 'https://www.facebook.com/share/p/1Hg692hwjV/',
-    descripcion: 'Se atiende incendio de lonchera'
+    imagen: Electrico1,
+    titulo: 'IUncendio electrico',
+    link: 'https://www.facebook.com/share/p/1Bf7ptjrMa/',
+    descripcion: 'El cuerpo de Bomberos San Alberto atiende un incendio de lonchera'
   },
   {
     id: 5,
-    imagen: Incendio4,
-    titulo: 'Quema Prohibida (Villa Zafiro)',
-    link: 'https://www.facebook.com/share/p/197HrSWLSx/',
-    descripcion: 'El Cuerpo de Bomberos de San Alberto, Cesar, atendió una emergencia relacionada con una quema prohibida que se estaba desarrollando en la zona ubicada en Villa Zafiro.'
+    imagen: Enfermeria,
+    titulo: 'Práctica de canalización venosa – Auxiliares de Enfermería',
+    link: 'https://www.facebook.com/share/p/16SmeF7Gvj/',
+    descripcion: 'El Cuerpo de Bomberos de San Alberto, se retroalimenta en conocimientos para sus Auxiliares de Enfermería.'
   },
   {
     id: 6,
@@ -63,17 +63,17 @@ const noticiasData = [
 
   {
     id: 7,
-    imagen: Emergencia2,
-    titulo: 'Fuga de gas',
-    link: 'https://www.facebook.com/share/p/1QLBgwtmuo/',
-    descripcion: 'Participación activa en una fuga de gas que estaba afectando la comunidad'
+    imagen: CapacitacionSura,
+    titulo: 'Capacitación con la ARL SURA',
+    link: 'https://www.facebook.com/share/p/16xnEQSV7L/',
+    descripcion: 'Nuestro personal del Cuerpo de Bomberos de San Alberto participó en una jornada de capacitación orientada por la ARL SURA'
   },
   {
     id: 8,
-    imagen: capacitacion1,
-    titulo: 'Capacitacion de cuerpo de bomberos de san alberto',
-    link: 'https://www.facebook.com/share/p/1Ri4V8Shj5/',
-    descripcion: 'Los bomberos de San Alberto se capacitan en tema de Gestion y Administracion de cuerpo de bomberos'
+    imagen: Quemaprohi,
+    titulo: 'QUEMA PROHIBIDA',
+    link: 'https://www.facebook.com/share/p/16dGzjcuLL/',
+    descripcion: 'El día 9 de octubre, el Cuerpo de Bomberos de San Alberto atendió una quema prohibida en el sector de la Variante.'
   },
 ];
 
