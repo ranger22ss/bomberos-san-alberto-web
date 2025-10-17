@@ -4,9 +4,9 @@ import './Noticias.css'; // ¡Importando el estilo externo como debe ser!
 
 
 // Importaciones de imágenes y videos (rutas relativas a 'src/components/')
-import Arbol from '..src/pictures/cuerdas.jpg';
+import Arbol from '..src/pictures/Caidaarbol.jpg';
 import Capacitacioncuerda from '..src/pictures/cuerdas.jpg';
-import Enfermeria from '..src/pictures/enfermeria.jpg';
+import Enfermeria from '..src/pictures/quemaprohibida.jpg';
 import Quemaprohi from '..src/pictures/quemaprohibida.jpg';
 import Electrico1 from '..src/pictures/electrico.jpg';
 import CapacitacionSura from '..src/pictures/capacitacionsura.jpg';
