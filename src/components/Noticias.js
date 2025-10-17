@@ -4,13 +4,12 @@ import './Noticias.css'; // ¡Importando el estilo externo como debe ser!
 
 
 // Importaciones de imágenes y videos (rutas relativas a 'src/components/')
-import Arbol from '..src/pictures/Caidaarbol.jpg';
-import Capacitacioncuerda from '..src/pictures/cuerdas.jpg';
-import Enfermeria from '..src/pictures/quemaprohibida.jpg';
-import Quemaprohi from '..src/pictures/quemaprohibida.jpg';
-import Electrico1 from '..src/pictures/electrico.jpg';
-import CapacitacionSura from '..src/pictures/capacitacionsura.jpg';
-
+import Arbol from '../pictures/Caidaarbol.jpg';
+import Capacitacioncuerda from '../pictures/cuerdas.jpg';
+import Enfermeria from '../pictures/enfermeria.jpg';
+import Quemaprohi from '../pictures/quemaprohibida.jpg';
+import Electrico1 from '../pictures/electrico.jpg';
+import CapacitacionSura from '../pictures/capacitacionsura.jpg';
 
 import Videoincendio1 from '../videos/Quema1.mp4';
 import Videosimulacro1 from '../videos/Capacitacion1.mp4';
