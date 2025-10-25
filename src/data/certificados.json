@@ -335,14 +335,6 @@
     "fechaVencimiento": "2026-06-04",
     "radicado": "043-25"
   },
-  {
-    "nit": "900279175-3",
-    "nombreEmpresa": "Cuerpo de bomberos voluntarios de San Alberto",
-    "direccion": "calle 5 #7-44 La Marina",
-    "fechaExpedicion": "2024-05-14",
-    "fechaVencimiento": "2025-05-14",
-    "radicado": "044-25"
-  },
  {
     "nit": "901799747-0",
     "nombreEmpresa": "DISTRIBUIDORA REX SAS",
@@ -350,6 +342,14 @@
     "fechaExpedicion": "2025-06-26",
     "fechaVencimiento": "2026-06-26",
     "radicado": "044-25"
+  },
+  {
+    "nit": "901799747-0",
+    "nombreEmpresa": "MASSER SAS",
+    "direccion": "RUTA SAN ALBERTO - SAN MARTIN, CESAR KM 6 VÍA AL MAR, EL AMARILLO",
+    "fechaExpedicion": "2025-06-20",
+    "fechaVencimiento": "2026-06-20",
+    "radicado": "045-25"
   },
    {
     "nit": "1063618361-8",
@@ -376,11 +376,300 @@
     "radicado": "049-25"
   },
   {
+    "nit": "901401797-0 ",
+    "nombreEmpresa": "ESTACION DE SERVICIO LA GRAN SILVANA I",
+    "direccion": "VRDA EL RUMBON KM 1",
+    "fechaExpedicion": "2025-07-07",
+    "fechaVencimiento": "2026-07-07",
+    "radicado": "050-25"
+  },
+  {
     "nit": "899999034-1",
-    "nombreEmpresa": "SERVICIO NACIONAL DE APRENDIZJE",
+    "nombreEmpresa": "SERVICIO NACIONAL DE APRENDIZAJE",
     "direccion": "CL 57 8 69",
     "fechaExpedicion": "2025-07-14",
     "fechaVencimiento": "2026-07-14",
     "radicado": "051-25"
+  },
+  {
+    "nit": "800037800-8",
+    "nombreEmpresa": "BANCO AGRARIO DE COLOMBIA S.A",
+    "direccion": "CARRERA 2 #6-54, ESQUINA CON CALLE 6 PARQUE PRINCIPAL",
+    "fechaExpedicion": "2025-07-17",
+    "fechaVencimiento": "2026-07-17",
+    "radicado": "052-25"
+  },
+  {
+    "nit": "1065241116-7",
+    "nombreEmpresa": "RESTAURANTE Y ASADERO PIÑA JOSE",
+    "direccion": "CARRERA 2 #12 - 24 BARRIO EL CENTRO",
+    "fechaExpedicion": "2025-07-18",
+    "fechaVencimiento": "2026-07-18",
+    "radicado": "053-25"
+  },
+  {
+    "nit": "1098631569-3",
+    "nombreEmpresa": "BILLAR LA JAULA 2",
+    "direccion": "CARRERA 15 A #2 - 77 BARRIO VILLAFANNY",
+    "fechaExpedicion": "2025-08-01",
+    "fechaVencimiento": "2026-08-01",
+    "radicado": "054-25"
+  },
+  {
+    "nit": "36455707-2",
+    "nombreEmpresa": "BAR DAIKYRY GRILL A.C.",
+    "direccion": "CALLE 1 #2 - 20 BARRIO VILLAFANNY",
+    "fechaExpedicion": "2025-08-06",
+    "fechaVencimiento": "2026-08-06",
+    "radicado": "055-25"
+  },
+  {
+    "nit": "NN",
+    "nombreEmpresa": "NN",
+    "direccion": "NN",
+    "fechaExpedicion": "2025-08-06",
+    "fechaVencimiento": "2026-08-06",
+    "radicado": "NN"
+  },
+  {
+    "nit": "901448700-1",
+    "nombreEmpresa": "GIGANAV CONNECTIONS SAS",
+    "direccion": "CALLE 2B #7-36 BARRIO VILLAFANNY",
+    "fechaExpedicion": "2025-08-20",
+    "fechaVencimiento": "2026-08-20",
+    "radicado": "057-25"
+  },
+  {
+    "nit": "49662481-8",
+    "nombreEmpresa": "DISCOTECA LOS TRONCOS 22",
+    "direccion": "CARRERA 4 #3 - 12 BARRIO EL CENTRO",
+    "fechaExpedicion": "2025-08-15",
+    "fechaVencimiento": "2026-08-15",
+    "radicado": "058-25"
+  },
+    {
+    "nit": "901811595-9",
+    "nombreEmpresa": "EMPRESA DE SERVICIOS PUBLICOS Y DESARROLLO TECNOLOGICO AMBIENTAL PUERTA DE ORO S.A.S. E.S.P.",
+    "direccion": "CALLE 2 BIS #57-44 BARRIO VILLAFANNY",
+    "fechaExpedicion": "2025-08-21",
+    "fechaVencimiento": "2026-08-21",
+    "radicado": "059-25"
+  },
+    {
+    "nit": "37667521-3",
+    "nombreEmpresa": "LABORATORIO DENTAL VILLAMIZAR PLATA",
+    "direccion": "CALLE 2D #5 - 15 BARRIO VILLAFANNY",
+    "fechaExpedicion": "2025-08-20",
+    "fechaVencimiento": "2026-08-20",
+    "radicado": "060-25"
+  },
+    {
+    "nit": "1234990360-3",
+    "nombreEmpresa": "CASINO MEGAJUEGOS PC",
+    "direccion": "CALLE 3 #3-29 LOCAL 2 BARRIO EL CENTRO",
+    "fechaExpedicion": "2025-09-02",
+    "fechaVencimiento": "2026-09-02",
+    "radicado": "061-25"
+  },
+   {
+    "nit": "1054570158-7",
+    "nombreEmpresa": "CIRCO DEL MIEDO Y TRENCITO Y JUEGO MECANICO",
+    "direccion": "PATINODROMO",
+    "fechaExpedicion": "2025-09-19",
+    "fechaVencimiento": "2025-09-29",
+    "radicado": "062-25"
+  },
+   {
+    "nit": "1065233177-2",
+    "nombreEmpresa": "TABERNA LEIDIMILEY",
+    "direccion": "CARRERA 2 #1C-75 BARRIO CENTRO",
+    "fechaExpedicion": "2025-09-20",
+    "fechaVencimiento": "2026-09-20",
+    "radicado": "063-25"
+  },
+   {
+    "nit": "63314505-5",
+    "nombreEmpresa": "MANSION Y RESTAURANTE LA HORMIGA",
+    "direccion": "CARRERA 2 #2 - 05 BARRIO CENTRO",
+    "fechaExpedicion": "2025-09-23",
+    "fechaVencimiento": "2026-09-23",
+    "radicado": "064-25"
+  },
+   {
+    "nit": "49655276-5",
+    "nombreEmpresa": "HOTEL DAHEY",
+    "direccion": "CALLE 2 #2 - 19 BARRIO VILLAFANNY",
+    "fechaExpedicion": "2025-09-23",
+    "fechaVencimiento": "2026-09-23",
+    "radicado": "065-25"
+  },
+   {
+    "nit": "13718012-5",
+    "nombreEmpresa": "TIENDA Y LICORERA DE RAFA",
+    "direccion": "CARRERA 2 #5 - 11 BARRIO CENTRO",
+    "fechaExpedicion": "2025-09-23",
+    "fechaVencimiento": "2026-09-23",
+    "radicado": "066-25 ERROR PRESENTADO 064-25"
+  },
+   {
+    "nit": "1065232469-3",
+    "nombreEmpresa": "LIE XUYOCK",
+    "direccion": "CL 2B 683",
+    "fechaExpedicion": "2025-09-28",
+    "fechaVencimiento": "2026-09-28",
+    "radicado": "067-25"
+  },
+   {
+    "nit": "20250919",
+    "nombreEmpresa": "HOGAR GERIATRICO SAN FRANCISCO DE ASIS",
+    "direccion": "VEREDA SAN ISIDRO",
+    "fechaExpedicion": "2025-09-19",
+    "fechaVencimiento": "2026-09-19",
+    "radicado": "068-25"
+  },
+   {
+    "nit": "1098689889-5",
+    "nombreEmpresa": "HOTEL CAMPESTRE FLT",
+    "direccion": "CR 2 320 BARRIO VILLAFANNY",
+    "fechaExpedicion": "2025-08-04",
+    "fechaVencimiento": "2026-08-04",
+    "radicado": "069-25"
+  },
+   {
+    "nit": "45622425-1",
+    "nombreEmpresa": "PARQUEADERO ARCO DEL SUR",
+    "direccion": "CALLE 2 #6-64 BARRIO VILLAFANNY",
+    "fechaExpedicion": "2025-10-03",
+    "fechaVencimiento": "2026-10-03",
+    "radicado": "070-25"
+  },
+   {
+    "nit": "37838525-7",
+    "nombreEmpresa": "TIENDA LA FLACA PALMITAS",
+    "direccion": "CL 3 #4-192 BARRIO VILLAFANNY",
+    "fechaExpedicion": "2025-10-04",
+    "fechaVencimiento": "2026-10-04",
+    "radicado": "071-25"
+  },
+   {
+    "nit": "88147614-4",
+    "nombreEmpresa": "ESTACION DE SERVICIO LAS MINAS",
+    "direccion": "KILOMETRO 10 VIA SAN ALBERTO AGUACHICA VEREDA LOS MIRADORES",
+    "fechaExpedicion": "2025-10-06",
+    "fechaVencimiento": "2026-10-06",
+    "radicado": "072-25"
+  },
+   {
+    "nit": "1065245035-7",
+    "nombreEmpresa": "BILLARES Y TOMADEROS LOS NARANJOS",
+    "direccion": "CALLE 5 #6B - 10 BARRIO LA MARINA",
+    "fechaExpedicion": "2025-10-06",
+    "fechaVencimiento": "2026-10-06",
+    "radicado": "074-25"
+  },
+   {
+    "nit": "",
+    "nombreEmpresa": "HOTEL BRINGTHON",
+    "direccion": "CARRERA 6B 2A 15",
+    "fechaExpedicion": "2025-10-06",
+    "fechaVencimiento": "2026-10-06",
+    "radicado": "073-25"
+  },
+   {
+    "nit": "91071884-9",
+    "nombreEmpresa": "HOTEL HACIENDO VICTORIA",
+    "direccion": "CR 4 2 - 29 BARRIO VILLAFANNY",
+    "fechaExpedicion": "2025-10-10",
+    "fechaVencimiento": "2026-10-10",
+    "radicado": "075-25"
+  },
+   {
+    "nit": "",
+    "nombreEmpresa": "HOTEL Y RESTAURANTE BELYFERWIS",
+    "direccion": "CALLE 7 #3-65",
+    "fechaExpedicion": "2025-10-10",
+    "fechaVencimiento": "2026-10-10",
+    "radicado": "076-25"
+  },
+   {
+    "nit": "",
+    "nombreEmpresa": "TIENDA J&J SAN ALBERTO",
+    "direccion": "CR 2 #5-59 BARRIO EL CENTRO",
+    "fechaExpedicion": "2025-10-10",
+    "fechaVencimiento": "2026-10-10",
+    "radicado": "077-25"
+  },
+   {
+    "nit": "",
+    "nombreEmpresa": "CAFE RYU BAR",
+    "direccion": "CALLE 6 #5-58 BARRIO VILLA PRADO",
+    "fechaExpedicion": "2025-10-08",
+    "fechaVencimiento": "2026-10-08",
+    "radicado": "078-25"
+  },
+   {
+    "nit": "",
+    "nombreEmpresa": "ESTANCO POPULAR",
+    "direccion": "CR 2 #4-63 BARRIO CENTRO",
+    "fechaExpedicion": "2025-09-22",
+    "fechaVencimiento": "2026-09-22",
+    "radicado": "079-25"
+  },
+   {
+    "nit": "901128535-8",
+    "nombreEmpresa": "FUNDACION DELAMUJER",
+    "direccion": "CR 3 #5-31",
+    "fechaExpedicion": "2025-10-14",
+    "fechaVencimiento": "2026-10-14",
+    "radicado": "080-25"
   }
+  ,
+   {
+    "nit": "1065612198-3",
+    "nombreEmpresa": "RESTAURANTE Y HELADERIA ESQUINA DEL SABOR COMIDA GOURMET",
+    "direccion": "CALLE 1E 4 - 06",
+    "fechaExpedicion": "2025-10-21",
+    "fechaVencimiento": "2026-10-21",
+    "radicado": "081-25"
+  },
+   {
+    "nit": "1049563651-1",
+    "nombreEmpresa": "KAFINGA DISCO BAR 2",
+    "direccion": "CARRERA 2 #1C - 23 BARRIO CENTRO",
+    "fechaExpedicion": "2025-10-21",
+    "fechaVencimiento": "2026-10-21",
+    "radicado": "082-25"
+  },
+   {
+    "nit": "63532043-9",
+    "nombreEmpresa": "BARZZIA",
+    "direccion": "CARRERA 2 #11-35 BARRIO CENTRO",
+    "fechaExpedicion": "2025-10-21",
+    "fechaVencimiento": "2026-10-21",
+    "radicado": "083-25"
+  },
+   {
+    "nit": "1003203626-4",
+    "nombreEmpresa": "AMOELIA",
+    "direccion": "CARRERA 4 #4-06 BARRIO VILLAFANNY",
+    "fechaExpedicion": "2025-10-22",
+    "fechaVencimiento": "2026-10-22",
+    "radicado": "084-25"
+  },
+   {
+    "nit": "63325845-1",
+    "nombreEmpresa": "CLUB BILLARES BAR TEXAS",
+    "direccion": "CARRERA 2 #1A-90 BARRIO CENTRO",
+    "fechaExpedicion": "2025-10-24",
+    "fechaVencimiento": "2026-10-24",
+    "radicado": "085-25"
+  },
+   {
+    "nit": "63551536-9",
+    "nombreEmpresa": "CLARO ZONA DIGITAL.COM",
+    "direccion": "CARRERA 3 #2-61 BARRIO CENTRO",
+    "fechaExpedicion": "2025-10-24",
+    "fechaVencimiento": "2026-10-24",
+    "radicado": "086-25"
+}
 ]
