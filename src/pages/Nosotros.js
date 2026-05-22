@@ -5,14 +5,12 @@ import './Nosotros.css'; // Asegúrate de que esta ruta sea correcta
 import maritzaImage from '../assets/barrionuevo.png';
 import joseImage from '../assets/barrionuevo2.png';
 import mauricioImage from '../assets/monroy2.png';
-import gerardoImage from '../assets/monroy4.png';
 import angelImage from '../assets/fuentes.png';
 import nathaliaImage from '../assets/monroy3.jpg';
 import javierImage from '../assets/monroy.jpg';
 import ChanagaImage from '../assets/chanaga.png';
 import martinezImage from '../assets/martinez.png';
 import SierraImage from '../assets/sierra.png';
-import CudrisImage from '../assets/cudris.png';
 import VeraImage from '../assets/vera.jpg';
 import MoralesImage from '../assets/morales.jpg';
 import GermanImage from '../assets/german.jpg';
@@ -44,21 +42,7 @@ const equipoCategorizado = {
             biografia: "Incorporación reciente al cuerpo. Actualmente en proceso de capacitación y fortalecimiento de habilidades operativas. Con disposición y compromiso con la labor bomberil.",
             rangoIcono: "👩‍🚒"
         },
-        {
-            nombre: "Luis Villamizar",
-            cargo: "Bombero Operativo",
-            foto: "https://placehold.co/150x150/007bff/ffffff?text=Luis+V.",
-            biografia: "Nuevo integrante con buena actitud y disciplina. En fase de desarrollo de competencias dentro del equipo operativo.",
-            rangoIcono: "👨‍🚒"
-        },
-        {
-            nombre: "Andrés Cudris",
-            cargo: "Bombero Operativo",
-            foto: CudrisImage,
-            biografia: "Recientemente incorporado. Participa activamente en turnos operativos mientras avanza en su proceso formativo institucional.",
-            rangoIcono: "👨‍🚒"
-        },
-        {
+                {
             nombre: "José Barrionuevo",
             cargo: "Bombero Operativo",
             foto: joseImage,
@@ -106,13 +90,6 @@ const equipoCategorizado = {
             foto: VeraImage,
             biografia: "Miembro activo del equipo. Participa con disposición en las actividades operativas y está en constante proceso de formación.",
             rangoIcono: "👩‍🚒"
-        },
-        {
-            nombre: "Gerardo Monroy",
-            cargo: "Bombero Operativo",
-            foto: gerardoImage,
-            biografia: "Miembro con experiencia en conducción de vehículos de apoyo tipo carro tanque. Comprometido con la operatividad segura y eficiente en cada salida.",
-            rangoIcono: "🧑‍🚒"
         },
     ],
     "Personal Administrativo y de Apoyo": [
