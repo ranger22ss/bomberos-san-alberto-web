@@ -1,0 +1,14 @@
+[
+  {
+    "documento": "EJEMPLO-001",
+    "nombreParticipante": "REGISTRO DE EJEMPLO — REEMPLAZAR",
+    "empresa": "EMPRESA DE EJEMPLO",
+    "nit": "900000000-0",
+    "capacitacion": "Manejo de extintores y prevención de incendios",
+    "fechaRealizacion": "2026-01-15",
+    "intensidadHoras": 4,
+    "codigo": "CAP-EJEMPLO-001",
+    "estado": "Realizada"
+  }
+]
+

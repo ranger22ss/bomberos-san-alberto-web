@@ -1,242 +1,176 @@
-import React, { useState } from 'react';
-import './Consulta.css'; // Importa los estilos para la página de consulta
-import certificadosData from '../data/certificados.json'; // Importa tus datos de certificados
+import React, { useMemo, useState } from 'react';
+import { Award, Building2, CalendarDays, CheckCircle2, Download, Search, ShieldCheck } from 'lucide-react';
+import './Consulta.css';
+import certificadosData from '../data/certificados.json';
+import capacitacionesData from '../data/capacitaciones.json';
 
-// Asegúrate de que jsPDF esté cargado en public/index.html via CDN
-// <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-// La librería `jspdf` se espera que esté disponible globalmente como `window.jspdf.jsPDF`
-const { jsPDF } = window.jspdf;
+const TIPOS = {
+  inspecciones: {
+    titulo: 'Certificados de inspección',
+    descripcion: 'Verifica la vigencia del concepto técnico de seguridad humana y protección contra incendios.',
+    etiqueta: 'NIT del establecimiento',
+    placeholder: 'Ej. 824006767-7',
+    boton: 'Consultar inspección',
+    Icono: ShieldCheck,
+  },
+  capacitaciones: {
+    titulo: 'Capacitaciones realizadas',
+    descripcion: 'Consulta las constancias de formación emitidas por el Cuerpo de Bomberos.',
+    etiqueta: 'Documento del participante o NIT',
+    placeholder: 'Ej. 1065123456',
+    boton: 'Consultar capacitación',
+    Icono: Award,
+  },
+};
 
+const normalizar = (valor = '') => String(valor).trim().replace(/[.\-\s]/g, '').toUpperCase();
+const formatearFecha = (fecha) => fecha
+  ? new Date(`${fecha}T00:00:00`).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' })
+  : 'No registrada';
 
 function Consulta() {
-    const [nitBusqueda, setNitBusqueda] = useState('');
-    const [resultadoBusqueda, setResultadoBusqueda] = useState(null); // null, 'no_encontrado', o el objeto del certificado
-    const [mensajeError, setMensajeError] = useState('');
+  const [tipo, setTipo] = useState('inspecciones');
+  const [busqueda, setBusqueda] = useState('');
+  const [resultado, setResultado] = useState(null);
+  const [mensaje, setMensaje] = useState('');
+  const configuracion = TIPOS[tipo];
 
-    // Información de contacto para el pie de página del PDF
-    const contactoFooter = {
-        direccion: "Dirección: Calle 5ta 7-44 Barrio La Marina, San Alberto",
-        telefonos: "Teléfonos Línea de Emergencia 3153538706 - 3001751212",
-        email: "E-Mail: cuerpobomberosvoluntariossanalberto@hotmail.com"
-    };
+  const registros = useMemo(
+    () => (tipo === 'inspecciones' ? certificadosData : capacitacionesData),
+    [tipo]
+  );
 
-    // Dejamos el logoBase64 vacío, como solicitaste, para que tú lo añadas.
-    // Si deseas añadir un logo, convierte tu imagen a Base64 y reemplaza el string vacío aquí.
-    // Ejemplo: const logoBase64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...";
-    const logoBase64 = "";
+  const cambiarTipo = (nuevoTipo) => {
+    setTipo(nuevoTipo);
+    setBusqueda('');
+    setResultado(null);
+    setMensaje('');
+  };
 
-    // Función para normalizar el NIT: quitar espacios y guiones, convertir a mayúsculas
-    const normalizarNit = (nit) => {
-        return nit.trim().replace(/[- ]/g, '').toUpperCase();
-    };
+  const buscar = (event) => {
+    event?.preventDefault();
+    const valor = normalizar(busqueda);
+    setMensaje('');
+    setResultado(null);
 
-    // Función para manejar la búsqueda del certificado
-    const handleBuscarCertificado = () => {
-        setResultadoBusqueda(null); // Limpiar resultado anterior
-        setMensajeError(''); // Limpiar mensaje de error anterior
+    if (!valor) {
+      setMensaje(`Ingresa ${tipo === 'inspecciones' ? 'el NIT del establecimiento' : 'el documento o NIT'} para continuar.`);
+      return;
+    }
 
-        if (!nitBusqueda.trim()) {
-            setMensajeError('Por favor, ingresa un NIT para buscar.');
-            return;
-        }
+    const encontrado = registros.find((registro) => {
+      const identificadores = tipo === 'inspecciones'
+        ? [registro.nit]
+        : [registro.documento, registro.nit, registro.codigo];
+      return identificadores.some((identificador) => normalizar(identificador) === valor);
+    });
 
-        // Normalizar el NIT de búsqueda ingresado por el usuario
-        const nitNormalizadoUsuario = normalizarNit(nitBusqueda);
+    if (!encontrado) {
+      setResultado('no_encontrado');
+      return;
+    }
 
-        // Buscar el certificado en los datos
-        const certificadoEncontrado = certificadosData.find(
-            // Normalizar el NIT de cada certificado en el JSON para la comparación
-            (cert) => normalizarNit(cert.nit) === nitNormalizadoUsuario
-        );
+    if (tipo === 'inspecciones') {
+      const hoy = new Date();
+      hoy.setHours(0, 0, 0, 0);
+      const vencimiento = new Date(`${encontrado.fechaVencimiento}T00:00:00`);
+      setResultado({ ...encontrado, estado: vencimiento >= hoy ? 'Vigente' : 'Vencido' });
+    } else {
+      setResultado({ ...encontrado, estado: encontrado.estado || 'Realizada' });
+    }
+  };
 
-        if (certificadoEncontrado) {
-            // Si se encuentra el certificado, determinar su estado de vigencia
-            const fechaVencimiento = new Date(certificadoEncontrado.fechaVencimiento);
-            const hoy = new Date();
+  const descargarConstancia = () => {
+    const JsPDF = window.jspdf?.jsPDF;
+    if (!JsPDF || !resultado || resultado === 'no_encontrado') {
+      setMensaje('No fue posible generar el documento. Actualiza la página e inténtalo nuevamente.');
+      return;
+    }
 
-            // Ajustar hoy a medianoche para una comparación precisa solo con la fecha
-            hoy.setHours(0, 0, 0, 0);
-            fechaVencimiento.setHours(0, 0, 0, 0);
+    const doc = new JsPDF();
+    const esInspeccion = tipo === 'inspecciones';
+    const titulo = esInspeccion ? 'CERTIFICADO DE VIGENCIA DE CONCEPTO TÉCNICO' : 'CONSTANCIA DE CAPACITACIÓN';
+    const nombre = esInspeccion ? resultado.nombreEmpresa : resultado.nombreParticipante || resultado.empresa;
+    const identificacion = esInspeccion ? resultado.nit : resultado.documento || resultado.nit;
 
-            let estadoVigencia;
-            if (fechaVencimiento >= hoy) {
-                estadoVigencia = 'Vigente';
-            } else {
-                estadoVigencia = 'Vencido';
-            }
-            setResultadoBusqueda({ ...certificadoEncontrado, estadoVigencia });
-        } else {
-            setResultadoBusqueda('no_encontrado');
-        }
-    };
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(14);
+    doc.text('CUERPO DE BOMBEROS VOLUNTARIOS DE SAN ALBERTO - CESAR', 105, 24, { align: 'center' });
+    doc.setFontSize(16);
+    doc.text(titulo, 105, 50, { align: 'center' });
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(11);
+    const lineas = [
+      `Titular: ${nombre || 'No registrado'}`,
+      `Identificación: ${identificacion || 'No registrada'}`,
+      `Radicado / código: ${resultado.radicado || resultado.codigo || 'No registrado'}`,
+      esInspeccion ? `Fecha de expedición: ${formatearFecha(resultado.fechaExpedicion)}` : `Capacitación: ${resultado.capacitacion || 'No registrada'}`,
+      esInspeccion ? `Fecha de vencimiento: ${formatearFecha(resultado.fechaVencimiento)}` : `Fecha de realización: ${formatearFecha(resultado.fechaRealizacion)}`,
+      `Estado: ${resultado.estado}`,
+    ];
+    lineas.forEach((linea, index) => doc.text(linea, 24, 78 + (index * 10)));
+    doc.text('Documento generado desde el portal oficial de Bomberos San Alberto.', 105, 180, { align: 'center' });
+    doc.save(`${esInspeccion ? 'Certificado' : 'Capacitacion'}_${identificacion || 'consulta'}.pdf`);
+  };
 
-    // Función para generar el PDF del certificado
-    const generarPDF = () => {
-        if (!resultadoBusqueda || resultadoBusqueda === 'no_encontrado') {
-            setMensajeError('No hay certificado para generar el PDF.');
-            return;
-        }
+  return (
+    <section className="consulta-container" aria-labelledby="consulta-title">
+      <div className="consulta-hero">
+        <span className="consulta-eyebrow"><CheckCircle2 size={16} /> Verificación institucional</span>
+        <h1 id="consulta-title">Consulta tus certificados en línea</h1>
+        <p>Información oficial, rápida y segura del Cuerpo de Bomberos Voluntarios de San Alberto.</p>
+      </div>
 
-        const doc = new jsPDF();
+      <div className="consulta-tabs" role="tablist" aria-label="Tipo de certificado">
+        {Object.entries(TIPOS).map(([clave, item]) => {
+          const Icono = item.Icono;
+          return (
+            <button key={clave} type="button" role="tab" aria-selected={tipo === clave}
+              className={`consulta-tab ${tipo === clave ? 'activo' : ''}`} onClick={() => cambiarTipo(clave)}>
+              <Icono size={22} /><span><strong>{item.titulo}</strong><small>{clave === 'inspecciones' ? 'Para establecimientos' : 'Para personas y empresas'}</small></span>
+            </button>
+          );
+        })}
+      </div>
 
-        // --- Configuración de Fuentes y Colores ---
-        doc.setFont("helvetica"); // Usa una fuente estándar
-        doc.setTextColor(0, 0, 0); // Color de texto negro
-
-        let yPos = 20; // Posición inicial en Y
-
-        // --- Logo (si está disponible) ---
-        if (logoBase64) {
-            try {
-                // Ajusta las coordenadas (x, y) y el tamaño (width, height) de tu logo
-                // doc.addImage(imageData, format, x, y, width, height)
-                doc.addImage(logoBase64, 'PNG', 10, 10, 50, 20); // x, y, ancho, alto
-                yPos = 40; // Ajusta la posición Y después del logo
-            } catch (e) {
-                console.error("Error al añadir la imagen del logo al PDF:", e);
-            }
-        } else {
-            // Si no hay logo, puedes dejar un espacio o un texto temporal si es necesario para el layout.
-            // doc.text("Espacio para el Logo", 15, yPos); // Comentado para una mayor simplicidad
-        }
-
-
-        // --- Encabezado del PDF ---
-        doc.setFontSize(14);
-        doc.setFont("helvetica", "bold");
-        doc.text("CUERPO DE BOMBEROS VOLUNTARIOS DE SAN ALBERTO - CESAR", doc.internal.pageSize.width / 2, yPos, { align: 'center' });
-        yPos += 8;
-        doc.setFontSize(12);
-        doc.setFont("helvetica", "normal");
-        doc.text("Personería Jurídica No. 0015 del 14 de abril del 2009", doc.internal.pageSize.width / 2, yPos, { align: 'center' });
-        yPos += 7;
-        doc.text("Resolución No. 007914 del 10 de julio del 2023", doc.internal.pageSize.width / 2, yPos, { align: 'center' });
-        yPos += 7;
-        doc.text("Expedida por la Dirección Nacional de Bomberos de Colombia", doc.internal.pageSize.width / 2, yPos, { align: 'center' });
-        yPos += 10;
-        doc.line(10, yPos, 200, yPos); // Línea divisoria
-        yPos += 15;
-
-
-        // --- Título del Certificado ---
-        doc.setFontSize(16);
-        doc.setFont("helvetica", "bold");
-        doc.text("CERTIFICADO DE VIGENCIA DE CONCEPTO TÉCNICO", doc.internal.pageSize.width / 2, yPos, { align: 'center' });
-        yPos += 20;
-
-        // --- Contenido del Certificado ---
-        doc.setFontSize(12);
-        doc.setFont("helvetica", "normal");
-
-        // Fecha de Expedición del Documento PDF (hoy)
-        const fechaGeneracionPDF = new Date().toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' });
-        doc.text(`San Alberto - Cesar, ${fechaGeneracionPDF}`, doc.internal.pageSize.width - 20, yPos, { align: 'right' });
-        yPos += 15;
-
-        // Texto introductorio simple
-        doc.text("El Cuerpo de Bomberos Voluntarios de San Alberto - Cesar, certifica que:", 20, yPos);
-        yPos += 15;
-
-        // Detalles del establecimiento
-        doc.setFont("helvetica", "bold");
-        doc.text(`Nombre del Establecimiento: ${resultadoBusqueda.nombreEmpresa || 'Nombre no disponible'}`, 20, yPos);
-        yPos += 7;
-        doc.text(`NIT de la Empresa: ${resultadoBusqueda.nit}`, 20, yPos);
-        yPos += 7;
-        // --- NUEVO: Radicado del Certificado en PDF ---
-        doc.text(`Radicado del Certificado: ${resultadoBusqueda.radicado || 'No disponible'}`, 20, yPos);
-        yPos += 7;
-        doc.text(`Expedido el: ${new Date(resultadoBusqueda.fechaExpedicion).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}`, 20, yPos);
-        yPos += 7;
-        doc.text(`Vencimiento el: ${new Date(resultadoBusqueda.fechaVencimiento).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}`, 20, yPos);
-        yPos += 15;
-
-        doc.setFont("helvetica", "normal");
-        doc.text("Se expide el presente certificado a solicitud de parte interesada para los fines pertinentes.", 20, yPos);
-        yPos += 20;
-
-        // --- Firma del Representante ---
-        doc.setFont("helvetica", "bold");
-        doc.text("MARITZA BARRIONUEVO QUIÑONEZ", doc.internal.pageSize.width / 2, yPos, { align: 'center' });
-        yPos += 5;
-        doc.text("REP. LEGAL - COMANDANTE", doc.internal.pageSize.width / 2, yPos, { align: 'center' });
-
-        // --- Pie de página del PDF ---
-        doc.setFontSize(10);
-        doc.setFont("helvetica", "normal");
-        const footerY = doc.internal.pageSize.height - 30; // Posición Y para el pie de página
-
-        doc.line(10, footerY - 5, 200, footerY - 5); // Línea divisoria antes del pie de página
-        doc.text(contactoFooter.direccion, doc.internal.pageSize.width / 2, footerY + 5, { align: 'center' });
-        doc.text(contactoFooter.telefonos, doc.internal.pageSize.width / 2, footerY + 10, { align: 'center' });
-        doc.text(contactoFooter.email, doc.internal.pageSize.width / 2, footerY + 15, { align: 'center' });
-
-        // Guardar el PDF
-        doc.save(`Certificado_${resultadoBusqueda.nit}.pdf`);
-    };
-
-    return (
-        <div className="consulta-container">
-            <h1 className="consulta-title">Consulta de Certificados de Inspección de Seguridad Humana contra Incendios</h1>
-            <p className="consulta-description">Ingresa el NIT de la empresa para verificar la vigencia de su certificado. Agrega el DV de tu establecimiento con un "-" si lo tiene.</p>
-
-            <div className="search-box">
-                <input
-                    type="text"
-                    className="nit-input"
-                    placeholder="Ej: 824006767-7 o 824006767"
-                    value={nitBusqueda}
-                    onChange={(e) => setNitBusqueda(e.target.value)}
-                    onKeyPress={(e) => { // Permite buscar al presionar Enter
-                        if (e.key === 'Enter') {
-                            handleBuscarCertificado();
-                        }
-                    }}
-                />
-                <button className="search-button" onClick={handleBuscarCertificado}>
-                    Buscar Certificado
-                </button>
-            </div>
-
-            {mensajeError && <p className="error-message">{mensajeError}</p>}
-
-            {resultadoBusqueda && (
-                <div className="results-box">
-                    {resultadoBusqueda === 'no_encontrado' ? (
-                        <p className="not-found-message">No se encontró ningún certificado con el NIT: <strong>{nitBusqueda}</strong>. Por favor, verifica el número e intenta de nuevo.</p>
-                    ) : (
-                        <div className={`certificate-details ${resultadoBusqueda.estadoVigencia ? resultadoBusqueda.estadoVigencia.toLowerCase() : ''}`}>
-                            <h3>Detalles del Certificado</h3>
-                            <p><strong>NIT:</strong> {resultadoBusqueda.nit}</p>
-                            <p><strong>Empresa:</strong> {resultadoBusqueda.nombreEmpresa || 'Nombre no disponible'}</p>
-                            <p><strong>Dirección:</strong> {resultadoBusqueda.direccion}</p>
-                            {/* --- NUEVO: Radicado del Certificado en la página --- */}
-                            <p><strong>Radicado:</strong> {resultadoBusqueda.radicado || 'No disponible'}</p>
-                            <p><strong>Expedido el:</strong> {new Date(resultadoBusqueda.fechaExpedicion).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-                            <p><strong>Vencimiento el:</strong> {new Date(resultadoBusqueda.fechaVencimiento).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-                            <p className="status-label">
-                                <strong>Estado:</strong>
-                                <span className={`status-text ${resultadoBusqueda.estadoVigencia ? resultadoBusqueda.estadoVigencia.toLowerCase() : ''}`}>
-                                    {resultadoBusqueda.estadoVigencia}
-                                </span>
-                            </p>
-                            {resultadoBusqueda.estadoVigencia === 'Vencido' && (
-                                <p className="action-required-message">Su certificado se encuentra VENCIDO. Por favor, comuníquese con nosotros para iniciar el proceso de renovación.</p>
-                            )}
-                            {resultadoBusqueda.estadoVigencia === 'Vigente' && (
-                                <button
-                                    onClick={() => generarPDF(resultadoBusqueda)}
-                                    className="download-pdf-button"
-                                >
-                                    Descargar Certificado PDF
-                                </button>
-                            )}
-                        </div>
-                    )}
-                </div>
-            )}
+      <div className="consulta-panel" role="tabpanel">
+        <div className="consulta-panel-copy">
+          <configuracion.Icono size={30} />
+          <div><h2>{configuracion.titulo}</h2><p>{configuracion.descripcion}</p></div>
         </div>
-    );
+        <form className="consulta-form" onSubmit={buscar}>
+          <label htmlFor="consulta-identificador">{configuracion.etiqueta}</label>
+          <div className="consulta-input-row">
+            <Search size={20} aria-hidden="true" />
+            <input id="consulta-identificador" value={busqueda} onChange={(e) => setBusqueda(e.target.value)}
+              placeholder={configuracion.placeholder} autoComplete="off" inputMode="text" />
+            <button type="submit">{configuracion.boton}</button>
+          </div>
+          <small>Se aceptan números con o sin puntos, espacios o guion de verificación.</small>
+        </form>
+      </div>
+
+      {mensaje && <div className="consulta-alerta" role="alert">{mensaje}</div>}
+      {resultado === 'no_encontrado' && (
+        <div className="consulta-vacio" role="status"><Search size={34} /><h3>No encontramos coincidencias</h3>
+          <p>Revisa el número ingresado. Si el registro es reciente, comunícate con atención institucional.</p></div>
+      )}
+      {resultado && resultado !== 'no_encontrado' && (
+        <article className="consulta-resultado">
+          <div className="resultado-header"><div><span>Resultado verificado</span><h2>{tipo === 'inspecciones' ? resultado.nombreEmpresa : resultado.nombreParticipante || resultado.empresa}</h2></div>
+            <span className={`resultado-estado ${resultado.estado.toLowerCase()}`}>{resultado.estado}</span></div>
+          <div className="resultado-grid">
+            <div><Building2 /><span>{tipo === 'inspecciones' ? 'NIT' : 'Identificación'}</span><strong>{tipo === 'inspecciones' ? resultado.nit : resultado.documento || resultado.nit}</strong></div>
+            <div><ShieldCheck /><span>{tipo === 'inspecciones' ? 'Radicado' : 'Código'}</span><strong>{resultado.radicado || resultado.codigo || 'No registrado'}</strong></div>
+            <div><CalendarDays /><span>{tipo === 'inspecciones' ? 'Expedición' : 'Realización'}</span><strong>{formatearFecha(resultado.fechaExpedicion || resultado.fechaRealizacion)}</strong></div>
+            <div><Award /><span>{tipo === 'inspecciones' ? 'Vencimiento' : 'Capacitación'}</span><strong>{tipo === 'inspecciones' ? formatearFecha(resultado.fechaVencimiento) : resultado.capacitacion}</strong></div>
+          </div>
+          <button type="button" className="consulta-download" onClick={descargarConstancia}><Download size={19} /> Descargar constancia PDF</button>
+        </article>
+      )}
+    </section>
+  );
 }
 
 export default Consulta;
+
