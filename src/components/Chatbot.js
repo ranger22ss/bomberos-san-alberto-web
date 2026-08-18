@@ -1,226 +1,125 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { Bot, ExternalLink, MessageCircle, Phone, Send, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import './Chatbot.css';
 import logoBomberos from '../logo.png';
 
-const Chatbot = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [messages, setMessages] = useState([]);
-    const [inputMessage, setInputMessage] = useState('');
-    const [isTyping, setIsTyping] = useState(false);
+const EMERGENCIAS = 'tel:+573153538706';
+const WHATSAPP = 'https://wa.me/573001751212';
 
-    const messagesEndRef = useRef(null);
+const normalizar = (texto = '') => texto.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-    useEffect(() => {
-        if (messagesEndRef.current) {
-            messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-    }, [messages]);
+const INTENCIONES = [
+  { palabras: ['emergencia','incendio','accidente','explosion','rescate','ambulancia'], respuesta: 'Si hay riesgo para personas o bienes, llama ahora a la línea de emergencias 315 353 8706. No esperes respuesta por chat.', acciones: [{ etiqueta: 'Llamar a emergencias', href: EMERGENCIAS, tipo: 'emergencia' }] },
+  { palabras: ['capacitacion','curso','brigada','primeros auxilios','extintores'], respuesta: 'Ofrecemos capacitaciones en prevención, brigadas, primeros auxilios, evacuación y manejo de extintores. También puedes verificar una capacitación ya realizada.', acciones: [{ etiqueta: 'Consultar capacitación', ruta: '/consulta' }, { etiqueta: 'Solicitar cotización', ruta: '/cotizar' }] },
+  { palabras: ['inspeccion','concepto','certificado','vigencia','nit'], respuesta: 'Puedes verificar certificados de inspección y constancias de capacitación en nuestra consulta institucional.', acciones: [{ etiqueta: 'Abrir consultas', ruta: '/consulta' }] },
+  { palabras: ['cotizar','cotizacion','precio','costo','presupuesto'], respuesta: 'Cuéntanos el servicio que necesitas mediante el formulario de cotización y nuestro equipo te responderá por un canal oficial.', acciones: [{ etiqueta: 'Solicitar cotización', ruta: '/cotizar' }, { etiqueta: 'Hablar por WhatsApp', href: WHATSAPP }] },
+  { palabras: ['servicio','portafolio','extintor','agua','botiquin'], respuesta: 'Nuestro portafolio incluye inspecciones, capacitaciones, recarga y mantenimiento de extintores, suministro de agua y equipos de seguridad.', acciones: [{ etiqueta: 'Ver portafolio', ruta: '/portafolio' }] },
+  { palabras: ['direccion','ubicacion','donde','estacion'], respuesta: 'Estamos en la Calle 5 #7-44, barrio La Marina, San Alberto, Cesar.', acciones: [{ etiqueta: 'Ver contacto', ruta: '/contacto' }] },
+  { palabras: ['horario','abren','atienden','disponibilidad'], respuesta: 'Las emergencias se atienden 24/7. Para trámites administrativos, escríbenos al WhatsApp institucional y coordinaremos tu atención.', acciones: [{ etiqueta: 'WhatsApp institucional', href: WHATSAPP }] },
+  { palabras: ['contacto','whatsapp','asesor','persona','correo','telefono'], respuesta: 'Para atención no urgente puedes escribir al WhatsApp +57 300 175 1212 o consultar todos nuestros canales oficiales.', acciones: [{ etiqueta: 'Abrir WhatsApp', href: WHATSAPP }, { etiqueta: 'Ver contacto', ruta: '/contacto' }] },
+  { palabras: ['nosotros','historia','bomberos','institucion'], respuesta: 'Somos el Cuerpo de Bomberos Voluntarios de San Alberto, una institución al servicio de la prevención y protección de la comunidad.', acciones: [{ etiqueta: 'Conócenos', ruta: '/nosotros' }] },
+  { palabras: ['hola','buenas','buenos dias','saludos'], respuesta: '¡Hola! Soy el asistente virtual de Bomberos San Alberto. Puedo ayudarte con emergencias, consultas, capacitaciones, servicios y trámites.' },
+  { palabras: ['gracias','listo','perfecto'], respuesta: '¡Con gusto! Estoy aquí si necesitas otra orientación.' },
+];
 
-    const toggleChat = () => {
-        setIsOpen(!isOpen);
+const SUGERENCIAS = ['Consultar una capacitación', 'Verificar una inspección', 'Necesito una cotización', 'Hablar con un asesor'];
+
+function Chatbot() {
+  const navigate = useNavigate();
+  const [abierto, setAbierto] = useState(false);
+  const [mensajes, setMensajes] = useState([]);
+  const [texto, setTexto] = useState('');
+  const [escribiendo, setEscribiendo] = useState(false);
+  const finalRef = useRef(null);
+
+  useEffect(() => { finalRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [mensajes, escribiendo]);
+  useEffect(() => {
+    const cerrar = (event) => event.key === 'Escape' && setAbierto(false);
+    document.addEventListener('keydown', cerrar);
+    return () => document.removeEventListener('keydown', cerrar);
+  }, []);
+
+  const mensajeInicial = useMemo(() => ({
+    remitente: 'bot',
+    texto: '¡Hola! ¿En qué puedo ayudarte hoy?',
+    acciones: [{ etiqueta: 'Emergencia', href: EMERGENCIAS, tipo: 'emergencia' }],
+  }), []);
+
+  const responder = (pregunta) => {
+    const consulta = normalizar(pregunta);
+    const coincidencias = INTENCIONES.map((intencion) => ({
+      ...intencion,
+      puntaje: intencion.palabras.reduce((total, palabra) => total + (consulta.includes(palabra) ? palabra.length : 0), 0),
+    })).sort((a, b) => b.puntaje - a.puntaje);
+    if (coincidencias[0]?.puntaje > 0) return coincidencias[0];
+    return {
+      respuesta: 'Puedo orientarte sobre emergencias, inspecciones, capacitaciones, cotizaciones, servicios, horarios y contacto. Elige una opción o escribe el trámite que necesitas.',
+      acciones: [{ etiqueta: 'Hablar con un asesor', href: WHATSAPP }, { etiqueta: 'Ver servicios', ruta: '/portafolio' }],
     };
+  };
 
-    const automaticResponses = [
-        {
-            keywords: ['hola', 'saludos', 'buenos días', 'buenas tardes', 'buenas noches'],
-            response: '¡Hola! Soy el asistente virtual del Cuerpo de Bomberos Voluntarios de San Alberto. Estoy disponible para orientarte con información institucional y solicitudes no emergentes.'
-        },
-        {
-            keywords: ['emergencia', 'emergencias', 'urgencia', 'llamar bomberos', 'número de emergencia'],
-            response: 'Ante cualquier emergencia comunícate de inmediato a la línea 315 353 8706. Es un canal exclusivo para llamadas de emergencia.'
-        },
-        {
-            keywords: ['whatsapp', 'atención al cliente', 'asesor'],
-            response: 'Nuestro canal institucional de atención al cliente (no emergencias) es el WhatsApp +57 300 175 1212. Con gusto daremos seguimiento a tu solicitud.'
-        },
-        {
-            keywords: ['certificados', 'certificado', 'validar certificado', 'consulta certificado'],
-            response: 'Para validar certificados institucionales ingresa a la sección "Consulta" y escribe el código del certificado que deseas revisar. El sistema te mostrará el estado y los detalles registrados.'
-        },
-        {
-            keywords: ['servicios', 'portafolio', 'portafolio de servicios', 'qué hacen'],
-            response: 'Ofrecemos prevención, inspecciones, mantenimiento y recarga de extintores, capacitaciones, suministro de agua potable y venta de equipos certificados. Puedes revisar el portafolio completo en la sección "Portafolio".'
-        },
-        {
-            keywords: ['cotizar', 'presupuesto', 'cotización', 'precio'],
-            response: 'Para recibir una propuesta formal ingresa a la sección "Cotizar" y completa el formulario con los servicios de interés. Nuestro equipo responderá en el menor tiempo posible.'
-        },
-        {
-            keywords: ['contacto', 'correo', 'email', 'teléfono', 'telefonos', 'comunicar'],
-            response: 'Puedes comunicarte con nosotros por el correo cuerpobomberossanalberto@gmail.com o al WhatsApp institucional +57 300 175 1212. Si necesitas atención presencial, visita la Cl. 5 #7-44 en San Alberto, Cesar.'
-        },
-        {
-            keywords: ['horario', 'disponibilidad', 'abren', 'cierran'],
-            response: 'El equipo operativo permanece disponible 24/7 para emergencias en la línea 315 353 8706. Para trámites administrativos o comerciales escríbenos al WhatsApp +57 300 175 1212 y coordinaremos la atención.'
-        },
-        {
-            keywords: ['nosotros', 'quienes son', 'quiénes son', 'institución', 'institucion'],
-            response: 'Somos el Cuerpo de Bomberos Voluntarios de San Alberto, una institución que combina experiencia, vocación y tecnología para proteger a la comunidad. Puedes conocer nuestra historia y talento humano en la sección "Nosotros".'
-        },
-        {
-            keywords: ['donde estan', 'ubicación', 'direccion', 'dirección', 'donde queda', 'ubicacion'],
-            response: 'Nuestra base se encuentra en la Cl. 5 #7-44 de San Alberto, Cesar, Colombia. Atendemos a la comunidad y al sector empresarial de la región.'
-        },
-        {
-            keywords: ['gracias'],
-            response: '¡Con gusto! Seguiremos atentos si necesitas acompañamiento adicional.'
-        }
-    ];
+  const enviar = (valor) => {
+    const pregunta = (valor ?? texto).trim();
+    if (!pregunta || escribiendo) return;
+    setMensajes((actuales) => [...actuales, { remitente: 'user', texto: pregunta }]);
+    setTexto('');
+    setEscribiendo(true);
+    window.setTimeout(() => {
+      const respuesta = responder(pregunta);
+      setMensajes((actuales) => [...actuales, { remitente: 'bot', texto: respuesta.respuesta, acciones: respuesta.acciones }]);
+      setEscribiendo(false);
+    }, 450);
+  };
 
-    const suggestedQuestions = [
-        '¿Cuál es la línea de emergencia?',
-        'Necesito mantenimiento de extintores',
-        '¿Brindan capacitaciones empresariales?',
-        '¿Cómo solicito una inspección de seguridad?',
-        '¿Cuál es la dirección de la estación?',
-        'Quiero solicitar una cotización formal'
-    ];
+  const ejecutarAccion = (accion) => {
+    if (accion.ruta) {
+      navigate(accion.ruta);
+      setAbierto(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
-    const websiteKnowledgeBase = [
-        'Somos una institución voluntaria al servicio de la comunidad de San Alberto, Cesar, enfocada en prevención, atención de emergencias y fortalecimiento de la gestión del riesgo.',
-        'Servicios destacados: mantenimiento y recarga de extintores, botiquines certificados, inspecciones y conceptos de seguridad, capacitaciones especializadas, suministro de agua potable y acompañamiento logístico 24/7.',
-        'Línea de emergencias: 315 353 8706 (disponible 24/7 únicamente para llamadas).',
-        'Atención institucional y WhatsApp: +57 300 175 1212.',
-        'Correos oficiales: cuerpobomberossanalberto@gmail.com y cuerpobomberosvoluntariossanalberto@hotmail.com.',
-        'La base operativa se encuentra en la Cl. 5 #7-44, San Alberto, Cesar, Colombia.',
-        'Las solicitudes de cotización se realizan en la sección "Cotizar" del sitio web, completando el formulario con los servicios requeridos.',
-        'La validación de certificados institucionales está disponible en la sección "Consulta" ingresando el código correspondiente.'
-    ];
-
-    const buildFallbackResponse = (question) => {
-        const formattedKnowledge = websiteKnowledgeBase.map((item) => `• ${item}`).join('\n');
-
-        return (
-            `Gracias por tu mensaje${question ? ` sobre "${question}"` : ''}. ` +
-            'Soy el asistente virtual del Cuerpo de Bomberos Voluntarios de San Alberto y puedo compartir información institucional disponible en este sitio web.\n\n' +
-            `${formattedKnowledge}\n\n` +
-            'Si necesitas un trámite o detalle puntual, dime qué sección deseas consultar y te guiaré paso a paso o te indicaré nuestros canales oficiales.'
-        );
-    };
-
-    const handleSuggestedQuestionClick = (question) => {
-        setInputMessage(question);
-        setTimeout(() => {
-            handleSendMessage({ preventDefault: () => {} });
-        }, 0);
-    };
-
-    const handleSendMessage = async (e) => {
-        e.preventDefault();
-
-        const currentMessage = inputMessage.trim();
-        if (currentMessage === '') return;
-
-        const userMessage = { text: currentMessage, sender: 'user' };
-        setMessages((prevMessages) => [...prevMessages, userMessage]);
-        setInputMessage('');
-        setIsTyping(true);
-
-        let botResponseText = '';
-        const lowerCaseInput = currentMessage.toLowerCase();
-        let matched = false;
-
-        for (const autoResponse of automaticResponses) {
-            for (const keyword of autoResponse.keywords) {
-                if (lowerCaseInput.includes(keyword)) {
-                    botResponseText = autoResponse.response;
-                    matched = true;
-                    break;
-                }
-            }
-            if (matched) break;
-        }
-
-        if (!matched) {
-            const botMessage = { text: buildFallbackResponse(currentMessage), sender: 'bot' };
-            setMessages((prevMessages) => [...prevMessages, botMessage]);
-            setIsTyping(false);
-            return;
-        }
-
-        const botMessage = { text: botResponseText, sender: 'bot' };
-        setMessages((prevMessages) => [...prevMessages, botMessage]);
-        setIsTyping(false);
-    };
-
-    return (
-        <div className="chatbot-container">
-            <button className="chatbot-toggle-button" onClick={toggleChat} aria-expanded={isOpen} aria-controls="chat-window">
-                {isOpen ? (
-                    <i className="fas fa-times" aria-hidden="true"></i>
-                ) : (
-                    <svg className="firefighter-helmet-icon" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M12 2C8.13 2 5 5.13 5 9v3H3v2h2v7h14v-7h2v-2h-2V9c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5v3H7V9zm12 10h-2v-5h-2v5H7v-5H5v5H3v-7h18v7h-2z" />
-                    </svg>
-                )}
-            </button>
-
-            {isOpen && (
-                <div className="chat-window" id="chat-window" role="dialog" aria-label="Asistente virtual Bomberos San Alberto">
-                    <div className="chat-header">
-                        <div className="chat-brand">
-                            <img src={logoBomberos} alt="Logo Bomberos San Alberto" />
-                            <div>
-                                <h3>Asistente Bomberos San Alberto</h3>
-                                <p>Respuestas institucionales en tiempo real</p>
-                            </div>
-                        </div>
-                        <button className="close-chat-button" onClick={toggleChat} aria-label="Cerrar chat">
-                            <i className="fas fa-times" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                    <div className="chat-messages">
-                        {messages.length === 0 && (
-                            <div className="chat-welcome-message">
-                                ¡Hola! Soy tu asistente institucional. Puedo orientarte en solicitudes, servicios y contacto con nuestro equipo.
-                            </div>
-                        )}
-                        {messages.map((msg, index) => (
-                            <div key={index} className={`message ${msg.sender}`}>
-                                {msg.text}
-                            </div>
-                        ))}
-                        {isTyping && (
-                            <div className="message bot typing-indicator" aria-live="polite">
-                                <span className="dot"></span>
-                                <span className="dot"></span>
-                                <span className="dot"></span>
-                            </div>
-                        )}
-                        <div ref={messagesEndRef} />
-                        <div className="suggested-questions-container">
-                            <p className="suggestions-title">Preguntas frecuentes</p>
-                            <div className="suggestions-list">
-                                {suggestedQuestions.map((question, index) => (
-                                    <button
-                                        key={index}
-                                        className="suggested-question-button"
-                                        onClick={() => handleSuggestedQuestionClick(question)}
-                                        type="button"
-                                    >
-                                        {question}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                    <form className="chat-input-form" onSubmit={handleSendMessage}>
-                        <input
-                            type="text"
-                            value={inputMessage}
-                            onChange={(e) => setInputMessage(e.target.value)}
-                            placeholder="Escribe tu mensaje institucional..."
-                            disabled={isTyping}
-                            aria-label="Escribe tu mensaje"
-                        />
-                        <button type="submit" disabled={isTyping} aria-label="Enviar mensaje">
-                            <i className="fas fa-paper-plane" aria-hidden="true"></i>
-                        </button>
-                    </form>
+  return (
+    <div className="assistant-shell">
+      <button className={`assistant-launcher ${abierto ? 'abierto' : ''}`} onClick={() => setAbierto(!abierto)}
+        aria-label={abierto ? 'Cerrar asistente' : 'Abrir asistente'} aria-expanded={abierto}>
+        {abierto ? <X /> : <MessageCircle />}<span>¿Necesitas ayuda?</span>
+      </button>
+      {abierto && (
+        <section className="assistant-window" role="dialog" aria-modal="false" aria-label="Asistente virtual de Bomberos San Alberto">
+          <header className="assistant-header">
+            <div className="assistant-avatar"><img src={logoBomberos} alt="" /></div>
+            <div><strong>Asistente Bomberos</strong><span><i /> En línea · orientación inmediata</span></div>
+            <button onClick={() => setAbierto(false)} aria-label="Cerrar"><X size={20} /></button>
+          </header>
+          <div className="assistant-emergency"><Phone size={17} /><span>¿Es una emergencia?</span><a href={EMERGENCIAS}>Llama al 315 353 8706</a></div>
+          <div className="assistant-messages" aria-live="polite">
+            {[mensajeInicial, ...mensajes].map((mensaje, index) => (
+              <div className={`assistant-message-wrap ${mensaje.remitente}`} key={`${index}-${mensaje.texto}`}>
+                {mensaje.remitente === 'bot' && <Bot size={17} />}
+                <div><p className="assistant-message">{mensaje.texto}</p>
+                  {mensaje.acciones?.length > 0 && <div className="assistant-actions">{mensaje.acciones.map((accion) => accion.href
+                    ? <a key={accion.etiqueta} className={accion.tipo === 'emergencia' ? 'danger' : ''} href={accion.href} target={accion.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">{accion.etiqueta}<ExternalLink size={13} /></a>
+                    : <button key={accion.etiqueta} type="button" onClick={() => ejecutarAccion(accion)}>{accion.etiqueta}</button>)}</div>}
                 </div>
-            )}
-        </div>
-    );
-};
+              </div>
+            ))}
+            {escribiendo && <div className="assistant-typing"><span /><span /><span /></div>}
+            {mensajes.length === 0 && <div className="assistant-suggestions">{SUGERENCIAS.map((opcion) => <button type="button" key={opcion} onClick={() => enviar(opcion)}>{opcion}</button>)}</div>}
+            <div ref={finalRef} />
+          </div>
+          <form className="assistant-form" onSubmit={(event) => { event.preventDefault(); enviar(); }}>
+            <label className="sr-only" htmlFor="assistant-input">Escribe tu consulta</label>
+            <input id="assistant-input" value={texto} onChange={(event) => setTexto(event.target.value)} placeholder="Escribe tu consulta..." maxLength={300} />
+            <button type="submit" aria-label="Enviar" disabled={!texto.trim() || escribiendo}><Send size={19} /></button>
+          </form>
+          <footer>Este asistente orienta; no reemplaza la línea de emergencias.</footer>
+        </section>
+      )}
+    </div>
+  );
+}
 
 export default Chatbot;
+
