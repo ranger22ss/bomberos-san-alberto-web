@@ -189,12 +189,15 @@ function Consulta() {
     ];
     let y = 84;
     filas.forEach(([etiqueta, valor], index) => {
-      const alto = Math.max(10, doc.splitTextToSize(String(valor), 100).length * 4 + 5);
+      const lineasEtiqueta = doc.splitTextToSize(etiqueta.toUpperCase(), 50);
+      const lineasValor = doc.splitTextToSize(String(valor), 94);
+      const cantidadLineas = Math.max(lineasEtiqueta.length, lineasValor.length);
+      const alto = Math.max(10, cantidadLineas * 4 + 5);
       if (index % 2 === 0) { doc.setFillColor(246, 248, 251); doc.rect(24, y - 5.5, 162, alto, 'F'); }
-      doc.setTextColor(...gris); doc.setFont('helvetica', 'bold'); doc.setFontSize(8);
-      doc.text(etiqueta.toUpperCase(), 28, y);
+      doc.setTextColor(...gris); doc.setFont('helvetica', 'bold'); doc.setFontSize(7.2);
+      doc.text(lineasEtiqueta, 28, y, { lineHeightFactor: 1.15 });
       doc.setTextColor(25, 35, 48); doc.setFont('helvetica', 'normal'); doc.setFontSize(9.3);
-      doc.text(doc.splitTextToSize(String(valor), 100), 82, y);
+      doc.text(lineasValor, 88, y, { lineHeightFactor: 1.15 });
       y += alto;
     });
 
