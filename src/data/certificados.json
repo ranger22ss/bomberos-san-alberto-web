@@ -17,26 +17,19 @@
     },
     {
         "nit": "901436817",
-        "nombreEmpresa": [
-            "HOTEL COLOMBIA BYB",
-            "ESTABLECIMIENTOS COLOMBIA S.A.S."
-        ],
-        "direccion": [
-            "KM 4 VIA SAN ALBERTO SOBRE LA RUTA DEL SOL",
-            "KM 4 VIA SAN ALBERTO SOBRE LA RUTA DEL SOL"
-        ],
-        "fechaExpedicion": [
-            "2026-01-29",
-            "2026-02-10"
-        ],
-        "fechaVencimiento": [
-            "2027-01-29",
-            "2027-02-10"
-        ],
-        "radicado": [
-            "003-26",
-            "009-26"
-        ]
+        "nombreEmpresa": "HOTEL COLOMBIA BYB",
+        "direccion": "KM 4 VIA SAN ALBERTO SOBRE LA RUTA DEL SOL",
+        "fechaExpedicion": "2026-01-29",
+        "fechaVencimiento": "2027-01-29",
+        "radicado": "003-26"
+    },
+    {
+        "nit": "9014368170",
+        "nombreEmpresa": "ESTABLECIMIENTOS COLOMBIA S.A.S.",
+        "direccion": "KM 4 VIA SAN ALBERTO SOBRE LA RUTA DEL SOL",
+        "fechaExpedicion": "2026-02-10",
+        "fechaVencimiento": "2027-02-10",
+        "radicado": "009-26"
     },
     {
         "nit": "900868347-0",
@@ -136,26 +129,19 @@
     },
     {
         "nit": "824005420-2",
-        "nombreEmpresa": [
-            "SANTA SALUD INSTITUCION PRESTADORA DE SERVICIOS DE SALUD LIMITADA",
-            "SANTA SALUD INSTITUCION PRESTADORA DE SERVICIOS DE SALUD LIMITADA"
-        ],
-        "direccion": [
-            "CARRERA 3 #5 - 14 BARRIO CENTRO",
-            "Calle 5N 4 03 BARRIO PRIMERO DE MAYO"
-        ],
-        "fechaExpedicion": [
-            "2026-03-18",
-            "2026-03-18"
-        ],
-        "fechaVencimiento": [
-            "2027-03-18",
-            "2027-03-18"
-        ],
-        "radicado": [
-            "018-26",
-            "019-26"
-        ]
+        "nombreEmpresa": "SANTA SALUD INSTITUCION PRESTADORA DE SERVICIOS DE SALUD LIMITADA",
+        "direccion": "CARRERA 3 #5 - 14 BARRIO CENTRO",
+        "fechaExpedicion": "2026-03-18",
+        "fechaVencimiento": "2027-03-18",
+        "radicado": "018-26"
+    },
+    {
+        "nit": "824005420-20",
+        "nombreEmpresa": "SANTA SALUD INSTITUCION PRESTADORA DE SERVICIOS DE SALUD LIMITADA",
+        "direccion": "Calle 5N 4 03 BARRIO PRIMERO DE MAYO",
+        "fechaExpedicion": "2026-03-18",
+        "fechaVencimiento": "2027-03-18",
+        "radicado": "019-26"
     },
     {
         "nit": "1091657956",
@@ -255,27 +241,19 @@
     },
     {
         "nit": "900276962-1",
-        "nombreEmpresa": [
-            "D1 S.A.S.",
-            "TIENDA D1 SAN ALBERTO PLAZA"
-        ],
-        "direccion": [
-            "CARRERA 4 #04-05",
-            "CARRERA 6B #2A - 23"
-        ],
-        "fechaExpedicion": [
-            "2026-04-21",
-            "2026-07-22"
-        ],
-        "fechaVencimiento": [
-            "2027-04-21",
-            "2027-07-22"
-        ],
-        "radicado": [
-            "032-26",
-            "033-26",
-            "064-26"
-        ]
+        "nombreEmpresa": "D1 S.A.S.",
+        "direccion": "CARRERA 4 #04-05",
+        "fechaExpedicion": "2026-04-21",
+        "fechaVencimiento": "2027-04-21",
+        "radicado": "032-26"
+    },
+    {
+        "nit": "900276962-10",
+        "nombreEmpresa": "TIENDA D1 SAN ALBERTO PLAZA",
+        "direccion": "CARRERA 6B #2A - 23",
+        "fechaExpedicion": "2026-07-22",
+        "fechaVencimiento": "2027-07-22",
+        "radicado": "064-26"
     },
     {
         "nit": "900236210-9",
@@ -575,25 +553,18 @@
     },
     {
         "nit": "901787562-3",
-        "nombreEmpresa": [
-            "ESTACION DE SERVICIO YANELI",
-            "ESTACION DE SERVICIO  LA CUADRA"
-        ],
-        "direccion": [
-            "VIA AL MAR KM 74 850 BARRIO LA FERIA",
-            "VIA AL MAR KM 74 850 BARRIO LA FERIA"
-        ],
-        "fechaExpedicion": [
-            "2026-08-20",
-            "2026-08-20"
-        ],
-        "fechaVencimiento": [
-            "2027-08-20",
-            "2027-08-20"
-        ],
-        "radicado": [
-            "072-26",
-            "073-26"
-        ]
+        "nombreEmpresa": "ESTACION DE SERVICIO YANELI",
+        "direccion": "VIA AL MAR KM 74 850 BARRIO LA FERIA",
+        "fechaExpedicion": "2026-08-20",
+        "fechaVencimiento": "2027-08-20",
+        "radicado": "072-26"
+    },
+    {
+        "nit": "901787562-30",
+        "nombreEmpresa": "ESTACION DE SERVICIO  LA CUADRA",
+        "direccion": "VIA AL MAR KM 74 850 BARRIO LA FERIA",
+        "fechaExpedicion": "2026-08-20",
+        "fechaVencimiento": "2027-08-20",
+        "radicado": "073-26"
     }
 ]
