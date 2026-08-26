@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { LockKeyhole } from 'lucide-react';
 import './Navbar.css';
 import logoBomberos from '../logo.png';
 
@@ -100,6 +101,16 @@ function Navbar() {
           <li>
             <NavLink to="/contacto" className={navLinkClass} onClick={closeMenu}>
               Contacto
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/gestion-interna"
+              className="navbar-private-link"
+              onClick={closeMenu}
+            >
+              <LockKeyhole size={16} aria-hidden="true" />
+              Portal privado
             </NavLink>
           </li>
         </ul>
