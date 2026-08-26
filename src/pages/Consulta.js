@@ -275,7 +275,7 @@ function Consulta() {
               placeholder={configuracion.placeholder} autoComplete="off" inputMode="text" />
             <button type="submit">{configuracion.boton}</button>
           </div>
-          <small>Se aceptan números con o sin puntos, espacios o guion de verificación.</small>
+          <small>Se aceptan números con o sin puntos, espacios o guion de verificación, si tu nit cuenta con mas establecimientos prueba agregando un 0 o un 1 al final.</small>
         </form>
       </div>
 
