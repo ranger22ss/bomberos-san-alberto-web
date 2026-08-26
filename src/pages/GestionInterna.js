@@ -113,7 +113,11 @@ function GestionInterna() {
     setNuevaClave('');
     setConfirmarClave('');
     setRequiereNuevaClave(false);
-    window.history.replaceState({}, '', '/gestion-interna');
+    window.history.replaceState(
+      {},
+      '',
+      `${process.env.PUBLIC_URL || ''}/gestion-interna`
+    );
   };
 
   const actualizarDato = ({ target }) => {
