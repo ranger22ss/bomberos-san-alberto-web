@@ -1,6 +1,6 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import './index.css';
 
@@ -19,11 +19,17 @@ import Portafolio from './pages/Portafolio';
 import Contacto from './pages/Contacto';
 import Nosotros from './pages/Nosotros';
 import Cotizar from './pages/Cotizar';
+import GestionInterna from './pages/GestionInterna';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+
+  if (location.pathname.startsWith('/gestion-interna')) {
+    return <GestionInterna />;
+  }
+
   return (
-    <BrowserRouter>
-      <div className="App">
+    <div className="App">
         {/* 🔝 Barra de navegación principal */}
         <Navbar />
 
@@ -55,7 +61,16 @@ function App() {
         {/* Botón de emergencia y Chatbot */}
         <EmergencyButton />
         <Chatbot />
-      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="*" element={<AppContent />} />
+      </Routes>
     </BrowserRouter>
   );
 }

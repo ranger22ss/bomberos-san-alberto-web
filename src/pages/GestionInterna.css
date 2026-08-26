@@ -1,0 +1,174 @@
+.gestion-interna,
+.gestion-acceso-wrapper,
+.gestion-cargando {
+  --gestion-azul: #0b2743;
+  --gestion-azul-claro: #123f68;
+  --gestion-rojo: #b52828;
+  --gestion-fondo: #eef3f7;
+  --gestion-borde: #d7e0e8;
+  --gestion-texto: #172333;
+  min-height: 100vh;
+  color: var(--gestion-texto);
+  background: var(--gestion-fondo);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+.gestion-cargando,
+.gestion-acceso-wrapper {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.gestion-cargando {
+  gap: 12px;
+  color: var(--gestion-azul);
+  font-weight: 700;
+}
+
+.gestion-cargando svg { color: var(--gestion-rojo); }
+
+.gestion-login {
+  width: min(100%, 430px);
+  padding: clamp(28px, 5vw, 46px);
+  border: 1px solid rgba(11, 39, 67, 0.1);
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 24px 70px rgba(11, 39, 67, 0.14);
+}
+
+.gestion-login-icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 22px;
+  place-items: center;
+  border-radius: 18px;
+  color: white;
+  background: linear-gradient(145deg, var(--gestion-azul), var(--gestion-azul-claro));
+}
+
+.gestion-eyebrow {
+  color: var(--gestion-rojo);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.gestion-login h1,
+.gestion-topbar h1 {
+  margin: 7px 0 8px;
+  color: var(--gestion-azul);
+  line-height: 1.15;
+}
+
+.gestion-login p { margin: 0 0 25px; color: #607084; }
+.gestion-login label { display: block; margin: 16px 0 7px; color: #34465a; font-size: 0.86rem; font-weight: 750; }
+.gestion-login input,
+.gestion-grid input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--gestion-borde);
+  border-radius: 11px;
+  background: #fbfcfd;
+  color: var(--gestion-texto);
+  font: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.gestion-login input { padding: 13px 14px; }
+.gestion-login input:focus,
+.gestion-grid input:focus { outline: none; border-color: #4c789f; background: white; box-shadow: 0 0 0 4px rgba(30, 91, 143, 0.1); }
+
+.gestion-login button,
+.gestion-topbar button,
+.gestion-botones button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 11px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+}
+
+.gestion-login button { width: 100%; margin-top: 22px; padding: 14px; color: white; background: var(--gestion-azul); }
+.gestion-login .gestion-secundario { background: #66768a; }
+.gestion-login small { display: block; margin-top: 18px; color: #7a8796; text-align: center; line-height: 1.45; }
+
+.gestion-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px max(24px, calc((100vw - 1120px) / 2));
+  color: white;
+  background: linear-gradient(120deg, #071d32, var(--gestion-azul-claro));
+  border-bottom: 4px solid var(--gestion-rojo);
+}
+
+.gestion-topbar h1 { margin-bottom: 0; color: white; font-size: clamp(1.35rem, 3vw, 2rem); }
+.gestion-topbar button { padding: 11px 16px; color: white; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.22); }
+.gestion-topbar button:hover { background: rgba(255, 255, 255, 0.2); }
+
+.gestion-contenido { width: min(calc(100% - 32px), 1120px); margin: 28px auto 60px; }
+.gestion-aviso {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 17px 20px;
+  border: 1px solid #bad4c6;
+  border-radius: 15px;
+  background: #f0faf4;
+  color: #20593b;
+}
+.gestion-aviso svg { flex: 0 0 auto; }
+.gestion-aviso strong,
+.gestion-aviso span { display: block; }
+.gestion-aviso span { margin-top: 3px; font-size: 0.9rem; }
+
+.gestion-formulario { display: grid; gap: 20px; }
+.gestion-formulario section {
+  padding: clamp(20px, 4vw, 34px);
+  border: 1px solid rgba(11, 39, 67, 0.1);
+  border-radius: 19px;
+  background: white;
+  box-shadow: 0 12px 34px rgba(25, 50, 75, 0.07);
+}
+
+.gestion-seccion-titulo { display: flex; align-items: center; gap: 13px; margin-bottom: 24px; }
+.gestion-seccion-titulo > svg { box-sizing: content-box; padding: 11px; border-radius: 12px; color: white; background: var(--gestion-azul); }
+.gestion-seccion-titulo span { color: var(--gestion-rojo); font-size: 0.72rem; font-weight: 850; letter-spacing: 0.1em; text-transform: uppercase; }
+.gestion-seccion-titulo h2 { margin: 2px 0 0; color: var(--gestion-azul); font-size: 1.25rem; }
+
+.gestion-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.gestion-grid label > span { display: block; margin-bottom: 7px; color: #43556a; font-size: 0.82rem; font-weight: 780; }
+.gestion-grid input { min-height: 46px; padding: 11px 13px; }
+.gestion-columna-completa { grid-column: 1 / -1; }
+
+.gestion-generacion > p { margin: -8px 0 21px; color: #657487; line-height: 1.55; }
+.gestion-botones { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.gestion-botones button { min-height: 52px; padding: 13px 18px; color: white; background: var(--gestion-azul); }
+.gestion-botones button.constancia { background: var(--gestion-rojo); }
+.gestion-botones button:hover:not(:disabled) { filter: brightness(1.1); transform: translateY(-1px); }
+.gestion-botones button:disabled { cursor: wait; opacity: 0.65; }
+
+.gestion-alerta { margin-top: 18px; padding: 12px 14px; border-radius: 10px; font-size: 0.9rem; font-weight: 650; line-height: 1.4; }
+.gestion-alerta.error { color: #8a2424; background: #fff0f0; border: 1px solid #efcaca; }
+.gestion-alerta.correcto { color: #20593b; background: #eef9f2; border: 1px solid #b9ddc7; }
+
+@media (max-width: 680px) {
+  .gestion-topbar { align-items: flex-start; padding: 19px 18px; }
+  .gestion-topbar button { flex: 0 0 auto; padding: 10px; font-size: 0; }
+  .gestion-topbar button svg { width: 21px; height: 21px; }
+  .gestion-contenido { width: min(calc(100% - 22px), 1120px); margin-top: 16px; }
+  .gestion-grid,
+  .gestion-botones { grid-template-columns: 1fr; }
+  .gestion-columna-completa { grid-column: auto; }
+  .gestion-aviso { align-items: flex-start; }
+  .gestion-formulario section { border-radius: 15px; }
+}
