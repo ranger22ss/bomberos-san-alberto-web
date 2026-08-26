@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Download, FileCheck2, FileText, Flame, LockKeyhole, LogOut, ShieldCheck } from 'lucide-react';
-import { supabase, supabaseConfigurado } from '../services/supabaseClient';
+import { esEnlaceAccesoInicial, supabase, supabaseConfigurado } from '../services/supabaseClient';
 import { generarConstanciaTramite, generarSolicitudInspeccion } from '../services/documentosInternos';
 import './GestionInterna.css';
 
@@ -28,6 +28,9 @@ function GestionInterna() {
   const [autorizado, setAutorizado] = useState(modoVistaPrevia);
   const [correo, setCorreo] = useState('');
   const [clave, setClave] = useState('');
+  const [nuevaClave, setNuevaClave] = useState('');
+  const [confirmarClave, setConfirmarClave] = useState('');
+  const [requiereNuevaClave, setRequiereNuevaClave] = useState(esEnlaceAccesoInicial);
   const [mensajeAcceso, setMensajeAcceso] = useState('');
   const [datos, setDatos] = useState(estadoInicial);
   const [generando, setGenerando] = useState('');
@@ -87,6 +90,32 @@ function GestionInterna() {
     if (supabase) await supabase.auth.signOut();
   };
 
+  const guardarNuevaClave = async (event) => {
+    event.preventDefault();
+    setMensajeAcceso('');
+    if (nuevaClave.length < 8) {
+      setMensajeAcceso('La contraseña debe tener al menos 8 caracteres.');
+      return;
+    }
+    if (nuevaClave !== confirmarClave) {
+      setMensajeAcceso('Las contraseñas no coinciden.');
+      return;
+    }
+
+    setCargandoAcceso(true);
+    const { error } = await supabase.auth.updateUser({ password: nuevaClave });
+    setCargandoAcceso(false);
+    if (error) {
+      setMensajeAcceso('No fue posible guardar la contraseña. Abre nuevamente el enlace de invitación.');
+      return;
+    }
+
+    setNuevaClave('');
+    setConfirmarClave('');
+    setRequiereNuevaClave(false);
+    window.history.replaceState({}, '', '/gestion-interna');
+  };
+
   const actualizarDato = ({ target }) => {
     setDatos((actuales) => ({ ...actuales, [target.name]: target.value }));
     setMensajeDocumento('');
@@ -122,6 +151,25 @@ function GestionInterna() {
       <div className="gestion-acceso-wrapper">
         <div className="gestion-login"><ShieldCheck size={42} /><h1>Configuración pendiente</h1>
           <p>El acceso institucional todavía no está conectado. Configura las variables seguras de Supabase en el alojamiento.</p></div>
+      </div>
+    );
+  }
+
+  if (sesion && autorizado && requiereNuevaClave) {
+    return (
+      <div className="gestion-acceso-wrapper">
+        <form className="gestion-login" onSubmit={guardarNuevaClave}>
+          <div className="gestion-login-icon"><LockKeyhole /></div>
+          <span className="gestion-eyebrow">Primer ingreso</span>
+          <h1>Crea tu contraseña</h1>
+          <p>Esta contraseña servirá para ingresar desde cualquier dispositivo.</p>
+          {mensajeAcceso && <div className="gestion-alerta error">{mensajeAcceso}</div>}
+          <label htmlFor="gestion-nueva-clave">Nueva contraseña</label>
+          <input id="gestion-nueva-clave" type="password" minLength="8" value={nuevaClave} onChange={(e) => setNuevaClave(e.target.value)} required autoComplete="new-password" />
+          <label htmlFor="gestion-confirmar-clave">Confirmar contraseña</label>
+          <input id="gestion-confirmar-clave" type="password" minLength="8" value={confirmarClave} onChange={(e) => setConfirmarClave(e.target.value)} required autoComplete="new-password" />
+          <button type="submit"><ShieldCheck size={19} /> Guardar contraseña y continuar</button>
+        </form>
       </div>
     );
   }

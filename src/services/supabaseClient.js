@@ -1,5 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
+export const esEnlaceAccesoInicial = window.location.hash.includes('type=invite')
+  || window.location.hash.includes('type=recovery');
+
 // Estos valores son públicos y están protegidos por las reglas RLS de Supabase.
 // Las variables de entorno permiten reemplazarlos sin modificar el código.
 const supabaseUrl =
@@ -16,7 +19,7 @@ export const supabase = supabaseConfigurado
       auth: {
         persistSession: true,
         autoRefreshToken: true,
-        detectSessionInUrl: false,
+        detectSessionInUrl: true,
       },
     })
   : null;

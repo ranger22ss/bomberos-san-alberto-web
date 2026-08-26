@@ -20,11 +20,11 @@ import Contacto from './pages/Contacto';
 import Nosotros from './pages/Nosotros';
 import Cotizar from './pages/Cotizar';
 import GestionInterna from './pages/GestionInterna';
+import { esEnlaceAccesoInicial } from './services/supabaseClient';
 
 function AppContent() {
   const location = useLocation();
-
-  if (location.pathname.startsWith('/gestion-interna')) {
+  if (location.pathname.startsWith('/gestion-interna') || esEnlaceAccesoInicial) {
     return <GestionInterna />;
   }
 
