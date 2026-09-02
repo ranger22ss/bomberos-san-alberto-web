@@ -566,5 +566,22 @@
         "fechaExpedicion": "2026-08-20",
         "fechaVencimiento": "2027-08-20",
         "radicado": "073-26"
+    },
+        {
+        "nit": "13870677-5",
+        "nombreEmpresa": "LA RAMONA O&C",
+        "direccion": "CL 2 NORTE 3 - 24 PRIMERO DE MAYO",
+        "fechaExpedicion": "2026-08-29",
+        "fechaVencimiento": "2027-08-29",
+        "radicado": "076-26"
+    },
+        {
+        "nit": "1098623565-0",
+        "nombreEmpresa": "ALMACEN MOTO WORLD",
+        "direccion": "CR 2 1 A 56",
+        "fechaExpedicion": "2026-08-27",
+        "fechaVencimiento": "2027-08-27",
+        "radicado": "074-26"
     }
+
 ]
